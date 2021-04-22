@@ -1,6 +1,5 @@
 # T-MSIS-Data-Quality-Measures-Generation-Code
 
-T-MSIS DQ Measures Code
 This project aims to provide resources and tools that help the research community and other stakeholders (the end user community) obtain clear, concise information about the overall data quality, as well as granular detail that can inform specific research projects or information needs in the Transformed Medicaid Statistical Information System (T-MSIS).
 
 Getting the code
