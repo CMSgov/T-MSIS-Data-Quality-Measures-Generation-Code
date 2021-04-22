@@ -14,7 +14,7 @@ The DQ measures code is written in Databricks SQL executed through explicit SQL 
 The code is executed on new state month submissions as soon as possible after data are available in DataConnect, or on historical data on an as-needed basis. 
 
 More technical documentation 
-Additional technical documentation can be found in this repository in the file Technical_Documentation.md.
+Additional technical documentation can be found in this repository in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/Technical_Documentation.docx.
 The specifications for a subset of the measures included in the code is available in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/DQMeasure_Specifications.xlsx.
 
 Contributing
