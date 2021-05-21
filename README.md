@@ -2,28 +2,34 @@
 
 This project aims to provide resources and tools that help the research community and other stakeholders (the end user community) obtain clear, concise information about the overall data quality, as well as granular detail that can inform specific research projects or information needs in the Transformed Medicaid Statistical Information System (T-MSIS).
 
-Getting the code
+**Getting the code**
+
 The easiest way to obtain the code is to clone it with git. If you're not familiar with git, a tool like Github Desktop or SourceTree can help make the experience easier. The HTTPS link is https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code
 If you're familiar with git and just want to work from the command line, you just need to run:
 git clone https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code.git
 If you would prefer not to use git, you can also download the most recent code as a ZIP file.
 
-Running the code
+**Running the code**
+
 The DQ measures code is written in Databricks SQL executed through explicit SQL passthrough embedded within a SAS code wrapper on T-MSIS data in DataConnect (formerly known as AREMAC).
 The code is executed on new state month submissions as soon as possible after data are available in DataConnect, or on historical data on an as-needed basis. 
 
-More technical documentation 
+**More technical documentation**
+
 Additional technical documentation can be found in this repository in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/Technical_Documentation.docx.
 The specifications for a subset of the measures included in the code is available in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/DQMeasure_Specifications.xlsx.
 
-Contributing
+**Contributing**
+
 We would be happy to receive suggestions on how to fix bugs or make improvements, though we will not support changes made through this repository. Instead, please send your suggestions to MACBISData@cms.hhs.gov.
 
-Public domain
+**Public domain**
+
 This project is in the worldwide public domain.
 This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the CC0 1.0 Universal public domain dedication.
 
-Background on data quality measures
+**Background on data quality measures**
+
 A measure is a calculated statistic. There are several types of data quality measures: percentage, count, sum, ratio, average number of occurrences, average, ratio of averages, index of dissimilarity, and frequency.
 
 There are several types of data quality validations users can apply to the measures. Two types are most common: 
