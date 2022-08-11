@@ -1,0 +1,1127 @@
+Source List,PROV-CLASSIFICATION-TYPE,PROV-CLASSIFICATION-CODE,Description,Designation
+Provider Specialty List,2,01,General Practice,Individual
+Provider Specialty List,2,02,General Surgery,Individual
+Provider Specialty List,2,03,Allergy/Immunology,Individual
+Provider Specialty List,2,04,Otolaryngology,Individual
+Provider Specialty List,2,05,Anesthesiology C,Individual
+Provider Specialty List,2,06,Cardiology,Individual
+Provider Specialty List,2,07,Dermatology,Individual
+Provider Specialty List,2,08,Family Practice,Individual
+Provider Specialty List,2,09,Interventional Pain Management,Individual
+Provider Specialty List,2,10,Gastroenterology,Individual
+Provider Specialty List,2,11,Internal Medicine,Individual
+Provider Specialty List,2,12,Osteopathic Manipulative Therapy,Individual
+Provider Specialty List,2,13,Neurology,Individual
+Provider Specialty List,2,14,Neurosurgery,Individual
+Provider Specialty List,2,15,Speech Language Pathologist,Individual
+Provider Specialty List,2,16,Obstetrics/Gynecology,Individual
+Provider Specialty List,2,17,Hospice and Palliative Care,Individual
+Provider Specialty List,2,18,Ophthalmology,Individual
+Provider Specialty List,2,19,Oral Surgery (dentists only),Individual
+Provider Specialty List,2,20,Orthopedic Surgery,Individual
+Provider Specialty List,2,21,Cardiac Electrophysiology,Individual
+Provider Specialty List,2,22,Pathology,Individual
+Provider Specialty List,2,23,Sports Medicine,Individual
+Provider Specialty List,2,24,Plastic and Reconstructive Surgery,Individual
+Provider Specialty List,2,25,Physical Medicine and Rehabilitation,Individual
+Provider Specialty List,2,26,Psychiatry,Individual
+Provider Specialty List,2,27,Geriatric Psychiatry,Individual
+Provider Specialty List,2,28,Colorectal Surgery (formerly proctology),Individual
+Provider Specialty List,2,29,Pulmonary Disease,Individual
+Provider Specialty List,2,30,Diagnostic Radiology,Individual
+Provider Specialty List,2,31,Cardiac Rehabilitation & Intensive Cardiac Rehabilitation,Individual
+Provider Specialty List,2,32,Anesthesiologist Assistant,Individual
+Provider Specialty List,2,33,Thoracic Surgery,Individual
+Provider Specialty List,2,34,Urology,Individual
+Provider Specialty List,2,35,Chiropractic,Individual
+Provider Specialty List,2,36,Nuclear Medicine,Individual
+Provider Specialty List,2,37,Pediatric Medicine,Individual
+Provider Specialty List,2,38,Geriatric Medicine,Individual
+Provider Specialty List,2,39,Nephrology,Individual
+Provider Specialty List,2,40,Hand Surgery,Individual
+Provider Specialty List,2,41,Optometry,Individual
+Provider Specialty List,2,42,Certified Nurse Midwife,Individual
+Provider Specialty List,2,43,Certified Registered Nurse Anesthetist (CRNA),Individual
+Provider Specialty List,2,44,Infectious Disease,Individual
+Provider Specialty List,2,45,Mammography Center,Non-Individual
+Provider Specialty List,2,46,Endocrinology,Individual
+Provider Specialty List,2,47,Independent Diagnostic Testing Facility (IDTF),Non-Individual
+Provider Specialty List,2,48,Podiatry,Individual
+Provider Specialty List,2,49,Ambulatory Surgical Center,Non-Individual
+Provider Specialty List,2,50,Nurse Practitioner,Individual
+Provider Specialty List,2,51,Medical Supply Company with Orthotist,Non-Individual
+Provider Specialty List,2,52,Medical Supply Company with Prosthetist,Non-Individual
+Provider Specialty List,2,53,Medical Supply Company with Orthotist-Prosthetist,Non-Individual
+Provider Specialty List,2,54,Other Medical Supply Company,Non-Individual
+Provider Specialty List,2,55,Individual Certified Orthotist,Individual
+Provider Specialty List,2,56,Individual Certified Prosthetist,Individual
+Provider Specialty List,2,57,Individual Certified Orthotist-Prosthetist,Individual
+Provider Specialty List,2,58,Medical Supply Company with Pharmacist,Non-Individual
+Provider Specialty List,2,59,Ambulance Service Provider,Non-Individual
+Provider Specialty List,2,60,Public Health or Welfare Agency,Non-Individual
+Provider Specialty List,2,61,Voluntary Health or Charitable Agency,Non-Individual
+Provider Specialty List,2,62,Psychologist (Billing Independently),Individual
+Provider Specialty List,2,63,Portable X-Ray Supplier,Non-Individual
+Provider Specialty List,2,64,Audiologist,Individual
+Provider Specialty List,2,65,Physical Therapist in Private Practice,Individual
+Provider Specialty List,2,66,Rheumatology,Individual
+Provider Specialty List,2,67,Occupational Therapist in Private Practice,Individual
+Provider Specialty List,2,68,Clinical Psychologist,Individual
+Provider Specialty List,2,69,Clinical Laboratory,Non-Individual
+Provider Specialty List,2,70,Single or Multispecialty Clinic or Group Practice,Non-Individual
+Provider Specialty List,2,71,Registered Dietitian or Nutrition Professional,Individual
+Provider Specialty List,2,72,Pain Management,Individual
+Provider Specialty List,2,73,Mass Immunization Roster Biller,Non-Individual
+Provider Specialty List,2,74,Radiation Therapy Center,Non-Individual
+Provider Specialty List,2,75,Slide Preparation Facility,Non-Individual
+Provider Specialty List,2,76,Peripheral Vascular Disease,Individual
+Provider Specialty List,2,77,Vascular Surgery,Individual
+Provider Specialty List,2,78,Cardiac Surgery,Individual
+Provider Specialty List,2,79,Addiction Medicine,Individual
+Provider Specialty List,2,80,Licensed Clinical Social Worker,Individual
+Provider Specialty List,2,81,Critical Care (Intensivists),Individual
+Provider Specialty List,2,82,Hematology,Individual
+Provider Specialty List,2,83,Hematology/Oncology,Individual
+Provider Specialty List,2,84,Preventive Medicine,Individual
+Provider Specialty List,2,85,Maxillofacial Surgery,Individual
+Provider Specialty List,2,86,Neuropsychiatry,Individual
+Provider Specialty List,2,87,All Other Suppliers,Non-Individual
+Provider Specialty List,2,88,Unknown Supplier/Provider Specialty,Undetermined
+Provider Specialty List,2,89,Certified Clinical Nurse Specialist,Individual
+Provider Specialty List,2,90,Medical Oncology,Individual
+Provider Specialty List,2,91,Surgical Oncology,Individual
+Provider Specialty List,2,92,Radiation Oncology,Individual
+Provider Specialty List,2,93,Emergency Medicine,Individual
+Provider Specialty List,2,94,Interventional Radiology,Individual
+Provider Specialty List,2,95,Advance Diagnostic Imaging,Non-Individual
+Provider Specialty List,2,96,Optician,Individual
+Provider Specialty List,2,97,Physician Assistant,Individual
+Provider Specialty List,2,98,Gynecological/Oncology,Individual
+Provider Specialty List,2,99,Undefined physician type (provider is an MD),Individual
+Provider Specialty List,2,A0,Hospital-General,Non-Individual
+Provider Specialty List,2,A1,Skilled Nursing Facility,Non-Individual
+Provider Specialty List,2,A2,Intermediate Care Nursing Facility,Non-Individual
+Provider Specialty List,2,A3,Other Nursing Facility,Non-Individual
+Provider Specialty List,2,A4,Home Health Agency,Non-Individual
+Provider Specialty List,2,A5,Pharmacy,Non-Individual
+Provider Specialty List,2,A6,Medical Supply Company with Respiratory Therapist,Non-Individual
+Provider Specialty List,2,A7,Department Store,Non-Individual
+Provider Specialty List,2,A8,Grocery Store,Non-Individual
+Provider Specialty List,2,A9,Indian Health Service facility,Non-Individual
+Provider Specialty List,2,B1,Oxygen supplier,Non-Individual
+Provider Specialty List,2,B2,Pedorthic personnel,Non-Individual
+Provider Specialty List,2,B3,Medical supply company with pedorthic personnel,Non-Individual
+Provider Specialty List,2,B4,Rehabilitation Agency,Non-Individual
+Provider Specialty List,2,B5,Ocularist,Individual
+Taxonomy Code List,1,193200000X,Multi-Specialty Group,Non-individual
+Taxonomy Code List,1,193400000X,Single Specialty Group,Non-individual
+Taxonomy Code List,1,207K00000X,Allergy & Immunology Physician,Individual
+Taxonomy Code List,1,207KA0200X,Allergy Physician,Individual
+Taxonomy Code List,1,207KI0005X,Clinical & Laboratory Immunology (Allergy & Immunology) Physician,Individual
+Taxonomy Code List,1,207L00000X,Anesthesiology Physician,Individual
+Taxonomy Code List,1,207LA0401X,Addiction Medicine (Anesthesiology) Physician,Individual
+Taxonomy Code List,1,207LC0200X,Critical Care Medicine (Anesthesiology) Physician,Individual
+Taxonomy Code List,1,207LH0002X,Hospice and Palliative Medicine (Anesthesiology) Physician,Individual
+Taxonomy Code List,1,207LP2900X,Pain Medicine (Anesthesiology) Physician,Individual
+Taxonomy Code List,1,207LP3000X,Pediatric Anesthesiology Physician,Individual
+Taxonomy Code List,1,208U00000X,Clinical Pharmacology Physician,Individual
+Taxonomy Code List,1,208C00000X,Colon & Rectal Surgery Physician,Individual
+Taxonomy Code List,1,207N00000X,Dermatology Physician,Individual
+Taxonomy Code List,1,207NI0002X,Clinical & Laboratory Dermatological Immunology Physician,Individual
+Taxonomy Code List,1,207ND0900X,Dermatopathology Physician,Individual
+Taxonomy Code List,1,207ND0101X,MOHS-Micrographic Surgery Physician,Individual
+Taxonomy Code List,1,207NP0225X,Pediatric Dermatology Physician,Individual
+Taxonomy Code List,1,207NS0135X,Procedural Dermatology Physician,Individual
+Taxonomy Code List,1,204R00000X,Electrodiagnostic Medicine Physician,Individual
+Taxonomy Code List,1,207P00000X,Emergency Medicine Physician,Individual
+Taxonomy Code List,1,207PE0004X,Emergency Medical Services (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207PH0002X,Hospice and Palliative Medicine (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207PT0002X,Medical Toxicology (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207PP0204X,Pediatric Emergency Medicine (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207PS0010X,Sports Medicine (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207PE0005X,Undersea and Hyperbaric Medicine (Emergency Medicine) Physician,Individual
+Taxonomy Code List,1,207Q00000X,Family Medicine Physician,Individual
+Taxonomy Code List,1,207QA0401X,Addiction Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QA0000X,Adolescent Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QA0505X,Adult Medicine Physician,Individual
+Taxonomy Code List,1,207QG0300X,Geriatric Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QH0002X,Hospice and Palliative Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QB0002X,Obesity Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QS1201X,Sleep Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,207QS0010X,Sports Medicine (Family Medicine) Physician,Individual
+Taxonomy Code List,1,208D00000X,General Practice Physician,Individual
+Taxonomy Code List,1,208M00000X,Hospitalist Physician,Individual
+Taxonomy Code List,1,202C00000X,Independent Medical Examiner Physician,Individual
+Taxonomy Code List,1,207R00000X,Internal Medicine Physician,Individual
+Taxonomy Code List,1,207RA0401X,Addiction Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RA0000X,Adolescent Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RA0002X,Adult Congenital Heart Disease Physician,Individual
+Taxonomy Code List,1,207RA0001X,Advanced Heart Failure and Transplant Cardiology Physician,Individual
+Taxonomy Code List,1,207RA0201X,Allergy & Immunology (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RC0000X,Cardiovascular Disease Physician,Individual
+Taxonomy Code List,1,207RI0001X,Clinical & Laboratory Immunology (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RC0001X,Clinical Cardiac Electrophysiology Physician,Individual
+Taxonomy Code List,1,207RC0200X,Critical Care Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RE0101X,"Endocrinology, Diabetes & Metabolism Physician",Individual
+Taxonomy Code List,1,207RG0100X,Gastroenterology Physician,Individual
+Taxonomy Code List,1,207RG0300X,Geriatric Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RH0000X,Hematology (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RH0003X,Hematology & Oncology Physician,Individual
+Taxonomy Code List,1,207RI0008X,Hepatology Physician,Individual
+Taxonomy Code List,1,207RH0002X,Hospice and Palliative Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RH0005X,Hypertension Specialist Physician,Individual
+Taxonomy Code List,1,207RI0200X,Infectious Disease Physician,Individual
+Taxonomy Code List,1,207RI0011X,Interventional Cardiology Physician,Individual
+Taxonomy Code List,1,207RM1200X,Magnetic Resonance Imaging (MRI) Internal Medicine Physician,Individual
+Taxonomy Code List,1,207RX0202X,Medical Oncology Physician,Individual
+Taxonomy Code List,1,207RN0300X,Nephrology Physician,Individual
+Taxonomy Code List,1,207RB0002X,Obesity Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RP1001X,Pulmonary Disease Physician,Individual
+Taxonomy Code List,1,207RR0500X,Rheumatology Physician,Individual
+Taxonomy Code List,1,207RS0012X,Sleep Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RS0010X,Sports Medicine (Internal Medicine) Physician,Individual
+Taxonomy Code List,1,207RT0003X,Transplant Hepatology Physician,Individual
+Taxonomy Code List,1,209800000X,Legal Medicine (M.D./D.O.) Physician,Individual
+Taxonomy Code List,1,207SG0202X,Clinical Biochemical Genetics Physician,Individual
+Taxonomy Code List,1,207SC0300X,Clinical Cytogenetics Physician,Individual
+Taxonomy Code List,1,207SG0201X,Clinical Genetics (M.D.) Physician,Individual
+Taxonomy Code List,1,207SG0203X,Clinical Molecular Genetics Physician,Individual
+Taxonomy Code List,1,207SM0001X,Molecular Genetic Pathology (Medical Genetics) Physician,Individual
+Taxonomy Code List,1,207SG0205X,Ph.D. Medical Genetics Physician,Individual
+Taxonomy Code List,1,207T00000X,Neurological Surgery Physician,Individual
+Taxonomy Code List,1,204D00000X,Neuromusculoskeletal Medicine & OMM Physician,Individual
+Taxonomy Code List,1,204C00000X,Sports Medicine (Neuromusculoskeletal Medicine) Physician,Individual
+Taxonomy Code List,1,207U00000X,Nuclear Medicine Physician,Individual
+Taxonomy Code List,1,207UN0903X,In Vivo & In Vitro Nuclear Medicine Physician,Individual
+Taxonomy Code List,1,207UN0901X,Nuclear Cardiology Physician,Individual
+Taxonomy Code List,1,207UN0902X,Nuclear Imaging & Therapy Physician,Individual
+Taxonomy Code List,1,207V00000X,Obstetrics & Gynecology Physician,Individual
+Taxonomy Code List,1,207VC0200X,Critical Care Medicine (Obstetrics & Gynecology) Physician,Individual
+Taxonomy Code List,1,207VF0040X,Female Pelvic Medicine and Reconstructive Surgery (Obstetrics & Gynecology) Physician,Individual
+Taxonomy Code List,1,207VX0201X,Gynecologic Oncology Physician,Individual
+Taxonomy Code List,1,207VG0400X,Gynecology Physician,Individual
+Taxonomy Code List,1,207VH0002X,Hospice and Palliative Medicine (Obstetrics & Gynecology) Physician,Individual
+Taxonomy Code List,1,207VM0101X,Maternal & Fetal Medicine Physician,Individual
+Taxonomy Code List,1,207VB0002X,Obesity Medicine (Obstetrics & Gynecology) Physician,Individual
+Taxonomy Code List,1,207VX0000X,Obstetrics Physician,Individual
+Taxonomy Code List,1,207VE0102X,Reproductive Endocrinology Physician,Individual
+Taxonomy Code List,1,207W00000X,Ophthalmology Physician,Individual
+Taxonomy Code List,1,207WX0120X,Cornea and External Diseases Specialist Physician,Individual
+Taxonomy Code List,1,207WX0009X,Glaucoma Specialist (Ophthalmology) Physician,Individual
+Taxonomy Code List,1,207WX0109X,Neuro-ophthalmology Physician,Individual
+Taxonomy Code List,1,207WX0200X,Ophthalmic Plastic and Reconstructive Surgery Physician,Individual
+Taxonomy Code List,1,207WX0110X,Pediatric Ophthalmology and Strabismus Specialist Physician Physician,Individual
+Taxonomy Code List,1,207WX0107X,Retina Specialist (Ophthalmology) Physician,Individual
+Taxonomy Code List,1,207WX0108X,Uveitis and Ocular Inflammatory Disease (Ophthalmology) Physician,Individual
+Taxonomy Code List,1,204E00000X,Oral & Maxillofacial Surgery (D.M.D.),Individual
+Taxonomy Code List,1,207X00000X,Orthopaedic Surgery Physician,Individual
+Taxonomy Code List,1,207XS0114X,Adult Reconstructive Orthopaedic Surgery Physician,Individual
+Taxonomy Code List,1,207XX0004X,Orthopaedic Foot and Ankle Surgery Physician,Individual
+Taxonomy Code List,1,207XS0106X,Orthopaedic Hand Surgery Physician,Individual
+Taxonomy Code List,1,207XS0117X,Orthopaedic Surgery of the Spine Physician,Individual
+Taxonomy Code List,1,207XX0801X,Orthopaedic Trauma Physician,Individual
+Taxonomy Code List,1,207XP3100X,Pediatric Orthopaedic Surgery Physician,Individual
+Taxonomy Code List,1,207XX0005X,Sports Medicine (Orthopaedic Surgery) Physician,Individual
+Taxonomy Code List,1,207Y00000X,Otolaryngology Physician,Individual
+Taxonomy Code List,1,207YS0123X,Facial Plastic Surgery Physician,Individual
+Taxonomy Code List,1,207YX0602X,Otolaryngic Allergy Physician,Individual
+Taxonomy Code List,1,207YX0905X,Otolaryngology/Facial Plastic Surgery Physician,Individual
+Taxonomy Code List,1,207YX0901X,Otology & Neurotology Physician,Individual
+Taxonomy Code List,1,207YP0228X,Pediatric Otolaryngology Physician,Individual
+Taxonomy Code List,1,207YX0007X,Plastic Surgery within the Head & Neck (Otolaryngology) Physician,Individual
+Taxonomy Code List,1,207YS0012X,Sleep Medicine (Otolaryngology) Physician,Individual
+Taxonomy Code List,1,208VP0014X,Interventional Pain Medicine Physician,Individual
+Taxonomy Code List,1,208VP0000X,Pain Medicine Physician,Individual
+Taxonomy Code List,1,207ZP0101X,Anatomic Pathology Physician,Individual
+Taxonomy Code List,1,207ZP0102X,Anatomic Pathology & Clinical Pathology Physician,Individual
+Taxonomy Code List,1,207ZB0001X,Blood Banking & Transfusion Medicine Physician,Individual
+Taxonomy Code List,1,207ZP0104X,Chemical Pathology Physician,Individual
+Taxonomy Code List,1,207ZC0008X,Clinical Informatics (Pathology) Physician,Individual
+Taxonomy Code List,1,207ZC0006X,Clinical Pathology Physician,Individual
+Taxonomy Code List,1,207ZP0105X,Clinical Pathology/Laboratory Medicine Physician,Individual
+Taxonomy Code List,1,207ZC0500X,Cytopathology Physician,Individual
+Taxonomy Code List,1,207ZD0900X,Dermatopathology (Pathology) Physician,Individual
+Taxonomy Code List,1,207ZF0201X,Forensic Pathology Physician,Individual
+Taxonomy Code List,1,207ZH0000X,Hematology (Pathology) Physician,Individual
+Taxonomy Code List,1,207ZI0100X,Immunopathology Physician,Individual
+Taxonomy Code List,1,207ZM0300X,Medical Microbiology Physician,Individual
+Taxonomy Code List,1,207ZP0007X,Molecular Genetic Pathology (Pathology) Physician,Individual
+Taxonomy Code List,1,207ZN0500X,Neuropathology Physician,Individual
+Taxonomy Code List,1,207ZP0213X,Pediatric Pathology Physician,Individual
+Taxonomy Code List,1,208000000X,Pediatrics Physician,Individual
+Taxonomy Code List,1,2080A0000X,Pediatric Adolescent Medicine Physician,Individual
+Taxonomy Code List,1,2080C0008X,Child Abuse Pediatrics Physician,Individual
+Taxonomy Code List,1,2080I0007X,Pediatric Clinical & Laboratory Immunology Physician,Individual
+Taxonomy Code List,1,2080P0006X,Developmental - Behavioral Pediatrics Physician,Individual
+Taxonomy Code List,1,2080H0002X,Pediatric Hospice and Palliative Medicine Physician,Individual
+Taxonomy Code List,1,2080T0002X,Pediatric Medical Toxicology Physician,Individual
+Taxonomy Code List,1,2080N0001X,Neonatal-Perinatal Medicine Physician,Individual
+Taxonomy Code List,1,2080P0008X,Pediatric Neurodevelopmental Disabilities Physician,Individual
+Taxonomy Code List,1,2080B0002X,Pediatric Obesity Medicine Physician,Individual
+Taxonomy Code List,1,2080P0201X,Pediatric Allergy/Immunology Physician,Individual
+Taxonomy Code List,1,2080P0202X,Pediatric Cardiology Physician,Individual
+Taxonomy Code List,1,2080P0203X,Pediatric Critical Care Medicine Physician,Individual
+Taxonomy Code List,1,2080P0204X,Pediatric Emergency Medicine (Pediatrics) Physician,Individual
+Taxonomy Code List,1,2080P0205X,Pediatric Endocrinology Physician,Individual
+Taxonomy Code List,1,2080P0206X,Pediatric Gastroenterology Physician,Individual
+Taxonomy Code List,1,2080P0207X,Pediatric Hematology & Oncology Physician,Individual
+Taxonomy Code List,1,2080P0208X,Pediatric Infectious Diseases Physician,Individual
+Taxonomy Code List,1,2080P0210X,Pediatric Nephrology Physician,Individual
+Taxonomy Code List,1,2080P0214X,Pediatric Pulmonology Physician,Individual
+Taxonomy Code List,1,2080P0216X,Pediatric Rheumatology Physician,Individual
+Taxonomy Code List,1,2080T0004X,Pediatric Transplant Hepatology Physician,Individual
+Taxonomy Code List,1,2080S0012X,Pediatric Sleep Medicine Physician,Individual
+Taxonomy Code List,1,2080S0010X,Pediatric Sports Medicine Physician,Individual
+Taxonomy Code List,1,202K00000X,Phlebology Physician,Individual
+Taxonomy Code List,1,208100000X,Physical Medicine & Rehabilitation Physician,Individual
+Taxonomy Code List,1,2081P0301X,Brain Injury Medicine (Physical Medicine & Rehabilitation) Physician,Individual
+Taxonomy Code List,1,2081H0002X,Hospice and Palliative Medicine (Physical Medicine & Rehabilitation) Physician,Individual
+Taxonomy Code List,1,2081N0008X,Neuromuscular Medicine (Physical Medicine & Rehabilitation) Physician,Individual
+Taxonomy Code List,1,2081P2900X,Pain Medicine (Physical Medicine & Rehabilitation) Physician,Individual
+Taxonomy Code List,1,2081P0010X,Pediatric Rehabilitation Medicine Physician,Individual
+Taxonomy Code List,1,2081P0004X,Spinal Cord Injury Medicine Physician,Individual
+Taxonomy Code List,1,2081S0010X,Sports Medicine (Physical Medicine & Rehabilitation) Physician,Individual
+Taxonomy Code List,1,208200000X,Plastic Surgery Physician,Individual
+Taxonomy Code List,1,2082S0099X,Plastic Surgery Within the Head and Neck (Plastic Surgery) Physician,Individual
+Taxonomy Code List,1,2082S0105X,Surgery of the Hand (Plastic Surgery) Physician,Individual
+Taxonomy Code List,1,2083A0300X,Addiction Medicine (Preventive Medicine) Physician,Individual
+Taxonomy Code List,1,2083A0100X,Aerospace Medicine Physician,Individual
+Taxonomy Code List,1,2083C0008X,Clinical Informatics Physician,Individual
+Taxonomy Code List,1,2083T0002X,Medical Toxicology (Preventive Medicine) Physician,Individual
+Taxonomy Code List,1,2083B0002X,Obesity Medicine (Preventive Medicine) Physician,Individual
+Taxonomy Code List,1,2083X0100X,Occupational Medicine Physician,Individual
+Taxonomy Code List,1,2083P0500X,Preventive Medicine/Occupational Environmental Medicine Physician,Individual
+Taxonomy Code List,1,2083P0901X,Public Health & General Preventive Medicine Physician,Individual
+Taxonomy Code List,1,2083S0010X,Sports Medicine (Preventive Medicine) Physician,Individual
+Taxonomy Code List,1,2083P0011X,Undersea and Hyperbaric Medicine (Preventive Medicine) Physician,Individual
+Taxonomy Code List,1,2084A0401X,Addiction Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084P0802X,Addiction Psychiatry Physician,Individual
+Taxonomy Code List,1,2084B0040X,Behavioral Neurology & Neuropsychiatry Physician,Individual
+Taxonomy Code List,1,2084P0301X,Brain Injury Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084P0804X,Child & Adolescent Psychiatry Physician,Individual
+Taxonomy Code List,1,2084N0600X,Clinical Neurophysiology Physician,Individual
+Taxonomy Code List,1,2084D0003X,Diagnostic Neuroimaging (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084E0001X,Epilepsy Physician,Individual
+Taxonomy Code List,1,2084F0202X,Forensic Psychiatry Physician,Individual
+Taxonomy Code List,1,2084P0805X,Geriatric Psychiatry Physician,Individual
+Taxonomy Code List,1,2084H0002X,Hospice and Palliative Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084A2900X,Neurocritical Care Physician,Individual
+Taxonomy Code List,1,2084P0005X,Neurodevelopmental Disabilities Physician Physician,Individual
+Taxonomy Code List,1,2084N0400X,Neurology Physician,Individual
+Taxonomy Code List,1,2084N0402X,Neurology with Special Qualifications in Child Neurology Physician,Individual
+Taxonomy Code List,1,2084N0008X,Neuromuscular Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084B0002X,Obesity Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084P2900X,Pain Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084P0800X,Psychiatry Physician,Individual
+Taxonomy Code List,1,2084P0015X,Psychosomatic Medicine Physician,Individual
+Taxonomy Code List,1,2084S0012X,Sleep Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084S0010X,Sports Medicine (Psychiatry & Neurology) Physician,Individual
+Taxonomy Code List,1,2084V0102X,Vascular Neurology Physician,Individual
+Taxonomy Code List,1,2085B0100X,Body Imaging Physician,Individual
+Taxonomy Code List,1,2085D0003X,Diagnostic Neuroimaging (Radiology) Physician,Individual
+Taxonomy Code List,1,2085R0202X,Diagnostic Radiology Physician,Individual
+Taxonomy Code List,1,2085U0001X,Diagnostic Ultrasound Physician,Individual
+Taxonomy Code List,1,2085H0002X,Hospice and Palliative Medicine (Radiology) Physician,Individual
+Taxonomy Code List,1,2085N0700X,Neuroradiology Physician,Individual
+Taxonomy Code List,1,2085N0904X,Nuclear Radiology Physician,Individual
+Taxonomy Code List,1,2085P0229X,Pediatric Radiology Physician,Individual
+Taxonomy Code List,1,2085R0001X,Radiation Oncology Physician,Individual
+Taxonomy Code List,1,2085R0205X,Radiological Physics Physician,Individual
+Taxonomy Code List,1,2085R0203X,Therapeutic Radiology Physician,Individual
+Taxonomy Code List,1,2085R0204X,Vascular & Interventional Radiology Physician,Individual
+Taxonomy Code List,1,208600000X,Surgery Physician,Individual
+Taxonomy Code List,1,2086H0002X,Hospice and Palliative Medicine (Surgery) Physician,Individual
+Taxonomy Code List,1,2086S0120X,Pediatric Surgery Physician,Individual
+Taxonomy Code List,1,2086S0122X,Plastic and Reconstructive Surgery Physician,Individual
+Taxonomy Code List,1,2086S0105X,Surgery of the Hand (Surgery) Physician,Individual
+Taxonomy Code List,1,2086S0102X,Surgical Critical Care Physician,Individual
+Taxonomy Code List,1,2086X0206X,Surgical Oncology Physician,Individual
+Taxonomy Code List,1,2086S0127X,Trauma Surgery Physician,Individual
+Taxonomy Code List,1,2086S0129X,Vascular Surgery Physician,Individual
+Taxonomy Code List,1,208G00000X,Thoracic Surgery (Cardiothoracic Vascular Surgery) Physician,Individual
+Taxonomy Code List,1,204F00000X,Transplant Surgery Physician,Individual
+Taxonomy Code List,1,208800000X,Urology Physician,Individual
+Taxonomy Code List,1,2088F0040X,Female Pelvic Medicine and Reconstructive Surgery (Urology) Physician,Individual
+Taxonomy Code List,1,2088P0231X,Pediatric Urology Physician,Individual
+Taxonomy Code List,1,106E00000X,Assistant Behavior Analyst,Individual
+Taxonomy Code List,1,106S00000X,Behavior Technician,Individual
+Taxonomy Code List,1,103K00000X,Behavioral Analyst,Individual
+Taxonomy Code List,1,103G00000X,Clinical Neuropsychologist,Individual
+Taxonomy Code List,1,103GC0700X,Deactivated - Clinical Neuropsychologist,Individual
+Taxonomy Code List,1,101Y00000X,Counselor,Individual
+Taxonomy Code List,1,101YA0400X,Addiction (Substance Use Disorder) Counselor,Individual
+Taxonomy Code List,1,101YM0800X,Mental Health Counselor,Individual
+Taxonomy Code List,1,101YP1600X,Pastoral Counselor,Individual
+Taxonomy Code List,1,101YP2500X,Professional Counselor,Individual
+Taxonomy Code List,1,101YS0200X,School Counselor,Individual
+Taxonomy Code List,1,101200000X,Drama Therapist,Individual
+Taxonomy Code List,1,106H00000X,Marriage & Family Therapist,Individual
+Taxonomy Code List,1,102X00000X,Poetry Therapist,Individual
+Taxonomy Code List,1,102L00000X,Psychoanalyst,Individual
+Taxonomy Code List,1,103T00000X,Psychologist,Individual
+Taxonomy Code List,1,103TA0400X,Addiction (Substance Use Disorder) Psychologist ,Individual
+Taxonomy Code List,1,103TA0700X,Adult Development & Aging Psychologist,Individual
+Taxonomy Code List,1,103TC0700X,Clinical Psychologist,Individual
+Taxonomy Code List,1,103TC2200X,Clinical Child & Adolescent Psychologist,Individual
+Taxonomy Code List,1,103TB0200X,Cognitive & Behavioral Psychologist,Individual
+Taxonomy Code List,1,103TC1900X,Counseling Psychologist,Individual
+Taxonomy Code List,1,103TE1000X,Deactivated - Psychologist,Individual
+Taxonomy Code List,1,103TE1100X,Exercise & Sports Psychologist,Individual
+Taxonomy Code List,1,103TF0000X,Family Psychologist,Individual
+Taxonomy Code List,1,103TF0200X,Forensic Psychologist,Individual
+Taxonomy Code List,1,103TP2701X,Group Psychotherapy Psychologist,Individual
+Taxonomy Code List,1,103TH0004X,Health Psychologist,Individual
+Taxonomy Code List,1,103TH0100X,Health Service Psychologist,Individual
+Taxonomy Code List,1,103TM1700X,Deactivated - Psychologist Men & Masculinity,Individual
+Taxonomy Code List,1,103TM1800X,Intellectual & Developmental Disabilities Psychologist,Individual
+Taxonomy Code List,1,103TP0016X,Prescribing (Medical) Psychologist,Individual
+Taxonomy Code List,1,103TP0814X,Psychoanalysis Psychologist,Individual
+Taxonomy Code List,1,103TP2700X,Deactivated - Psychologist Psychotherapy,Individual
+Taxonomy Code List,1,103TR0400X,Rehabilitation Psychologist,Individual
+Taxonomy Code List,1,103TS0200X,School Psychologist,Individual
+Taxonomy Code List,1,103TW0100X,Deactivated - Psychotherapy Women,Individual
+Taxonomy Code List,1,104100000X,Social Worker,Individual
+Taxonomy Code List,1,1041C0700X,Clinical Social Worker,Individual
+Taxonomy Code List,1,1041S0200X,School Social Worker,Individual
+Taxonomy Code List,1,111N00000X,Chiropractor,Individual
+Taxonomy Code List,1,111NI0013X,Independent Medical Examiner Chiropractor,Individual
+Taxonomy Code List,1,111NI0900X,Internist Chiropractor,Individual
+Taxonomy Code List,1,111NN0400X,Neurology Chiropractor,Individual
+Taxonomy Code List,1,111NN1001X,Nutrition Chiropractor,Individual
+Taxonomy Code List,1,111NX0100X,Occupational Health Chiropractor,Individual
+Taxonomy Code List,1,111NX0800X,Orthopedic Chiropractor,Individual
+Taxonomy Code List,1,111NP0017X,Pediatric Chiropractor,Individual
+Taxonomy Code List,1,111NR0200X,Radiology Chiropractor,Individual
+Taxonomy Code List,1,111NR0400X,Rehabilitation Chiropractor,Individual
+Taxonomy Code List,1,111NS0005X,Sports Physician Chiropractor,Individual
+Taxonomy Code List,1,111NT0100X,Thermography Chiropractor,Individual
+Taxonomy Code List,1,125K00000X,Advanced Practice Dental Therapist,Individual
+Taxonomy Code List,1,126800000X,Dental Assistant,Individual
+Taxonomy Code List,1,124Q00000X,Dental Hygienist,Individual
+Taxonomy Code List,1,126900000X,Dental Laboratory Technician,Individual
+Taxonomy Code List,1,125J00000X,Dental Therapist,Individual
+Taxonomy Code List,1,122300000X,Dentist,Individual
+Taxonomy Code List,1,1223D0001X,Public Health Dentist,Individual
+Taxonomy Code List,1,1223D0004X,Dentist Anesthesiologist,Individual
+Taxonomy Code List,1,1223E0200X,Endodontist,Individual
+Taxonomy Code List,1,1223G0001X,General Practice Dentistry,Individual
+Taxonomy Code List,1,1223P0106X,Oral and Maxillofacial Pathology Dentist,Individual
+Taxonomy Code List,1,1223X0008X,Oral and Maxillofacial Radiology Dentist,Individual
+Taxonomy Code List,1,1223S0112X,Oral and Maxillofacial Surgery (Dentist),Individual
+Taxonomy Code List,1,1223X2210X,Orofacial Pain Dentist,Individual
+Taxonomy Code List,1,1223X0400X,Orthodontics and Dentofacial Orthopedic Dentist,Individual
+Taxonomy Code List,1,1223P0221X,Pediatric Dentist,Individual
+Taxonomy Code List,1,1223P0300X,Periodontist,Individual
+Taxonomy Code List,1,1223P0700X,Prosthodontist,Individual
+Taxonomy Code List,1,122400000X,Denturist,Individual
+Taxonomy Code List,1,125Q00000X,Oral Medicinist,Individual
+Taxonomy Code List,1,132700000X,Dietary Manager,Individual
+Taxonomy Code List,1,136A00000X,Registered Dietetic Technician,Individual
+Taxonomy Code List,1,133V00000X,Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1101X,Gerontological Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1006X,Metabolic Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1201X,Obesity and Weight Management Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1301X,Oncology Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1004X,Pediatric Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1401X,Pediatric Critical Care Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1005X,Renal Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133VN1501X,Sports Dietetics Nutrition Registered Dietitian,Individual
+Taxonomy Code List,1,133N00000X,Nutritionist,Individual
+Taxonomy Code List,1,133NN1002X,Nutrition Education Nutritionist,Individual
+Taxonomy Code List,1,146N00000X,Basic Emergency Medical Technician,Individual
+Taxonomy Code List,1,146M00000X,Intermediate Emergency Medical Technician,Individual
+Taxonomy Code List,1,146L00000X,Paramedic,Individual
+Taxonomy Code List,1,146D00000X,Personal Emergency Response Attendant,Individual
+Taxonomy Code List,1,152W00000X,Optometrist,Individual
+Taxonomy Code List,1,152WC0802X,Corneal and Contact Management Optometrist,Individual
+Taxonomy Code List,1,152WL0500X,Low Vision Rehabilitation Optometrist,Individual
+Taxonomy Code List,1,152WX0102X,Occupational Vision Optometrist,Individual
+Taxonomy Code List,1,152WP0200X,Pediatric Optometrist,Individual
+Taxonomy Code List,1,152WS0006X,Sports Vision Optometrist,Individual
+Taxonomy Code List,1,152WV0400X,Vision Therapy Optometrist,Individual
+Taxonomy Code List,1,156F00000X,Technician/Technologist,Individual
+Taxonomy Code List,1,156FC0800X,Contact Lens Technician/Technologist,Individual
+Taxonomy Code List,1,156FC0801X,Contact Lens Fitter,Individual
+Taxonomy Code List,1,156FX1700X,Ocularist,Individual
+Taxonomy Code List,1,156FX1100X,Ophthalmic Technician/Technologist,Individual
+Taxonomy Code List,1,156FX1101X,Ophthalmic Assistant ,Individual
+Taxonomy Code List,1,156FX1800X,Optician,Individual
+Taxonomy Code List,1,156FX1201X,Optometric Assistant Technician,Individual
+Taxonomy Code List,1,156FX1202X,Optometric Technician,Individual
+Taxonomy Code List,1,156FX1900X,Orthoptist,Individual
+Taxonomy Code List,1,164W00000X,Licensed Practical Nurse,Individual
+Taxonomy Code List,1,167G00000X,Licensed Psychiatric Technician,Individual
+Taxonomy Code List,1,164X00000X,Licensed Vocational Nurse,Individual
+Taxonomy Code List,1,163W00000X,Registered Nurse,Individual
+Taxonomy Code List,1,163WA0400X,Addiction (Substance Use Disorder) Registered Nurse,Individual
+Taxonomy Code List,1,163WA2000X,Administrator Registered Nurse,Individual
+Taxonomy Code List,1,163WP2201X,Ambulatory Care Registered Nurse,Individual
+Taxonomy Code List,1,163WC3500X,Cardiac Rehabilitation Registered Nurse,Individual
+Taxonomy Code List,1,163WC0400X,Case Management Registered Nurse,Individual
+Taxonomy Code List,1,163WC1400X,College Health Registered Nurse,Individual
+Taxonomy Code List,1,163WC1500X,Community Health Registered Nurse,Individual
+Taxonomy Code List,1,163WC2100X,Continence Care Registered Nurse,Individual
+Taxonomy Code List,1,163WC1600X,Continuing Education/Staff Development Registered Nurse,Individual
+Taxonomy Code List,1,163WC0200X,Critical Care Medicine Registered Nurse,Individual
+Taxonomy Code List,1,163WD0400X,Diabetes Educator Registered Nurse,Individual
+Taxonomy Code List,1,163WD1100X,Peritoneal Dialysis Registered Nurse,Individual
+Taxonomy Code List,1,163WE0003X,Emergency Registered Nurse,Individual
+Taxonomy Code List,1,163WE0900X,Enterostomal Therapy Registered Nurse,Individual
+Taxonomy Code List,1,163WF0300X,Flight Registered Nurse,Individual
+Taxonomy Code List,1,163WG0100X,Gastroenterology Registered Nurse,Individual
+Taxonomy Code List,1,163WG0000X,General Practice Registered Nurse,Individual
+Taxonomy Code List,1,163WG0600X,Gerontology Registered Nurse,Individual
+Taxonomy Code List,1,163WH0500X,Hemodialysis Registered Nurse,Individual
+Taxonomy Code List,1,163WH0200X,Home Health Registered Nurse,Individual
+Taxonomy Code List,1,163WH1000X,Hospice Registered Nurse,Individual
+Taxonomy Code List,1,163WI0600X,Infection Control Registered Nurse,Individual
+Taxonomy Code List,1,163WI0500X,Infusion Therapy Registered Nurse,Individual
+Taxonomy Code List,1,163WL0100X,Lactation Consultant (Registered Nurse),Individual
+Taxonomy Code List,1,163WM0102X,Maternal Newborn Registered Nurse,Individual
+Taxonomy Code List,1,163WM0705X,Medical-Surgical Registered Nurse,Individual
+Taxonomy Code List,1,163WN0002X,Neonatal Intensive Care Registered Nurse,Individual
+Taxonomy Code List,1,163WN0003X,Low-Risk Neonatal Registered Nurse,Individual
+Taxonomy Code List,1,163WN0300X,Nephrology Registered Nurse,Individual
+Taxonomy Code List,1,163WN0800X,Neuroscience Registered Nurse,Individual
+Taxonomy Code List,1,163WM1400X,Nurse Massage Therapist (NMT),Individual
+Taxonomy Code List,1,163WN1003X,Nutrition Support Registered Nurse,Individual
+Taxonomy Code List,1,163WX0002X,High-Risk Obstetric Registered Nurse,Individual
+Taxonomy Code List,1,163WX0003X,Inpatient Obstetric Registered Nurse,Individual
+Taxonomy Code List,1,163WX0106X,Occupational Health Registered Nurse,Individual
+Taxonomy Code List,1,163WX0200X,Oncology Registered Nurse,Individual
+Taxonomy Code List,1,163WX1100X,Ophthalmic Registered Nurse,Individual
+Taxonomy Code List,1,163WX0800X,Orthopedic Registered Nurse,Individual
+Taxonomy Code List,1,163WX1500X,Ostomy Care Registered Nurse,Individual
+Taxonomy Code List,1,163WX0601X,Otorhinolaryngology & Head-Neck Registered Nurse,Individual
+Taxonomy Code List,1,163WP0000X,Pain Management Registered Nurse,Individual
+Taxonomy Code List,1,163WP0218X,Pediatric Oncology Registered Nurse,Individual
+Taxonomy Code List,1,163WP0200X,Pediatric Registered Nurse,Individual
+Taxonomy Code List,1,163WP1700X,Perinatal Registered Nurse,Individual
+Taxonomy Code List,1,163WS0121X,Plastic Surgery Registered Nurse,Individual
+Taxonomy Code List,1,163WP0808X,Psychiatric/Mental Health Registered Nurse,Individual
+Taxonomy Code List,1,163WP0809X,Adult Psychiatric/Mental Health Registered Nurse,Individual
+Taxonomy Code List,1,163WP0807X,Child & Adolescent Psychiatric/Mental Health Registered Nurse,Individual
+Taxonomy Code List,1,163WR0006X,Registered Nurse First Assistant,Individual
+Taxonomy Code List,1,163WR0400X,Rehabilitation Registered Nurse,Individual
+Taxonomy Code List,1,163WR1000X,Reproductive Endocrinology/Infertility Registered Nurse,Individual
+Taxonomy Code List,1,163WS0200X,School Registered Nurse,Individual
+Taxonomy Code List,1,163WU0100X,Urology Registered Nurse,Individual
+Taxonomy Code List,1,163WW0101X,Ambulatory Women's Health Care Registered Nurse,Individual
+Taxonomy Code List,1,163WW0000X,Wound Care Registered Nurse,Individual
+Taxonomy Code List,1,372600000X,Adult Companion,Individual
+Taxonomy Code List,1,372500000X,Chore Provider,Individual
+Taxonomy Code List,1,373H00000X,Day Training/Habilitation Specialist,Individual
+Taxonomy Code List,1,374J00000X,Doula,Individual
+Taxonomy Code List,1,374U00000X,Home Health Aide,Individual
+Taxonomy Code List,1,376J00000X,Homemaker,Individual
+Taxonomy Code List,1,376K00000X,Nurse's Aide,Individual
+Taxonomy Code List,1,376G00000X,Nursing Home Administrator,Individual
+Taxonomy Code List,1,374T00000X,Religious Nonmedical Nursing Personnel,Individual
+Taxonomy Code List,1,374K00000X,Religious Nonmedical Practitioner,Individual
+Taxonomy Code List,1,374700000X,Technician,Individual
+Taxonomy Code List,1,3747A0650X,Attendant Care Provider,Individual
+Taxonomy Code List,1,3747P1801X,Personal Care Attendant,Individual
+Taxonomy Code List,1,171100000X,Acupuncturist,Individual
+Taxonomy Code List,1,171M00000X,Case Manager/Care Coordinator,Individual
+Taxonomy Code List,1,174V00000X,Clinical Ethicist,Individual
+Taxonomy Code List,1,172V00000X,Community Health Worker,Individual
+Taxonomy Code List,1,171W00000X,Contractor,Individual
+Taxonomy Code List,1,171WH0202X,Home Modifications Contractor,Individual
+Taxonomy Code List,1,171WV0202X,Vehicle Modifications Contractor,Individual
+Taxonomy Code List,1,172A00000X,Driver,Individual
+Taxonomy Code List,1,176P00000X,Funeral Director,Individual
+Taxonomy Code List,1,170300000X,Genetic Counselor (M.S.),Individual
+Taxonomy Code List,1,171400000X,Health & Wellness Coach,Individual
+Taxonomy Code List,1,174H00000X,Health Educator,Individual
+Taxonomy Code List,1,175L00000X,Homeopath,Individual
+Taxonomy Code List,1,171R00000X,Interpreter,Individual
+Taxonomy Code List,1,174N00000X,Lactation Consultant (Non-RN),Individual
+Taxonomy Code List,1,175M00000X,Lay Midwife,Individual
+Taxonomy Code List,1,173000000X,Legal Medicine,Individual
+Taxonomy Code List,1,172M00000X,Mechanotherapist,Individual
+Taxonomy Code List,1,176B00000X,Midwife,Individual
+Taxonomy Code List,1,171000000X,Military Health Care Provider,Individual
+Taxonomy Code List,1,1710I1002X,Independent Duty Corpsman,Individual
+Taxonomy Code List,1,1710I1003X,Independent Duty Medical Technicians,Individual
+Taxonomy Code List,1,172P00000X,Naprapath,Individual
+Taxonomy Code List,1,175F00000X,Naturopath,Individual
+Taxonomy Code List,1,175T00000X,Peer Specialist,Individual
+Taxonomy Code List,1,170100000X,Ph.D. Medical Genetics,Individual
+Taxonomy Code List,1,405300000X,Prevention Professional,Individual
+Taxonomy Code List,1,173C00000X,Reflexologist,Individual
+Taxonomy Code List,1,173F00000X,Sleep Specialist (PhD),Individual
+Taxonomy Code List,1,174400000X,Specialist,Individual
+Taxonomy Code List,1,1744G0900X,Graphics Designer,Individual
+Taxonomy Code List,1,1744P3200X, Prosthetics Case Management,Individual
+Taxonomy Code List,1,1744R1103X,Research Study Abstracter/Coder,Individual
+Taxonomy Code List,1,1744R1102X,Research Study Specialist,Individual
+Taxonomy Code List,1,174M00000X,Veterinarian,Individual
+Taxonomy Code List,1,174MM1900X,Medical Research Veterinarian,Individual
+Taxonomy Code List,1,183500000X,Pharmacist,Individual
+Taxonomy Code List,1,1835P2201X,Ambulatory Care Pharmacist,Individual
+Taxonomy Code List,1,1835C0205X,Critical Care Pharmacist,Individual
+Taxonomy Code List,1,1835G0000X,Deactivated - Pharmacist,Individual
+Taxonomy Code List,1,1835G0303X,Geriatric Pharmacist,Individual
+Taxonomy Code List,1,1835N0905X,Nuclear Pharmacist,Individual
+Taxonomy Code List,1,1835N1003X,Nutrition Support Pharmacist,Individual
+Taxonomy Code List,1,1835X0200X,Oncology Pharmacist,Individual
+Taxonomy Code List,1,1835P0200X,Pediatric Pharmacist,Individual
+Taxonomy Code List,1,1835P0018X,Pharmacist Clinician (PhC)/ Clinical Pharmacy Specialist,Individual
+Taxonomy Code List,1,1835P1200X,Pharmacotherapy Pharmacist,Individual
+Taxonomy Code List,1,1835P1300X,Psychiatric Pharmacist,Individual
+Taxonomy Code List,1,183700000X,Pharmacy Technician,Individual
+Taxonomy Code List,1,367A00000X,Advanced Practice Midwife,Individual
+Taxonomy Code List,1,367H00000X,Anesthesiologist Assistant,Individual
+Taxonomy Code List,1,364S00000X,Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SA2100X,Acute Care Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SA2200X,Adult Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SC2300X,Chronic Care Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SC1501X,Community Health/Public Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SC0200X,Critical Care Medicine Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SE0003X,Emergency Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SE1400X,Ethics Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SF0001X,Family Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SG0600X,Gerontology Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SH1100X,Holistic Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SH0200X,Home Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SI0800X,Informatics Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SL0600X,Long-Term Care Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SM0705X,Medical-Surgical Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SN0000X,Neonatal Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SN0800X,Neuroscience Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SX0106X,Occupational Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SX0200X,Oncology Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SX0204X,Pediatric Oncology Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0200X,Pediatric Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP1700X,Perinatal Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP2800X,Perioperative Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0808X,Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0809X,Adult Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0807X,Child & Adolescent Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0810X,Child & Family Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0811X,Chronically Ill Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0812X,Community Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SP0813X,Geropsychiatric Psychiatric/Mental Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SR0400X,Rehabilitation Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SS0200X,School Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364ST0500X,Transplantation Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,364SW0102X,Women's Health Clinical Nurse Specialist,Individual
+Taxonomy Code List,1,367500000X,Certified Registered Nurse Anesthetist,Individual
+Taxonomy Code List,1,363L00000X,Nurse Practitioner,Individual
+Taxonomy Code List,1,363LA2100X,Acute Care Nurse Practitioner,Individual
+Taxonomy Code List,1,363LA2200X,Adult Health Nurse Practitioner,Individual
+Taxonomy Code List,1,363LC1500X,Community Health Nurse Practitioner,Individual
+Taxonomy Code List,1,363LC0200X,Critical Care Medicine Nurse Practitioner,Individual
+Taxonomy Code List,1,363LF0000X,Family Nurse Practitioner,Individual
+Taxonomy Code List,1,363LG0600X,Gerontology Nurse Practitioner,Individual
+Taxonomy Code List,1,363LN0000X,Neonatal Nurse Practitioner,Individual
+Taxonomy Code List,1,363LN0005X,Critical Care Neonatal Nurse Practitioner,Individual
+Taxonomy Code List,1,363LX0001X,Obstetrics & Gynecology Nurse Practitioner,Individual
+Taxonomy Code List,1,363LX0106X,Occupational Health Nurse Practitioner,Individual
+Taxonomy Code List,1,363LP0200X,Pediatric Nurse Practitioner,Individual
+Taxonomy Code List,1,363LP0222X,Critical Care Pediatric Nurse Practitioner,Individual
+Taxonomy Code List,1,363LP1700X,Perinatal Nurse Practitioner,Individual
+Taxonomy Code List,1,363LP2300X,Primary Care Nurse Practitioner,Individual
+Taxonomy Code List,1,363LP0808X,Psychiatric/Mental Health Nurse Practitioner,Individual
+Taxonomy Code List,1,363LS0200X,School Nurse Practitioner,Individual
+Taxonomy Code List,1,363LW0102X,Women's Health Nurse Practitioner,Individual
+Taxonomy Code List,1,363A00000X,Physician Assistant,Individual
+Taxonomy Code List,1,363AM0700X,Medical Physician Assistant,Individual
+Taxonomy Code List,1,363AS0400X,Surgical Physician Assistant,Individual
+Taxonomy Code List,1,211D00000X,Podiatric Assistant,Individual
+Taxonomy Code List,1,213E00000X,Podiatrist,Individual
+Taxonomy Code List,1,213ES0103X,Foot & Ankle Surgery Podiatrist,Individual
+Taxonomy Code List,1,213ES0131X,Foot Surgery Podiatrist,Individual
+Taxonomy Code List,1,213EG0000X,Deactivated - Podiatrist,Individual
+Taxonomy Code List,1,213EP1101X,Primary Podiatric Medicine Podiatrist,Individual
+Taxonomy Code List,1,213EP0504X,Public Medicine Podiatrist,Individual
+Taxonomy Code List,1,213ER0200X,Radiology Podiatrist,Individual
+Taxonomy Code List,1,213ES0000X,Sports Medicine Podiatrist,Individual
+Taxonomy Code List,1,229N00000X,Anaplastologist,Individual
+Taxonomy Code List,1,221700000X,Art Therapist,Individual
+Taxonomy Code List,1,224Y00000X,Clinical Exercise Physiologist,Individual
+Taxonomy Code List,1,225600000X,Dance Therapist,Individual
+Taxonomy Code List,1,222Q00000X,Developmental Therapist,Individual
+Taxonomy Code List,1,226300000X,Kinesiotherapist,Individual
+Taxonomy Code List,1,225700000X,Massage Therapist,Individual
+Taxonomy Code List,1,224900000X,Mastectomy Fitter,Individual
+Taxonomy Code List,1,225A00000X,Music Therapist,Individual
+Taxonomy Code List,1,225X00000X,Occupational Therapist,Individual
+Taxonomy Code List,1,225XR0403X,Driving and Community Mobility Occupational Therapist,Individual
+Taxonomy Code List,1,225XE0001X,Environmental Modification Occupational Therapist,Individual
+Taxonomy Code List,1,225XE1200X,Ergonomics Occupational Therapist,Individual
+Taxonomy Code List,1,225XF0002X,"Feeding, Eating & Swallowing Occupational Therapist",Individual
+Taxonomy Code List,1,225XG0600X,Gerontology Occupational Therapist,Individual
+Taxonomy Code List,1,225XH1200X,Hand Occupational Therapist,Individual
+Taxonomy Code List,1,225XH1300X,Human Factors Occupational Therapist,Individual
+Taxonomy Code List,1,225XL0004X,Low Vision Occupational Therapist,Individual
+Taxonomy Code List,1,225XM0800X,Mental Health Occupational Therapist,Individual
+Taxonomy Code List,1,225XN1300X,Neurorehabilitation Occupational Therapist,Individual
+Taxonomy Code List,1,225XP0200X,Pediatric Occupational Therapist,Individual
+Taxonomy Code List,1,225XP0019X,Physical Rehabilitation Occupational Therapist,Individual
+Taxonomy Code List,1,224Z00000X,Occupational Therapy Assistant,Individual
+Taxonomy Code List,1,224ZR0403X,Driving and Community Mobility Occupational Therapy Assistant,Individual
+Taxonomy Code List,1,224ZE0001X,Environmental Modification Occupational Therapy Assistant,Individual
+Taxonomy Code List,1,224ZF0002X,"Feeding, Eating & Swallowing Occupational Therapy Assistant",Individual
+Taxonomy Code List,1,224ZL0004X,Low Vision Occupational Therapy Assistant,Individual
+Taxonomy Code List,1,225000000X,Orthotic Fitter,Individual
+Taxonomy Code List,1,222Z00000X,Orthotist,Individual
+Taxonomy Code List,1,224L00000X,Pedorthist,Individual
+Taxonomy Code List,1,225100000X,Physical Therapist,Individual
+Taxonomy Code List,1,2251C2600X,Cardiopulmonary Physical Therapist,Individual
+Taxonomy Code List,1,2251E1300X,Clinical Electrophysiology Physical Therapist,Individual
+Taxonomy Code List,1,2251E1200X,Ergonomics Physical Therapist,Individual
+Taxonomy Code List,1,2251G0304X,Geriatric Physical Therapist,Individual
+Taxonomy Code List,1,2251H1200X,Hand Physical Therapist,Individual
+Taxonomy Code List,1,2251H1300X,Human Factors Physical Therapist,Individual
+Taxonomy Code List,1,2251N0400X,Neurology Physical Therapist,Individual
+Taxonomy Code List,1,2251X0800X,Orthopedic Physical Therapist,Individual
+Taxonomy Code List,1,2251P0200X,Pediatric Physical Therapist,Individual
+Taxonomy Code List,1,2251S0007X,Sports Physical Therapist,Individual
+Taxonomy Code List,1,225200000X,Physical Therapy Assistant,Individual
+Taxonomy Code List,1,224P00000X,Prosthetist,Individual
+Taxonomy Code List,1,225B00000X,Pulmonary Function Technologist,Individual
+Taxonomy Code List,1,225800000X,Recreation Therapist,Individual
+Taxonomy Code List,1,226000000X,Recreational Therapist Assistant,Individual
+Taxonomy Code List,1,225C00000X,Rehabilitation Counselor,Individual
+Taxonomy Code List,1,225CA2400X,Assistive Technology Practitioner Rehabilitation Counselor,Individual
+Taxonomy Code List,1,225CA2500X,Assistive Technology Supplier Rehabilitation Counselor,Individual
+Taxonomy Code List,1,225CX0006X,Orientation and Mobility Training Rehabilitation Counselor,Individual
+Taxonomy Code List,1,225400000X,Rehabilitation Practitioner,Individual
+Taxonomy Code List,1,227800000X,Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278C0205X,Critical Care Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278E1000X,Educational Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278E0002X,Emergency Care Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278G1100X,General Care Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278G0305X,Geriatric Care Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278H0200X,Home Health Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P3900X,Neonatal/Pediatric Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P3800X,Palliative/Hospice Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P4000X,Patient Transport Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P1004X,Pulmonary Diagnostics Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P1006X,Pulmonary Function Technologist Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278P1005X,Pulmonary Rehabilitation Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,2278S1500X,SNF/Subacute Care Certified Respiratory Therapist,Individual
+Taxonomy Code List,1,227900000X,Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279C0205X,Critical Care Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279E1000X,Educational Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279E0002X,Emergency Care Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279G1100X,General Care Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279G0305X,Geriatric Care Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279H0200X,Home Health Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P3900X,Neonatal/Pediatric Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P3800X,Palliative/Hospice Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P4000X,Patient Transport Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P1004X,Pulmonary Diagnostics Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P1006X,Pulmonary Function Technologist Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279P1005X,Pulmonary Rehabilitation Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,2279S1500X,SNF/Subacute Care Registered Respiratory Therapist,Individual
+Taxonomy Code List,1,225500000X,Respiratory/Developmental/Rehabilitative Specialist/Technologist,Individual
+Taxonomy Code List,1,2255A2300X,Athletic Trainer,Individual
+Taxonomy Code List,1,2255R0406X,Blind Rehabilitation Specialist/Technologist,Individual
+Taxonomy Code List,1,231H00000X,Audiologist,Individual
+Taxonomy Code List,1,231HA2400X,Assistive Technology Practitioner Audiologist,Individual
+Taxonomy Code List,1,231HA2500X,Assistive Technology Supplier Audiologist,Individual
+Taxonomy Code List,1,237600000X,Audiologist-Hearing Aid Fitter,Individual
+Taxonomy Code List,1,237700000X,Hearing Instrument Specialist,Individual
+Taxonomy Code List,1,235500000X,Speech/Language/Hearing Specialist/Technologist,Individual
+Taxonomy Code List,1,2355A2700X,Audiology Assistant,Individual
+Taxonomy Code List,1,2355S0801X,Speech-Language Assistant,Individual
+Taxonomy Code List,1,235Z00000X,Speech-Language Pathologist,Individual
+Taxonomy Code List,1,390200000X,Student in an Organized Health Care Education/Training Program,Individual
+Taxonomy Code List,1,242T00000X,Perfusionist,Individual
+Taxonomy Code List,1,247100000X,Radiologic Technologist,Individual
+Taxonomy Code List,1,2471B0102X,Bone Densitometry Radiologic Technologist,Individual
+Taxonomy Code List,1,2471C1106X,Cardiac-Interventional Technology Radiologic Technologist,Individual
+Taxonomy Code List,1,2471C1101X,Cardiovascular-Interventional Technology Radiologic Technologist,Individual
+Taxonomy Code List,1,2471C3401X,Computed Tomography Radiologic Technologist,Individual
+Taxonomy Code List,1,2471M1202X,Magnetic Resonance Imaging Radiologic Technologist,Individual
+Taxonomy Code List,1,2471M2300X,Mammography Radiologic Technologist,Individual
+Taxonomy Code List,1,2471N0900X,Nuclear Medicine Technology Radiologic Technologist,Individual
+Taxonomy Code List,1,2471Q0001X,Quality Management Radiologic Technologist,Individual
+Taxonomy Code List,1,2471R0002X,Radiation Therapy Radiologic Technologist,Individual
+Taxonomy Code List,1,2471C3402X,Radiography Radiologic Technologist,Individual
+Taxonomy Code List,1,2471S1302X,Sonography Radiologic Technologist,Individual
+Taxonomy Code List,1,2471V0105X,Vascular Sonography Radiologic Technologist,Individual
+Taxonomy Code List,1,2471V0106X,Vascular-Interventional Technology Radiologic Technologist,Individual
+Taxonomy Code List,1,243U00000X,Radiology Practitioner Assistant,Individual
+Taxonomy Code List,1,246X00000X,Cardiovascular Specialist/Technologist,Individual
+Taxonomy Code List,1,246XC2901X,Cardiovascular Invasive Specialist/Technologist,Individual
+Taxonomy Code List,1,246XS1301X,Sonography Specialist/Technologist,Individual
+Taxonomy Code List,1,246XC2903X,Vascular Specialist/Technologist,Individual
+Taxonomy Code List,1,246Y00000X,Health Information Specialist/Technologist,Individual
+Taxonomy Code List,1,246YC3301X,Hospital Based Coding Specialist,Individual
+Taxonomy Code List,1,246YC3302X,Physician Office Based Coding Specialist,Individual
+Taxonomy Code List,1,246YR1600X, Registered Record Administrator,Individual
+Taxonomy Code List,1,246Z00000X,Other Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZA2600X,Medical Art  Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZB0500X,Biochemist,Individual
+Taxonomy Code List,1,246ZB0301X,Biomedical Engineer,Individual
+Taxonomy Code List,1,246ZB0302X,Biomedical Photographer,Individual
+Taxonomy Code List,1,246ZB0600X,Biostatiscian,Individual
+Taxonomy Code List,1,246ZE0500X,EEG Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZE0600X,Electroneurodiagnostic Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZG1000X,Medical Geneticist (PhD) Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZG0701X,Graphics Methods Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZI1000X,Medical Illustrator,Individual
+Taxonomy Code List,1,246ZN0300X,Nephrology Specialist/Technologist,Individual
+Taxonomy Code List,1,246ZX2200X,Orthopedic Assistant,Individual
+Taxonomy Code List,1,246ZC0007X,Surgical Assistant,Individual
+Taxonomy Code List,1,246ZS0410X,Surgical Technologist,Individual
+Taxonomy Code List,1,246Q00000X,Pathology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QB0000X,Blood Banking Specialist/Technologist,Individual
+Taxonomy Code List,1,246QC1000X,Chemistry Pathology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QC2700X,Cytotechnology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QH0401X,Hemapheresis Practitioner,Individual
+Taxonomy Code List,1,246QH0000X,Hematology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QH0600X,Histology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QI0000X,Immunology Pathology Specialist/Technologist,Individual
+Taxonomy Code List,1,246QL0900X,Laboratory Management Specialist/Technologist,Individual
+Taxonomy Code List,1,246QL0901X,Diplomate Laboratory Management Specialist/Technologist,Individual
+Taxonomy Code List,1,246QM0706X,Medical Technologist,Individual
+Taxonomy Code List,1,246QM0900X,Microbiology Specialist/Technologist,Individual
+Taxonomy Code List,1,246W00000X,Cardiology Technician,Individual
+Taxonomy Code List,1,247000000X,Health Information Technician,Individual
+Taxonomy Code List,1,2470A2800X,Assistant Health Information Record Technician,Individual
+Taxonomy Code List,1,247200000X,Other Technician,Individual
+Taxonomy Code List,1,2472B0301X,Biomedical Engineering Technician,Individual
+Taxonomy Code List,1,2472D0500X,Darkroom Technician,Individual
+Taxonomy Code List,1,2472E0500X,EEG Technician,Individual
+Taxonomy Code List,1,2472R0900X,Renal Dialysis Technician,Individual
+Taxonomy Code List,1,2472V0600X,Veterinary Technician,Individual
+Taxonomy Code List,1,246R00000X,Pathology Technician,Individual
+Taxonomy Code List,1,247ZC0005X,Clinical Laboratory Director (Non-physician),Individual
+Taxonomy Code List,1,246RH0600X,Histology Technician,Individual
+Taxonomy Code List,1,246RM2200X,Medical Laboratory Technician,Individual
+Taxonomy Code List,1,246RP1900X,Phlebotomy Technician,Individual
+Taxonomy Code List,1,251B00000X,Case Management Agency,Non-Individual
+Taxonomy Code List,1,251S00000X,Community/Behavioral Health Agency,Non-Individual
+Taxonomy Code List,1,251C00000X,Developmentally Disabled Services Day Training Agency,Non-Individual
+Taxonomy Code List,1,252Y00000X,Early Intervention Provider Agency,Non-Individual
+Taxonomy Code List,1,253J00000X,Foster Care Agency,Non-Individual
+Taxonomy Code List,1,251E00000X,Home Health Agency,Non-Individual
+Taxonomy Code List,1,251F00000X,Home Infusion Agency,Non-Individual
+Taxonomy Code List,1,251G00000X,Community Based Hospice Care Agency,Non-Individual
+Taxonomy Code List,1,253Z00000X,In Home Supportive Care Agency,Non-Individual
+Taxonomy Code List,1,251300000X,Local Education Agency (LEA),Non-Individual
+Taxonomy Code List,1,251J00000X,Nursing Care Agency,Non-Individual
+Taxonomy Code List,1,251T00000X,PACE Provider Organization,Non-Individual
+Taxonomy Code List,1,251K00000X,Public Health or Welfare Agency,Non-Individual
+Taxonomy Code List,1,251X00000X,Supports Brokerage Agency,Non-Individual
+Taxonomy Code List,1,251V00000X,Voluntary or Charitable Agency,Non-Individual
+Taxonomy Code List,1,261Q00000X,Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM0855X,Adolescent and Children Mental Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QA0600X,Adult Day Care Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM0850X,Adult Mental Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QA0005X,Ambulatory Family Planning Facility,Non-Individual
+Taxonomy Code List,1,261QA0006X,Ambulatory Fertility Facility,Non-Individual
+Taxonomy Code List,1,261QA1903X,Ambulatory Surgical Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QA0900X,Amputee Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QA3000X,Augmentative Communication Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QB0400X,Birthing Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QC1500X,Community Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QC1800X,Corporate Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QC0050X,Critical Access Hospital Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QD0000X,Dental Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QD1600X,Developmental Disabilities Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QE0002X,Emergency Care Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QE0700X,End-Stage Renal Disease (ESRD) Treatment Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QE0800X,Endoscopy Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QF0050X,Non-Surgical Family Planning Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QF0400X,Federally Qualified Health Center (FQHC),Non-Individual
+Taxonomy Code List,1,261QG0250X,Genetics Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QH0100X,Health Service Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QH0700X,Hearing and Speech Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QI0500X,Infusion Therapy Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QL0400X,Lithotripsy Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1200X,Magnetic Resonance Imaging (MRI) Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM2500X,Medical Specialty Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM3000X,Medically Fragile Infants and Children Day Care,Non-Individual
+Taxonomy Code List,1,261QM0801X,Mental Health Clinic/Center (Including Community Mental Health Center),Non-Individual
+Taxonomy Code List,1,261QM2800X,Methadone Clinic,Non-Individual
+Taxonomy Code List,1,261QM1000X,Migrant Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1103X,Military Ambulatory Procedure Visits Operational (Transportable) Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1101X,Military and U.S. Coast Guard Ambulatory Procedure Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1102X,Military Outpatient Operational (Transportable) Component Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1100X,Military/U.S. Coast Guard Outpatient Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QM1300X,Multi-Specialty Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QX0100X,Occupational Medicine Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QX0200X,Oncology Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QX0203X,Radiation Oncology Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QS0132X,Ophthalmologic Surgery Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QS0112X,Oral and Maxillofacial Surgery Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP3300X,Pain Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP2000X,Physical Therapy Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP1100X,Podiatric Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP2300X,Primary Care Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP2400X,Prison Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP0904X,Federal Public Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QP0905X,State or Local Public Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0200X,Radiology Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0206X,Mammography Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0208X,Mobile Radiology Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0207X,Mobile Mammography Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0800X,Recovery Care Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0400X,Rehabilitation Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0404X,Cardiac Rehabilitation Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR0401X,Comprehensive Outpatient Rehabilitation Facility (CORF),Non-Individual
+Taxonomy Code List,1,261QR0405X,Substance Use Disorder Rehabilitation Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR1100X,Research Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QR1300X,Rural Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QS1200X,Sleep Disorder Diagnostic Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QS1000X,Student Health Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QU0200X,Urgent Care Clinic/Center,Non-Individual
+Taxonomy Code List,1,261QV0200X,VA Clinic/Center,Non-Individual
+Taxonomy Code List,1,273100000X,Epilepsy Hospital Unit,Non-Individual
+Taxonomy Code List,1,275N00000X,Medicare Defined Swing Bed Hospital Unit,Non-Individual
+Taxonomy Code List,1,273R00000X,Psychiatric Hospital Unit,Non-Individual
+Taxonomy Code List,1,273Y00000X,Rehabilitation Hospital Unit,Non-Individual
+Taxonomy Code List,1,276400000X,Substance Use Disorder Rehabilitation Hospital Unit,Non-Individual
+Taxonomy Code List,1,287300000X,Deactivated - Christian Science Sanitorium,Non-Individual
+Taxonomy Code List,1,281P00000X,Chronic Disease Hospital,Non-Individual
+Taxonomy Code List,1,281PC2000X,Children' s Chronic Disease Hospital,Non-Individual
+Taxonomy Code List,1,282N00000X,General Acute Care Hospital,Non-Individual
+Taxonomy Code List,1,282NC2000X,Children's Hospital,Non-Individual
+Taxonomy Code List,1,282NC0060X,Critical Access Hospital,Non-Individual
+Taxonomy Code List,1,282NR1301X,Rural Acute Care Hospital,Non-Individual
+Taxonomy Code List,1,282NW0100X,Women's Hospital,Non-Individual
+Taxonomy Code List,1,282E00000X,Long Term Care Hospital,Non-Individual
+Taxonomy Code List,1,286500000X,Military Hospital,Non-Individual
+Taxonomy Code List,1,2865C1500X,Deactivated - Military Hospital,Non-Individual
+Taxonomy Code List,1,2865M2000X,Military General Acute Care Hospital,Non-Individual
+Taxonomy Code List,1,2865X1600X,Operational (Transportable) Military General Acute Care Hospital,Non-Individual
+Taxonomy Code List,1,283Q00000X,Psychiatric Hospital,Non-Individual
+Taxonomy Code List,1,283X00000X,Rehabilitation Hospital,Non-Individual
+Taxonomy Code List,1,283XC2000X,Children's Rehabilitation Hospital,Non-Individual
+Taxonomy Code List,1,282J00000X,Religious Nonmedical Health Care Institution,Non-Individual
+Taxonomy Code List,1,284300000X,Special Hospital,Non-Individual
+Taxonomy Code List,1,291U00000X,Clinical Medical Laboratory,Non-Individual
+Taxonomy Code List,1,292200000X,Dental Laboratory,Non-Individual
+Taxonomy Code List,1,291900000X,Military Clinical Medical Laboratory,Non-Individual
+Taxonomy Code List,1,293D00000X,Physiological Laboratory,Non-Individual
+Taxonomy Code List,1,302F00000X,Exclusive Provider Organization,Non-Individual
+Taxonomy Code List,1,302R00000X,Health Maintenance Organization,Non-Individual
+Taxonomy Code List,1,305S00000X,Point of Service,Non-Individual
+Taxonomy Code List,1,305R00000X,Preferred Provider Organization,Non-Individual
+Taxonomy Code List,1,311500000X,Alzheimer Center (Dementia Center),Non-Individual
+Taxonomy Code List,1,310400000X,Assisted Living Facility,Non-Individual
+Taxonomy Code List,1,3104A0630X,Assisted Living Facility (Behavioral Disturbances),Non-Individual
+Taxonomy Code List,1,3104A0625X,Assisted Living Facility (Mental Illness),Non-Individual
+Taxonomy Code List,1,317400000X,Deactivated - Christian Science Facility,Non-Individual
+Taxonomy Code List,1,311Z00000X,Custodial Care Facility,Non-Individual
+Taxonomy Code List,1,311ZA0620X,Adult Care Home Facility,Non-Individual
+Taxonomy Code List,1,315D00000X,Inpatient Hospice,Non-Individual
+Taxonomy Code List,1,315P00000X,Intellectual Disabilities Intermediate Care Facility,Non-Individual
+Taxonomy Code List,1,310500000X,Mental Illness Intermediate Care Facility,Non-Individual
+Taxonomy Code List,1,313M00000X,Nursing Facility/Intermediate Care Facility,Non-Individual
+Taxonomy Code List,1,314000000X,Skilled Nursing Facility,Non-Individual
+Taxonomy Code List,1,3140N1450X,Pediatric Skilled Nursing Facility,Non-Individual
+Taxonomy Code List,1,177F00000X,Lodging Provider,Non-Individual
+Taxonomy Code List,1,174200000X,Meals Provider,Non-Individual
+Taxonomy Code List,1,320800000X,Mental Illness Community Based Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,320900000X,Intellectual and/or Developmental Disabilities Community Based Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,323P00000X,Psychiatric Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,322D00000X,Emotionally Disturbed Childrens' Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,320600000X,Intellectual and/or Developmental Disabilities Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,320700000X,Physical Disabilities Residential Treatment Facility,Non-Individual
+Taxonomy Code List,1,324500000X,Substance Abuse Rehabilitation Facility,Non-Individual
+Taxonomy Code List,1,3245S0500X,Children's Substance Abuse Rehabilitation Facility,Non-Individual
+Taxonomy Code List,1,385H00000X,Respite Care,Non-Individual
+Taxonomy Code List,1,385HR2050X,Respite Care Camp,Non-Individual
+Taxonomy Code List,1,385HR2055X,Child Mental Illness Respite Care,Non-Individual
+Taxonomy Code List,1,385HR2060X,Child Intellectual and/or Developmental Disabilities Respite Care,Non-Individual
+Taxonomy Code List,1,385HR2065X,Child Physical Disabilities Respite Care,Non-Individual
+Taxonomy Code List,1,331L00000X,Blood Bank,Non-Individual
+Taxonomy Code List,1,332100000X,Department of Veterans Affairs (VA) Pharmacy,Non-Individual
+Taxonomy Code List,1,332B00000X,Durable Medical Equipment & Medical Supplies,Non-Individual
+Taxonomy Code List,1,332BC3200X,Customized Equipment (DME),Non-Individual
+Taxonomy Code List,1,332BD1200X,Dialysis Equipment & Supplies (DME),Non-Individual
+Taxonomy Code List,1,332BN1400X,Nursing Facility Supplies (DME),Non-Individual
+Taxonomy Code List,1,332BX2000X,Oxygen Equipment & Supplies (DME),Non-Individual
+Taxonomy Code List,1,332BP3500X,Parenteral & Enteral Nutrition Supplies (DME),Non-Individual
+Taxonomy Code List,1,333300000X,Emergency Response System Companies,Non-Individual
+Taxonomy Code List,1,332G00000X,Eye Bank,Non-Individual
+Taxonomy Code List,1,332H00000X,Eyewear Supplier,Non-Individual
+Taxonomy Code List,1,332S00000X,Hearing  Aid Equipment,Non-Individual
+Taxonomy Code List,1,332U00000X,Home Delivered Meals,Non-Individual
+Taxonomy Code List,1,332800000X,Indian Health Service/Tribal/Urban Indian Health (I/T/U) Pharmacy,Non-Individual
+Taxonomy Code List,1,335G00000X,Medical Foods Supplier,Non-Individual
+Taxonomy Code List,1,332000000X,Military/U.S. Coast Guard Pharmacy,Non-Individual
+Taxonomy Code List,1,332900000X,Non-Pharmacy Dispensing Site,Non-Individual
+Taxonomy Code List,1,335U00000X,Organ Procurement Organization,Non-Individual
+Taxonomy Code List,1,333600000X,Pharmacy,Non-Individual
+Taxonomy Code List,1,3336C0002X,Clinic Pharmacy,Non-Individual
+Taxonomy Code List,1,3336C0003X,Community/Retail Pharmacy,Non-Individual
+Taxonomy Code List,1,3336C0004X,Compounding Pharmacy,Non-Individual
+Taxonomy Code List,1,3336H0001X,Home Infusion Therapy Pharmacy,Non-Individual
+Taxonomy Code List,1,3336I0012X,Institutional Pharmacy,Non-Individual
+Taxonomy Code List,1,3336L0003X,Long Term Care Pharmacy,Non-Individual
+Taxonomy Code List,1,3336M0002X,Mail Order Pharmacy,Non-Individual
+Taxonomy Code List,1,3336M0003X,Managed Care Organization Pharmacy,Non-Individual
+Taxonomy Code List,1,3336N0007X,Nuclear Pharmacy,Non-Individual
+Taxonomy Code List,1,3336S0011X,Specialty Pharmacy,Non-Individual
+Taxonomy Code List,1,335V00000X,Portable X-ray and/or Other Portable Diagnostic Imaging Supplier,Non-Individual
+Taxonomy Code List,1,335E00000X,Prosthetic/Orthotic Supplier,Non-Individual
+Taxonomy Code List,1,344800000X,Air Carrier,Non-Individual
+Taxonomy Code List,1,341600000X,Ambulance,Non-Individual
+Taxonomy Code List,1,3416A0800X,Air Ambulance,Non-Individual
+Taxonomy Code List,1,3416L0300X,Land Ambulance,Non-Individual
+Taxonomy Code List,1,3416S0300X,Water Ambulance,Non-Individual
+Taxonomy Code List,1,347B00000X,Bus,Non-Individual
+Taxonomy Code List,1,341800000X,"Military/U.S. Coast Guard Transport, ",Non-Individual
+Taxonomy Code List,1,3418M1120X,Military or U.S. Coast Guard Air Transport Ambulance,Non-Individual
+Taxonomy Code List,1,3418M1110X,Military or U.S. Coast Guard Ground Transport Ambulance,Non-Individual
+Taxonomy Code List,1,3418M1130X,Military or U.S. Coast Guard Water Transport Ambulance,Non-Individual
+Taxonomy Code List,1,343900000X,Non-emergency Medical Transport (VAN),Non-Individual
+Taxonomy Code List,1,347C00000X,Private Vehicle,Non-Individual
+Taxonomy Code List,1,343800000X,Secured Medical Transport (VAN),Non-Individual
+Taxonomy Code List,1,344600000X,Taxi,Non-Individual
+Taxonomy Code List,1,347D00000X,Train,Non-Individual
+Taxonomy Code List,1,347E00000X,Transportation Broker,Non-Individual
+Taxonomy Code List,1,342000000X,Transportation Network Company,Non-Individual
+Provider Type Code List,3,01,Physician,Individual
+Provider Type Code List,3,02,Speech Language Pathologist,Individual
+Provider Type Code List,3,03,Oral Surgery (Dentist only),Individual
+Provider Type Code List,3,04,Cardiac Rehabilitation and Intensive Cardiac Rehabilitation,Non-Individual
+Provider Type Code List,3,05,Anesthesiology Assistant,Individual
+Provider Type Code List,3,06,Chiropractic,Individual
+Provider Type Code List,3,07,Optometry,Individual
+Provider Type Code List,3,08,Certified Nurse Midwife,Individual
+Provider Type Code List,3,09,Certified Registered Nurse Anesthetist (CRNA),Individual
+Provider Type Code List,3,10,Mammography Center,Non-Individual
+Provider Type Code List,3,11,Independent Diagnostic Testing Facility (IDTF),Non-Individual
+Provider Type Code List,3,12,Podiatry,Individual
+Provider Type Code List,3,13,Ambulatory Surgical Center,Non-Individual
+Provider Type Code List,3,14,Nurse Practitioner,Individual
+Provider Type Code List,3,15,Medical Supply Company with Orthotist,Non-Individual
+Provider Type Code List,3,16,Medical Supply Company with Prosthetist,Non-Individual
+Provider Type Code List,3,17,Medical Supply Company with Orthotist-Prosthetist,Non-Individual
+Provider Type Code List,3,18,Other Medical Supply Company,Non-Individual
+Provider Type Code List,3,19,Individual Certified Orthotist,Individual
+Provider Type Code List,3,20,Individual Certified Prosthetist,Individual
+Provider Type Code List,3,21,Individual Certified Prosthetist-Orthotist,Individual
+Provider Type Code List,3,22,Medical Supply Company with Pharmacist,Non-Individual
+Provider Type Code List,3,23,Ambulance Service Provider,Non-Individual
+Provider Type Code List,3,24,Public Health or Welfare Agency,Non-Individual
+Provider Type Code List,3,25,Voluntary Health or Charitable Agency,Non-Individual
+Provider Type Code List,3,26,"Psychologist, Clinical",Individual
+Provider Type Code List,3,27,Portable X-Ray Supplier,Non-Individual
+Provider Type Code List,3,28,Audiologist,Individual
+Provider Type Code List,3,29,Physical Therapist in Private Practice,Individual
+Provider Type Code List,3,30,Occupational Therapist in Private Practice,Individual
+Provider Type Code List,3,31,Clinical Laboratory,Non-Individual
+Provider Type Code List,3,32,Clinic or Group Practice,Non-Individual
+Provider Type Code List,3,33,Registered Dietitian or Nutrition Professional,Individual
+Provider Type Code List,3,34,Mass Immunizer Roster Biller,Non-Individual
+Provider Type Code List,3,35,Radiation Therapy Center,Non-Individual
+Provider Type Code List,3,36,Slide Preparation Facility,Non-Individual
+Provider Type Code List,3,37,Licensed Clinical Social Worker,Individual
+Provider Type Code List,3,38,Certified Clinical Nurse Specialist,Individual
+Provider Type Code List,3,39,Advance Diagnostic Imaging,Individual
+Provider Type Code List,3,40,Optician,Individual
+Provider Type Code List,3,41,Physician Assistant,Individual
+Provider Type Code List,3,42,Hospital-General,Non-Individual
+Provider Type Code List,3,43,Skilled Nursing Facility,Non-Individual
+Provider Type Code List,3,44,Intermediate Care Nursing Facility,Non-Individual
+Provider Type Code List,3,45,Other Nursing Facility,Non-Individual
+Provider Type Code List,3,46,Home Health Agency,Non-Individual
+Provider Type Code List,3,47,Pharmacy,Non-Individual
+Provider Type Code List,3,48,Medical Supply Company with Respiratory Therapist,Non-Individual
+Provider Type Code List,3,49,Department Store,Non-Individual
+Provider Type Code List,3,50,Grocery Store,Non-Individual
+Provider Type Code List,3,51,Indian Health Service facility,Non-Individual
+Provider Type Code List,3,52,Oxygen supplier,Non-Individual
+Provider Type Code List,3,53,Pedorthic personnel,Individual
+Provider Type Code List,3,54,Medical supply company with pedorthic personnel,Non-Individual
+Provider Type Code List,3,55,Rehabilitation Agency,Non-Individual
+Provider Type Code List,3,56,Ocularist,Individual
+Provider Type Code List,3,57,All Other,Undetermined
+Authorized Category of Service Code List,4,001,"Inpatient hospital services, other than services in an institution for mental diseases",Non-Individual
+Authorized Category of Service Code List,4,002,Outpatient hospital services,Non-Individual
+Authorized Category of Service Code List,4,003,Rural health clinic services,Non-Individual
+Authorized Category of Service Code List,4,004,Other ambulatory services furnished by a rural health clinic,Non-Individual
+Authorized Category of Service Code List,4,005,Professional laboratory services,Individual
+Authorized Category of Service Code List,4,006,Technical laboratory services,Non-Individual
+Authorized Category of Service Code List,4,007,Professional radiological services,Individual
+Authorized Category of Service Code List,4,008,Technical radiological services,Non-Individual
+Authorized Category of Service Code List,4,009,Nursing facility services for individuals age 21 or older (other than services in an institution for mental disease),Non-Individual
+Authorized Category of Service Code List,4,010,Early and periodic screening and diagnosis and treatment (EPSDT) services,Individual
+Authorized Category of Service Code List,4,011,Family planning services and supplies for individuals of child-bearing age,Individual
+Authorized Category of Service Code List,4,012,Physicians' services,Individual
+Authorized Category of Service Code List,4,013,Medical and surgical services of a dentist,Individual
+Authorized Category of Service Code List,4,014,Outpatient substance abuse treatment services.,Individual
+Authorized Category of Service Code List,4,015,"Medical or other remedial care or services, other than physicians' services, provided by licensed practitioners within the scope of practice as defined under State law",Individual
+Authorized Category of Service Code List,4,016,Home health services - Nursing services,Non-Individual
+Authorized Category of Service Code List,4,017,Home health services - Home health aide services,Non-Individual
+Authorized Category of Service Code List,4,018,"Home health services - Medical supplies, equipment, and appliances suitable for use in the home",Non-Individual
+Authorized Category of Service Code List,4,019,Home health services - Physical therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services,Non-Individual
+Authorized Category of Service Code List,4,020,Home health services - Occupational therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services,Non-Individual
+Authorized Category of Service Code List,4,021,Home health services - Speech pathology and audiology services provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services,Non-Individual
+Authorized Category of Service Code List,4,022,Private duty nursing services,Individual
+Authorized Category of Service Code List,4,023,Advanced practice nurse services,Individual
+Authorized Category of Service Code List,4,024,Pediatric nurse,Individual
+Authorized Category of Service Code List,4,025,Nurse-midwife service,Individual
+Authorized Category of Service Code List,4,026,Nurse practitioner services,Individual
+Authorized Category of Service Code List,4,027,Respiratory care for ventilator-dependent individuals,Individual
+Authorized Category of Service Code List,4,028,Clinic services,Individual
+Authorized Category of Service Code List,4,029,Dental services,Individual
+Authorized Category of Service Code List,4,030,Physical therapy services (when not provided under home health services),Individual
+Authorized Category of Service Code List,4,031,Occupational therapy services (when not provided under home health services),Individual
+Authorized Category of Service Code List,4,032,"Speech, hearing, and language disorders services (when not provided under home health services)",Individual
+Authorized Category of Service Code List,4,033,Prescribed drugs,Both
+Authorized Category of Service Code List,4,034,Over-the-counter medications.,Non-Individual
+Authorized Category of Service Code List,4,035,Dentures,Undetermined
+Authorized Category of Service Code List,4,036,Prosthetic devices,Undetermined
+Authorized Category of Service Code List,4,037,Eyeglasses,Undetermined
+Authorized Category of Service Code List,4,038,Hearing Aids,Undetermined
+Authorized Category of Service Code List,4,039,Diagnostic services,Individual
+Authorized Category of Service Code List,4,040,Screening services,Individual
+Authorized Category of Service Code List,4,041,Preventive services,Individual
+Authorized Category of Service Code List,4,042,Well-baby and well-child care services as defined by the State.,Individual
+Authorized Category of Service Code List,4,043,Rehabilitative services,Individual
+Authorized Category of Service Code List,4,044,Inpatient hospital services for individuals age 65 or older in institutions for mental diseases,Non-Individual
+Authorized Category of Service Code List,4,045,Nursing facility services for individuals age 65 or older in institutions for mental diseases,Non-Individual
+Authorized Category of Service Code List,4,046,Intermediate care facility (ICF/IIDICF/IID) services,Non-Individual
+Authorized Category of Service Code List,4,047,"Nursing facility services, other than in institutions for mental diseases",Non-Individual
+Authorized Category of Service Code List,4,048,Inpatient psychiatric services for individuals under age 21,Non-Individual
+Authorized Category of Service Code List,4,049,"Outpatient mental health services, other than Outpatient substance abuse treatment services.  This TOS includes services furnished in a State-operated mental hospital and including community-based services.",Individual
+Authorized Category of Service Code List,4,050,Inpatient substance abuse treatment services and residential substance abuse treatment services.,Non-Individual
+Authorized Category of Service Code List,4,051,Personal care services,Individual
+Authorized Category of Service Code List,4,052,Primary care case management services,Individual
+Authorized Category of Service Code List,4,053,Targeted case management services,Individual
+Authorized Category of Service Code List,4,054,Case Management services other than those that meet the definition of primary care case management services or targeted case management services,Individual
+Authorized Category of Service Code List,4,055,Care coordination services.,Non-Individual
+Authorized Category of Service Code List,4,056,Transportation services,Non-Individual
+Authorized Category of Service Code List,4,057,Enabling services,Individual
+Authorized Category of Service Code List,4,058,Services furnished in a religious nonmedical health care institution,Non-Individual
+Authorized Category of Service Code List,4,059,Skilled nursing facility services for individuals under age 21,Non-Individual
+Authorized Category of Service Code List,4,060,Emergency hospital services,Non-Individual
+Authorized Category of Service Code List,4,061,Critical access hospital services,Non-Individual
+Authorized Category of Service Code List,4,062,HCBS - Case management services,Non-Individual
+Authorized Category of Service Code List,4,063,HCBS - Homemaker services,Individual
+Authorized Category of Service Code List,4,064,HCBS - Home health aide services,Individual
+Authorized Category of Service Code List,4,065,HCBS - Personal care services,Individual
+Authorized Category of Service Code List,4,066,HCBS - Adult day health services,Individual
+Authorized Category of Service Code List,4,067,HCBS - Habilitation services,Non-Individual
+Authorized Category of Service Code List,4,068,HCBS - Respite care services,Non-Individual
+Authorized Category of Service Code List,4,069,"HCBS - Day treatment or other partial hospitalization services, psychosocial rehabilitation services and clinic services (whether or not furnished in a facility) for individuals with chronic mental illness",Non-Individual
+Authorized Category of Service Code List,4,070,HCBS - Day Care,Non-Individual
+Authorized Category of Service Code List,4,071,HCBS -  Training for family members,Non-Individual
+Authorized Category of Service Code List,4,072,HCBS -  Minor modification to the home,Individual
+Authorized Category of Service Code List,4,073,HCBS - Other services requested by the agency and approved by CMS as cost effective and necessary to avoid institutionalization,Non-Individual
+Authorized Category of Service Code List,4,074,HCBS - Expanded habilitation services - Prevocational services,Individual
+Authorized Category of Service Code List,4,075,HCBS - Expanded habilitation services - Educational services,Non-Individual
+Authorized Category of Service Code List,4,076,"HCBS - Expanded habilitation services - Supported employment services, which facilitate paid employment",Non-Individual
+Authorized Category of Service Code List,4,077,HCBS-65-plus - Case management services,Non-Individual
+Authorized Category of Service Code List,4,078,HCBS-65-plus - Homemaker services,Individual
+Authorized Category of Service Code List,4,079,HCBS-65-plus - Home health aide services,Non-Individual
+Authorized Category of Service Code List,4,080,HCBS-65-plus - Personal care services,Non-Individual
+Authorized Category of Service Code List,4,081,HCBS-65-plus - Adult day health services,Non-Individual
+Authorized Category of Service Code List,4,082,HCBS-65-plus - Respite care services,Non-Individual
+Authorized Category of Service Code List,4,083,HCBS-65-plus - Other medical and social services,Non-Individual
+Authorized Category of Service Code List,4,084,Sterilizations,Individual
+Authorized Category of Service Code List,4,085,Prenatal care and pre-pregnancy family planning services and supplies.,Individual
+Authorized Category of Service Code List,4,086,Other Pregnancy-related Procedures,Individual
+Authorized Category of Service Code List,4,087,Hospice services,Non-Individual
+Authorized Category of Service Code List,4,088,Any other health care services or items specified by the Secretary and not excluded under regulations.,Undetermined
+Authorized Category of Service Code List,4,115,Residential care,Non-Individual
