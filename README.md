@@ -1,47 +1,150 @@
-# T-MSIS-Data-Quality-Measures-Generation-Code
+# dq_measures_python
+Python Implementation of Data Quality Measures for Databricks
 
-This project aims to provide resources and tools that help the research community and other stakeholders (the end user community) obtain clear, concise information about the overall data quality, as well as granular detail that can inform specific research projects or information needs in the Transformed Medicaid Statistical Information System (T-MSIS).
+This is a Python Library for the maintenance and processing of Data Quality (DQ) Measures with distributed computing framework using Databricks.  Measures and analytic files may be independently run within Notebooks, allowing them to be grouped into parallel processes based on state, data dependency, time interval, or any custom business rules.  Each process can be calibrated to optimally meet demand and deliverables. Custom Python libraries will be created to facilitate consistent management and execution of processes as well as simplify the creation of new analyses. This design is ideal for imposing best practices amongst distributed services which are appropriately granted resources and permit focus on test-driven development.
 
-**Getting the code**
 
-The easiest way to obtain the code is to clone it with git. If you're not familiar with git, a tool like Github Desktop or SourceTree can help make the experience easier. The HTTPS link is https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code
-If you're familiar with git and just want to work from the command line, you just need to run:
-git clone https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code.git
-If you would prefer not to use git, you can also download the most recent code as a ZIP file.
+- [ ] Create or modify a Runner Class
+- [ ] Create or modify a Runner Manifest
+- [ ] New modules are added to the Registry and Reverse Lookup
+- [ ] Process the reverse lookup and all manifest files
+- [ ] Encapsulating the _Thresholds_ File
+- [ ] Increment the library version number(s)
+- [ ] Build the library
+- [ ] Upload the WHL file to the Databricks environment
+- [ ] Deploy the library to the Databricks cluster
 
-**Running the code**
+# Creating a New Measure
 
-The DQ measures code is written in Databricks SQL executed through explicit SQL passthrough embedded within a SAS code wrapper on T-MSIS data in DataConnect (formerly known as AREMAC).
-The code is executed on new state month submissions as soon as possible after data are available in DataConnect, or on historical data on an as-needed basis. 
+To author and
 
-**More technical documentation**
+```python
+from dqm.DQM_Metadata import DQM_Metadata
+from dqm.DQMeasures import DQMeasures
 
-Additional technical documentation can be found in this repository in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/Technical_Documentation.docx.
-The specifications for a subset of the measures included in the code is available in the file https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/DQMeasure_Specifications.xlsx.
+class Runner_n():
+```
 
-**Contributing**
+## Create or modify a Runner Class
+Measure semantic processing is implemented within a Runner class object. Measures methods may be re-used driven by parameters in the manifest or distinct fucntions may be implemented.
+```python
+    def my_measure(spark, dqm: DQMeasures, measure_id,  x) :
 
-We would be happy to receive suggestions on how to fix bugs or make improvements, though we will not support changes made through this repository. Instead, please send your suggestions to MACBISData@cms.hhs.gov.
+        z = f"""
+                select
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'<series>' as submodule
+                    , ... as numer
+                    , ... as denom
+                    , ... as mvalue
+                    , ... as valid_value
+                from
+                    .
+                    .
+            """
 
-**Public domain**
+        dqm.logger.debug(z)
+        return spark.sql(z)
+```
+Measure functions must be included in the _v-table_ within the Runner class by name.
+```python
+    v_table = { '<callback>': my_measure }
+```
 
-This project is in the worldwide public domain.
-This project is in the public domain within the United States, and copyright and related rights in the work worldwide are waived through the CC0 1.0 Universal public domain dedication.
+## Create or modify a Runner Manifest
+The runner manifest includes the metadata and parameters ( _if any_ ).  The manifest must be compiled with the process of building the distributable library.
+```python
+from pandas import pandas as pd
+from pandas import DataFrame
 
-**Background on data quality measures**
+run_n =[
+    .
+    .
+    ['<series>', '<callback>', '<measure_id>', [param 1], .. [parameter n] ],
+    .
+    .
+]
 
-A measure is a calculated statistic. There are several types of data quality measures: percentage, count, sum, ratio, average number of occurrences, average, ratio of averages, index of dissimilarity, and frequency.
 
-There are several types of data quality validations users can apply to the measures. Two types are most common: 
-1.	General inferential validations check that a monthly statistic generated for a measure falls within a range of expected values for one point in time. 
-2.	Longitudinal inferential validations compare the most recent month’s statistic for a measure against the average of the prior six months’ statistics for the same measure to see whether the most recent statistic deviates more than expected. 
+df = DataFrame(run_105, columns=['series', 'cb', 'measure_id', ... ])
+df.to_pickle('./run_n.pkl')
+```
+## New modules are added to the Registry and Reverse Lookup
+### Registry
+Single instances of each _runner_ are contained within _Module_ for dispatching measures.
+```python
+.
+.
+from dqm.submodules import Runner_n as n
+    .
+    .
+class Module():
 
-Both general inferential validations and longitudinal inferential validations rely on data quality standards, which are either tolerance thresholds or minimum-maximum ranges, depending upon the type of validation for the measure. The ranges and tolerances are based on historical and expected data patterns. Currently, CMS does not have state-specific thresholds, so the thresholds are the same for all states, regardless of the states’ programs or population size. In addition, some measures do not have any data quality standards because a threshold has not yet been established. Measure specific data quality standards are available in the https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code/blob/main/002_lookups/Thresholds.xlsx.
+    def __init__(self):
+            .
+            .
+        self.run<series> = r<series>.Runner_n
+            .
+            .
+        self.runners = {
+                .
+                .
+            '<series>': self.run<series>,
+                .
+                .
+        }
+```
 
-Note that a data quality measure statistic falling outside of the data quality standard is not the same as an error. Errors indicate a business rule violation (i.e. something is wrong with the data) and are based on the validation rules in the T-MSIS Data Dictionary. The data quality standards are based on expected patterns in the data, and a statistic outside of the expected range may or may not reflect actual errors in the data.
+### Reverse Lookup
+The reverse lookup compiles all of the _runner manifests_ and links individual measures by their ID.  The _reverse lookup_ must be compiled with the process of building the distributable library.
+```python
+    .
+    .
+series = [
+    '901', '902', '903', '904', '905', '906', ...
+    '201', '202', '204', '205', '206', ...
+    '801', ...
+    '101', '102', '103', '104', '105', '106', '107', ...
+    '701', '702', '703', '704', ...
+    '501', '502', '503', '504', ...
+    '601', '602', ...
+    ]
+    .
+    .
+```
 
-Sometimes, the data are obviously wrong. But often, a measure statistic outside of the expected range indicates only a possible data problem. For example, if the data showed 100 percent of Medicaid-eligible beneficiaries died in a month, the data would be wrong. However, if the percentage of Medicaid eligible beneficiaries who died in a month was 5 percent, this would indicate a possible data problem because the measure statistic of 5 percent is outside the maximum threshold (i.e. the expected maximum of the percentage of Medicaid eligible beneficiaries who would die in one month) of 4 percent. It is not certain  there is an issue with the data in that month; it would be important to consider both the value of the statistic and the expected range or longitudinal tolerance. In some cases, it may also be important to consider policy or operational factors in a state’s Medicaid or CHIP program.
+## Encapsulating the _Thresholds_ File
 
-There are two other less common types of validation users can apply to the measures:
-1.	Authoritative source validation compares reported values with the values that should have been reported based on state program characteristics—for example, the managed care operating authorities that a state has. 
-2.	Index of dissimilarity validation checks that the frequency distribution of a data element does not change significantly compared with the prior month. 
+
+## Process the reverse lookup and all manifest files
+
+from within the ```dqm\batch``` folder:
+
+- > ```python .\reverse_lookup.py```
+
+## Increment the library version number(s)
+
+The library version is included the source code. It can be updated in ```_init_()``` method of the DQMeasures module.
+
+> DQMeasures.py ( ~ line 96 )
+```python
+    self.version = '2.6.10' # internal library version
+```
+
+> DQMeasures.py ( ~ line 99 )
+```python
+    self.specvrsn = 'V2.6'  # specification version
+```
+> setup.py ( ~ line 8 )
+```python
+    version="2.6.10", # deployed library version
+```
+
+## Update VAL job metdata
+> from the ```.\databricks\``` folder:
+run ```.\reset_all_jobs_VAL.bat```
+
+# Workflow
+
+For automated and manual workflows, see [workflow.md](workflow.md).
