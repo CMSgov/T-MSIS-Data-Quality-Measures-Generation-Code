@@ -16,7 +16,7 @@ This is a Python Library for the maintenance and processing of Data Quality (DQ)
 
 # Creating a New Measure
 
-To author and
+To author a new measure, first create a new Runner class.
 
 ```python
 from dqm.DQM_Metadata import DQM_Metadata
