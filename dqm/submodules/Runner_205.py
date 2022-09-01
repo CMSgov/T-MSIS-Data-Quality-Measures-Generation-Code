@@ -354,7 +354,7 @@ class Runner_205:
                     ,coalesce(denom, 0) AS denom
                     ,CASE
                         WHEN coalesce(denom, 0) <> 0
-                            THEN numer / denom
+                            THEN round(numer / denom,2)
                         ELSE NULL
                         END AS mvalue
                 FROM (

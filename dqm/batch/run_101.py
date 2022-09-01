@@ -391,8 +391,8 @@ run_101 =[
         '',
         2],
 
-    ['101', 'nonclaimspct2tbl', 'el6.32', 'el632t',
-        "case when b.msis_ident_num is null then 1 else 0 end",
+    ['101', 'nonclaimspct2tbl', 'el6.35', 'el635t',
+        "case when b.mfp_enrlmt_efctv_dt is null then 1 else 0 end",
         '_tmsis_mfp_info',
         "a.rstrctd_bnfts_cd = 'D'",
         '_tmsis_elgblty_dtrmnt',
@@ -415,6 +415,14 @@ run_101 =[
         '',
         2],
 
+    ['101', 'nonclaimspct2tbl', 'el6.36', 'el636t',
+        "case when b.mdcr_bene_id is null then 1 else 0 end",
+        '_tmsis_var_dmgrphc_elgblty',
+        "a.dual_elgbl_cd in ('01','02','03','04','05','06','08','09','10')",
+        '_tmsis_elgblty_dtrmnt',
+        '',
+        2],
+
     ['101', 'nonclaimspct', 'el1.23', 'el123t',
         "case when elgbl_state_cd <> submtg_state_cd or nonmatchcounty=1 or nonmatchzip=1 then 1 else 0 end",
         '',
@@ -424,7 +432,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct', 'el1.30', 'el130t',
-        "case when ((elgbl_state_cd is not null) and (submtg_state_cd <> elgbl_state_cd)) or (( elgbl_cnty_cd is not null) and (nonmatchcounty=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip=1)) then 1 else 0 end",
+        "case when ((elgbl_state_cd is not null) and (submtg_state_cd <> elgbl_state_cd)) or ((elgbl_cnty_cd is not null) and (nonmatchcounty=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip=1)) then 1 else 0 end",
         '',
         "elgbl_adr_type_cd <> '01' or elgbl_adr_type_cd is null",
         '',
@@ -455,8 +463,8 @@ run_101 =[
         '_tmsis_race_info',
         2],
 
-    ['101', 'nonclaimspct', 'el1.28', 'el128t',
-        "case when nonmatchcounty_elgbl=1 or nonmatchzip_elgbl=1 then 1 else 0 end",
+    ['101', 'nonclaimspct', 'el1.31', 'el131t',
+        "case when ((elgbl_cnty_cd is not null) and (nonmatchcounty_elgbl=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip_elgbl=1)) then 1 else 0 end",
         '',
         "msis_ident_num is not null",
         '',

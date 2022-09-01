@@ -1,0 +1,54 @@
+,State_Name,State_Abbreviation,FIPS_State_Numeric_Code,_01,_04,_80,_02,_03,_70,_07,_08,_09,_10,_11,_12,_13,_14,_15,_05,_06,_16,_18,_17
+0,Alabama,AL,1.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,Yes,Yes,Yes,Yes,Yes
+1,Alaska,AK,2.0,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+2,Arizona,AZ,4.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+3,Arkansas,AR,5.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+4,California,CA,6.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,Yes,No,Yes,Yes,Yes,Yes,Yes
+5,Colorado,CO,8.0,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes
+6,Connecticut,CT,9.0,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+7,"Washington, DC",DC,10.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+8,Delaware,DE,11.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+9,Florida,FL,12.0,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes
+10,Georgia,GA,13.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+11,Hawaii,HI,15.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+12,Idaho,ID,16.0,No,No,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No
+13,Illinois,IL,17.0,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+14,Indiana,IN,18.0,Yes,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+15,Iowa,IA,19.0,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes
+16,Kansas,KS,20.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+17,Kentucky,KY,21.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+18,Louisiana,LA,22.0,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+19,Maine,ME,23.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+20,Maryland,MD,24.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+21,Massachusetts,MA,25.0,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+22,Michigan,MI,26.0,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes
+23,Minnesota,MN,27.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+24,Mississippi,MS,28.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+25,Missouri,MO,29.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+26,Montana,MT,30.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+27,Nebraska,NE,31.0,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+28,Nevada,NV,32.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+29,New Hampshire,NH,33.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+30,New Jersey,NJ,34.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+31,New Mexico,NM,35.0,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+32,New York,NY,36.0,Yes,Yes,Yes,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+33,North Carolina,NC,37.0,No,No,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+34,North Dakota,ND,38.0,No,No,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+35,Ohio,OH,39.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+36,Oklahoma,OK,40.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+37,Oregon,OR,41.0,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+38,Pennsylvania,PA,42.0,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes
+39,Puerto Rico,PR,72.0,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,No
+40,Rhode Island,RI,44.0,Yes,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
+41,South Carolina,SC,45.0,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+42,South Dakota,SD,46.0,No,No,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+43,Tennessee,TN,47.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+44,Texas,TX,48.0,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+45,Utah,UT,49.0,Yes,Yes,No,No,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No
+46,Vermont,VT,50.0,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+47,Virginia,VA,51.0,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+48,Washington,WA,53.0,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes
+49,West Virginia,WV,54.0,Yes,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+50,Wisconsin,WI,55.0,Yes,Yes,Yes,No,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,No,Yes
+51,Wyoming,WY,56.0,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+52,,,,,,,,,,,,,,,,,,,,,,,

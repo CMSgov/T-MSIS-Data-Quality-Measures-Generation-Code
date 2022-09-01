@@ -150,12 +150,20 @@ EL,21,EL1.21,EL-1-021-21,% of MSIS IDs with age over 120 or less than -1,Non-Cla
 EL,22,EL1.22,EL-1-022-22,% of MSIS IDs without a primary address (ADDR-TYPE not equal 1),Non-Claims Percentage,N/A,Y,2,Default,EL1_22,EL,1,22,022,,022,2
 EL,23,EL1.23,EL-1-023-23,"% of MSIS IDs in which the primary home address county code, zip code, or state is not in-state",Non-Claims Percentage,N/A,Y,2,Default,EL1_23,EL,1,23,023,,023,2
 EL,24,EL1.30,EL-1-024-30,"% of MSIS IDs in which a non-primary home address county code, zip code, or state is not in-state and not missing",Non-Claims Percentage,N/A,Y,2,Default,EL1_30,EL,1,30,024,,024,2
-EL,25,EL1.28,EL-1-025-28,% of MSIS IDs where county code or zip code does not align with address state,Non-Claims Percentage,N/A,Y,2,Default,EL1_28,EL,1,28,025,,025,2
 EL,1,EL11.1,EL-11-001-1,"% of full duals (DUAL-ELIGIBLE-CODE = 02, 04, and 08) receiving private health insurance (TPL-HEALTH-INSURANCE = 1)",Non-Claims Percentage,N/A,Y,2,Default,EL11_1,EL,11,1,001,,001,2
 EL,1,EL12.1,EL-12-001-1,Eligibility Group values,Frequency,N/A,Y,0,Frequency,EL12_1,EL,12,1,001,,001,0
 EL,1,EL13.1,EL-13-001-1,% of MC enrollments with a plan ID that does not link to a health plan affiliated with any provider in the provider file,Non-Claims Percentage,N/A,Y,2,Default,EL13_1,EL,13,1,001,,001,2
-EL,1,EL15.1,EL-15-001-1,% difference between full-benefit T-MSIS enrollment count (EL-6-023-23) and PI enrollment count (Medicaid + CHIP) ,Non-claims percentage,N/A,Y,2,Manual,EL15_1,EL,15,1,001,,001,2
-EL,2,EL15.2,EL-15-002-2,% difference between T-MSIS CHIP count (EL-S-003-3) and PI CHIP count (M-CHIP + S-CHIP),Non-claims percentage,N/A,Y,2,Manual,EL15_2,EL,15,2,002,,002,2
+EL,1,EL15.1,EL-15-001-1,% difference between full-benefit T-MSIS enrollment count (EL-6-023-23) and PI enrollment count (Medicaid + CHIP) ,Non-claims percentage,N/A,Y,2,Default,EL15_1,EL,15,1,001,,001,2
+EL,2,EL15.2,EL-15-002-2,% difference between T-MSIS CHIP count (EL-S-003-3) and PI CHIP count (M-CHIP + S-CHIP),Non-claims percentage,N/A,Y,2,Default,EL15_2,EL,15,2,002,,002,2
+EL,3,EL15.3,EL-15-003-3,% difference between total T-MSIS duals count and total MMA duals count,Non-claims percentage,N/A,Y,2,Default,EL15_3,EL,15,3,003,,003,2
+EL,4,EL15.4,EL-15-004-4,% difference between T-MSIS QMB-only duals count and MMA QMB-only duals count (Dual Code=01),Non-claims percentage,N/A,Y,2,Default,EL15_4,EL,15,4,004,,004,2
+EL,5,EL15.5,EL-15-005-5,% difference between T-MSIS QMB-plus duals count and MMA QMB-plus duals count (Dual Code=02),Non-claims percentage,N/A,Y,2,Default,EL15_5,EL,15,5,005,,005,2
+EL,6,EL15.6,EL-15-006-6,% difference between T-MSIS SLMB-only duals count and MMA SLMB-only duals count (Dual Code=03),Non-claims percentage,N/A,Y,2,Default,EL15_6,EL,15,6,006,,006,2
+EL,7,EL15.7,EL-15-007-7,% difference between T-MSIS SLMB-plus duals count and MMA SLMB-plus duals count (Dual Code=04),Non-claims percentage,N/A,Y,2,Default,EL15_7,EL,15,7,007,,007,2
+EL,8,EL15.8,EL-15-008-8,% difference between T-MSIS QDWI duals count and MMA QDWI duals count (Dual Code=05),Non-claims percentage,N/A,Y,2,Default,EL15_8,EL,15,8,008,,008,2
+EL,9,EL15.9,EL-15-009-9,% difference between T-MSIS QI duals count and MMA QI duals count (Dual Code=06),Non-claims percentage,N/A,Y,2,Default,EL15_9,EL,15,9,009,,009,2
+EL,10,EL15.10,EL-15-010-10,% difference between T-MSIS Other duals count and MMA Other duals count (Dual Code=08),Non-claims percentage,N/A,Y,2,Default,EL15_10,EL,15,10,010,,010,2
+EL,11,EL15.11,EL-15-011-11,% difference between T-MSIS Pharm Plus or special duals and MMA Pharm Plus or special duals (Dual Code=09),Non-claims percentage,N/A,Y,2,Default,EL15_11,EL,15,11,011,,011,2
 EL,1,EL16.1,EL-16-001-1,% of ELG00002 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_1,EL,16,1,001,,001,3
 EL,2,EL16.2,EL-16-002-2,% of ELG00003 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_2,EL,16,2,002,,002,3
 EL,3,EL16.3,EL-16-003-3,% of ELG00004 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_3,EL,16,3,003,,003,3
@@ -231,8 +239,7 @@ EL,27,EL6.27,EL-6-027-27,"% of partial duals (DUAL-ELIGIBLE-CODE = 01, 03, 05, 0
 EL,28,EL6.28,EL-6-028-28,% of record segments with an invalid waiver ID format for 1115 waivers (WAIVER-TYPE = 01 or 21 - 30),Non-Claims Percentage,N/A,Y,2,Default,EL6_28,EL,6,28,028,,028,2
 EL,29,EL6.29,EL-6-029-29,"% of record segments with an invalid waiver ID format for 1915(b) and 1915(c) waivers (WAIVER-TYPE = 02 - 20, 32, or 33)",Non-Claims Percentage,N/A,Y,2,Default,EL6_29,EL,6,29,029,,029,2
 EL,30,EL6.30,EL-6-030-30,% of MSIS IDs with S-CHIP dental coverage (RESTRICTED-BENEFITS-CODE = C) that are not S-CHIP (CHIP-CODE not 3),Non-Claims Percentage,N/A,Y,0,Default,EL6_30,EL,6,30,030,,030,0
-EL,31,EL6.31,EL-6-031-31,% of MFP participants that do not have restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE not D),Claims Percentage,N/A,Y,2,Default,EL6_31,EL,6,31,031,,031,2
-EL,32,EL6.32,EL-6-032-32,% of MSIS IDs with restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE = D) that are not found on MFP-INFORMATION-ELG00010 for the same month,Claims Percentage,N/A,N,2,Default,EL6_32,EL,6,32,032,,032,2
+EL,31,EL6.31,EL-6-031-31,% of MFP participants that do not have restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE not D),Non-Claims Percentage,N/A,Y,2,Default,EL6_31,EL,6,31,031,,031,2
 EL,33,EL6.33,EL-6-033-33,"% of MSIS IDs with an alien restricted benefits code status (RESTRICTED-BENEFITS-CODE = 2) but a non-qualified alien immigration status (IMMIGRATION-STATUS not 1, 2, or 3)",Non-Claims Percentage,N/A,Y,0,Default,EL6_33,EL,6,33,033,,033,0
 EL,34,EL6.34,EL-6-034-34,% of MSIS IDs with an alien restricted benefits code status (RESTRICTED-BENEFITS-CODE = 2) but CITIZENSHIP-IND = 1,Non-Claims Percentage,N/A,Y,0,Default,EL6_34,EL,6,34,034,,034,0
 EL,1,EL7.1,EL-7-001-1,Enrollment by waiver ID,Frequency,N/A,Y,0,EL7.1,EL7_1,EL,7,1,001,,001,0
@@ -326,14 +333,14 @@ IP,1,EXP4.1,EXP-4-001-1,% of claim headers with Total Medicaid Paid Amount > $2 
 IP,2,EXP4.2,EXP-4-002-2,% of claim headers with Total Medicaid Paid Amount = $0 or missing,Claims Percentage,"S-CHIP FFS: Original, Crossover, Paid Claims",Y,2,Default,EXP4_2,EXP,4,2,002,,002,2
 RX,1,EXP41.1,EXP-41-001-1,% of claim headers with Total Medicaid Paid Amount = $0 or missing,Claims percentage,"Medicaid Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP41_1,EXP,41,1,001,,001,2
 RX,1,EXP42.1,EXP-42-001-1,% of claim headers with Total Medicaid Paid Amount = $0 or missing,Claims percentage,"S-CHIP Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP42_1,EXP,42,1,001,,001,2
-IP,1,EXP43.1,EXP-43-001-1,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,All paid claims,Y,0,Default,EXP43_1,EXP,43,1,001,,001,0
-LT,2,EXP43.2,EXP-43-002-2,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,All paid claims,Y,0,Default,EXP43_2,EXP,43,2,002,,002,0
-OT,3,EXP43.3,EXP-43-003-3,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,All paid claims,Y,0,Default,EXP43_3,EXP,43,3,003,,003,0
-RX,4,EXP43.4,EXP-43-004-4,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,All paid claims,Y,0,Default,EXP43_4,EXP,43,4,004,,004,0
-IP,5,EXP43.5,EXP-43-005-5,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,All paid claims,Y,0,Default,EXP43_5,EXP,43,5,005,,005,0
-LT,6,EXP43.6,EXP-43-006-6,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,All paid claims,Y,0,Default,EXP43_6,EXP,43,6,006,,006,0
-OT,7,EXP43.7,EXP-43-007-7,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,All paid claims,Y,0,Default,EXP43_7,EXP,43,7,007,,007,0
-RX,8,EXP43.8,EXP-43-008-8,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,All paid claims,Y,0,Default,EXP43_8,EXP,43,8,008,,008,0
+IP,1,EXP43.1,EXP-43-001-1,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_1,EXP,43,1,001,,001,0
+LT,2,EXP43.2,EXP-43-002-2,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_2,EXP,43,2,002,,002,0
+OT,3,EXP43.3,EXP-43-003-3,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_3,EXP,43,3,003,,003,0
+RX,4,EXP43.4,EXP-43-004-4,# of non-service tracking claim headers with non-missing Service Tracking Type,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_4,EXP,43,4,004,,004,0
+IP,5,EXP43.5,EXP-43-005-5,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_5,EXP,43,5,005,,005,0
+LT,6,EXP43.6,EXP-43-006-6,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_6,EXP,43,6,006,,006,0
+OT,7,EXP43.7,EXP-43-007-7,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_7,EXP,43,7,007,,007,0
+RX,8,EXP43.8,EXP-43-008-8,# of non-service tracking claim headers with non-missing Service Tracking Payment Amount,Count,"Medicaid and S-CHIP Beneficiary-specific: Original and Adjustment, Paid Claims",Y,0,Default,EXP43_8,EXP,43,8,008,,008,0
 IP,1,EXP44.1,EXP-44-001-1,% of service tracking claim headers with a non-zero Total Medicaid Paid Amount,Claims Percentage,"Medicaid and S-CHIP Service Tracking: Non-void, Paid Claims",Y,3,Default,EXP44_1,EXP,44,1,001,,001,3
 LT,2,EXP44.2,EXP-44-002-2,% of service tracking claim headers with a non-zero Total Medicaid Paid Amount,Claims Percentage,"Medicaid and S-CHIP Service Tracking: Non-void, Paid Claims",Y,3,Default,EXP44_2,EXP,44,2,002,,002,3
 OT,3,EXP44.3,EXP-44-003-3,% of service tracking claim headers with a non-zero Total Medicaid Paid Amount,Claims Percentage,"Medicaid and S-CHIP Service Tracking: Non-void, Paid Claims",Y,3,Default,EXP44_3,EXP,44,3,003,,003,3
@@ -1163,7 +1170,6 @@ IP,47_2,MIS2.63,MIS-2-047_2-63,% missing: REFERRING-PROV-NUM (CIP00002),Claims P
 IP,47,MIS2.47,MIS-2-047-47,% missing: PROGRAM-TYPE (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_47,MIS,2,47,047,,047,3
 IP,48,MIS2.48,MIS-2-048-48,% missing: TOT-ALLOWED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_48,MIS,2,48,048,,048,3
 IP,49,MIS2.49,MIS-2-049-49,% missing: TOT-BILLED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_49,MIS,2,49,049,,049,3
-IP,50,MIS2.50,MIS-2-050-50,% missing: TOT-COPAY-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_50,MIS,2,50,050,,050,3
 IP,51,MIS2.51,MIS-2-051-51,% missing: TOT-MEDICAID-PAID-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_51,MIS,2,51,051,,051,3
 IP,52,MIS2.52,MIS-2-052-52,% missing: TOT-OTHER-INSURANCE-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_52,MIS,2,52,052,,052,3
 IP,53,MIS2.53,MIS-2-053-53,% missing: TOT-TPL-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS2_53,MIS,2,53,053,,053,3
@@ -1335,7 +1341,6 @@ OT,5,MIS7.5,MIS-7-005-5,% missing: COPAY-AMT (COT00003),Claims Percentage,"Medic
 OT,6,MIS7.6,MIS-7-006-6,% missing: ENDING-DATE-OF-SERVICE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_6,MIS,7,6,006,,006,3
 OT,7,MIS7.7,MIS-7-007-7,% missing: HCBS-SERVICE-CODE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_7,MIS,7,7,007,,007,3
 OT,8,MIS7.8,MIS-7-008-8,% missing: HCBS-TAXONOMY (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_8,MIS,7,8,008,,008,3
-OT,9,MIS7.9,MIS-7-009-9,% missing: HCPCS-RATE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_9,MIS,7,9,009,,009,3
 OT,10,MIS7.10,MIS-7-010-10,% missing: ICN-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_10,MIS,7,10,010,,010,3
 OT,11,MIS7.11,MIS-7-011-11,% missing: ICN-ORIG (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_11,MIS,7,11,011,,011,3
 OT,13,MIS7.13,MIS-7-013-13,% missing: LINE-NUM-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS7_13,MIS,7,13,013,,013,3
@@ -1387,7 +1392,6 @@ RX,23,MIS8.23,MIS-8-023-23,% missing: PRESCRIPTION-FILL-DATE (CRX00002),Claims P
 RX,24,MIS8.24,MIS-8-024-24,% missing: PROGRAM-TYPE (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_24,MIS,8,24,024,,024,3
 RX,25,MIS8.25,MIS-8-025-25,% missing: TOT-ALLOWED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_25,MIS,8,25,025,,025,3
 RX,26,MIS8.26,MIS-8-026-26,% missing: TOT-BILLED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_26,MIS,8,26,026,,026,3
-RX,27,MIS8.27,MIS-8-027-27,% missing: TOT-COPAY-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_27,MIS,8,27,027,,027,3
 RX,28,MIS8.28,MIS-8-028-28,% missing: TOT-MEDICAID-PAID-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_28,MIS,8,28,028,,028,3
 RX,29,MIS8.29,MIS-8-029-29,% missing: TOT-MEDICARE-COINS-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_29,MIS,8,29,029,,029,3
 RX,30,MIS8.30,MIS-8-030-30,% missing: TOT-MEDICARE-DEDUCTIBLE-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS8_30,MIS,8,30,030,,030,3
@@ -1536,7 +1540,6 @@ IP,51,MIS21.51,MIS-21-051-51,% missing: REFERRING-PROV-NUM (CIP00002),Claims Per
 IP,52,MIS21.52,MIS-21-052-52,% missing: PROGRAM-TYPE (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_52,MIS,21,52,052,,052,3
 IP,53,MIS21.53,MIS-21-053-53,% missing: TOT-ALLOWED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_53,MIS,21,53,053,,053,3
 IP,54,MIS21.54,MIS-21-054-54,% missing: TOT-BILLED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_54,MIS,21,54,054,,054,3
-IP,55,MIS21.55,MIS-21-055-55,% missing: TOT-COPAY-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_55,MIS,21,55,055,,055,3
 IP,56,MIS21.56,MIS-21-056-56,% missing: TOT-MEDICAID-PAID-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_56,MIS,21,56,056,,056,3
 IP,57,MIS21.57,MIS-21-057-57,% missing: TOT-OTHER-INSURANCE-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_57,MIS,21,57,057,,057,3
 IP,58,MIS21.58,MIS-21-058-58,% missing: TOT-TPL-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS21_58,MIS,21,58,058,,058,3
@@ -1669,7 +1672,6 @@ OT,6,MIS26.6,MIS-26-006-6,% missing: COPAY-AMT (COT00003),Claims Percentage,"Med
 OT,7,MIS26.7,MIS-26-007-7,% missing: ENDING-DATE-OF-SERVICE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_7,MIS,26,7,007,,007,3
 OT,8,MIS26.8,MIS-26-008-8,% missing: HCBS-SERVICE-CODE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_8,MIS,26,8,008,,008,3
 OT,9,MIS26.9,MIS-26-009-9,% missing: HCBS-TAXONOMY (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_9,MIS,26,9,009,,009,3
-OT,10,MIS26.10,MIS-26-001-10,% missing: HCPCS-RATE (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_10,MIS,26,10,010,,010,3
 OT,11,MIS26.11,MIS-26-011-11,% missing: ICN-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_11,MIS,26,11,011,,011,3
 OT,12,MIS26.12,MIS-26-012-12,% missing: ICN-ORIG (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_12,MIS,26,12,012,,012,3
 OT,13,MIS26.13,MIS-26-013-13,% missing: LINE-NUM-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS26_13,MIS,26,13,013,,013,3
@@ -1717,7 +1719,6 @@ RX,23,MIS27.23,MIS-27-023-23,% missing: PRESCRIPTION-FILL-DATE (CRX00002),Claims
 RX,24,MIS27.24,MIS-27-024-24,% missing: PROGRAM-TYPE (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_24,MIS,27,24,024,,024,3
 RX,25,MIS27.25,MIS-27-025-25,% missing: TOT-ALLOWED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_25,MIS,27,25,025,,025,3
 RX,26,MIS27.26,MIS-27-026-26,% missing: TOT-BILLED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_26,MIS,27,26,026,,026,3
-RX,27,MIS27.27,MIS-27-027-27,% missing: TOT-COPAY-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_27,MIS,27,27,027,,027,3
 RX,28,MIS27.28,MIS-27-028-28,% missing: TOT-MEDICAID-PAID-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_28,MIS,27,28,028,,028,3
 RX,29,MIS27.29,MIS-27-029-29,% missing: TOT-MEDICARE-COINS-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_29,MIS,27,29,029,,029,3
 RX,30,MIS27.30,MIS-27-003-30,% missing: TOT-MEDICARE-DEDUCTIBLE-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,MIS27_30,MIS,27,30,030,,030,3
@@ -1797,7 +1798,6 @@ IP,51,MIS79.51,MIS-79-051-51,% missing: REFERRING-PROV-NUM (CIP00002),Claims Per
 IP,52,MIS79.52,MIS-79-052-52,% missing: PROGRAM-TYPE (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_52,MIS,79,52,052,,052,3
 IP,53,MIS79.53,MIS-79-053-53,% missing: TOT-ALLOWED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_53,MIS,79,53,053,,053,3
 IP,54,MIS79.54,MIS-79-054-54,% missing: TOT-BILLED-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_54,MIS,79,54,054,,054,3
-IP,55,MIS79.55,MIS-79-055-55,% missing: TOT-COPAY-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_55,MIS,79,55,055,,055,3
 IP,56,MIS79.56,MIS-79-056-56,% missing: TOT-MEDICAID-PAID-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_56,MIS,79,56,056,,056,3
 IP,57,MIS79.57,MIS-79-057-57,% missing: TOT-OTHER-INSURANCE-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_57,MIS,79,57,057,,057,3
 IP,58,MIS79.58,MIS-79-058-58,% missing: TOT-TPL-AMT (CIP00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS79_58,MIS,79,58,058,,058,3
@@ -1930,7 +1930,6 @@ OT,5,MIS84.5,MIS-84-005-5,% missing: COPAY-AMT (COT00003),Claims Percentage,"Med
 OT,6,MIS84.6,MIS-84-006-6,% missing: ENDING-DATE-OF-SERVICE (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_6,MIS,84,6,006,,006,3
 OT,7,MIS84.7,MIS-84-007-7,% missing: HCBS-SERVICE-CODE (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_7,MIS,84,7,007,,007,3
 OT,8,MIS84.8,MIS-84-008-8,% missing: HCBS-TAXONOMY (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_8,MIS,84,8,008,,008,3
-OT,9,MIS84.9,MIS-84-009-9,% missing: HCPCS-RATE (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_9,MIS,84,9,009,,009,3
 OT,10,MIS84.10,MIS-84-010-10,% missing: ICN-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_10,MIS,84,10,010,,010,3
 OT,11,MIS84.11,MIS-84-011-11,% missing: ICN-ORIG (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_11,MIS,84,11,011,,011,3
 OT,12,MIS84.12,MIS-84-012-12,% missing: LINE-NUM-ADJ (COT00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS84_12,MIS,84,12,012,,012,3
@@ -1978,7 +1977,6 @@ RX,23,MIS85.23,MIS-85-023-23,% missing: PRESCRIPTION-FILL-DATE (CRX00002),Claims
 RX,24,MIS85.24,MIS-85-024-24,% missing: PROGRAM-TYPE (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_24,MIS,85,24,024,,024,3
 RX,25,MIS85.25,MIS-85-025-25,% missing: TOT-ALLOWED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_25,MIS,85,25,025,,025,3
 RX,26,MIS85.26,MIS-85-026-26,% missing: TOT-BILLED-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_26,MIS,85,26,026,,026,3
-RX,27,MIS85.27,MIS-85-027-27,% missing: TOT-COPAY-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_27,MIS,85,27,027,,027,3
 RX,28,MIS85.28,MIS-85-028-28,% missing: TOT-MEDICAID-PAID-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_28,MIS,85,28,028,,028,3
 RX,29,MIS85.29,MIS-85-029-29,% missing: TOT-MEDICARE-COINS-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_29,MIS,85,29,029,,029,3
 RX,30,MIS85.30,MIS-85-030-30,% missing: TOT-MEDICARE-DEDUCTIBLE-AMT (CRX00002),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS85_30,MIS,85,30,030,,030,3
@@ -2004,3 +2002,8 @@ RX,17,MIS86.17,MIS-86-017-17,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (CRX00003),C
 RX,18,MIS86.18,MIS-86-018-18,% missing: REBATE-ELIGIBLE-INDICATOR (CRX00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS86_18,MIS,86,18,018,,018,3
 RX,19,MIS86.19,MIS-86-019-19,% missing: TPL-AMT (CRX00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS86_19,MIS,86,19,019,,019,3
 RX,20,MIS86.20,MIS-86-020-20,% missing: TYPE-OF-SERVICE (CRX00003),Claims Percentage,"Medicaid and S-CHIP Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS86_20,MIS,86,20,020,,020,3
+OT,1,MIS88.1,MIS-88-001-1,% missing: TYPE-OF-SERVICE (COT00003),Claims Percentage,"Medicaid Capitation Payment: Original and Replacement, Paid Claims",Y,3,Default,MIS88_1,MIS,88,1,001,,001,3
+OT,1,MIS90.1,MIS-90-001-1,% missing: TYPE-OF-SERVICE (COT00003),Claims Percentage,"S-CHIP Capitation Payment: Original and Replacement, Paid Claims",Y,3,Default,MIS90_1,MIS,90,1,001,,001,3
+EL,35,EL6.35,EL-6-032-35,% of MSIS IDs with restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE = D) that are not found on MFP-INFORMATION-ELG00010 for the same month,Non-Claims Percentage,N/A,Y,2,Default,EL6_35,EL,6,35,035,,035,2
+EL,36,EL6.36,EL-6-036-36,% of duals missing Medicare Beneficiary Identifier,Non-Claims Percentage,N/A,Y,2,Default,EL6_36,EL,6,36,036,,036,2
+EL,31,EL1.31,EL-1-025-31,% of eligibles where county code or zip code does not align with address state and is not missing,Non-Claims Percentage,N/A,Y,2,Default,EL1_31,EL,1,31,031,,031,2

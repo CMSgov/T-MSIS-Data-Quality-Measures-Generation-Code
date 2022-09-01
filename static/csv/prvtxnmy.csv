@@ -1,0 +1,857 @@
+,Individual or Groups (of Individuals),Taxonomy
+0,Multi-Specialty,193200000X
+1,Single Specialty ,193400000X
+2,Allergy & Immunology,207K00000X
+3,Allergy,207KA0200X
+4,Clinical & Laboratory Immunology,207KI0005X
+5,Anesthesiology,207L00000X
+6,Addiction Medicine,207LA0401X
+7,Critical Care Medicine,207LC0200X
+8,Hospice and Palliative Medicine,207LH0002X
+9,Pain Medicine,207LP2900X
+10,Pediatric Anesthesiology,207LP3000X
+11,Clinical Pharmacology,208U00000X
+12,Colon & Rectal Surgery,208C00000X
+13,Dermatology,207N00000X
+14,Clinical & Laboratory Dermatological Immunology,207NI0002X
+15,Dermatopathology,207ND0900X
+16,MOHS-Micrographic Surgery,207ND0101X
+17,Pediatric Dermatology,207NP0225X
+18,Procedural Dermatology,207NS0135X
+19,Electrodiagnostic Medicine,204R00000X
+20,Emergency Medicine,207P00000X
+21,Emergency Medical Services,207PE0004X
+22,Hospice and Palliative Medicine,207PH0002X
+23,Medical Toxicology,207PT0002X
+24,Pediatric Emergency Medicine,207PP0204X
+25,Sports Medicine,207PS0010X
+26,Undersea and Hyperbaric Medicine,207PE0005X
+27,Family Medicine,207Q00000X
+28,Addiction Medicine,207QA0401X
+29,Adolescent Medicine,207QA0000X
+30,Adult Medicine,207QA0505X
+31,Geriatric Medicine,207QG0300X
+32,Hospice and Palliative Medicine,207QH0002X
+33,Obesity Medicine,207QB0002X
+34,Sleep Medicine,207QS1201X
+35,Sports Medicine,207QS0010X
+36,General Practice,208D00000X
+37,Hospitalist,208M00000X
+38,Independent Medical Examiner,202C00000X
+39,Internal Medicine,207R00000X
+40,Addiction Medicine,207RA0401X
+41,Adolescent Medicine,207RA0000X
+42,Adult Congenital Heart Disease,207RA0002X
+43,Advanced Heart Failure and Transplant Cardiology,207RA0001X
+44,Allergy & Immunology,207RA0201X
+45,Cardiovascular Disease,207RC0000X
+46,Clinical & Laboratory Immunology,207RI0001X
+47,Clinical Cardiac Electrophysiology,207RC0001X
+48,Critical Care Medicine,207RC0200X
+49,"Endocrinology, Diabetes & Metabolism",207RE0101X
+50,Gastroenterology,207RG0100X
+51,Geriatric Medicine,207RG0300X
+52,Hematology,207RH0000X
+53,Hematology & Oncology,207RH0003X
+54,Hepatology,207RI0008X
+55,Hospice and Palliative Medicine,207RH0002X
+56,Hypertension Specialist,207RH0005X
+57,Infectious Disease,207RI0200X
+58,Interventional Cardiology,207RI0011X
+59,Magnetic Resonance Imaging (MRI),207RM1200X
+60,Medical Oncology,207RX0202X
+61,Nephrology,207RN0300X
+62,Obesity Medicine,207RB0002X
+63,Pulmonary Disease,207RP1001X
+64,Rheumatology,207RR0500X
+65,Sleep Medicine,207RS0012X
+66,Sports Medicine,207RS0010X
+67,Transplant Hepatology,207RT0003X
+68,Legal Medicine,209800000X
+69,Clinical Biochemical Genetics,207SG0202X
+70,Clinical Cytogenetics,207SC0300X
+71,Clinical Genetics (M.D.),207SG0201X
+72,Clinical Molecular Genetics,207SG0203X
+73,Molecular Genetic Pathology,207SM0001X
+74,Ph.D. Medical Genetics,207SG0205X
+75,Neurological Surgery,207T00000X
+76,Neuromusculoskeletal Medicine & OMM,204D00000X
+77,"Neuromusculoskeletal Medicine, Sports Medicine",204C00000X
+78,Nuclear Medicine,207U00000X
+79,In Vivo & In Vitro Nuclear Medicine,207UN0903X
+80,Nuclear Cardiology,207UN0901X
+81,Nuclear Imaging & Therapy,207UN0902X
+82,Obstetrics & Gynecology,207V00000X
+83,Critical Care Medicine,207VC0200X
+84,Female Pelvic Medicine and Reconstructive Surgery,207VF0040X
+85,Gynecologic Oncology,207VX0201X
+86,Gynecology,207VG0400X
+87,Hospice and Palliative Medicine,207VH0002X
+88,Maternal & Fetal Medicine,207VM0101X
+89,Obesity Medicine,207VB0002X
+90,Obstetrics ,207VX0000X
+91,Reproductive Endocrinology,207VE0102X
+92,Ophthalmology,207W00000X
+93,Cornea and External Diseases Specialist,207WX0120X
+94,Glaucoma Specialist,207WX0009X
+95,Neuro-ophthalmology,207WX0109X
+96,Ophthalmic Plastic and Reconstructive Surgery,207WX0200X
+97,Pediatric Ophthalmology and Strabismus Specialist,207WX0110X
+98,Retina Specialist,207WX0107X
+99,Uveitis and Ocular Inflammatory Disease,207WX0108X
+100,Oral & Maxillofacial Surgery,204E00000X
+101,Orthopaedic Surgery,207X00000X
+102,Adult Reconstructive Orthopaedic Surgery,207XS0114X
+103,Foot and Ankle Surgery,207XX0004X
+104,Hand Surgery ,207XS0106X
+105,Orthopaedic Surgery of the Spine,207XS0117X
+106,Orthopaedic Trauma,207XX0801X
+107,Pediatric Orthopaedic Surgery,207XP3100X
+108,Sports Medicine,207XX0005X
+109,Otolaryngology,207Y00000X
+110,Facial Plastic Surgery,207YS0123X
+111,Otolaryngic Allergy,207YX0602X
+112,Otolaryngology/Facial Plastic Surgery,207YX0905X
+113,Otology & Neurotology,207YX0901X
+114,Pediatric Otolaryngology,207YP0228X
+115,Plastic Surgery within the Head & Neck,207YX0007X
+116,Sleep Medicine,207YS0012X
+117,Interventional Pain Medicine,208VP0014X
+118,Pain Medicine,208VP0000X
+119,Anatomic Pathology,207ZP0101X
+120,Anatomic Pathology & Clinical Pathology,207ZP0102X
+121,Blood Banking & Transfusion Medicine,207ZB0001X
+122,Chemical Pathology,207ZP0104X
+123,Clinical Informatics,207ZC0008X
+124,Clinical Pathology,207ZC0006X
+125,Clinical Pathology/Laboratory Medicine,207ZP0105X
+126,Cytopathology,207ZC0500X
+127,Dermatopathology,207ZD0900X
+128,Forensic Pathology,207ZF0201X
+129,Hematology,207ZH0000X
+130,Immunopathology,207ZI0100X
+131,Medical Microbiology,207ZM0300X
+132,Molecular Genetic Pathology,207ZP0007X
+133,Neuropathology,207ZN0500X
+134,Pediatric Pathology,207ZP0213X
+135,Pediatrics,208000000X
+136,Adolescent Medicine,2080A0000X
+137,Child Abuse Pediatrics,2080C0008X
+138,Clinical & Laboratory Immunology,2080I0007X
+139,Developmental-Behavioral Pediatrics,2080P0006X
+140,Hospice and Palliative Medicine,2080H0002X
+141,Medical Toxicology,2080T0002X
+142,Neonatal-Perinatal Medicine,2080N0001X
+143,Neurodevelopmental Disabilities,2080P0008X
+144,Obesity Medicine,2080B0002X
+145,Pediatric Allergy/Immunology,2080P0201X
+146,Pediatric Cardiology,2080P0202X
+147,Pediatric Critical Care Medicine,2080P0203X
+148,Pediatric Emergency Medicine,2080P0204X
+149,Pediatric Endocrinology,2080P0205X
+150,Pediatric Gastroenterology,2080P0206X
+151,Pediatric Hematology-Oncology,2080P0207X
+152,Pediatric Infectious Diseases,2080P0208X
+153,Pediatric Nephrology,2080P0210X
+154,Pediatric Pulmonology,2080P0214X
+155,Pediatric Rheumatology,2080P0216X
+156,Pediatric Transplant Hepatology,2080T0004X
+157,Sleep Medicine,2080S0012X
+158,Sports Medicine,2080S0010X
+159,Phlebology,202K00000X
+160,Physical Medicine & Rehabilitation,208100000X
+161,Brain Injury Medicine,2081P0301X
+162,Hospice and Palliative Medicine,2081H0002X
+163,Neuromuscular Medicine,2081N0008X
+164,Pain Medicine,2081P2900X
+165,Pediatric Rehabilitation Medicine,2081P0010X
+166,Spinal Cord Injury Medicine,2081P0004X
+167,Sports Medicine,2081S0010X
+168,Plastic Surgery,208200000X
+169,Plastic Surgery Within the Head and Neck,2082S0099X
+170,Surgery of the Hand,2082S0105X
+171,Addiction Medicine,2083A0300X
+172,Aerospace Medicine,2083A0100X
+173,Clinical Informatics,2083C0008X
+174,Medical Toxicology,2083T0002X
+175,Obesity Medicine,2083B0002X
+176,Occupational Medicine,2083X0100X
+177,Preventive Medicine/Occupational Environmental Medicine,2083P0500X
+178,Public Health & General Preventive Medicine,2083P0901X
+179,Sports Medicine,2083S0010X
+180,Undersea and Hyperbaric Medicine ,2083P0011X
+181,Addiction Medicine,2084A0401X
+182,Addiction Psychiatry,2084P0802X
+183,Behavioral Neurology & Neuropsychiatry,2084B0040X
+184,Brain Injury Medicine,2084P0301X
+185,Child & Adolescent Psychiatry,2084P0804X
+186,Clinical Neurophysiology ,2084N0600X
+187,Diagnostic Neuroimaging,2084D0003X
+188,Forensic Psychiatry,2084F0202X
+189,Geriatric Psychiatry,2084P0805X
+190,Hospice and Palliative Medicine,2084H0002X
+191,Neurocritical Care,2084A2900X
+192,Neurodevelopmental Disabilities,2084P0005X
+193,Neurology,2084N0400X
+194,Neurology with Special Qualifications in Child Neurology ,2084N0402X
+195,Neuromuscular Medicine,2084N0008X
+196,Obesity Medicine,2084B0002X
+197,Pain Medicine,2084P2900X
+198,Psychiatry,2084P0800X
+199,Psychosomatic Medicine,2084P0015X
+200,Sleep Medicine,2084S0012X
+201,Sports Medicine,2084S0010X
+202,Vascular Neurology,2084V0102X
+203,Body Imaging,2085B0100X
+204,Diagnostic Neuroimaging,2085D0003X
+205,Diagnostic Radiology,2085R0202X
+206,Diagnostic Ultrasound ,2085U0001X
+207,Hospice and Palliative Medicine,2085H0002X
+208,Neuroradiology,2085N0700X
+209,Nuclear Radiology,2085N0904X
+210,Pediatric Radiology,2085P0229X
+211,Radiation Oncology,2085R0001X
+212,Radiological Physics,2085R0205X
+213,Therapeutic Radiology,2085R0203X
+214,Vascular & Interventional Radiology,2085R0204X
+215,Surgery,208600000X
+216,Hospice and Palliative Medicine,2086H0002X
+217,Pediatric Surgery,2086S0120X
+218,Plastic and Reconstructive Surgery,2086S0122X
+219,Surgery of the Hand,2086S0105X
+220,Surgical Critical Care,2086S0102X
+221,Surgical Oncology,2086X0206X
+222,Trauma Surgery,2086S0127X
+223,Vascular Surgery,2086S0129X
+224,Thoracic Surgery (Cardiothoracic Vascular Surgery),208G00000X
+225,Transplant Surgery,204F00000X
+226,Urology,208800000X
+227,Female Pelvic Medicine and Reconstructive Surgery,2088F0040X
+228,Pediatric Urology,2088P0231X
+229,Assistant Behavior Analyst,106E00000X
+230,Behavior Analyst,103K00000X
+231,Behavior Technician,106S00000X
+232,Clinical Neuropsychologist,103G00000X
+233,Clinical,103GC0700X
+234,Counselor,101Y00000X
+235,Addiction (Substance Use Disorder),101YA0400X
+236,Mental Health,101YM0800X
+237,Pastoral,101YP1600X
+238,Professional,101YP2500X
+239,School,101YS0200X
+240,Marriage & Family Therapist,106H00000X
+241,Poetry Therapist,102X00000X
+242,Psychoanalyst,102L00000X
+243,Psychologist,103T00000X
+244,Addiction (Substance Use Disorder),103TA0400X
+245,Adult Development & Aging,103TA0700X
+246,Clinical,103TC0700X
+247,Clinical Child & Adolescent,103TC2200X
+248,Cognitive & Behavioral,103TB0200X
+249,Counseling,103TC1900X
+250,Educational,103TE1000X
+251,Exercise & Sports,103TE1100X
+252,Family,103TF0000X
+253,Forensic,103TF0200X
+254,Group Psychotherapy,103TP2701X
+255,Health,103TH0004X
+256,Health Service,103TH0100X
+257,Men & Masculinity,103TM1700X
+258,Mental Retardation & Developmental Disabilities,103TM1800X
+259,Prescribing (Medical),103TP0016X
+260,Psychoanalysis,103TP0814X
+261,Psychotherapy,103TP2700X
+262,Rehabilitation,103TR0400X
+263,School,103TS0200X
+264,Women,103TW0100X
+265,Social Worker,104100000X
+266,Clinical,1041C0700X
+267,School,1041S0200X
+268,Chiropractor,111N00000X
+269,Independent Medical Examiner,111NI0013X
+270,Internist,111NI0900X
+271,Neurology,111NN0400X
+272,Nutrition,111NN1001X
+273,Occupational Health,111NX0100X
+274,Orthopedic,111NX0800X
+275,Pediatric Chiropractor,111NP0017X
+276,Radiology,111NR0200X
+277,Rehabilitation,111NR0400X
+278,Sports Physician,111NS0005X
+279,Thermography,111NT0100X
+280,Advanced Practice Dental Therapist,125K00000X
+281,Dental Assistant,126800000X
+282,Dental Hygienist,124Q00000X
+283,Dental Laboratory Technician,126900000X
+284,Dental Therapist,125J00000X
+285,Dentist,122300000X
+286,Dental Public Health,1223D0001X
+287,Dentist Anesthesiologist,1223D0004X
+288,Endodontics,1223E0200X
+289,General Practice,1223G0001X
+290,Oral and Maxillofacial Pathology,1223P0106X
+291,Oral and Maxillofacial Radiology,1223X0008X
+292,Oral and Maxillofacial Surgery,1223S0112X
+293,Orthodontics and Dentofacial Orthopedics,1223X0400X
+294,Pediatric Dentistry ,1223P0221X
+295,Periodontics,1223P0300X
+296,Prosthodontics,1223P0700X
+297,Denturist,122400000X
+298,Oral Medicinist,125Q00000X
+299,Dietary Manager,132700000X
+300,"Dietetic Technician, Registered",136A00000X
+301,"Dietitian, Registered",133V00000X
+302,"Nutrition, Metabolic",133VN1006X
+303,"Nutrition, Pediatric",133VN1004X
+304,"Nutrition, Renal",133VN1005X
+305,Nutritionist,133N00000X
+306,"Nutrition, Education",133NN1002X
+307,"Emergency Medical Technician, Basic",146N00000X
+308,"Emergency Medical Technician, Intermediate",146M00000X
+309,"Emergency Medical Technician, Paramedic",146L00000X
+310,Personal Emergency Response Attendant,146D00000X
+311,Optometrist,152W00000X
+312,Corneal and Contact Management,152WC0802X
+313,Low Vision Rehabilitation,152WL0500X
+314,Occupational Vision,152WX0102X
+315,Pediatrics,152WP0200X
+316,Sports Vision,152WS0006X
+317,Vision Therapy,152WV0400X
+318,Technician/Technologist,156F00000X
+319,Contact Lens,156FC0800X
+320,Contact Lens Fitter,156FC0801X
+321,Ocularist,156FX1700X
+322,Ophthalmic,156FX1100X
+323,Ophthalmic Assistant,156FX1101X
+324,Optician,156FX1800X
+325,Optometric Assistant,156FX1201X
+326,Optometric Technician,156FX1202X
+327,Orthoptist,156FX1900X
+328,Licensed Practical Nurse,164W00000X
+329,Licensed Psychiatric Technician,167G00000X
+330,Licensed Vocational Nurse,164X00000X
+331,Registered Nurse,163W00000X
+332,Addiction (Substance Use Disorder),163WA0400X
+333,Administrator,163WA2000X
+334,Ambulatory Care,163WP2201X
+335,Cardiac Rehabilitation,163WC3500X
+336,Case Management,163WC0400X
+337,College Health,163WC1400X
+338,Community Health,163WC1500X
+339,Continence Care,163WC2100X
+340,Continuing Education/Staff Development,163WC1600X
+341,Critical Care Medicine,163WC0200X
+342,Diabetes Educator,163WD0400X
+343,"Dialysis, Peritoneal",163WD1100X
+344,Emergency,163WE0003X
+345,Enterostomal Therapy,163WE0900X
+346,Flight,163WF0300X
+347,Gastroenterology,163WG0100X
+348,General Practice,163WG0000X
+349,Gerontology,163WG0600X
+350,Hemodialysis,163WH0500X
+351,Home Health,163WH0200X
+352,Hospice,163WH1000X
+353,Infection Control,163WI0600X
+354,Infusion Therapy,163WI0500X
+355,Lactation Consultant,163WL0100X
+356,Maternal Newborn,163WM0102X
+357,Medical-Surgical,163WM0705X
+358,Neonatal Intensive Care,163WN0002X
+359,"Neonatal, Low-Risk",163WN0003X
+360,Nephrology,163WN0300X
+361,Neuroscience,163WN0800X
+362,Nurse Massage Therapist (NMT),163WM1400X
+363,Nutrition Support,163WN1003X
+364,"Obstetric, High-Risk",163WX0002X
+365,"Obstetric, Inpatient",163WX0003X
+366,Occupational Health,163WX0106X
+367,Oncology,163WX0200X
+368,Ophthalmic,163WX1100X
+369,Orthopedic,163WX0800X
+370,Ostomy Care,163WX1500X
+371,Otorhinolaryngology & Head-Neck,163WX0601X
+372,Pain Management,163WP0000X
+373,Pediatric Oncology,163WP0218X
+374,Pediatrics,163WP0200X
+375,Perinatal,163WP1700X
+376,Plastic Surgery,163WS0121X
+377,Psychiatric/Mental Health,163WP0808X
+378,"Psychiatric/Mental Health, Adult",163WP0809X
+379,"Psychiatric/Mental Health, Child & Adolescent",163WP0807X
+380,Registered Nurse First Assistant,163WR0006X
+381,Rehabilitation,163WR0400X
+382,Reproductive Endocrinology/Infertility,163WR1000X
+383,School,163WS0200X
+384,Urology,163WU0100X
+385,"Women's Health Care, Ambulatory",163WW0101X
+386,Wound Care,163WW0000X
+387,Adult Companion,372600000X
+388,Chore Provider,372500000X
+389,Day Training/Habilitation Specialist,373H00000X
+390,Doula,374J00000X
+391,Home Health Aide,374U00000X
+392,Homemaker,376J00000X
+393,Nurse's Aide,376K00000X
+394,Nursing Home Administrator,376G00000X
+395,Religious Nonmedical Nursing Personnel,374T00000X
+396,Religious Nonmedical Practitioner,374K00000X
+397,Technician,374700000X
+398,Attendant Care Provider,3747A0650X
+399,Personal Care Attendant,3747P1801X
+400,Acupuncturist,171100000X
+401,Case Manager/Care Coordinator,171M00000X
+402,Clinical Ethicist,174V00000X
+403,Community Health Worker,172V00000X
+404,Contractor,171W00000X
+405,Home Modifications,171WH0202X
+406,Vehicle Modifications,171WV0202X
+407,Driver,172A00000X
+408,Funeral Director,176P00000X
+409,"Genetic Counselor, MS",170300000X
+410,Health Educator,174H00000X
+411,Homeopath,175L00000X
+412,Interpreter,171R00000X
+413,"Lactation Consultant, Non-RN",174N00000X
+414,Legal Medicine,173000000X
+415,Mechanotherapist,172M00000X
+416,"Medical Genetics, Ph.D. Medical Genetics",170100000X
+417,Midwife,176B00000X
+418,"Midwife, Lay",175M00000X
+419,Military Health Care Provider,171000000X
+420,Independent Duty Corpsman,1710I1002X
+421,Independent Duty Medical Technicians,1710I1003X
+422,Naprapath,172P00000X
+423,Naturopath,175F00000X
+424,Peer Specialist,175T00000X
+425,Prevention Professional,405300000X
+426,Reflexologist,173C00000X
+427,"Sleep Specialist, PhD",173F00000X
+428,Specialist,174400000X
+429,Graphics Designer,1744G0900X
+430,Prosthetics Case Management,1744P3200X
+431,Research Data Abstracter/Coder,1744R1103X
+432,Research Study,1744R1102X
+433,Veterinarian,174M00000X
+434,Medical Research,174MM1900X
+435,Pharmacist,183500000X
+436,Ambulatory Care,1835P2201X
+437,Critical Care,1835C0205X
+438,General Practice,1835G0000X
+439,Geriatric,1835G0303X
+440,Nuclear,1835N0905X
+441,Nutrition Support,1835N1003X
+442,Oncology,1835X0200X
+443,Pediatrics,1835P0200X
+444,Pharmacist Clinician (PhC)/ Clinical Pharmacy Specialist,1835P0018X
+445,Pharmacotherapy,1835P1200X
+446,Psychiatric,1835P1300X
+447,Pharmacy Technician,183700000X
+448,Advanced Practice Midwife,367A00000X
+449,Anesthesiologist Assistant,367H00000X
+450,Clinical Nurse Specialist,364S00000X
+451,Acute Care,364SA2100X
+452,Adult Health,364SA2200X
+453,Chronic Care,364SC2300X
+454,Community Health/Public Health,364SC1501X
+455,Critical Care Medicine,364SC0200X
+456,Emergency,364SE0003X
+457,Ethics,364SE1400X
+458,Family Health,364SF0001X
+459,Gerontology,364SG0600X
+460,Holistic,364SH1100X
+461,Home Health,364SH0200X
+462,Informatics,364SI0800X
+463,Long-Term Care,364SL0600X
+464,Medical-Surgical,364SM0705X
+465,Neonatal,364SN0000X
+466,Neuroscience,364SN0800X
+467,Occupational Health,364SX0106X
+468,Oncology,364SX0200X
+469,"Oncology, Pediatrics",364SX0204X
+470,Pediatrics,364SP0200X
+471,Perinatal,364SP1700X
+472,Perioperative,364SP2800X
+473,Psychiatric/Mental Health,364SP0808X
+474,"Psychiatric/Mental Health, Adult",364SP0809X
+475,"Psychiatric/Mental Health, Child & Adolescent",364SP0807X
+476,"Psychiatric/Mental Health, Child & Family",364SP0810X
+477,"Psychiatric/Mental Health, Chronically Ill",364SP0811X
+478,"Psychiatric/Mental Health, Community",364SP0812X
+479,"Psychiatric/Mental Health, Geropsychiatric",364SP0813X
+480,Rehabilitation,364SR0400X
+481,School,364SS0200X
+482,Transplantation,364ST0500X
+483,Women's Health,364SW0102X
+484,"Nurse Anesthetist, Certified Registered",367500000X
+485,Nurse Practitioner,363L00000X
+486,Acute Care,363LA2100X
+487,Adult Health,363LA2200X
+488,Community Health,363LC1500X
+489,Critical Care Medicine,363LC0200X
+490,Family,363LF0000X
+491,Gerontology,363LG0600X
+492,Neonatal,363LN0000X
+493,"Neonatal, Critical Care",363LN0005X
+494,Obstetrics & Gynecology,363LX0001X
+495,Occupational Health,363LX0106X
+496,Pediatrics,363LP0200X
+497,"Pediatrics, Critical Care",363LP0222X
+498,Perinatal,363LP1700X
+499,Primary Care,363LP2300X
+500,Psychiatric/Mental Health,363LP0808X
+501,School,363LS0200X
+502,Women's Health,363LW0102X
+503,Physician Assistant,363A00000X
+504,Medical,363AM0700X
+505,Surgical,363AS0400X
+506,"Assistant, Podiatric",211D00000X
+507,Podiatrist,213E00000X
+508,Foot & Ankle Surgery,213ES0103X
+509,Foot Surgery,213ES0131X
+510,General Practice,213EG0000X
+511,Primary Podiatric Medicine,213EP1101X
+512,Public Medicine,213EP0504X
+513,Radiology,213ER0200X
+514,Sports Medicine,213ES0000X
+515,Anaplastologist,229N00000X
+516,Art Therapist,221700000X
+517,Clinical Exercise Physiologist,224Y00000X
+518,Dance Therapist,225600000X
+519,Developmental Therapist,222Q00000X
+520,Kinesiotherapist,226300000X
+521,Massage Therapist,225700000X
+522,Mastectomy Fitter,224900000X
+523,Music Therapist,225A00000X
+524,Occupational Therapist,225X00000X
+525,Driving and Community Mobility,225XR0403X
+526,Environmental Modification ,225XE0001X
+527,Ergonomics,225XE1200X
+528,"Feeding, Eating & Swallowing",225XF0002X
+529,Gerontology,225XG0600X
+530,Hand,225XH1200X
+531,Human Factors,225XH1300X
+532,Low Vision,225XL0004X
+533,Mental Health,225XM0800X
+534,Neurorehabilitation,225XN1300X
+535,Pediatrics,225XP0200X
+536,Physical Rehabilitation,225XP0019X
+537,Occupational Therapy Assistant,224Z00000X
+538,Driving and Community Mobility,224ZR0403X
+539,Environmental Modification ,224ZE0001X
+540,"Feeding, Eating & Swallowing",224ZF0002X
+541,Low Vision,224ZL0004X
+542,Orthotic Fitter,225000000X
+543,Orthotist,222Z00000X
+544,Pedorthist,224L00000X
+545,Physical Therapist,225100000X
+546,Cardiopulmonary,2251C2600X
+547,"Electrophysiology, Clinical",2251E1300X
+548,Ergonomics,2251E1200X
+549,Geriatrics,2251G0304X
+550,Hand,2251H1200X
+551,Human Factors,2251H1300X
+552,Neurology,2251N0400X
+553,Orthopedic,2251X0800X
+554,Pediatrics,2251P0200X
+555,Sports,2251S0007X
+556,Physical Therapy Assistant,225200000X
+557,Prosthetist,224P00000X
+558,Pulmonary Function Technologist,225B00000X
+559,Recreation Therapist,225800000X
+560,Recreational Therapist Assistant,226000000X
+561,Rehabilitation Counselor,225C00000X
+562,Assistive Technology Practitioner,225CA2400X
+563,Assistive Technology Supplier,225CA2500X
+564,Orientation and Mobility Training Provider,225CX0006X
+565,Rehabilitation Practitioner,225400000X
+566,"Respiratory Therapist, Certified",227800000X
+567,Critical Care,2278C0205X
+568,Educational,2278E1000X
+569,Emergency Care,2278E0002X
+570,General Care,2278G1100X
+571,Geriatric Care,2278G0305X
+572,Home Health,2278H0200X
+573,Neonatal/Pediatrics,2278P3900X
+574,Palliative/Hospice,2278P3800X
+575,Patient Transport,2278P4000X
+576,Pulmonary Diagnostics,2278P1004X
+577,Pulmonary Function Technologist,2278P1006X
+578,Pulmonary Rehabilitation,2278P1005X
+579,SNF/Subacute Care,2278S1500X
+580,"Respiratory Therapist, Registered",227900000X
+581,Critical Care,2279C0205X
+582,Educational,2279E1000X
+583,Emergency Care,2279E0002X
+584,General Care,2279G1100X
+585,Geriatric Care,2279G0305X
+586,Home Health,2279H0200X
+587,Neonatal/Pediatrics,2279P3900X
+588,Palliative/Hospice,2279P3800X
+589,Patient Transport,2279P4000X
+590,Pulmonary Diagnostics,2279P1004X
+591,Pulmonary Function Technologist,2279P1006X
+592,Pulmonary Rehabilitation,2279P1005X
+593,SNF/Subacute Care,2279S1500X
+594,Specialist/Technologist,225500000X
+595,Athletic Trainer,2255A2300X
+596,"Rehabilitation, Blind",2255R0406X
+597,Audiologist,231H00000X
+598,Assistive Technology Practitioner,231HA2400X
+599,Assistive Technology Supplier,231HA2500X
+600,Audiologist-Hearing Aid Fitter,237600000X
+601,Hearing Instrument Specialist,237700000X
+602,Specialist/Technologist,235500000X
+603,Audiology Assistant,2355A2700X
+604,Speech-Language Assistant,2355S0801X
+605,Speech-Language Pathologist,235Z00000X
+606,Student in an Organized Health Care Education/Training Program,390200000X
+607,Perfusionist,242T00000X
+608,Radiologic Technologist,247100000X
+609,Bone Densitometry,2471B0102X
+610,Cardiac-Interventional Technology,2471C1106X
+611,Cardiovascular-Interventional Technology,2471C1101X
+612,Computed Tomography,2471C3401X
+613,Magnetic Resonance Imaging ,2471M1202X
+614,Mammography,2471M2300X
+615,Nuclear Medicine Technology,2471N0900X
+616,Quality Management,2471Q0001X
+617,Radiation Therapy,2471R0002X
+618,Radiography,2471C3402X
+619,Sonography,2471S1302X
+620,Vascular Sonography,2471V0105X
+621,Vascular-Interventional Technology,2471V0106X
+622,Radiology Practitioner Assistant,243U00000X
+623,Specialist/Technologist Cardiovascular,246X00000X
+624,Cardiovascular Invasive Specialist,246XC2901X
+625,Sonography,246XS1301X
+626,Vascular Specialist,246XC2903X
+627,"Specialist/Technologist, Health Information",246Y00000X
+628,"Coding Specialist, Hospital Based",246YC3301X
+629,"Coding Specialist, Physician Office Based",246YC3302X
+630,Registered Record Administrator,246YR1600X
+631,"Specialist/Technologist, Other",246Z00000X
+632,"Art, Medical",246ZA2600X
+633,Biochemist,246ZB0500X
+634,Biomedical Engineering,246ZB0301X
+635,Biomedical Photographer,246ZB0302X
+636,Biostatistician,246ZB0600X
+637,EEG,246ZE0500X
+638,Electroneurodiagnostic,246ZE0600X
+639,"Geneticist, Medical (PhD)",246ZG1000X
+640,Graphics Methods,246ZG0701X
+641,"Illustration, Medical",246ZI1000X
+642,Nephrology,246ZN0300X
+643,Orthopedic Assistant,246ZX2200X
+644,Surgical Assistant,246ZC0007X
+645,Surgical Technologist,246ZS0410X
+646,"Specialist/Technologist, Pathology",246Q00000X
+647,Blood Banking,246QB0000X
+648,Chemistry,246QC1000X
+649,Cytotechnology,246QC2700X
+650,Hemapheresis Practitioner,246QH0401X
+651,Hematology,246QH0000X
+652,Histology,246QH0600X
+653,Immunology,246QI0000X
+654,Laboratory Management,246QL0900X
+655,"Laboratory Management, Diplomate",246QL0901X
+656,Medical Technologist,246QM0706X
+657,Microbiology,246QM0900X
+658,"Technician, Cardiology",246W00000X
+659,"Technician, Health Information",247000000X
+660,Assistant Record Technician,2470A2800X
+661,"Technician, Other",247200000X
+662,Biomedical Engineering,2472B0301X
+663,Darkroom,2472D0500X
+664,EEG,2472E0500X
+665,Renal Dialysis,2472R0900X
+666,Veterinary,2472V0600X
+667,"Technician, Pathology",246R00000X
+668,"Clinical Laboratory Director, Non-physician",247ZC0005X
+669,Histology,246RH0600X
+670,Medical Laboratory,246RM2200X
+671,Phlebotomy,246RP1900X
+672,Local Education Agency (LEA),251300000X
+673,Case Management,251B00000X
+674,Community/Behavioral Health,251S00000X
+675,"Day Training, Developmentally Disabled Services",251C00000X
+676,Early Intervention Provider Agency,252Y00000X
+677,Foster Care Agency,253J00000X
+678,Home Health,251E00000X
+679,Home Infusion,251F00000X
+680,"Hospice Care, Community Based",251G00000X
+681,In Home Supportive Care,253Z00000X
+682,Nursing Care,251J00000X
+683,Program of All-Inclusive Care for the Elderly (PACE) Provider Organization,251T00000X
+684,Public Health or Welfare,251K00000X
+685,Supports Brokerage,251X00000X
+686,Voluntary or Charitable,251V00000X
+687,Clinic/Center,261Q00000X
+688,Adolescent and Children Mental Health,261QM0855X
+689,Adult Day Care,261QA0600X
+690,Adult Mental Health ,261QM0850X
+691,Ambulatory Family Planning Facility ,261QA0005X
+692,Ambulatory Fertility Facility ,261QA0006X
+693,Ambulatory Surgical,261QA1903X
+694,Amputee ,261QA0900X
+695,Augmentative Communication ,261QA3000X
+696,Birthing,261QB0400X
+697,Community Health,261QC1500X
+698,Corporate Health,261QC1800X
+699,Critical Access Hospital ,261QC0050X
+700,Dental,261QD0000X
+701,Developmental Disabilities ,261QD1600X
+702,Emergency Care,261QE0002X
+703,Endoscopy,261QE0800X
+704,End-Stage Renal Disease (ESRD) Treatment,261QE0700X
+705,"Family Planning, Non-Surgical",261QF0050X
+706,Federally Qualified Health Center (FQHC),261QF0400X
+707,Genetics ,261QG0250X
+708,Health Service,261QH0100X
+709,Hearing and Speech,261QH0700X
+710,Infusion Therapy,261QI0500X
+711,Lithotripsy,261QL0400X
+712,Magnetic Resonance Imaging (MRI),261QM1200X
+713,Medical Specialty ,261QM2500X
+714,Medically Fragile Infants and Children Day Care,261QM3000X
+715,Mental Health (Including Community Mental Health Center),261QM0801X
+716,Methadone ,261QM2800X
+717,Migrant Health,261QM1000X
+718,Military Ambulatory Procedure Visits Operational (Transportable),261QM1103X
+719,Military and U.S. Coast Guard Ambulatory Procedure,261QM1101X
+720,Military Outpatient Operational (Transportable) Component,261QM1102X
+721,Military/U.S. Coast Guard Outpatient,261QM1100X
+722,Multi-Specialty,261QM1300X
+723,Occupational Medicine,261QX0100X
+724,Oncology,261QX0200X
+725,"Oncology, Radiation",261QX0203X
+726,Ophthalmologic Surgery,261QS0132X
+727,Oral and Maxillofacial Surgery,261QS0112X
+728,Pain,261QP3300X
+729,Physical Therapy,261QP2000X
+730,Podiatric,261QP1100X
+731,Primary Care,261QP2300X
+732,Prison Health,261QP2400X
+733,"Public Health, Federal",261QP0904X
+734,"Public Health, State or Local",261QP0905X
+735,Radiology,261QR0200X
+736,"Radiology, Mammography",261QR0206X
+737,"Radiology, Mobile",261QR0208X
+738,"Radiology, Mobile Mammography",261QR0207X
+739,Recovery Care,261QR0800X
+740,Rehabilitation,261QR0400X
+741,"Rehabilitation, Cardiac Facilities",261QR0404X
+742,"Rehabilitation, Comprehensive Outpatient Rehabilitation Facility (CORF)",261QR0401X
+743,"Rehabilitation, Substance Use Disorder",261QR0405X
+744,Research,261QR1100X
+745,Rural Health,261QR1300X
+746,Sleep Disorder Diagnostic,261QS1200X
+747,Student Health,261QS1000X
+748,Urgent Care,261QU0200X
+749,VA,261QV0200X
+750,Epilepsy Unit,273100000X
+751,Medicare Defined Swing Bed Unit,275N00000X
+752,Psychiatric Unit,273R00000X
+753,Rehabilitation Unit,273Y00000X
+754,"Rehabilitation, Substance Use Disorder Unit",276400000X
+755,Christian Science Sanitorium,287300000X
+756,Chronic Disease Hospital,281P00000X
+757,Children,281PC2000X
+758,General Acute Care Hospital,282N00000X
+759,Children,282NC2000X
+760,Critical Access ,282NC0060X
+761,Rural,282NR1301X
+762,Women,282NW0100X
+763,Long Term Care Hospital,282E00000X
+764,Military Hospital,286500000X
+765,Community Health,2865C1500X
+766,Military General Acute Care Hospital,2865M2000X
+767,Military General Acute Care Hospital. Operational (Transportable),2865X1600X
+768,Psychiatric Hospital,283Q00000X
+769,Rehabilitation Hospital,283X00000X
+770,Children,283XC2000X
+771,Religious Nonmedical Health Care Institution,282J00000X
+772,Special Hospital,284300000X
+773,Clinical Medical Laboratory,291U00000X
+774,Dental Laboratory,292200000X
+775,Military Clinical Medical Laboratory,291900000X
+776,Physiological Laboratory,293D00000X
+777,Exclusive Provider Organization,302F00000X
+778,Health Maintenance Organization,302R00000X
+779,Point of Service,305S00000X
+780,Preferred Provider Organization,305R00000X
+781,Alzheimer Center (Dementia Center),311500000X
+782,Assisted Living Facility,310400000X
+783,"Assisted Living, Behavioral Disturbances",3104A0630X
+784,"Assisted Living, Mental Illness",3104A0625X
+785,Christian Science Facility,317400000X
+786,Custodial Care Facility,311Z00000X
+787,Adult Care Home,311ZA0620X
+788,"Hospice, Inpatient",315D00000X
+789,"Intermediate Care Facility, Mental Illness ",310500000X
+790,"Intermediate Care Facility, Mentally Retarded",315P00000X
+791,Nursing Facility/Intermediate Care Facility,313M00000X
+792,Skilled Nursing Facility,314000000X
+793,"Nursing Care, Pediatric",3140N1450X
+794,Lodging,177F00000X
+795,Meals,174200000X
+796,"Community Based Residential Treatment Facility, Mental Illness",320800000X
+797,"Community Based Residential Treatment Facility, Mental Retardation and/or Developmental Disabilities",320900000X
+798,Psychiatric Residential Treatment Facility,323P00000X
+799,"Residential Treatment Facility, Emotionally Disturbed Children",322D00000X
+800,"Residential Treatment Facility, Mental Retardation and/or Developmental Disabilities",320600000X
+801,"Residential Treatment Facility, Physical Disabilities",320700000X
+802,Substance Abuse Rehabilitation Facility,324500000X
+803,"Substance Abuse Treatment, Children",3245S0500X
+804,Respite Care,385H00000X
+805,Respite Care Camp,385HR2050X
+806,"Respite Care, Mental Illness, Child",385HR2055X
+807,"Respite Care, Mental Retardation and/or Developmental Disabilities",385HR2060X
+808,"Respite Care, Physical Disabilities, Child",385HR2065X
+809,Blood Bank,331L00000X
+810,Department of Veterans Affairs (VA) Pharmacy,332100000X
+811,Durable Medical Equipment & Medical Supplies,332B00000X
+812,Customized Equipment,332BC3200X
+813,Dialysis Equipment & Supplies,332BD1200X
+814,Nursing Facility Supplies,332BN1400X
+815,Oxygen Equipment & Supplies,332BX2000X
+816,Parenteral & Enteral Nutrition,332BP3500X
+817,Emergency Response System Companies,333300000X
+818,Eye Bank,332G00000X
+819,Eyewear Supplier,332H00000X
+820,Hearing Aid Equipment,332S00000X
+821,Home Delivered Meals,332U00000X
+822,Indian Health Service/Tribal/Urban Indian Health (I/T/U) Pharmacy,332800000X
+823,Medical Foods Supplier,335G00000X
+824,Military/U.S. Coast Guard Pharmacy,332000000X
+825,Non-Pharmacy Dispensing Site,332900000X
+826,Organ Procurement Organization,335U00000X
+827,Pharmacy,333600000X
+828,Clinic Pharmacy,3336C0002X
+829,Community/Retail Pharmacy,3336C0003X
+830,Compounding Pharmacy,3336C0004X
+831,Home Infusion Therapy Pharmacy,3336H0001X
+832,Institutional Pharmacy,3336I0012X
+833,Long Term Care Pharmacy,3336L0003X
+834,Mail Order Pharmacy,3336M0002X
+835,Managed Care Organization Pharmacy,3336M0003X
+836,Nuclear Pharmacy,3336N0007X
+837,Specialty Pharmacy,3336S0011X
+838,Portable X-ray and/or Other Portable Diagnostic Imaging Supplier,335V00000X
+839,Prosthetic/Orthotic Supplier,335E00000X
+840,Air Carrier,344800000X
+841,Ambulance,341600000X
+842,Air Transport,3416A0800X
+843,Land Transport,3416L0300X
+844,Water Transport,3416S0300X
+845,Bus,347B00000X
+846,Military/U.S. Coast Guard Transport,341800000X
+847,"Military or U.S. Coast Guard Ambulance, Air Transport",3418M1120X
+848,"Military or U.S. Coast Guard Ambulance, Ground Transport",3418M1110X
+849,"Military or U.S. Coast Guard Ambulance, Water Transport",3418M1130X
+850,Non-emergency Medical Transport (VAN),343900000X
+851,Private Vehicle,347C00000X
+852,Secured Medical Transport (VAN),343800000X
+853,Taxi,344600000X
+854,Train,347D00000X
+855,Transportation Broker,347E00000X

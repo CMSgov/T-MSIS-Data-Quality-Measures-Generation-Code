@@ -1,0 +1,207 @@
+,Variable,Code,Description
+0,elgblty_grp_cd,1,Parents and Other Caretaker Relatives
+1,elgblty_grp_cd,2,Transitional Medical Assistance
+2,elgblty_grp_cd,3,Extended Medicaid due to Earnings
+3,elgblty_grp_cd,4,Extended Medicaid due to Spousal Support Collections
+4,elgblty_grp_cd,5,Pregnant Women
+5,elgblty_grp_cd,6,Deemed Newborns
+6,elgblty_grp_cd,7,Infants and Children under Age 19
+7,elgblty_grp_cd,8,"Children with Title IV-E Adoption Assistance, Foster Care or Guardianship Care"
+8,elgblty_grp_cd,9,Former Foster Care Children
+9,elgblty_grp_cd,72,Adult Group - Individuals at or below 133% FPL Age 19 through 64 - newly eligible for all states
+10,elgblty_grp_cd,73,Adult Group - Individuals at or below 133% FPL Age 19 through 64-  not newly eligible for non 1905z(3) states
+11,elgblty_grp_cd,74,Adult Group - Individuals at or below 133% FPL Age 19 through 64 – not newly eligible parent/ caretaker-relative(s) in 1905z(3) states
+12,elgblty_grp_cd,75,Adult Group - Individuals at or below 133% FPL Age 19 through 64- not newly eligible non-parent/ caretaker-relative(s) in 1905z(3) states
+13,elgblty_grp_cd,11,Individuals Receiving SSI
+14,elgblty_grp_cd,12,"Aged, Blind and Disabled Individuals in 209(b) States"
+15,elgblty_grp_cd,13,Individuals Receiving Mandatory State Supplements
+16,elgblty_grp_cd,14,Individuals Who Are Essential Spouses
+17,elgblty_grp_cd,15,Institutionalized Individuals Continuously Eligible Since 1973
+18,elgblty_grp_cd,16,Blind or Disabled Individuals Eligible in 1973
+19,elgblty_grp_cd,17,Individuals Who Lost Eligibility for SSI/SSP Due to an Increase in OASDI Benefits in 1972
+20,elgblty_grp_cd,18,"Individuals Who Would be Eligible for SSI/SSP but for OASDI COLA increases since April, 1977 "
+21,elgblty_grp_cd,19,Disabled Widows and Widowers Ineligible for SSI due to Increase in OASDI
+22,elgblty_grp_cd,20,Disabled Widows and Widowers Ineligible for SSI due to Early Receipt of Social Security
+23,elgblty_grp_cd,21,Working Disabled under 1619(b)
+24,elgblty_grp_cd,22,Disabled Adult Children
+25,elgblty_grp_cd,23,Qualified Medicare Beneficiaries
+26,elgblty_grp_cd,24,Qualified Disabled and Working Individuals
+27,elgblty_grp_cd,25,Specified Low Income Medicare Beneficiaries
+28,elgblty_grp_cd,26,Qualifying Individuals
+29,elgblty_grp_cd,27,Optional Coverage of Parents and Other Caretaker Relatives
+30,elgblty_grp_cd,28,Reasonable Classifications of Individuals under Age 21
+31,elgblty_grp_cd,29,Children with Non-IV-E Adoption Assistance
+32,elgblty_grp_cd,30,Independent Foster Care Adolescents
+33,elgblty_grp_cd,31,Optional Targeted Low Income Children
+34,elgblty_grp_cd,32,Individuals Electing COBRA Continuation Coverage
+35,elgblty_grp_cd,33,Individuals above 133% FPL under Age 65
+36,elgblty_grp_cd,34,Certain Individuals  Needing Treatment for Breast or Cervical Cancer
+37,elgblty_grp_cd,35,Individuals Eligible for Family Planning Services
+38,elgblty_grp_cd,36,Individuals with Tuberculosis
+39,elgblty_grp_cd,37,"Aged, Blind or Disabled Individuals Eligible for but Not Receiving Cash Assistance"
+40,elgblty_grp_cd,38,Individuals Eligible for Cash Assistance except for Institutionalization
+41,elgblty_grp_cd,39,Individuals Receiving Home and Community Based Services under Institutional Rules
+42,elgblty_grp_cd,40,"Optional State Supplement Recipients - 1634 States, and SSI Criteria States with 1616 Agreements"
+43,elgblty_grp_cd,41,"Optional State Supplement Recipients - 209(b) States, and SSI Criteria States without 1616 Agreements"
+44,elgblty_grp_cd,42,Institutionalized Individuals Eligible under a Special Income Level
+45,elgblty_grp_cd,43,Individuals participating in a PACE Program under Institutional Rules
+46,elgblty_grp_cd,44,Individuals Receiving Hospice Care
+47,elgblty_grp_cd,45,Qualified Disabled Children under Age 19 
+48,elgblty_grp_cd,46,Poverty Level Aged or Disabled
+49,elgblty_grp_cd,47,Work Incentives Eligibility Group
+50,elgblty_grp_cd,48,Ticket to Work Basic Group
+51,elgblty_grp_cd,49,Ticket to Work Medical Improvements Group
+52,elgblty_grp_cd,50,Family Opportunity Act Children with Disabilities
+53,elgblty_grp_cd,51,Individuals Eligible for Home and Community-Based Services 
+54,elgblty_grp_cd,52,Individuals Eligible for Home and Community-Based Services - Special Income Level
+55,elgblty_grp_cd,53,Medically Needy Pregnant Women
+56,elgblty_grp_cd,54,Medically Needy Children under Age 18
+57,elgblty_grp_cd,55,Medically Needy Children Age 18 through 20
+58,elgblty_grp_cd,56,Medically Needy Parents and Other Caretakers
+59,elgblty_grp_cd,59,"Medically Needy Aged, Blind or Disabled"
+60,elgblty_grp_cd,60,Medically Needy Blind or Disabled Individuals Eligible in 1973
+61,elgblty_grp_cd,61,Targeted Low-Income Children
+62,elgblty_grp_cd,62,Deemed Newborn
+63,elgblty_grp_cd,63,Children Ineligible for Medicaid Due to Loss of Income Disregards 
+64,elgblty_grp_cd,64,Coverage from Conception to Birth
+65,elgblty_grp_cd,65,Children with Access to Public Employee Coverage
+66,elgblty_grp_cd,66,Children Eligible for Dental Only Supplemental Coverage
+67,elgblty_grp_cd,67,Targeted Low-Income Pregnant Women
+68,elgblty_grp_cd,68,Pregnant Women with Access to Public Employee Coverage
+69,elgblty_grp_cd,69,Individuals with Mental Health Conditions (expansion group)
+70,elgblty_grp_cd,70,Family Planning Participants (expansion group)
+71,elgblty_grp_cd,71,Other expansion group
+72,enrld_mc_plan_type_cd,0,"Not applicable, individual is eligible for Medicaid or CHIP but not enrolled in a managed care plan "
+73,enrld_mc_plan_type_cd,1,Individual is enrolled in a Comprehensive MCO
+74,enrld_mc_plan_type_cd,2,Individual is enrolled in a Traditional PCCM Provider arrangement
+75,enrld_mc_plan_type_cd,3,Individual is enrolled in an Enhanced PCCM Provider arrangement
+76,enrld_mc_plan_type_cd,4,Individual is enrolled in a HIO
+77,enrld_mc_plan_type_cd,5,Individual is enrolled in a Medical-only PIHP (risk or non-risk/non-comprehensive/with inpatient hospital or institutional services)
+78,enrld_mc_plan_type_cd,6,Individual is enrolled in a Medical-only PAHP (risk or non-risk/non-comprehensive/no inpatient hospital or institutional services) 
+79,enrld_mc_plan_type_cd,7,Individual is enrolled a Long Term Care (LTC) PIHP
+80,enrld_mc_plan_type_cd,8,Individual is enrolled a Mental Health (MH) PIHP
+81,enrld_mc_plan_type_cd,9,Individual is enrolled in a Mental Health (MH) PAHP
+82,enrld_mc_plan_type_cd,10,Individual is enrolled in a Substance Use Disorders (SUD) PIHP
+83,enrld_mc_plan_type_cd,11,Individual is enrolled in a Substance Use Disorders (SUD) PAHP
+84,enrld_mc_plan_type_cd,12,Individual is enrolled in a Mental Health (MH) and Substance Use Disorders (SUD) PIHP
+85,enrld_mc_plan_type_cd,13,Individual is enrolled in a Mental Health (MH) and Substance Use Disorders (SUD) PAHP
+86,enrld_mc_plan_type_cd,14,Individual is enrolled in a Dental PAHP
+87,enrld_mc_plan_type_cd,15,Individual is enrolled in a Transportation PAHP
+88,enrld_mc_plan_type_cd,16,Individual is enrolled in a Disease Management PAHP
+89,enrld_mc_plan_type_cd,17,Individual is enrolled in Program for All-Inclusive Care for the Elderly (PACE)
+90,enrld_mc_plan_type_cd,18,Pharmacy PAHP
+91,enrld_mc_plan_type_cd,60,Accountable Care Organization
+92,enrld_mc_plan_type_cd,70,Health/Medical Home
+93,enrld_mc_plan_type_cd,80,Integrated Care For Dual Eligibles
+94,enrld_mc_plan_type_cd,99,Individual’s managed care plan status is unknown
+95,race_cd,1,White
+96,race_cd,2,Black or African American
+97,race_cd,3,American Indian or Alaskan Native
+98,race_cd,4,Asian Indian
+99,race_cd,5,Chinese
+100,race_cd,6,Filipino
+101,race_cd,7,Japanese
+102,race_cd,8,Korean
+103,race_cd,9,Vietnamese
+104,race_cd,10,Other Asian
+105,race_cd,11,Asian Unknown
+106,race_cd,12,Native Hawaiian
+107,race_cd,13,Guamanian or Chamorro
+108,race_cd,14,Samoan
+109,race_cd,15,Other Pacific Islander
+110,race_cd,16,Native Hawaiian or Other Pacific Islander Unknown
+111,race_cd,17,Unspecified
+112,race_cd,999,Unknown  
+113,ethncty_cd,0,"Not of Hispanic or, Latino/a, or Spanish origin"
+114,ethncty_cd,1,"Mexican, Mexican American, Chicano/a"
+115,ethncty_cd,2,Puerto Rican
+116,ethncty_cd,3,Cuban
+117,ethncty_cd,4,"Another Hispanic, Latino, or Spanish origin"
+118,ethncty_cd,5,Hispanic or Latino Unknown
+119,ethncty_cd,6,Ethnicity Unspecified
+120,ethncty_cd,9,Ethnicity Unknown
+121,imgrtn_stus_cd,1,Qualified non-citizen
+122,imgrtn_stus_cd,2,Lawfully present under CHIPRA 214
+123,imgrtn_stus_cd,3,Eligible only for payment for emergency services
+124,imgrtn_stus_cd,8,Not Applicable (U.S. citizen)
+125,imgrtn_stus_cd,9,Unknown
+126,enrlmt_type_cd,1,Medicaid
+127,enrlmt_type_cd,2,CHIP
+128,enrlmt_type_cd,9,Unknown
+129,mc_plan_type_cd,1,Comprehensive MCO
+130,mc_plan_type_cd,2,Traditional PCCM Provider
+131,mc_plan_type_cd,3,Enhanced PCCM Provider
+132,mc_plan_type_cd,4,HIO
+133,mc_plan_type_cd,5,Medical-only PIHP (risk or non-risk/non-comprehensive/with inpatient hospital or   institutional services)
+134,mc_plan_type_cd,6,Medical-only PAHP (risk or non-risk/non-comprehensive/no inpatient hospital or institutional services)
+135,mc_plan_type_cd,7,Long Term Care (LTC) PIHP
+136,mc_plan_type_cd,8,Mental Health (MH) PIHP
+137,mc_plan_type_cd,9,Mental Health (MH) PAHP
+138,mc_plan_type_cd,10,Substance Use Disorders (SUD) PIHP
+139,mc_plan_type_cd,11,Substance Use Disorders (SUD) PAHP
+140,mc_plan_type_cd,12,Mental Health (MH) and Substance Use Disorders (SUD) PIHP
+141,mc_plan_type_cd,13,Mental Health (MH) and Substance Use Disorders (SUD) PAHP
+142,mc_plan_type_cd,14,Dental PAHP
+143,mc_plan_type_cd,15,Transportation PAHP
+144,mc_plan_type_cd,16,Disease Management PAHP
+145,mc_plan_type_cd,17,PACE
+146,mc_plan_type_cd,18,Pharmacy PAHP
+147,mc_plan_type_cd,99,Unknown
+148,mc_plan_type_cd,60,Accountable Care Organization
+149,mc_plan_type_cd,70,Health/Medical Home
+150,mc_plan_type_cd,80,Integrated Care For Dual Eligibles
+151,oprtg_authrty_cd,1,"1115 demonstration waiver program – demonstration projects under which most provisions of Section 1902 of the Social Security Act are waived and/or expenditures that would not otherwise be eligible for FFP are authorized. States use these to expand eligibility, restructure Medicaid coverage and secure programmatic flexibility. "
+152,oprtg_authrty_cd,2,1915(b) waiver program –  waivers of most provisions of Section 1902 of the Social Security Act in order to limit beneficiaries’ freedom of choice of provider; selectively contract with providers; or provide additional services to beneficiaries (State may include BBA special populations)
+153,oprtg_authrty_cd,3,1932(a) state plan option to use managed care for MCO and PCCM programs – mandatory managed care programs implemented through the state plan (State must exclude or permit voluntary enrollment of specific  populations)
+154,oprtg_authrty_cd,4,1915(a) voluntary managed care program – an MCO managed care program in which enrollment is voluntary and therefore does not require a waiver.
+155,oprtg_authrty_cd,5,"Concurrent 1915(b)/1915(c) waivers– programs, or portions thereof, operating under both 1915(b) managed care and 1915(c) home and community-based services waivers."
+156,oprtg_authrty_cd,6,"Concurrent 1915(a)/1915(c) waivers– programs, or portions thereof, operating under both 1915(a) voluntary managed care and 1915(c) home and community-based services waiver"
+157,oprtg_authrty_cd,7,"Concurrent 1932(a)/1915(c) waivers - programs, or portions thereof, operating under both 1932(a) managed care and 1915(c) home and community-based services waiver."
+158,oprtg_authrty_cd,8,"PACE – program that provides pre-paid, capitated comprehensive, health care services to the frail elderly."
+159,oprtg_authrty_cd,9,1905(t) voluntary PCCM program – A PCCM managed care program in which enrollment is voluntary and therefore does not require a waiver.
+160,oprtg_authrty_cd,10,1937benchmark benefit program—programs to provide benefits that differ from Medicaid state plan benefits using managed care and implemented through the state plan.
+161,oprtg_authrty_cd,11,"1902(a)(70) non-emergency medical transportation program –non-emergency medical transportation brokerage programs implemented through the state plan which can vary scope of services, operate on a less-than-statewide basis, and limit freedom of choice"
+162,oprtg_authrty_cd,12,Concurrent 1915(b)/1915(i) HCBS state plan services - the optional 1915(i) state plan Home and Community-Based Services (HCBS) benefit operated in conjunction with a 1915(b) managed care waiver program.
+163,oprtg_authrty_cd,13,Concurrent 1915(a)/ 1915(i) HCBS state plan services - the optional 1915(i) state plan Home and Community-Based Services (HCBS) benefit operated in conjunction with a 1915(a) voluntary managed care program.
+164,oprtg_authrty_cd,14,Concurrent 1932(a)/ 1915(i) HCBS state plan services - the optional 1915(i) state plan Home and Community-Based Services (HCBS) benefit operated in conjunction with a 1932(a) managed care state plan option.
+165,oprtg_authrty_cd,15,1945 Health Homes.
+166,cvrg_type_cd,1,Drug
+167,cvrg_type_cd,2,Professional (Physician) Visit - Office
+168,cvrg_type_cd,3,Dental Care
+169,cvrg_type_cd,4,Inpatient Hospital
+170,cvrg_type_cd,5,Outpatient Hospital
+171,cvrg_type_cd,6,Nursing Home
+172,cvrg_type_cd,7,Vision
+173,cvrg_type_cd,8,Durable Med Equip (rent)
+174,cvrg_type_cd,9,Durable Med Equip (purchase)
+175,cvrg_type_cd,10,Home Health
+176,cvrg_type_cd,11,Mental health—outpatient
+177,cvrg_type_cd,12,Mental health –inpatient
+178,cvrg_type_cd,13,Psychiatric care- outpatient
+179,cvrg_type_cd,14,Psychiatric care- inpatient
+180,cvrg_type_cd,15,Rehabilitation
+181,cvrg_type_cd,16,Cancer
+182,cvrg_type_cd,17,Emergency Services
+183,cvrg_type_cd,18,Chiropractic
+184,cvrg_type_cd,19,Surgical
+185,cvrg_type_cd,20,"Diagnostic Medical, including X-ray and Lab Services"
+186,cvrg_type_cd,21,PT/OT/ST
+187,cvrg_type_cd,22,Hospice
+188,cvrg_type_cd,23,Transportation
+189,cvrg_type_cd,98,Other
+190,insrnc_plan_type_cd,1,Medical or comprehensive health insurance plan (e.g. HMO)
+191,insrnc_plan_type_cd,2,Dental health insurance plan
+192,insrnc_plan_type_cd,3,Vision health insurance plan
+193,insrnc_plan_type_cd,4,Prenatal/delivery health insurance plan
+194,insrnc_plan_type_cd,5,Long term care health insurance plan (Long Term PIHP)
+195,insrnc_plan_type_cd,6,Transportation health insurance plan (Transportation PAHP)
+196,insrnc_plan_type_cd,7,A managed care plan
+197,insrnc_plan_type_cd,8,Disease management health insurance plan (Disease Management PAHP)
+198,insrnc_plan_type_cd,9,PAHP (Medical only)
+199,insrnc_plan_type_cd,10,Comprehensive health insurance and Long Term Care (hybrid)
+200,insrnc_plan_type_cd,11,Other health insurance plan
+201,insrnc_plan_type_cd,12,Veterans Administration health benefits
+202,insrnc_plan_type_cd,13,Indian Health Service Program health benefits
+203,insrnc_plan_type_cd,14,TRICARE health benefits
+204,insrnc_plan_type_cd,15,Eligible enrolled in private LTC insurance
+205,insrnc_plan_type_cd,16,Fee-for-Service insurance

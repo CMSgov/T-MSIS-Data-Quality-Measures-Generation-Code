@@ -457,6 +457,8 @@ class DQPrepETL:
     @staticmethod
     def create_base_clh_view(dqm: DQMeasures, ftype: str, fname: str):
 
+        spark = SparkSession.getActiveSession()
+
         z = f"""
                 create or replace temporary view prep_clh_{ftype}_view as
                 select
@@ -507,8 +509,6 @@ class DQPrepETL:
                     tmsis_actv_ind = 1
                     and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
             """
-
-        spark = SparkSession.getActiveSession()
         spark.sql(z)
         DQPrepETL.log(dqm, 'prep_clh_' + ftype + '_view', z)
 
