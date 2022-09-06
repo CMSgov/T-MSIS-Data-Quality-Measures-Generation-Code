@@ -1,0 +1,90 @@
+{
+  "name": "MACBIS DQ Runner - Alaska",
+  "new_cluster": {
+    "spark_version": "9.1.x-scala2.12",
+    "spark_conf": {
+      "spark.databricks.repl.allowedLanguages": "python,sql",
+      "spark.executor.extraJavaOptions": "-XX:+UseG1GC",
+      "spark.driver.maxResultSize": "24g",
+      "spark.databricks.acl.dfAclsEnabled": "true",
+      "spark.databricks.cluster.profile": "serverless",
+      "spark.sql.legacy.parquet.datetimeRebaseModeInRead": "LEGACY",
+      "spark.databricks.pyspark.enablePy4JSecurity": "false"
+    },
+    "aws_attributes": {
+      "zone_id": "us-east-1a",
+      "first_on_demand": 0,
+      "availability": "ON_DEMAND",
+      "instance_profile_arn": "arn:aws:iam::810638926762:instance-profile/databricks-val-mstruser-worker-instance-profile",
+      "spot_bid_price_percent": 100,
+      "ebs_volume_count": 0
+    },
+    "node_type_id": "i3.2xlarge",
+    "driver_node_type_id": "i3.4xlarge",
+    "custom_tags": {
+      "ResourceClass": "Serverless",
+      "stack": "val",
+      "layer": "app",
+      "business": "AREMAC",
+      "business_function": "TMSIS:SAS:DQM_CONV",
+      "State": "Alaska"
+    },
+    "cluster_log_conf": {
+      "s3": {
+        "destination": "s3://macbis-dw-logs/databricks/val/cluster-logs/sas-dqm-conv/macbis-dq-runner-ak",
+        "region": "us-east-1",
+        "enable_encryption": true,
+        "canned_acl": "bucket-owner-full-control"
+      }
+    },
+    "enable_elastic_disk": false,
+    "init_scripts": [
+      {
+        "dbfs": {
+          "destination": "dbfs:/databricks/init/custom_spark_conf/uat-val-metastore.sh"
+        }
+      },
+      {
+        "dbfs": {
+          "destination": "dbfs:/databricks/init/custom_spark_conf/udf_copy_local_dbx73.sh"
+        }
+      }
+    ],
+    "autoscale": {
+      "min_workers": 4,
+      "max_workers": 24
+    }
+  },
+  "libraries": [
+    {
+      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.1.0-py3-none-any.whl"
+    },
+    {
+      "maven": {
+        "coordinates": "com.crealytics:spark-excel_2.12:0.13.7"
+      }
+    }
+  ],
+  "email_notifications": {
+    "on_success": [
+      "l4a4a9h1q7k8e9f9@dataconnect-workspace.slack.com"
+    ],
+    "on_failure": [
+      "l4a4a9h1q7k8e9f9@dataconnect-workspace.slack.com"
+    ],
+    "no_alert_for_skipped_runs": false
+  },
+  "timeout_seconds": 43200,
+  "max_retries": 3,
+  "min_retry_interval_millis": 360000,
+  "notebook_task": {
+    "notebook_path": "/DQ-Measures/DQM v3.1 UAT",
+    "base_parameters": {
+      "reportMonth": "202206",
+      "stateCode": "AK",
+      "entity": "0",
+      "runID": ""
+    }
+  },
+  "max_concurrent_runs": 1
+}

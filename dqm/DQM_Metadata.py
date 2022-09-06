@@ -128,7 +128,8 @@ class DQM_Metadata:
                     ,incm_cd
                     ,mrtl_stus_cd
                     ,vet_ind
-                    ,chip_cd""",
+                    ,chip_cd
+                    ,mdcr_bene_id""",
             'tmsis_elgbl_cntct':
                 """,elgbl_state_cd
                     ,elgbl_cnty_cd
@@ -615,6 +616,8 @@ class DQM_Metadata:
             ,'AX': "(clm_type_cd in ('1','3') and (adjstmt_ind in ('0','4')) )" # Medicaid FFS and Encounter: Original and Replacement, Paid Claims
             ,'AY': "(clm_type_cd in ('A','C') and (adjstmt_ind in ('0','4')) )" #   S-CHIP FFS and Encounter: Original and Replacement, Paid Claims
             ,'AZ': "(clm_type_cd in ('3','C') and (adjstmt_ind in ('0','4')) )" # Medicaid and S-CHIP Encounters: Original and Replacement, Paid Claims
+            ,'BA': "(clm_type_cd in ('2') and (adjstmt_ind in ('0','4')) )"     # Medicaid Capitation Payment: Original and Replacement, Paid Claims
+            ,'BB': "(clm_type_cd in ('B') and (adjstmt_ind in ('0','4')) )"     #   S-CHIP Capitation Payment: Original and Replacement, Paid Claims
         }
 
     class create_claims_tables():
@@ -1032,7 +1035,7 @@ class DQM_Metadata:
     # -------------------------------------------------------------------------------------------------
     class Rounding():
 
-        round_noop = ['EXP28_2', 'EXP45_5', 'EXP45_6',
+        round_noop = ['EXP28_2', 
                       'EL10_1', 'EL3_14', 'EL3_20', 'EL3_23', 'EL6_26', 'EL6_27']
 
         round0 = ['EXP1_4']
@@ -1042,8 +1045,8 @@ class DQM_Metadata:
         round2 = ['EL13_1',
                   'EL5_1',
                   'EL5_3',
-                  'EXP14_4',
-                  'EL10_3','EL10_4',
+                  'EXP14_4', 'EXP45_4', 'EXP45_5', 'EXP45_6',
+                  'EL10_3', 'EL10_4',
                   'EL1_5',
                   'MCR28_1', 'MCR56_1', 'MCR57_1', 'FFS47_1', 'FFS48_1']
 
