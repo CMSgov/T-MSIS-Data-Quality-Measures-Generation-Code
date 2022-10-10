@@ -2,7 +2,18 @@ databricks --profile val jobs reset --job-id 77011 --json-file .\jobs\VAL\alabam
 databricks --profile val jobs reset --job-id 77101 --json-file .\jobs\VAL\alaska.json
 databricks --profile val jobs reset --job-id 77140 --json-file .\jobs\VAL\arizona.json
 databricks --profile val jobs reset --job-id 77185 --json-file .\jobs\VAL\arkansas.json
+
 databricks --profile val jobs reset --job-id 77251 --json-file .\jobs\VAL\california.json
+databricks --profile val jobs reset --job-id 598923  --json-file .\jobs\PROD\california_prep.json
+databricks --profile val jobs reset --job-id 598736  --json-file .\jobs\PROD\california_900.json
+databricks --profile val jobs reset --job-id 598725  --json-file .\jobs\PROD\california_800.json
+databricks --profile val jobs reset --job-id 598691  --json-file .\jobs\PROD\california_700.json
+databricks --profile val jobs reset --job-id 598637  --json-file .\jobs\PROD\california_600.json
+databricks --profile val jobs reset --job-id 598619  --json-file .\jobs\PROD\california_500.json
+databricks --profile val jobs reset --job-id 598578  --json-file .\jobs\PROD\california_200.json
+databricks --profile val jobs reset --job-id 598532  --json-file .\jobs\PROD\california_100.json
+databricks --profile val jobs reset --job-id 598747  --json-file .\jobs\PROD\california_reports.json
+
 databricks --profile val jobs reset --job-id 77643 --json-file .\jobs\VAL\colorado.json
 databricks --profile val jobs reset --job-id 77712 --json-file .\jobs\VAL\connecticut.json
 databricks --profile val jobs reset --job-id 77842 --json-file .\jobs\VAL\district_of_columbia.json

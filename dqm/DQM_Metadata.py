@@ -618,6 +618,8 @@ class DQM_Metadata:
             ,'AZ': "(clm_type_cd in ('3','C') and (adjstmt_ind in ('0','4')) )" # Medicaid and S-CHIP Encounters: Original and Replacement, Paid Claims
             ,'BA': "(clm_type_cd in ('2') and (adjstmt_ind in ('0','4')) )"     # Medicaid Capitation Payment: Original and Replacement, Paid Claims
             ,'BB': "(clm_type_cd in ('B') and (adjstmt_ind in ('0','4')) )"     #   S-CHIP Capitation Payment: Original and Replacement, Paid Claims
+            ,'BC': "(clm_type_cd in ('1','A') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
+            ,'BD': "(clm_type_cd in ('3','C') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
         }
 
     class create_claims_tables():

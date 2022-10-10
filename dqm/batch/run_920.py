@@ -1,29 +1,23 @@
-df = None
-stack = None
+from pandas import DataFrame
 
-series = [
-    '901', '902', '903', '904', '905', '906', '907', '909', '910', '911', '912', '913', '914', '915', '916', '917', '918', '919', '920',
-    '201', '202', '204', '205', '206',
-    '801',
-    '101', '102', '103', '104', '105', '106', '107', '108', '109', '110',
-    '701', '702', '703', '704', '705', '706', '707', '708', '709', '710', '711', '712', '713', '714',
-    '501', '502', '503', '504',
-    '601', '602', '603'
-    ]
+run_920_claims_schip_bc_bd = [
 
-for i in series:
+    ['920', 'tab_clh_bc_bd', 'ip', 'FFS54_5', 'BC'],
+    ['920', 'tab_clh_bc_bd', 'ip', 'MCR64_5', 'BD'],
+    ['920', 'tab_clh_bc_bd', 'lt', 'FFS54_6', 'BC'],
+    ['920', 'tab_clh_bc_bd', 'lt', 'MCR64_6', 'BD'],
 
-    exec(open('run_' + i + '.py').read())
+    ['920', 'tab_cll_to_clh_bc_bd', 'ot', 'FFS54_7', 'BC'],
+    ['920', 'tab_cll_to_clh_bc_bd', 'ot', 'MCR64_7', 'BD'],
+    ['920', 'tab_cll_to_clh_bc_bd', 'rx', 'FFS54_8', 'BC'],
+    ['920', 'tab_cll_to_clh_bc_bd', 'rx', 'MCR64_8', 'BD']
+]
 
-    keys = df[['measure_id', 'series', 'cb']]
-    if stack is None:
-        stack = keys
-    else:
-        stack = stack.append(keys)
-
-stack = stack.drop_duplicates()
-print(len(stack))
-stack.to_pickle('./reverse_lookup.pkl')
+df = DataFrame(run_920_claims_schip_bc_bd, columns=['series', 'cb', 'claim_type', 'measure_id', 'claim_cat'])
+df['measure_id'] = df['measure_id'].str.upper()
+df['claim_cat'] = df['claim_cat'].str.upper()
+print(df.head())
+df.to_pickle('./run_920.pkl')
 
 # CC0 1.0 Universal
 

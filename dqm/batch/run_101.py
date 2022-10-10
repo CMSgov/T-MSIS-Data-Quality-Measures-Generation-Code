@@ -51,10 +51,10 @@ run_101 =[
         '_tmsis_race_info',
         2],
 
-    ['101', 'nonclaimspct', 'el1.13', 'el113t',
-        "case when (ctznshp_ind='1') and (ctznshp_vrfctn_ind = '1') then 1 else 0 end",
+    ['101', 'nonclaimspct', 'el1.32', 'el132t',
+        "case when ctznshp_vrfctn_ind='1' then 1 else 0 end",
         '',
-        "msis_ident_num is not null",
+        "ctznshp_ind='1' AND msis_ident_num is not null",
         '',
         '_tmsis_var_dmgrphc_elgblty',
         2],
@@ -307,12 +307,12 @@ run_101 =[
 
     #-------------------------------------------------------
     ['101', 'el319t', 'el3.19', 'el319t', '', '', '', '', ''],
-    ['101', 'el321t', 'el3.21', 'el321t', '', '', '', '', ''],
+    ['101', 'el333t', 'el3.33', 'el333t', '', '', '', '', ''],
     ['101', 'el322t', 'el3.22', 'el322t', '', '', '', '', ''],
-    ['101', 'el324t', 'el3.24', 'el324t', '', '', '', '', ''],
+    ['101', 'el334t', 'el3.34', 'el334t', '', '', '', '', ''],
+    ['101', 'el335t', 'el3.35', 'el335t', '', '', '', '', ''],
+    ['101', 'el336t', 'el3.36', 'el336t', '', '', '', '', ''],
     #-------------------------------------------------------
-    ['101', 'el320t', 'el3.20', 'el320t', '', '', '', '', ''],
-    ['101', 'el323t', 'el3.23', 'el323t', '', '', '', '', ''],
 
     ['101', 'el626t', 'el6.26', 'el626t', '', '', '', '', ''],
     ['101', 'el627t', 'el6.27', 'el627t', '', '', '', '', ''],
@@ -464,7 +464,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct', 'el1.31', 'el131t',
-        "case when ((elgbl_cnty_cd is not null) and (nonmatchcounty_elgbl=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip_elgbl=1)) then 1 else 0 end",
+        "case when elgbl_state_cd_match=1 and ((elgbl_cnty_cd is not null) and (nonmatchcounty_elgbl=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip_elgbl=1)) then 1 else 0 end",
         '',
         "msis_ident_num is not null",
         '',

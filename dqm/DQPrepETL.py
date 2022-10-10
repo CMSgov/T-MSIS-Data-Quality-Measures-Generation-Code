@@ -1480,6 +1480,7 @@ class DQPrepETL:
                 , case when c.CountyFIPS is null then 1 else 0 end as nonmatchcounty
                 , case when d.ZipCode    is null then 1 else 0 end as nonmatchzip_elgbl
                 , case when e.CountyFIPS is null then 1 else 0 end as nonmatchcounty_elgbl
+                , case when f.StateFIPS  is not null then 1 else 0 end as elgbl_state_cd_match
             from
                 {dqm.taskprefix}_tmsis_elgbl_cntct a
 
@@ -1498,6 +1499,10 @@ class DQPrepETL:
             left join
                 dqm_conv.countystate_lookup e
                     on a.elgbl_cnty_cd = e.CountyFIPS and a.elgbl_state_cd = e.StateFIPS
+
+            left join 
+                (select distinct StateFIPS from dqm_conv.zipstate_crosswalk) f
+                    on a.elgbl_state_cd = f.StateFIPS
                  """
 
         dqm.logger.debug(z)

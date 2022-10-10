@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.2.0'
+        self.version = '3.3.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.2'
+        self.specvrsn = 'V3.3'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -110,6 +110,9 @@ class DQMeasures:
         self.reverse_measure_lookup = self.loadReverseMeasureLookup()
 
         # static metadata dataframes
+        self.abd = self.load_metadata_file('abd')
+        self.abd['Medicaid Determination'] = self.abd['Medicaid Determination'].str.strip()
+        self.abd['Medicaid Determination'] = self.abd['Medicaid Determination'].str.upper()
         self.apdxc = self.load_metadata_file('apdxc')
         self.countystate_lookup = self.load_metadata_file('countystate_lookup')
         self.fmg = self.load_metadata_file('fmg')
@@ -294,13 +297,23 @@ class DQMeasures:
         sFIPS = state[state['FIPS'].notnull() & (state['EL Group 72'] == 'YES')]['FIPS']
         self.el_grp_72 = ','.join(f"'{l}'" for l in sFIPS.tolist())
 
-        # group 73
-        sFIPS = state[state['FIPS'].notnull() & (state['EL Group 73'] == 'YES')]['FIPS']
-        self.el_grp_73 = ','.join(f"'{l}'" for l in sFIPS.tolist())
+        # group 73, 74, and 75
+        sFIPS = state[state['FIPS'].notnull() & (state['EL Group 73, 74, or 75'] == 'YES')]['FIPS']
+        self.el_grp_73_74_75 = ','.join(f"'{l}'" for l in sFIPS.tolist())
 
-        # groups 74 and 75
-        sFIPS = state[state['FIPS'].notnull() & ((state['EL Group 74'] == 'YES') | (state['EL Group 75'] == 'YES'))]['FIPS']
-        self.el_grp_74_75 = ','.join(f"'{l}'" for l in sFIPS.tolist())
+        # eligibility medicaid determination
+        state = pd.merge(self.stabr, self.abd, left_on='STNAME', right_on='State')
+        state['FIPS'] = state['STABBREV'].map(DQM_Metadata.FIPS.stfips)
+
+        # el335
+        sFIPS = state[state['FIPS'].notnull() & ((state['Medicaid Determination'] == '209B') | (state['Medicaid Determination'] == 'N/A'))]['FIPS']
+        self.medicaid_el335 = ','.join(f"'{l}'" for l in sFIPS.tolist())
+
+        # el336
+        sFIPS = state[state['FIPS'].notnull() & \
+            ((state['Medicaid Determination'] == '1634') | (state['Medicaid Determination'] == 'SSI') | \
+             (state['Medicaid Determination'] == 'N/A'))]['FIPS']
+        self.medicaid_el336 = ','.join(f"'{l}'" for l in sFIPS.tolist())
 
     # --------------------------------------------------------------------
     #
@@ -717,7 +730,7 @@ class DQMeasures:
                 return '0'
             elif ((x['series'].startswith('5')) and (pd.isna(x['mvalue'])) and (pd.isna(x['numer'])) and (x['denom'] > 0)):
                 return '0'
-            elif ((x['measure_id'] in ('EL3_19','EL3_20','EL3_21','EL3_22','EL3_23','EL3_24')) and (pd.isna(x['mvalue'])) and (x['denom'] == 0)):
+            elif ((x['measure_id'] in ('EL3_19','EL3_33','EL3_22','EL3_34','EL3_35','EL3_36')) and (pd.isna(x['mvalue'])) and (x['denom'] == 0)):
                 return 'N/A'
             elif ((pd.isna(x['mvalue']))):
                 return 'Div by 0'
