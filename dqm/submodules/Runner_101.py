@@ -277,7 +277,7 @@ class Runner_101:
     #
     #
     # --------------------------------------------------------------------
-    def el320t(spark, dqm: DQMeasures, measure_id, x) :
+    def el333t(spark, dqm: DQMeasures, measure_id, x) :
 
         z = f"""
                 select
@@ -291,41 +291,8 @@ class Runner_101:
                         else null end as mvalue
                 from (
                     select msis_ident_num
-                        , max(case when submtg_state_cd in ({dqm.el_grp_73}) then 1 else 0 end) as denom_val
-                        , max(case when  submtg_state_cd in ({dqm.el_grp_73}) and elgblty_grp_cd='73' then 1 else 0 end) as numer_val
-                    from
-                        {dqm.taskprefix}_tmsis_elgblty_dtrmnt
-                    where
-                        msis_ident_num is not null
-                    group by
-                        msis_ident_num
-                ) c
-             """
-
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-    # --------------------------------------------------------------------
-    #
-    #
-    # --------------------------------------------------------------------
-    def el321t(spark, dqm: DQMeasures, measure_id, x) :
-
-        z = f"""
-                select
-                    '{dqm.state}' AS submtg_state_cd
-                    ,'{measure_id}' AS measure_id
-                    ,'101' AS submodule
-                    , sum(denom_val) as denom
-                    , sum(numer_val) as numer
-                    , case when sum(denom_val) > 0 then
-                        round(sum(numer_val) / sum(denom_val), 3)
-                        else null end as mvalue
-                from (
-                    select msis_ident_num
-                        , max(case when submtg_state_cd in ({dqm.el_grp_74_75}) then 1 else 0 end) as denom_val
-                        , max(case when submtg_state_cd in ({dqm.el_grp_74_75}) and elgblty_grp_cd in ('74', '75') then 1 else 0 end) as numer_val
+                        , max(case when submtg_state_cd in ({dqm.el_grp_73_74_75}) then 1 else 0 end) as denom_val
+                        , max(case when submtg_state_cd in ({dqm.el_grp_73_74_75}) and elgblty_grp_cd in ('73', '74', '75') then 1 else 0 end) as numer_val
                     from
                         {dqm.taskprefix}_tmsis_elgblty_dtrmnt
                     where
@@ -359,39 +326,6 @@ class Runner_101:
                     select msis_ident_num
                         , max(case when submtg_state_cd not in ({dqm.el_grp_72}) then 1 else 0 end) as denom_val
                         , max(case when submtg_state_cd not in ({dqm.el_grp_72}) and elgblty_grp_cd='72' then 1 else 0 end) as numer_val
-                from
-                    {dqm.taskprefix}_tmsis_elgblty_dtrmnt
-                where
-                    msis_ident_num is not null
-                group by
-                    msis_ident_num
-                ) c
-             """
-
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-    # --------------------------------------------------------------------
-    #
-    #
-    # --------------------------------------------------------------------
-    def el323t(spark, dqm: DQMeasures, measure_id, x) :
-
-        z = f"""
-                select
-                    '{dqm.state}' AS submtg_state_cd
-                    ,'{measure_id}' AS measure_id
-                    ,'101' AS submodule
-                    , sum(denom_val) as denom
-                    , sum(numer_val) as numer
-                    , case when sum(denom_val) > 0 then
-                        round(sum(numer_val) / sum(denom_val), 3)
-                        else null end as mvalue
-                from (
-                    select msis_ident_num
-                        , max(case when submtg_state_cd not in ({dqm.el_grp_73}) then 1 else 0 end) as denom_val
-                        , max(case when  submtg_state_cd not in ({dqm.el_grp_73}) and elgblty_grp_cd='73' then 1 else 0 end) as numer_val
                     from
                         {dqm.taskprefix}_tmsis_elgblty_dtrmnt
                     where
@@ -409,7 +343,7 @@ class Runner_101:
     #
     #
     # --------------------------------------------------------------------
-    def el324t(spark, dqm: DQMeasures, measure_id, x) :
+    def el334t(spark, dqm: DQMeasures, measure_id, x) :
 
         z = f"""
                 select
@@ -423,8 +357,74 @@ class Runner_101:
                         else null end as mvalue
                 from (
                     select msis_ident_num
-                        , max(case when submtg_state_cd not in ({dqm.el_grp_74_75}) then 1 else 0 end) as denom_val
-                        , max(case when submtg_state_cd not in ({dqm.el_grp_74_75}) and elgblty_grp_cd in ('74', '75') then 1 else 0 end) as numer_val
+                        , max(case when submtg_state_cd not in ({dqm.el_grp_73_74_75}) then 1 else 0 end) as denom_val
+                        , max(case when submtg_state_cd not in ({dqm.el_grp_73_74_75}) and elgblty_grp_cd in ('73', '74', '75') then 1 else 0 end) as numer_val
+                    from
+                        {dqm.taskprefix}_tmsis_elgblty_dtrmnt
+                    where
+                        msis_ident_num is not null
+                    group by
+                        msis_ident_num
+                ) c
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def el335t(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                select
+                    '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'101' AS submodule
+                    , sum(denom_val) as denom
+                    , sum(numer_val) as numer
+                    , case when sum(denom_val) > 0 then
+                        round(sum(numer_val) / sum(denom_val), 3)
+                        else null end as mvalue
+                from (
+                    select msis_ident_num
+                        , max(case when submtg_state_cd in ({dqm.medicaid_el335}) then 1 else 0 end) as denom_val
+                        , max(case when submtg_state_cd in ({dqm.medicaid_el335}) and elgblty_grp_cd in ('11') then 1 else 0 end) as numer_val
+                    from
+                        {dqm.taskprefix}_tmsis_elgblty_dtrmnt
+                    where
+                        msis_ident_num is not null
+                    group by
+                        msis_ident_num
+                ) c
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def el336t(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                select
+                    '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'101' AS submodule
+                    , sum(denom_val) as denom
+                    , sum(numer_val) as numer
+                    , case when sum(denom_val) > 0 then
+                        round(sum(numer_val) / sum(denom_val), 3)
+                        else null end as mvalue
+                from (
+                    select msis_ident_num
+                        , max(case when submtg_state_cd in ({dqm.medicaid_el336}) then 1 else 0 end) as denom_val
+                        , max(case when submtg_state_cd in ({dqm.medicaid_el336}) and elgblty_grp_cd in ('12') then 1 else 0 end) as numer_val
                     from
                         {dqm.taskprefix}_tmsis_elgblty_dtrmnt
                     where
@@ -550,14 +550,14 @@ class Runner_101:
         "nonclaimspctwvr": nonclaimspctwvr,
         "nonclaimspct_notany": nonclaimspct_notany,
         "el319t": el319t,
-        "el320t": el320t,
-        "el321t": el321t,
+        "el333t": el333t,
         "el322t": el322t,
-        "el323t": el323t,
-        "el324t": el324t,
+        "el334t": el334t,
         "el626t": el626t,
         "el627t": el627t,
-        "el122t": el122t
+        "el122t": el122t,
+        "el335t": el335t,
+        "el336t": el336t
     }
 
 # CC0 1.0 Universal

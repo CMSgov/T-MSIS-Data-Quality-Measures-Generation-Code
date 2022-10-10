@@ -57,7 +57,7 @@
   },
   "libraries": [
     {
-      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.1.0-py3-none-any.whl"
+      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.2.0-py3-none-any.whl"
     },
     {
       "maven": {

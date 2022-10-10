@@ -42,6 +42,7 @@ from dqm.submodules import Runner_916 as r916
 from dqm.submodules import Runner_917 as r917
 from dqm.submodules import Runner_918 as r918
 from dqm.submodules import Runner_919 as r919
+from dqm.submodules import Runner_920 as r920
 
 from dqm.submodules import Runner_701 as r701
 from dqm.submodules import Runner_702 as r702
@@ -115,6 +116,7 @@ class Module():
         self.run917 = r917.Runner_917
         self.run918 = r918.Runner_918
         self.run919 = r919.Runner_919
+        self.run920 = r920.Runner_920
 
         self.run701 = r701.Runner_701
         self.run702 = r702.Runner_702
@@ -180,6 +182,7 @@ class Module():
             '917': self.run917,
             '918': self.run918,
             '919': self.run919,
+            '920': self.run920,
 
             '701': self.run701,
             '702': self.run702,

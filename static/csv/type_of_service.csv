@@ -1,106 +1,106 @@
-,TypeOfService,Description
-0,1,"Inpatient hospital services, other than services in an institution for mental diseases"
-1,2,Outpatient hospital services
-2,3,Rural health clinic services
-3,4,Other ambulatory services furnished by a rural health clinic
-4,5,"Professional laboratory services, Technical laboratory services"
-5,6,Technical laboratory services
-6,7,Professional radiological services
-7,8,Technical radiological services
-8,9,Nursing facility services for individuals age 21 or older (other than services in an institution for mental disease)
-9,10,Early and periodic screening and diagnosis and treatment (EPSDT) services
-10,11,Family planning services and supplies for individuals of child-bearing age
-11,12,Physicians' services
-12,13,Medical and surgical services of a dentist
-13,14,Outpatient substance abuse treatment services
-14,15,"Medical or other remedial care or services, other than physicians' services, provided by licensed practitioners within the scope of practice as defined under State law"
-15,16,Home health services - Nursing services
-16,17,Home health services - Home health aide services
-17,18,"Home health services - Medical supplies, equipment, and appliances suitable for use in the home"
-18,19,Home health services - Physical therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
-19,20,Home health services - Occupational therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
-20,21,Home health services - Speech pathology and audiology services provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
-21,22,Private duty nursing services
-22,23,Advanced practice nurse services
-23,24,Pediatric nurse
-24,25,Nurse-midwife service
-25,26,Nurse practitioner services
-26,27,Respiratory care for ventilator-dependent individuals
-27,28,Clinic services
-28,29,Dental services
-29,30,Physical therapy services (when not provided under home health services)
-30,31,Occupational therapy services (when not provided under home health services)
-31,32,"Speech, hearing, and language disorders services (when not provided under home health services)"
-32,33,Prescribed drugs
-33,34,Over-the-counter medications
-34,35,Dentures
-35,36,Medical equipment/prosthetic devices
-36,37,Eyeglasses
-37,38,Hearing Aids
-38,39,Diagnostic services
-39,40,Screening services
-40,41,Preventive services
-41,42,Well-baby and well-child care services as defined by the state
-42,43,Rehabilitative services
-43,44,Inpatient hospital services for individuals age 65 or older in institutions for mental diseases
-44,45,Nursing facility services for individuals age 65 or older in institutions for mental diseases
-45,46,Intermediate care facility (ICF/IIDICF/IID) services
-46,47,"Nursing facility services, other than in institutions for mental diseases"
-47,48,Inpatient psychiatric services for individuals under age 21
-48,49,"Outpatient mental health services, other than Outpatient substance abuse treatment services.  This TOS includes services furnished in a State-operated mental hospital and including community-based services"
-49,50,Inpatient substance abuse treatment services and residential substance abuse treatment services
-50,51,Personal care services
-51,52,Primary care case management services
-52,53,Targeted case management services 
-53,54,Case Management services other than those that meet the definition of primary care case management services or targeted case management services
-54,55,Care coordination services
-55,56,Transportation services
-56,57,Enabling services
-57,58,Services furnished in a religious nonmedical health care institution
-58,59,Skilled nursing facility services for individuals under age 21
-59,60,Emergency hospital services
-60,61,Critical access hospital services - OT
-61,62,HCBS - Case management services
-62,63,HCBS - Homemaker services
-63,64,HCBS - Home health aide services
-64,65,HCBS - Personal care services
-65,66,HCBS - Adult day health services
-66,67,HCBS - Habilitation services
-67,68,HCBS - Respite care services
-68,69,"HCBS - Day treatment or other partial hospitalization services, psychosocial rehabilitation services and clinic services (whether or not furnished in a facility) for individuals with chronic mental illness"
-69,70,HCBS - Day Care
-70,71,HCBS -  Training for family members
-71,72,HCBS -  Minor modification to the home
-72,73,HCBS - Other services requested by the agency and approved by CMS as cost effective and necessary to avoid institutionalization
-73,74,HCBS - Expanded habilitation services - Prevocational services
-74,75,HCBS - Expanded habilitation services - Educational services
-75,76,"HCBS - Expanded habilitation services - Supported employment services, which facilitate paid employment"
-76,77,HCBS-65-plus - Case management services
-77,78,HCBS-65-plus - Homemaker services
-78,79,HCBS-65-plus - Home health aide services
-79,80,HCBS-65-plus - Personal care services
-80,81,HCBS-65-plus - Adult day health services
-81,82,HCBS-65-plus - Respite care services
-82,83,HCBS-65-plus - Other medical and social services
-83,84,Sterilizations
-84,85,Prenatal care and pre-pregnancy family planning services and supplies
-85,86,Other Pregnancy-related Procedures
-86,87,Hospice services
-87,88,Any other health care services or items specified by the Secretary and not excluded under regulations
-88,89,Disposable medical supplies
-89,90,Critical access hospital services - IP
-90,91,Skilled care - hospital residing
-91,92,Exceptional care - hospital residing
-92,93,Non-acute care - hospital residing
-93,115,Residential care
-94,119,"Capitated payments to HMOs, HIOs, or PACE plans"
-95,120,Capitated payments for primary care case management (PCCM)
-96,121,Premium payments for private health insurance
-97,122,Capitated payments to prepaid health plans (PHPs)
-98,123,Disproportionate share hospital (DSH) payments
-99,127,Indian Health Service (IHS) - Family Plan
-100,131,Drug Rebates
-101,132,Supplemental payment - inpatient
-102,133,Supplemental payment - nursing
-103,134,Supplemental payment - outpatient
-104,135,EHR payments to provider
+TypeOfService,Description
+1,"Inpatient hospital services, other than services in an institution for mental diseases"
+2,Outpatient hospital services
+3,Rural health clinic services
+4,Other ambulatory services furnished by a rural health clinic
+5,"Professional laboratory services, Technical laboratory services"
+6,Technical laboratory services
+7,Professional radiological services
+8,Technical radiological services
+9,Nursing facility services for individuals age 21 or older (other than services in an institution for mental disease)
+10,Early and periodic screening and diagnosis and treatment (EPSDT) services
+11,Family planning services and supplies for individuals of child-bearing age
+12,Physicians' services
+13,Medical and surgical services of a dentist
+14,Outpatient substance abuse treatment services
+15,"Medical or other remedial care or services, other than physicians' services, provided by licensed practitioners within the scope of practice as defined under State law"
+16,Home health services - Nursing services
+17,Home health services - Home health aide services
+18,"Home health services - Medical supplies, equipment, and appliances suitable for use in the home"
+19,Home health services - Physical therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
+20,Home health services - Occupational therapy provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
+21,Home health services - Speech pathology and audiology services provided by a home health agency or by a facility licensed by the State to provide medical rehabilitation services
+22,Private duty nursing services
+23,Advanced practice nurse services
+24,Pediatric nurse
+25,Nurse-midwife service
+26,Nurse practitioner services
+27,Respiratory care for ventilator-dependent individuals
+28,Clinic services
+29,Dental services
+30,Physical therapy services (when not provided under home health services)
+31,Occupational therapy services (when not provided under home health services)
+32,"Speech, hearing, and language disorders services (when not provided under home health services)"
+33,Prescribed drugs
+34,Over-the-counter medications
+35,Dentures
+36,Medical equipment/prosthetic devices
+37,Eyeglasses
+38,Hearing Aids
+39,Diagnostic services
+40,Screening services
+41,Preventive services
+42,Well-baby and well-child care services as defined by the state
+43,Rehabilitative services
+44,Inpatient hospital services for individuals age 65 or older in institutions for mental diseases
+45,Nursing facility services for individuals age 65 or older in institutions for mental diseases
+46,Intermediate care facility (ICF/IIDICF/IID) services
+47,"Nursing facility services, other than in institutions for mental diseases"
+48,Inpatient psychiatric services for individuals under age 21
+49,"Outpatient mental health services, other than Outpatient substance abuse treatment services.  This TOS includes services furnished in a State-operated mental hospital and including community-based services"
+50,Inpatient substance abuse treatment services and residential substance abuse treatment services
+51,Personal care services
+52,Primary care case management services
+53,Targeted case management services 
+54,Case Management services other than those that meet the definition of primary care case management services or targeted case management services
+55,Care coordination services
+56,Transportation services
+57,Enabling services
+58,Services furnished in a religious nonmedical health care institution
+59,Skilled nursing facility services for individuals under age 21
+60,Emergency hospital services
+61,Critical access hospital services - OT
+62,HCBS - Case management services
+63,HCBS - Homemaker services
+64,HCBS - Home health aide services
+65,HCBS - Personal care services
+66,HCBS - Adult day health services
+67,HCBS - Habilitation services
+68,HCBS - Respite care services
+69,"HCBS - Day treatment or other partial hospitalization services, psychosocial rehabilitation services and clinic services (whether or not furnished in a facility) for individuals with chronic mental illness"
+70,HCBS - Day Care
+71,HCBS -  Training for family members
+72,HCBS -  Minor modification to the home
+73,HCBS - Other services requested by the agency and approved by CMS as cost effective and necessary to avoid institutionalization
+74,HCBS - Expanded habilitation services - Prevocational services
+75,HCBS - Expanded habilitation services - Educational services
+76,"HCBS - Expanded habilitation services - Supported employment services, which facilitate paid employment"
+77,HCBS-65-plus - Case management services
+78,HCBS-65-plus - Homemaker services
+79,HCBS-65-plus - Home health aide services
+80,HCBS-65-plus - Personal care services
+81,HCBS-65-plus - Adult day health services
+82,HCBS-65-plus - Respite care services
+83,HCBS-65-plus - Other medical and social services
+84,Sterilizations
+85,Prenatal care and pre-pregnancy family planning services and supplies
+86,Other Pregnancy-related Procedures
+87,Hospice services
+88,Any other health care services or items specified by the Secretary and not excluded under regulations
+89,Disposable medical supplies
+90,Critical access hospital services - IP
+91,Skilled care - hospital residing
+92,Exceptional care - hospital residing
+93,Non-acute care - hospital residing
+115,Residential care
+119,"Capitated payments to HMOs, HIOs, or PACE plans"
+120,Capitated payments for primary care case management (PCCM)
+121,Premium payments for private health insurance
+122,Capitated payments to prepaid health plans (PHPs)
+123,Disproportionate share hospital (DSH) payments
+127,Indian Health Service (IHS) - Family Plan
+131,Drug Rebates
+132,Supplemental payment - inpatient
+133,Supplemental payment - nursing
+134,Supplemental payment - outpatient
+135,EHR payments to provider
