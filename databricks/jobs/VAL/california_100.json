@@ -1,5 +1,5 @@
 {
-  "job_id": 12964,
+  "job_id": 598532,
   "name": "MACBIS DQ Runner - California 100",
   "new_cluster": {
     "spark_version": "9.1.x-scala2.12",
@@ -58,7 +58,7 @@
   },
   "libraries": [
     {
-      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.1.0-py3-none-any.whl"
+      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.2.0-py3-none-any.whl"
     },
     {
       "maven": {
@@ -77,7 +77,7 @@
   },
   "timeout_seconds": 43200,
   "notebook_task": {
-    "notebook_path": "/DQ-Measures/DQ Measures (submodule)",
+    "notebook_path": "/Shared/DQ-Measures/DQ Measures (submodule)",
     "base_parameters": {
       "reportMonth": "202206",
       "stateCode": "CA",

@@ -1,53 +1,53 @@
-,State_Name,State_Abbreviation,FIPS_State_Numeric_Code,_01,_11,_09,_04,_06,_13,_05,_12,_02,_03,_07,_14,_10,_15,_08
-0,Alabama,AL,1,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
-1,Alaska,AK,2,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
-2,Arizona,AZ,4,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
-3,Arkansas,AR,5,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
-4,California,CA,6,Yes,No,No,Yes,Yes,No,No,No,Yes,No,No,No,No,No,Yes
-5,Colorado,CO,8,Yes,No,No,Yes,No,No,No,No,Yes,Yes,No,No,No,No,Yes
-6,Connecticut,CT,9,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
-7,"Washington, DC",DC,10,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,No
-8,Delaware,DE,11,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-9,Florida,FL,12,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Yes
-10,Georgia,GA,13,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-11,Hawaii,HI,15,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
-12,Idaho,ID,16,No,Yes,No,No,No,No,No,No,Yes,No,No,Yes,Yes,Yes,No
-13,Illinois,IL,17,No,No,No,Yes,No,No,No,No,No,Yes,No,No,No,No,No
-14,Indiana,IN,18,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-15,Iowa,IA,19,No,Yes,No,No,No,No,No,Yes,Yes,Yes,No,No,No,No,Yes
-16,Kansas,KS,20,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-17,Kentucky,KY,21,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No
-18,Louisiana,LA,22,Yes,No,No,No,No,No,Yes,Yes,No,Yes,No,No,No,No,Yes
-19,Maine,ME,23,No,No,No,No,No,No,No,No,No,Yes,No,No,No,Yes,No
-20,Maryland,MD,24,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-21,Massachusetts,MA,25,Yes,No,No,No,Yes,No,No,No,No,No,No,No,No,No,Yes
-22,Michigan,MI,26,No,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Yes
-23,Minnesota,MN,27,Yes,No,No,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No
-24,Mississippi,MS,28,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-25,Missouri,MO,29,No,Yes,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
-26,Montana,MT,30,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No
-27,Nebraska,NE,31,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Yes
-28,Nevada,NV,32,No,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-29,New Hampshire,NH,33,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-30,New Jersey,NJ,34,Yes,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
-31,New Mexico,NM,35,Yes,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Yes
-32,New York,NY,36,Yes,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes
-33,North Carolina,NC,37,No,No,No,No,No,No,Yes,No,No,Yes,No,No,No,No,Yes
-34,North Dakota,ND,38,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
-35,Ohio,OH,39,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Yes
-36,Oklahoma,OK,40,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-37,Oregon,OR,41,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-38,Pennsylvania,PA,42,No,Yes,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes
-39,Puerto Rico,PR,72,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No
-40,Rhode Island,RI,44,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-41,South Carolina,SC,45,No,Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes
-42,South Dakota,SD,46,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
-43,Tennessee,TN,47,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-44,Texas,TX,48,Yes,Yes,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes
-45,Utah,UT,49,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No
-46,Vermont,VT,50,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
-47,Virginia,VA,51,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
-48,Washington,WA,53,Yes,Yes,No,No,No,No,No,No,Yes,Yes,No,No,No,Yes,Yes
-49,West Virginia,WV,54,No,No,No,No,No,No,No,No,Yes,No,No,No,Yes,No,No
-50,Wisconsin,WI,55,No,No,No,Yes,No,No,Yes,No,No,Yes,Yes,No,No,No,Yes
-51,Wyoming,WY,56,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+State_Name,State_Abbreviation,FIPS_State_Numeric_Code,_01,_11,_09,_04,_06,_13,_05,_12,_02,_03,_07,_14,_10,_15,_08
+Alabama,AL,1,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
+Alaska,AK,2,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+Arizona,AZ,4,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+Arkansas,AR,5,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
+California,CA,6,Yes,No,No,Yes,Yes,No,No,No,Yes,No,No,No,No,No,Yes
+Colorado,CO,8,Yes,No,No,Yes,No,No,No,No,Yes,Yes,No,No,No,No,Yes
+Connecticut,CT,9,No,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+"Washington, DC",DC,10,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,No
+Delaware,DE,11,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Florida,FL,12,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,No,No,Yes
+Georgia,GA,13,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+Hawaii,HI,15,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,No
+Idaho,ID,16,No,Yes,No,No,No,No,No,No,Yes,No,No,Yes,Yes,Yes,No
+Illinois,IL,17,No,No,No,Yes,No,No,No,No,No,Yes,No,No,No,No,No
+Indiana,IN,18,Yes,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+Iowa,IA,19,No,Yes,No,No,No,No,No,Yes,Yes,Yes,No,No,No,No,Yes
+Kansas,KS,20,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Kentucky,KY,21,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No
+Louisiana,LA,22,Yes,No,No,No,No,No,Yes,Yes,No,Yes,No,No,No,No,Yes
+Maine,ME,23,No,No,No,No,No,No,No,No,No,Yes,No,No,No,Yes,No
+Maryland,MD,24,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Massachusetts,MA,25,Yes,No,No,No,Yes,No,No,No,No,No,No,No,No,No,Yes
+Michigan,MI,26,No,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Yes
+Minnesota,MN,27,Yes,No,No,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No
+Mississippi,MS,28,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+Missouri,MO,29,No,Yes,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
+Montana,MT,30,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No
+Nebraska,NE,31,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Yes
+Nevada,NV,32,No,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+New Hampshire,NH,33,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+New Jersey,NJ,34,Yes,Yes,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+New Mexico,NM,35,Yes,No,No,No,No,No,Yes,No,Yes,No,No,No,No,No,Yes
+New York,NY,36,Yes,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes
+North Carolina,NC,37,No,No,No,No,No,No,Yes,No,No,Yes,No,No,No,No,Yes
+North Dakota,ND,38,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes
+Ohio,OH,39,No,No,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Yes
+Oklahoma,OK,40,Yes,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Oregon,OR,41,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Pennsylvania,PA,42,No,Yes,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes
+Puerto Rico,PR,72,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No
+Rhode Island,RI,44,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+South Carolina,SC,45,No,Yes,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes
+South Dakota,SD,46,No,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No
+Tennessee,TN,47,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Texas,TX,48,Yes,Yes,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes
+Utah,UT,49,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,No
+Vermont,VT,50,Yes,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes
+Virginia,VA,51,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Yes
+Washington,WA,53,Yes,Yes,No,No,No,No,No,No,Yes,Yes,No,No,No,Yes,Yes
+West Virginia,WV,54,No,No,No,No,No,No,No,No,Yes,No,No,No,Yes,No,No
+Wisconsin,WI,55,No,No,No,Yes,No,No,Yes,No,No,Yes,Yes,No,No,No,Yes
+Wyoming,WY,56,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes

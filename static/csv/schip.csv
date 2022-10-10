@@ -1,54 +1,54 @@
-,STABBREV,STATE_NAME,FIPS_CD,HAS_SCHIP
-0,AL,Alabama,1,YES
-1,AK,Alaska,2,No
-2,AZ,Arizona,4,YES
-3,AR,Arkansas,5,YES
-4,CA,California,6,YES
-5,CO,Colorado,8,YES
-6,CT,Connecticut,9,YES
-7,DE,Delaware,10,YES
-8,DC,District of Columbia,11,No
-9,FL,Florida,12,YES
-10,GA,Georgia,13,YES
-11,HI,Hawaii,15,No
-12,ID,Idaho,16,YES
-13,IL,Illinois,17,YES
-14,IN,Indiana,18,YES
-15,IA,Iowa,"19, 96",YES
-16,KS,Kansas,20,YES
-17,KY,Kentucky,21,YES
-18,LA,Louisiana,22,YES
-19,ME,Maine,23,YES
-20,MD,Maryland,24,No
-21,MA,Massachusetts,25,YES
-22,MI,Michigan,26,YES
-23,MN,Minnesota,27,YES
-24,MS,Mississippi,28,YES
-25,MO,Missouri,29,YES
-26,MT,Montana,30,YES
-27,NE,Nebraska,31,YES
-28,NV,Nevada,32,YES
-29,NH,New Hampshire,33,No
-30,NJ,New Jersey,34,YES
-31,NM,New Mexico,35,No
-32,NY,New York,36,YES
-33,NC,North Carolina,37,YES
-34,ND,North Dakota,38,YES
-35,OH,Ohio,39,No
-36,OK,Oklahoma,40,YES
-37,OR,Oregon,41,YES
-38,PA,Pennsylvania,"42, 97",YES
-39,RI,Rhode Island,44,YES
-40,SC,South Carolina,45,No
-41,SD,South Dakota,46,YES
-42,TN,Tennessee,47,YES
-43,TX,Texas,48,YES
-44,UT,Utah,49,YES
-45,VT,Vermont,50,No
-46,VA,Virginia,51,YES
-47,WA,Washington,53,YES
-48,WV,West Virginia,54,YES
-49,WI,Wisconsin,55,YES
-50,WY,Wyoming,56,YES
-51,VI,Virgin Islands,78,YES
-52,PR,Puerto Rico,72,YES
+STABBREV,STATE_NAME,FIPS_CD,HAS_SCHIP
+AL,Alabama,1,YES
+AK,Alaska,2,No
+AZ,Arizona,4,YES
+AR,Arkansas,5,YES
+CA,California,6,YES
+CO,Colorado,8,YES
+CT,Connecticut,9,YES
+DE,Delaware,10,YES
+DC,District of Columbia,11,No
+FL,Florida,12,YES
+GA,Georgia,13,YES
+HI,Hawaii,15,No
+ID,Idaho,16,YES
+IL,Illinois,17,YES
+IN,Indiana,18,YES
+IA,Iowa,"19, 96",YES
+KS,Kansas,20,YES
+KY,Kentucky,21,YES
+LA,Louisiana,22,YES
+ME,Maine,23,YES
+MD,Maryland,24,No
+MA,Massachusetts,25,YES
+MI,Michigan,26,YES
+MN,Minnesota,27,YES
+MS,Mississippi,28,YES
+MO,Missouri,29,YES
+MT,Montana,30,YES
+NE,Nebraska,31,YES
+NV,Nevada,32,YES
+NH,New Hampshire,33,No
+NJ,New Jersey,34,YES
+NM,New Mexico,35,No
+NY,New York,36,YES
+NC,North Carolina,37,YES
+ND,North Dakota,38,YES
+OH,Ohio,39,No
+OK,Oklahoma,40,YES
+OR,Oregon,41,YES
+PA,Pennsylvania,"42, 97",YES
+RI,Rhode Island,44,YES
+SC,South Carolina,45,No
+SD,South Dakota,46,YES
+TN,Tennessee,47,YES
+TX,Texas,48,YES
+UT,Utah,49,YES
+VT,Vermont,50,No
+VA,Virginia,51,YES
+WA,Washington,53,YES
+WV,West Virginia,54,YES
+WI,Wisconsin,55,YES
+WY,Wyoming,56,YES
+VI,Virgin Islands,78,YES
+PR,Puerto Rico,72,YES

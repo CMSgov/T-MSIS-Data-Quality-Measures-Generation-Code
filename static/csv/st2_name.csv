@@ -1,54 +1,54 @@
-,STABBREV,STNAME
-0,AL,Alabama
-1,AK,Alaska
-2,AZ,Arizona
-3,AR,Arkansas
-4,CA,California
-5,CO,Colorado
-6,CT,Connecticut
-7,DE,Delaware
-8,DC,District of Columbia
-9,FL,Florida
-10,GA,Georgia
-11,HI,Hawaii
-12,ID,Idaho
-13,IL,Illinois
-14,IN,Indiana
-15,IA,Iowa
-16,KS,Kansas
-17,KY,Kentucky
-18,LA,Louisiana
-19,ME,Maine
-20,MD,Maryland
-21,MA,Massachusetts
-22,MI,Michigan
-23,MN,Minnesota
-24,MS,Mississippi
-25,MO,Missouri
-26,MT,Montana
-27,NE,Nebraska
-28,NV,Nevada
-29,NH,New Hampshire
-30,NJ,New Jersey
-31,NM,New Mexico
-32,NY,New York
-33,NC,North Carolina
-34,ND,North Dakota
-35,OH,Ohio
-36,OK,Oklahoma
-37,OR,Oregon
-38,PA,Pennsylvania
-39,PR,Puerto Rico
-40,RI,Rhode Island
-41,SC,South Carolina
-42,SD,South Dakota
-43,TN,Tennessee
-44,TX,Texas
-45,UT,Utah
-46,VI,Virgin Islands
-47,VT,Vermont
-48,VA,Virginia
-49,WA,Washington
-50,WV,West Virginia
-51,WI,Wisconsin
-52,WY,Wyoming
+STABBREV,STNAME
+AL,Alabama
+AK,Alaska
+AZ,Arizona
+AR,Arkansas
+CA,California
+CO,Colorado
+CT,Connecticut
+DE,Delaware
+DC,District of Columbia
+FL,Florida
+GA,Georgia
+HI,Hawaii
+ID,Idaho
+IL,Illinois
+IN,Indiana
+IA,Iowa
+KS,Kansas
+KY,Kentucky
+LA,Louisiana
+ME,Maine
+MD,Maryland
+MA,Massachusetts
+MI,Michigan
+MN,Minnesota
+MS,Mississippi
+MO,Missouri
+MT,Montana
+NE,Nebraska
+NV,Nevada
+NH,New Hampshire
+NJ,New Jersey
+NM,New Mexico
+NY,New York
+NC,North Carolina
+ND,North Dakota
+OH,Ohio
+OK,Oklahoma
+OR,Oregon
+PA,Pennsylvania
+PR,Puerto Rico
+RI,Rhode Island
+SC,South Carolina
+SD,South Dakota
+TN,Tennessee
+TX,Texas
+UT,Utah
+VI,Virgin Islands
+VT,Vermont
+VA,Virginia
+WA,Washington
+WV,West Virginia
+WI,Wisconsin
+WY,Wyoming
