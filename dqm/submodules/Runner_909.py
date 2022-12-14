@@ -142,12 +142,71 @@ class Runner_909():
 
         return spark.sql(z)
 
+
+    # --------------------------------------------------------------------
+    # MCR65.x measures capture % of MANAGED-CARE-PLAN-TYPE enrollees with 
+    # no capitation payments for that plan type
+    # --------------------------------------------------------------------
+    def mcr65(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                create or replace temporary view mcr65_denom as
+                select distinct 
+                    msis_ident_num
+                   ,mc_plan_id
+                from
+                    {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                where
+                    enrld_mc_plan_type_cd in {x['plan_type']}
+                    and msis_ident_num is not null
+                    and mc_plan_id is not null
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                create or replace temporary view mcr65_numer as
+                select
+                    p.msis_ident_num
+                   ,max(case when h.msis_ident_num is null then 1 else 0 end) as numer_flag
+                from
+                    mcr65_denom as p
+                left join
+                    {DQMeasures.getBaseTable(dqm, 'clh', 'ot')} as h
+                    on p.mc_plan_id = h.plan_id_num
+                    and p.msis_ident_num = h.msis_ident_num
+                    and h.clm_type_cd in ('2','B')
+                group by p.msis_ident_num
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                select
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'909' as submodule
+                    ,coalesce(sum(numer_flag), 0) as numer
+                    ,count(*) as denom
+                    ,case when count(*) > 0 then (coalesce(sum(numer_flag), 0) / count(*)) else null end as mvalue
+                from
+                    mcr65_numer
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = { 'mcr28_1': mcr28_1,
-                'summcr27': summcr27 }
+                'summcr27': summcr27,
+                'mcr65': mcr65 }
 
 # CC0 1.0 Universal
 
