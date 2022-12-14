@@ -6,16 +6,28 @@
 
 from pandas import DataFrame
 
-run_909_other_measures = [
+run_909_columns = ['series', 'cb', 'measure_id', 'plan_type']
+# plan_type column is only used for MCR65_x measures; otherwise should be blank
 
-    # ffs50.5, ffs51.5, mcr60.5, mcr61.5;
-    ['909', 'mcr28_1', 'mcr28_1'],
-    ['909', 'summcr27', 'summcr_27']
+run_909_other_measures = [
+    ['909', 'mcr28_1', 'mcr28_1', ''],
+    ['909', 'summcr27', 'summcr_27', ''],
+    ['909', 'mcr65', 'mcr65_1', "('01','04')"],
+    ['909', 'mcr65', 'mcr65_2', "('17')"],
+    ['909', 'mcr65', 'mcr65_3', "('15')"],
+    ['909', 'mcr65', 'mcr65_4', "('14')"],
+    ['909', 'mcr65', 'mcr65_5', "('18')"],
+    ['909', 'mcr65', 'mcr65_6', "('08','10','12')"],
+    ['909', 'mcr65', 'mcr65_7', "('09','11','13')"],
+    ['909', 'mcr65', 'mcr65_8', "('07','19')"],
+    ['909', 'mcr65', 'mcr65_9', "('02','03','16')"],
+    ['909', 'mcr65', 'mcr65_10', "('60')"],
+    ['909', 'mcr65', 'mcr65_11', "('70')"],
+    ['909', 'mcr65', 'mcr65_12', "('80')"]
 ]
 
-df = DataFrame(run_909_other_measures, columns=['series', 'cb', 'measure_id'])
+df = DataFrame(run_909_other_measures, columns=run_909_columns)
 df['measure_id'] = df['measure_id'].str.upper()
-# df = df.set_index("measure_id", drop = False)
 print(df.head())
 df.to_pickle('./run_909.pkl')
 
