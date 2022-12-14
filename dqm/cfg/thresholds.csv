@@ -162,7 +162,7 @@ EL,7,EL15.7,EL-15-007-7,% difference between T-MSIS SLMB-plus duals count and MM
 EL,8,EL15.8,EL-15-008-8,% difference between T-MSIS QDWI duals count and MMA QDWI duals count (Dual Code=05),Non-claims percentage,N/A,Y,2,Default,EL15_8,EL,15,8,008,,008,2
 EL,9,EL15.9,EL-15-009-9,% difference between T-MSIS QI duals count and MMA QI duals count (Dual Code=06),Non-claims percentage,N/A,Y,2,Default,EL15_9,EL,15,9,009,,009,2
 EL,10,EL15.10,EL-15-010-10,% difference between T-MSIS Other duals count and MMA Other duals count (Dual Code=08),Non-claims percentage,N/A,Y,2,Default,EL15_10,EL,15,10,010,,010,2
-EL,11,EL15.11,EL-15-011-11,% difference between T-MSIS Pharm Plus or special duals and MMA Pharm Plus or special duals (Dual Code=09),Non-claims percentage,N/A,Y,2,Default,EL15_11,EL,15,11,011,,011,2
+EL,11,EL15.11,EL-15-011-11,% difference between T-MSIS Other - specific CMS approval duals and MMA Other - specific CMS approval duals (Dual Code=09),Non-claims percentage,N/A,Y,2,Default,EL15_11,EL,15,11,011,,011,2
 EL,1,EL16.1,EL-16-001-1,% of ELG00002 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_1,EL,16,1,001,,001,3
 EL,2,EL16.2,EL-16-002-2,% of ELG00003 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_2,EL,16,2,002,,002,3
 EL,3,EL16.3,EL-16-003-3,% of ELG00004 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_3,EL,16,3,003,,003,3
@@ -222,7 +222,7 @@ EL,15,EL6.15,EL-6-015-15,# of SLMB plus duals (DUAL-ELIGIBLE-CODE = 04),Count,N/
 EL,16,EL6.16,EL-6-016-16,# of QDWI duals (DUAL-ELIGIBLE-CODE = 05),Count,N/A,Y,0,Default,EL6_16,EL,6,16,016,,016,0
 EL,17,EL6.17,EL-6-017-17,# of QI-1 duals (DUAL-ELIGIBLE-CODE = 06),Count,N/A,Y,0,Default,EL6_17,EL,6,17,017,,017,0
 EL,18,EL6.18,EL-6-018-18,# of Other duals (DUAL-ELIGIBLE-CODE = 08),Count,N/A,Y,0,Default,EL6_18,EL,6,18,018,,018,0
-EL,19,EL6.19,EL-6-019-19,# of Pharm Plus or special duals (DUAL-ELIGIBLE-CODE = 09),Count,N/A,Y,0,Default,EL6_19,EL,6,19,019,,019,0
+EL,19,EL6.19,EL-6-019-19,# of Other - specific CMS approval duals (DUAL-ELIGIBLE-CODE = 09),Count,N/A,Y,0,Default,EL6_19,EL,6,19,019,,019,0
 EL,20,EL6.20,EL-6-020-20,# of MSIS IDs in S-CHIP entitled to Medicare (DUAL-ELIGIBLE-CODE = 10),Count,N/A,Y,0,Default,EL6_20,EL,6,20,020,,020,0
 EL,21,EL6.21,EL-6-021-21,# of 1115A demonstration participants,Count,N/A,Y,0,Default,EL6_21,EL,6,21,021,,021,0
 EL,22,EL6.22,EL-6-022-22,Family Planning (FP): % MSIS IDs with FP-waivers (WAIVER TYPE = 24) that have RESTRICTED-BENEFIT-CODE = 6 (FP),Non-Claims Percentage,N/A,Y,2,Default,EL6_22,EL,6,22,022,,022,2
@@ -1429,10 +1429,10 @@ PRV,4,PRV3.6,PRV-3-004-6,% of Submitting State Provider IDs with STATE-PLAN-ENRO
 PRV,5,PRV3.1,PRV-3-005-1,% of Submitting State Provider IDs with PROV-MEDICAID-ENROLLMENT-STATUS-CODE of 20-24 (denied),Non-Claims Percentage,N/A,Y,2,Default,PRV3_1,PRV,3,1,005,,005,2
 PRV,6,PRV3.2,PRV-3-006-2,% of Submitting State Provider IDs with PROV-MEDICAID-ENROLLMENT-STATUS-CODE of 60-83 (termed),Non-Claims Percentage,N/A,Y,2,Default,PRV3_2,PRV,3,2,006,,006,2
 PRV,1,PRV4.1,PRV-4-001-1,# of providers by Provider Classification Type,Frequency,N/A,Y,0,Frequency,PRV4_1,PRV,4,1,001,,001,0
-PRV,1,PRV6.1,PRV-6-001-1,"% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group) that do not have a Provider Classification Code that indicates a facility or group",Non-claims percentage,N/A,Y,2,Default,PRV6_1,PRV,6,1,001,,001,2
-PRV,2,PRV6.2,PRV-6-002-2,% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual) that do not have a Provider Classification Code that indicates an individual,Non-claims percentage,N/A,Y,2,Default,PRV6_2,PRV,6,2,002,,002,2
-PRV,3,PRV6.3,PRV-6-003-3,"% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group) that are missing Provider Classification Code",Non-claims percentage,N/A,Y,2,Default,PRV6_3,PRV,6,3,003,,003,2
-PRV,4,PRV6.4,PRV-6-004-4,% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual) that are missing Provider Classification Code,Non-claims percentage,N/A,Y,2,Default,PRV6_4,PRV,6,4,004,,004,2
+PRV,1,PRV6.1,PRV-6-001-1,"% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group) that do not have a Provider Classification Code that indicates a facility or group",Non-claims percentage,N/A,Y,0,Default,PRV6_1,PRV,6,1,001,,001,0
+PRV,2,PRV6.2,PRV-6-002-2,% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual) that do not have a Provider Classification Code that indicates an individual,Non-claims percentage,N/A,Y,0,Default,PRV6_2,PRV,6,2,002,,002,0
+PRV,3,PRV6.3,PRV-6-003-3,"% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group) that are missing Provider Classification Code",Non-claims percentage,N/A,Y,0,Default,PRV6_3,PRV,6,3,003,,003,0
+PRV,4,PRV6.4,PRV-6-004-4,% of Submitting State Provider IDs with FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual) that are missing Provider Classification Code,Non-claims percentage,N/A,Y,0,Default,PRV6_4,PRV,6,4,004,,004,0
 PRV,1,SUMPRV.1,PRV-S-001-1,Total # of facilities,Count,N/A,Y,0,Default,SUMPRV_1,SUMPRV,1,,001,,001,0
 PRV,2,SUMPRV.2,PRV-S-002-2,Total # of individual providers,Count,N/A,Y,0,Default,SUMPRV_2,SUMPRV,2,,002,,002,0
 PRV,3,SUMPRV.3,PRV-S-003-3,Total # of group providers,Count,N/A,Y,0,Default,SUMPRV_3,SUMPRV,3,,003,,003,0
@@ -2001,7 +2001,7 @@ OT,1,MIS88.1,MIS-88-001-1,% missing: TYPE-OF-SERVICE (COT00003),Claims Percentag
 OT,1,MIS90.1,MIS-90-001-1,% missing: TYPE-OF-SERVICE (COT00003),Claims Percentage,"S-CHIP Capitation Payment: Original and Replacement, Paid Claims",Y,3,Default,MIS90_1,MIS,90,1,001,,001,3
 EL,35,EL6.35,EL-6-032-35,% of MSIS IDs with restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE = D) that are not found on MFP-INFORMATION-ELG00010 for the same month,Non-Claims Percentage,N/A,Y,2,Default,EL6_35,EL,6,35,035,,035,2
 EL,36,EL6.36,EL-6-036-36,% of duals missing Medicare Beneficiary Identifier,Non-Claims Percentage,N/A,Y,2,Default,EL6_36,EL,6,36,036,,036,2
-EL,31,EL1.31,EL-1-025-31,% of eligibles where county code or zip code does not align with address state and is not missing,Non-Claims Percentage,N/A,Y,2,Default,EL1_31,EL,1,31,031,,031,2
+EL,31,EL1.31,EL-1-025-31,% of MSIS IDs where county code or zip code does not align with address state and is not missing,Non-Claims Percentage,N/A,Y,2,Default,EL1_31,EL,1,31,031,,031,2
 EL,26,EL3.35,EL-3-026-35,% of MSIS IDs with ELIGIBILITY-GROUP = 11 (Individuals Receiving SSI) if the state is not a 1634 or SSI criteria state,Non-Claims Percentage,N/A,Y,2,Default,EL3_35,EL,3,35,026,,026,2
 EL,27,EL3.36,EL-3-027-36,"% of MSIS IDs with ELIGIBILITY-GROUP = 12 (Aged, Blind and Disabled Individuals in 209(b) States) if the state is not a 209(b) state",Non-Claims Percentage,N/A,Y,2,Default,EL3_36,EL,3,36,027,,027,2
 EL,16,EL3.33,EL-3-016_1-33,"% of MSIS IDs with ELIGIBILITY-GROUP = 73, 74, or 75 (adult group - not newly eligible) if the state reported MBES enrollment for this group",Non-Claims Percentage,N/A,Y,2,Default,EL3_33,EL,3,33,016,,016,2
@@ -2015,3 +2015,21 @@ LT,2,MCR64.6,MCR-64-002_1-6,"% of crossover claim headers where MEDICARE-PAID-AM
 OT,3,MCR64.7,MCR-64-003_1-7,"% of crossover claim headers where MEDICARE-PAID-AMT, TOT-MEDICARE-COINS-AMT, and TOT-MEDICARE-DEDUCTIBLE-AMT are 0 or missing",Claims Percentage,"Medicaid and S-CHIP Encounter: Non-void, Crossover, Paid Claims",Y,2,Default,MCR64_7,MCR,64,7,003,,003,2
 RX,4,MCR64.8,MCR-64-004_1-8,"% of crossover claim headers where MEDICARE-PAID-AMT, TOT-MEDICARE-COINS-AMT, and TOT-MEDICARE-DEDUCTIBLE-AMT are 0 or missing",Claims Percentage,"Medicaid and S-CHIP Encounter: Non-void, Crossover, Paid Claims",Y,2,Default,MCR64_8,MCR,64,8,004,,004,2
 EL,14,EL1.32,EL-1-014-32,% of MSIS IDs with CITIZENSHIP-IND = 1 (U.S. Citizen) whose enrollment in Medicaid is pending citizenship verification,Non-Claims Percentage,N/A,Y,2,Default,EL1_32,EL,1,32,014,,014,2
+EL,1,MCR65.1,MCR-65-001-1,"% of Comprehensive MCO (MANAGED-CARE-PLAN-TYPE = 01, 04) enrollees with no capitation payments for comprehensive MCO",Non-Claims Percentage,N/A,Y,2,Default,MCR65_1,MCR,65,1,001,,001,2
+EL,2,MCR65.2,MCR-65-002-2,% of PACE plan (MANAGED-CARE-PLAN-TYPE = 17) enrollees with no capitation payments for PACE,Non-Claims Percentage,N/A,Y,2,Default,MCR65_2,MCR,65,2,002,,002,2
+EL,3,MCR65.3,MCR-65-003-3,% of Transportation PAHP (MANAGED-CARE-PLAN-TYPE = 15) enrollees with no capitation payments for Transportation PAHPs,Non-Claims Percentage,N/A,Y,2,Default,MCR65_3,MCR,65,3,003,,003,2
+EL,4,MCR65.4,MCR-65-004-4,% of Dental PAHP (MANAGED-CARE-PLAN-TYPE = 14) enrollees with no capitation payments for Dental PAHPs,Non-Claims Percentage,N/A,Y,2,Default,MCR65_4,MCR,65,4,004,,004,2
+EL,5,MCR65.5,MCR-65-005-5,% of Pharmacy PAHP (MANAGED-CARE-PLAN-TYPE = 18) enrollees with no capitation payments for Pharmacy PAHPs,Non-Claims Percentage,N/A,Y,2,Default,MCR65_5,MCR,65,5,005,,005,2
+EL,6,MCR65.6,MCR-65-006-6,"% of Mental Health PIHP (MANAGED-CARE-PLAN-TYPE = 08, 10, 12) enrollees with no capitation payments for Mental Health PIHPs",Non-Claims Percentage,N/A,Y,2,Default,MCR65_6,MCR,65,6,006,,006,2
+EL,7,MCR65.7,MCR-65-007-7,"% of Mental Health PAHP (MANAGED-CARE-PLAN-TYPE = 09, 11, 13) enrollees with no capitation payments for Mental Health PAHPs",Non-Claims Percentage,N/A,Y,2,Default,MCR65_7,MCR,65,7,007,,007,2
+EL,8,MCR65.8,MCR-65-008-8,"% of LTSS (MANAGED-CARE-PLAN-TYPE = 07, 19) enrollees with no capitation payments for LTSS",Non-Claims Percentage,N/A,Y,2,Default,MCR65_8,MCR,65,8,008,,008,2
+EL,9,MCR65.9,MCR-65-009-9,"% of Disease Management (MANAGED-CARE-PLAN-TYPE = 02, 03, 16) enrollees with no capitation payments for Disease Management",Non-Claims Percentage,N/A,Y,2,Default,MCR65_9,MCR,65,9,009,,009,2
+EL,10,MCR65.10,MCR-65-010-10,% of ACO (MANAGED-CARE-PLAN-TYPE = 60) enrollees with no capitation payments for ACOs,Non-Claims Percentage,N/A,Y,2,Default,MCR65_10,MCR,65,10,010,,010,2
+EL,11,MCR65.11,MCR-65-011-11,% of Health/Medical Home (MANAGED-CARE-PLAN-TYPE = 70) enrollees with no capitation payments for Health/Medical Home,Non-Claims Percentage,N/A,Y,2,Default,MCR65_11,MCR,65,11,011,,011,2
+EL,12,MCR65.12,MCR-65-012-12,% of Integrated Care for Dual Eligibles (MANAGED-CARE-PLAN-TYPE = 80) enrollees with no capitation payments for Integrated Care for Dual Eligibles,Non-Claims Percentage,N/A,Y,2,Default,MCR65_12,MCR,65,12,012,,012,2
+EL,26,EL1.33,EL-1-026-33,% of MSIS IDs that have a White race (RACE = 001),Non-Claims Percentage,N/A,Y,2,Default,EL1_33,EL,1,33,026,,026,2
+EL,27,EL1.34,EL-1-027-34,% of MSIS IDs that have a Black or African American race (RACE = 002),Non-Claims Percentage,N/A,Y,2,Default,EL1_34,EL,1,34,027,,027,2
+EL,28,EL1.35,EL-1-028-35,% of MSIS IDs that have a American Indian or Alaska Native race (RACE = 003),Non-Claims Percentage,N/A,Y,2,Default,EL1_35,EL,1,35,028,,028,2
+EL,29,EL1.36,EL-1-029-36,"% of MSIS IDs that have an Asian race (RACE = 004, 005, 006, 007, 008, 009, 010, 011)",Non-Claims Percentage,N/A,Y,2,Default,EL1_36,EL,1,36,029,,029,2
+EL,30,EL1.37,EL-1-030-37,"% of MSIS IDs that have a Native Hawaiian or Other Pacific Islander race (RACE = 012, 013, 014, 015, 016)",Non-Claims Percentage,N/A,Y,2,Default,EL1_37,EL,1,37,030,,030,2
+EL,31,EL1.38,EL-1-031-38,% of MSIS IDs that have Other race (RACE = 018),Non-Claims Percentage,N/A,Y,2,Default,EL1_38,EL,1,38,031,,031,2

@@ -1,6 +1,42 @@
 from pandas import pandas as pd
 from pandas import DataFrame
 
+def create_run_101_input(
+    series: str, cb: str, measure: str, id: str, 
+    numerator: str = '', numerator_table: str = '', 
+    denominator: str = '', denominator_table: str = '', 
+    table: str = '', rounding: int = 2
+    ):
+    """
+        generates an input item in the list below. existing measures are defined as a list of unnamed args, 
+        but this function should be used from V3.4 onwards.  functionally, both approaches are the same, 
+        however utilizing this helper function helps ensure arguments are provided in the correct order.
+
+        Args:
+            series: in this file, measures should be series '101'
+            cb: callback function to call using these values
+            measure: measure id, e.g. EL1.37
+            id: string id with no `.`, e.g. el137t
+            numerator: columns to select as the numerator
+            numerator_table: table to select the numerator from
+            denominator: columns to select as the denominator
+            denominator_table: table to select the denominator from
+            table:
+            rounding: number of decimal places to round to
+    """
+    return [
+        series,
+        cb,
+        measure,
+        id,
+        numerator,
+        numerator_table,
+        denominator,
+        denominator_table,
+        table,
+        rounding
+    ]
+
 run_101 =[
 
     ['101', 'nonclaimspct', 'el1.1', 'el101t',
@@ -464,7 +500,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct', 'el1.31', 'el131t',
-        "case when elgbl_state_cd_match=1 and ((elgbl_cnty_cd is not null) and (nonmatchcounty_elgbl=1)) or ((elgbl_zip_cd is not null) and (nonmatchzip_elgbl=1)) then 1 else 0 end",
+        "case when elgbl_state_cd_match=1 and ((elgbl_cnty_cd is not null and nonmatchcounty_elgbl=1) or (elgbl_zip_cd is not null and nonmatchzip_elgbl=1)) then 1 else 0 end",
         '',
         "msis_ident_num is not null",
         '',
@@ -493,7 +529,69 @@ run_101 =[
         '',
         '',
         '',
-        2]
+        2],
+
+    # from version 3.4 onwards, new measures should be defined like this, for clarity on what the arguments are.
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.33',
+        id='el133t',
+        numerator='case when race_cd="001" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.34',
+        id='el134t',
+        numerator='case when race_cd="002" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.35',
+        id='el135t',
+        numerator='case when race_cd="003" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.36',
+        id='el136t',
+        numerator='case when race_cd in ("004", "005", "006", "007", "008", "009", "010", "011") then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.37',
+        id='el137t',
+        numerator='case when race_cd in ("012", "013", "014", "015", "016") then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.38',
+        id='el138t',
+        numerator='case when race_cd="018" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_race_info'
+    ),
+
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])
