@@ -592,6 +592,72 @@ run_101 =[
         table='_tmsis_race_info'
     ),
 
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.39',
+        id='el139t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd="001"',
+        denominator_table='_tmsis_race_info'
+    ),  
+
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.40',
+        id='el140t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd="002"',
+        denominator_table='_tmsis_race_info'
+    ),   
+
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.41',
+        id='el141t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd="003"',
+        denominator_table='_tmsis_race_info'
+    ),   
+
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.42',
+        id='el142t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd in ("004", "005", "006", "007", "008", "009", "010", "011")',
+        denominator_table='_tmsis_race_info'
+    ),   
+
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.43',
+        id='el143t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd in ("012", "013", "014", "015", "016")',
+        denominator_table='_tmsis_race_info'
+    ),   
+
+     create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el1.44',
+        id='el144t',
+        numerator='case when ethncty_cd not in ("0","1","2","3","4","5") or ethncty_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_ethncty_info',
+        denominator='a.msis_ident_num is not null and race_cd="018"',
+        denominator_table='_tmsis_race_info'
+    ),   
+
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

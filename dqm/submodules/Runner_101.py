@@ -141,7 +141,7 @@ class Runner_101:
                         {DQClosure.parse(x['denom'])}
                     group by
                         a.msis_ident_num
-                ) a
+                ) c
              """
 
         dqm.logger.debug(z)
