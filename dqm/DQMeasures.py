@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.4.0'
+        self.version = '3.5.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.4'
+        self.specvrsn = 'V3.5'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -136,7 +136,10 @@ class DQMeasures:
 
         # Provider Classification Lookup
         self.provider_classification_lookup = self.load_metadata_file('provider_classification_lookup')
-
+        
+        # Atypical Provider Classification Lookup
+        self.atypical_provider_table = self.load_metadata_file('atypical_provider_table')
+        
         self.thresholds = self.load_metadata_file('thresholds')
         self.zcc = self.load_metadata_file('zcc')
         self.zipstate_lookup = self.load_metadata_file('zipstate_lookup')
@@ -516,6 +519,7 @@ class DQMeasures:
         if (self.isTurbo):
             self.materializeViews()
 
+        etl.DQPrepETL.shared_metadata_views(self)
         etl.DQPrepETL.create_peripheral_tables(self)
         etl.DQPrepETL.create_all_missingness_views(self)
 
@@ -528,81 +532,6 @@ class DQMeasures:
         from dqm import DQPrepETL as etl
 
         etl.DQPrepETL.materialize_views(self)
-
-    # --------------------------------------------------------------------
-    #
-    #   Apply provided Tresholds from file
-    #
-    # --------------------------------------------------------------------
-    def setThresholds(self, spark, thresholds: str):
-        import pandas as pd
-        import numpy as np
-
-        df = spark.read.format('com.crealytics.spark.excel') \
-            .option('header', 'false') \
-            .option('inferSchema', 'false') \
-            .option('treatEmptyValuesAsNulls', 'false') \
-            .option('dataAddress', "'Measures'!A1") \
-            .load(thresholds) \
-            .toPandas()
-
-        df = df[['_c0', '_c3', '_c4', '_c5', '_c6', '_c7', '_c9', '_c13', '_c27', '_c33']]
-        df = df.iloc[1:,:]
-        df = df.rename(columns={'_c0': 'claim_file',
-                                '_c3': 'display_order',
-                                '_c4': 'measure',
-                                '_c5': 'measure_id_w_display_order',
-                                '_c6': 'measure_name',
-                                '_c7': 'Measure_Type',
-                                '_c9': 'claim_category',
-                                '_c13': 'Active_Ind',
-                                '_c27': 'decimal_places',
-                                '_c33': 'Display_Type',
-                                '_c36': 'version_created',
-                                '_c37': 'version_last_modified'
-                                })
-
-        df = df[df['Active_Ind'] == 'Y']
-        df = df[df['measure'].notnull()]
-
-        df['measure_id'] = df['measure'].str.replace('.', '_', regex=False).str.upper()
-        df['display_order'] = df['display_order'].str.replace('.', '_', regex=False)
-
-        # assign measure parts
-        def createMeasureCols(measure_id):
-            import re
-
-            try:
-                measure_cat = re.search(
-                    r"[a-zA-Z]*", measure_id, re.IGNORECASE).group()
-            except AttributeError:
-                measure_cat = re.search(r"[a-zA-Z]*", measure_id, re.IGNORECASE)
-
-            if (measure_cat.startswith('SUM')):
-                measure_major = measure_id[len(measure_cat):].split('_', 1)[1]
-                measure_minor = ''
-            else:
-                measure_major = measure_id[len(measure_cat):].split('_', 1)[0]
-                measure_minor = measure_id[len(measure_cat):].split('_', 1)[1]
-
-            return {'cat': measure_cat, 'major': measure_major, 'minor': measure_minor}
-
-        df[['measure_cat', 'measure_major', 'measure_minor']] = df.apply(
-             lambda x: createMeasureCols(x['measure_id']), axis=1).apply(pd.Series)
-
-        df[['z_display_order', 'display_suffix']] = df['display_order'].str.split('_', 1, expand=True)
-
-        df['z_display_order'] = df['z_display_order'].str.zfill(3)
-
-        df['z_display_order_suffix'] = df.apply(lambda x: x['z_display_order'] + '_' + x['display_suffix']
-                                                if pd.notnull(x['display_suffix']) else x['z_display_order'], axis=1)
-
-        df['decimal_places_int'] = df['decimal_places'].mask(df['decimal_places'] == 'N/A')
-        df['decimal_places_int'] = df['decimal_places_int'].fillna(0)
-        df['decimal_places_int'] = df['decimal_places_int'].astype(np.int64)
-        df['decimal_places'] = df['decimal_places_int']
-
-        self.thresholds = df
 
     # --------------------------------------------------------------------
     #

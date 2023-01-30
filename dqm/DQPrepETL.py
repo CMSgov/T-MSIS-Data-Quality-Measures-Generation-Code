@@ -425,7 +425,10 @@ class DQPrepETL:
         spark.createDataFrame(dqm.prgncy).write.mode("overwrite").saveAsTable("dqm_conv.prgncy")
 
         dqm.provider_classification_lookup = dqm.provider_classification_lookup.rename(columns={"Source List": "source_list", "PROV-CLASSIFICATION-TYPE": "prov_class_type"})
-        spark.createDataFrame(dqm.prgncy).write.mode("overwrite").saveAsTable("dqm_conv.provider_classification_lookup")
+        spark.createDataFrame(dqm.provider_classification_lookup).write.mode("overwrite").saveAsTable("dqm_conv.provider_classification_lookup")  
+
+        dqm.atypical_provider_table = dqm.atypical_provider_table.rename(columns={"Provider_classification_type": "prov_class_type", "Provider_classification_code": "prov_class_cd","NPI_Required": "NPI_req"})
+        spark.createDataFrame(dqm.atypical_provider_table).write.mode("overwrite").saveAsTable("dqm_conv.atypical_provider_table")
 
         dqm.prvtxnmy = dqm.prvtxnmy.rename(columns={"Individual or Groups (of Individuals)": "Group"})
         spark.createDataFrame(dqm.prvtxnmy).write.mode("overwrite").saveAsTable("dqm_conv.prvtxnmy")

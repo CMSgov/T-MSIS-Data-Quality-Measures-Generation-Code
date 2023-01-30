@@ -2029,7 +2029,14 @@ EL,11,MCR65.11,MCR-65-011-11,% of Health/Medical Home (MANAGED-CARE-PLAN-TYPE = 
 EL,12,MCR65.12,MCR-65-012-12,% of Integrated Care for Dual Eligibles (MANAGED-CARE-PLAN-TYPE = 80) enrollees with no capitation payments for Integrated Care for Dual Eligibles,Non-Claims Percentage,N/A,Y,2,Default,MCR65_12,MCR,65,12,012,,012,2
 EL,26,EL1.33,EL-1-026-33,% of MSIS IDs that have a White race (RACE = 001),Non-Claims Percentage,N/A,Y,2,Default,EL1_33,EL,1,33,026,,026,2
 EL,27,EL1.34,EL-1-027-34,% of MSIS IDs that have a Black or African American race (RACE = 002),Non-Claims Percentage,N/A,Y,2,Default,EL1_34,EL,1,34,027,,027,2
-EL,28,EL1.35,EL-1-028-35,% of MSIS IDs that have a American Indian or Alaska Native race (RACE = 003),Non-Claims Percentage,N/A,Y,2,Default,EL1_35,EL,1,35,028,,028,2
+EL,28,EL1.35,EL-1-028-35,% of MSIS IDs that have an American Indian or Alaska Native race (RACE = 003),Non-Claims Percentage,N/A,Y,2,Default,EL1_35,EL,1,35,028,,028,2
 EL,29,EL1.36,EL-1-029-36,"% of MSIS IDs that have an Asian race (RACE = 004, 005, 006, 007, 008, 009, 010, 011)",Non-Claims Percentage,N/A,Y,2,Default,EL1_36,EL,1,36,029,,029,2
 EL,30,EL1.37,EL-1-030-37,"% of MSIS IDs that have a Native Hawaiian or Other Pacific Islander race (RACE = 012, 013, 014, 015, 016)",Non-Claims Percentage,N/A,Y,2,Default,EL1_37,EL,1,37,030,,030,2
 EL,31,EL1.38,EL-1-031-38,% of MSIS IDs that have Other race (RACE = 018),Non-Claims Percentage,N/A,Y,2,Default,EL1_38,EL,1,38,031,,031,2
+PRV,11,PRV2.11,PRV-2-011-11,% of non-atypical providers that do not have an NPI,Non-Claims Percentage,N/A,Y,2,Default,PRV2_11,PRV,2,11,011,,011,2
+EL,32,EL1.39,EL-1-032-39,"% MSIS IDs with White race (RACE = 001) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_39,EL,1,39,032,,032,2
+EL,33,EL1.40,EL-1-033-40,"% MSIS IDs with Black or African American race (RACE = 002) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_40,EL,1,40,033,,033,2
+EL,34,EL1.41,EL-1-034-41,"% of MSIS IDs with American Indian or Alaska Native race (RACE = 003) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_41,EL,1,41,034,,034,2
+EL,35,EL1.42,EL-1-035-42,"% of MSIS IDs with Asian race (RACE = 004, 005, 006, 007, 008, 009, 010, 011) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_42,EL,1,42,035,,035,2
+EL,36,EL1.43,EL-1-036-43,"% of MSIS IDs with Native Hawaiian or Other Pacific Islander race (RACE = 012, 013, 014, 015, 016) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_43,EL,1,43,036,,036,2
+EL,37,EL1.44,EL-1-037-44,"% of MSIS IDs with Other race (RACE = 018) where ETHNICITY-CODE is missing, unspecified, or invalid",Non-Claims Percentage,N/A,Y,2,Default,EL1_44,EL,1,44,037,,037,2
