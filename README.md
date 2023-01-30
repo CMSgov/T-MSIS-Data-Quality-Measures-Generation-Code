@@ -26,7 +26,7 @@ class Runner_n():
 ```
 
 ## Create or modify a Runner Class
-Measure semantic processing is implemented within a Runner class object. Measures methods may be re-used driven by parameters in the manifest or distinct fucntions may be implemented.
+Measure semantic processing is implemented within a Runner class object. Measures methods may be re-used driven by parameters in the manifest or distinct functions may be implemented.
 ```python
     def my_measure(spark, dqm: DQMeasures, measure_id,  x) :
 
@@ -116,6 +116,14 @@ series = [
 
 ## Encapsulating the _Thresholds_ File
 
+
+## Process the thresholds file
+
+Copy the latest thresholds xlsx file produced by the researchers from SharePoint to the ```dqm\cfg``` folder. Delete any previous versions or an assertion will fail.
+
+from within the ```dq_measures_python``` folder:
+
+- > ```python .\dqm\thresholds.py```
 
 ## Process the reverse lookup and all manifest files
 

@@ -3,6 +3,7 @@
 #
 #
 # --------------------------------------------------------------------
+from dqm.DQClosure import DQClosure
 from dqm.DQMeasures import DQMeasures
 
 
@@ -382,13 +383,114 @@ class Runner_504:
 
     # --------------------------------------------------------------------
     #
+    #   % of Submitting State Provider IDs that
+    #   are not atypical providers 
+    #   that are missing NPI
+    #
+    # --------------------------------------------------------------------
+    def prv2_11(spark, dqm: DQMeasures, measure_id, x):
+
+        # Unique tmsis_prvdr_attr_mn.submtg_state_prvdr_id WHERE
+        # 
+        #  (
+        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd = PROV-CLASSIFICATION-TYPE in Atypical Provider Lookup
+        #   AND
+        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd= Code in Atypical Provider Lookup
+        #   AND
+        #   NPI required = "YES" in Atypical Provider Lookup
+        #  )
+        
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_prv2_11_denom_prep as
+                select distinct
+                    p.submtg_state_cd,
+                    p.submtg_state_prvdr_id
+
+                from
+                    {dqm.taskprefix}_tmsis_prvdr_attr_mn as p
+                inner join
+                    {dqm.taskprefix}_tmsis_prvdr_txnmy_clsfctn as t
+                    on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
+
+                inner join
+                     dqm_conv.atypical_provider_table as l
+                     on (t.prvdr_clsfctn_type_cd = l.prov_class_type
+                         and t.prvdr_clsfctn_cd = l.prov_class_cd)
+                     where
+                     p.submtg_state_prvdr_id is not null and 
+                     l.NPI_req = 'YES'
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+
+        # flag providers with NPI : (tmsis_prvdr_id.prvdr_id_type_cd ='2' and tmsis_prvdr_id.prvdr_id rlike '[a-zA-Z1-9]')
+
+        z = f"""
+                create or replace temporary view prv2_11_numer_prep as
+                select
+                    d.submtg_state_cd,
+                    d.submtg_state_prvdr_id,
+                    
+                    max(case when n.prvdr_id_type_cd ='2' and 
+                                  {DQClosure.parse('%nmsng(n.prvdr_id, 12)')}
+                             then 1 else 0 end
+                        ) as  prv_with_npi             
+
+                from {dqm.taskprefix}_prv2_11_denom_prep d
+                
+                left join
+                     {dqm.taskprefix}_tmsis_prvdr_id n
+
+                on (d.submtg_state_prvdr_id = n.submtg_state_prvdr_id)
+                       
+                group by d.submtg_state_cd, d.submtg_state_prvdr_id    
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        # Count providers with no NPI
+
+        prv2_11_rollup = f"""
+                select
+                    submtg_state_cd
+                    ,sum(1) as prv2_11_denom
+                    ,sum(case when prv_with_npi=0 then 1 else 0 end) as prv2_11_numer
+                 from
+                    prv2_11_numer_prep
+                 
+                 group by submtg_state_cd
+
+             """.format()
+     
+     
+        z = f"""
+                select
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'504' as submodule
+                    ,coalesce(prv2_11_numer, 0) as numer
+                    ,prv2_11_denom as denom
+                    ,case when prv2_11_denom > 0 then (coalesce(prv2_11_numer, 0) / prv2_11_denom) else null end as mvalue
+                from ({prv2_11_rollup}) a
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    #
     #
     # --------------------------------------------------------------------
     v_table = {
             "prv6_1": prv6_1,
             "prv6_2": prv6_2,
             "prv6_3": prv6_3,
-            "prv6_4": prv6_4
+            "prv6_4": prv6_4,
+            "prv2_11": prv2_11
         }
 
 # CC0 1.0 Universal

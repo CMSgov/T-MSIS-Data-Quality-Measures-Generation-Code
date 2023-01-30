@@ -56,7 +56,8 @@ run_504 = [
     ['504', 'prv6_1', 'prv6_1'],
     ['504', 'prv6_2', 'prv6_2'],
     ['504', 'prv6_3', 'prv6_3'],
-    ['504', 'prv6_4', 'prv6_4']
+    ['504', 'prv6_4', 'prv6_4'],
+    ['504', 'prv2_11', 'prv2_11']
 ]
 
 df = DataFrame(run_504, columns=['series', 'cb', 'measure_id'])
