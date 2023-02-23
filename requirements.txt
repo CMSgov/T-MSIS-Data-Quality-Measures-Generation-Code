@@ -20,7 +20,7 @@ isort==5.8.0
 Jinja2==3.0.1
 koalas==1.8.1
 lazy-object-proxy==1.6.0
-markdown-it-py==1.1.0
+markdown-it-py==2.2.0
 MarkupSafe==2.0.1
 mccabe==0.6.1
 mdit-py-plugins==0.2.8
