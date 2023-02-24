@@ -9,10 +9,9 @@ If you're familiar with git and just want to work from the command line, you jus
 git clone https://github.com/CMSgov/T-MSIS-Data-Quality-Measures-Generation-Code.git
 If you would prefer not to use git, you can also download the most recent code as a ZIP file.
 
-**Running the code**
+**How the code is used**
 
-The DQ measures code is written in Databricks SQL executed through explicit SQL passthrough embedded within a SAS code wrapper on T-MSIS data in DataConnect (formerly known as AREMAC).
-The code is executed on new state month submissions as soon as possible after data are available in DataConnect, or on historical data on an as-needed basis.
+The DQ measures code is written in Databricks SQL executed through explicit SQL passthrough embedded within a python code wrapper. The code is written for and is executed on T-MSIS data that is stored in DataConnect, a Center for Medicaid and CHIP Services (CMCS) data warehouse. The code is executed on new monthly state T-MSIS submissions as soon as possible after the submissions have successfully been processed and the resulting data have been loaded into DataConnect for analytic use, or on historical T-MSIS data that is available in DataConnect on an as-needed basis. The code and related documentation are available in this public repository to provide explicit information about the calculation of measures in case there are questions about how to interpret the measure specifications. It is also available to provide insights into the code if states are attempting to replicate any DQ measures on T-MSIS data within their own systems. The code available in this GitHub repository can only be successfully executed on T-MSIS data in DataConnect. Modifications would be necessary to execute the code in any other environment.
 
 **Lookup Tables**
 
