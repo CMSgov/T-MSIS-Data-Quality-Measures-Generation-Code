@@ -359,7 +359,7 @@ class DQPrepETL:
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] + dqm.stc_cd['z_tos'].tolist(), columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.freq_msr_tos")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_tos")
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] +
                   ['011', '012', '013', '014', '015', '016', '018', '021', '022',
@@ -369,7 +369,7 @@ class DQPrepETL:
                    '072', '073', '074', '075', '076', '077', '078', '079', '081',
                    '082', '083', '084', '085', '086', '087', '089'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.freq_msr_billtype")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_billtype")
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] +
                 ['1932', '1934', '261Q', '282N', '283Q', '313M', '3140', '3902', '4053',
@@ -377,34 +377,34 @@ class DQPrepETL:
                 '20XX', '21XX', '22XX', '23XX', '24XX', '25XX', '26XX', '27XX', '28XX', '29XX',
                 '30XX', '31XX', '32XX', '33XX', '34XX', '36XX', '37XX', '38XX'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.freq_msr_tax")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_tax")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
                 ['1','2','3','4','5','A','B','C','D','E','U','V','W','X','Y','Z'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.clm_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.clm_type_cd")
 
         df = pd.DataFrame([['1','TAXONOMY CODE'],['2','PROVIDER SPECIALTY CODE'],['3','PROVIDER TYPE CODE'],
                         ['4','AUTHORIZED CATEGORY OF SERVICE CODE'],['A','ANY VALID VALUE'],['N','NO VALID VALUE'],
                         ['T','TOTAL']], columns=['valid_value','label'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.prvdr_clsfctn_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.prvdr_clsfctn_type_cd")
 
         df = pd.DataFrame(['A', 'N', 'T'] +
                 ['1','2','3','8','9'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.imgrtn_stus_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.imgrtn_stus_cd")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
             ['001','002','003','004','005','006','007','008','009','010','011','012','013','014','015','016','017','018'],
             columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.race_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.race_cd")
 
         df = pd.DataFrame(['A', 'N', 'T'] +
                 ['1','2','9'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.enrlmt_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.enrlmt_type_cd")
 
         df = pd.DataFrame(['A', 'N', 'T'] +
                 ['01','02','03','04','05','06','07','08','09','11','12','13','14','15','16','17','18','19','20',
@@ -412,26 +412,26 @@ class DQPrepETL:
                  '40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','59','60',
                  '61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.elgblty_grp_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_grp_cd")
 
         df = pd.DataFrame(
                 ['1','2','3','4','5','6','7','A','B','C','D','F','A_','N_','T_'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("overwrite").saveAsTable("dqm_conv.rstrctd_bnfts_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.rstrctd_bnfts_cd")
 
 
-        spark.createDataFrame(dqm.zipstate_lookup).write.mode("overwrite").saveAsTable("dqm_conv.zipstate_crosswalk")
-        spark.createDataFrame(dqm.countystate_lookup).write.mode("overwrite").saveAsTable("dqm_conv.countystate_lookup")
-        spark.createDataFrame(dqm.prgncy).write.mode("overwrite").saveAsTable("dqm_conv.prgncy")
+        spark.createDataFrame(dqm.zipstate_lookup).write.mode("ignore").saveAsTable("dqm_conv.zipstate_crosswalk")
+        spark.createDataFrame(dqm.countystate_lookup).write.mode("ignore").saveAsTable("dqm_conv.countystate_lookup")
+        spark.createDataFrame(dqm.prgncy).write.mode("ignore").saveAsTable("dqm_conv.prgncy")
 
         dqm.provider_classification_lookup = dqm.provider_classification_lookup.rename(columns={"Source List": "source_list", "PROV-CLASSIFICATION-TYPE": "prov_class_type"})
-        spark.createDataFrame(dqm.provider_classification_lookup).write.mode("overwrite").saveAsTable("dqm_conv.provider_classification_lookup")  
+        spark.createDataFrame(dqm.provider_classification_lookup).write.mode("ignore").saveAsTable("dqm_conv.provider_classification_lookup")  
 
         dqm.atypical_provider_table = dqm.atypical_provider_table.rename(columns={"Provider_classification_type": "prov_class_type", "Provider_classification_code": "prov_class_cd","NPI_Required": "NPI_req"})
-        spark.createDataFrame(dqm.atypical_provider_table).write.mode("overwrite").saveAsTable("dqm_conv.atypical_provider_table")
+        spark.createDataFrame(dqm.atypical_provider_table).write.mode("ignore").saveAsTable("dqm_conv.atypical_provider_table")
 
         dqm.prvtxnmy = dqm.prvtxnmy.rename(columns={"Individual or Groups (of Individuals)": "Group"})
-        spark.createDataFrame(dqm.prvtxnmy).write.mode("overwrite").saveAsTable("dqm_conv.prvtxnmy")
+        spark.createDataFrame(dqm.prvtxnmy).write.mode("ignore").saveAsTable("dqm_conv.prvtxnmy")
 
     # -------------------------------------------------------------------------
     #
