@@ -1,4 +1,13 @@
+from typing import List
 from pandas import DataFrame
+
+def create_run_201_exp_claims_entry(
+    series: str, cb: str,
+    measure_id: str, claim_cat: str, 
+    denom: str, numer: str,
+    level: str, claim_type: str
+) -> List[str]:
+    return [ series, cb, measure_id, claim_cat, denom, numer, level, claim_type ]
 
 run_201_exp_claims_pct_macros = [
 
@@ -71,7 +80,17 @@ run_201_exp_claims_pct_macros = [
     ['201', 'claims_pct', 'exp44_4', 'au', '1=1', 'tot_mdcd_pd_amt <> 0 and tot_mdcd_pd_amt is not null', 'clh', 'rx'],
     ['201', 'claims_pct', 'exp45_1', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ip'],
     ['201', 'claims_pct', 'exp45_2', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],
-    ['201', 'claims_pct', 'exp45_3', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot']
+    ['201', 'claims_pct', 'exp45_3', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot'],
+
+    # v3.6
+    # updated version of EXP11_1
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp11_163', 'a', 'pymt_lvl_ind = 2', 'bill_amt=0', 'cll', 'ot'),
+    # updated version of EXP11_2
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp11_164', 'a', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+    # updated version of EXP37_1
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp37_2', 'p', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+    # updated version of EXP39_1
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp39_2', 'r', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
 ]
 
 df = DataFrame(run_201_exp_claims_pct_macros, columns=['series', 'cb', 'measure_id', 'claim_cat', 'denom', 'numer', 'level', 'claim_type'])

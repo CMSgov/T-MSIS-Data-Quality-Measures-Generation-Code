@@ -656,8 +656,44 @@ run_101 =[
         numerator_table='_tmsis_ethncty_info',
         denominator='a.msis_ident_num is not null and race_cd="018"',
         denominator_table='_tmsis_race_info'
-    ),   
-
+    ),  
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.45',
+        id='el145t',
+        numerator='case when upper(prmry_lang_cd)="ENG" then 1 else 0 end',
+        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        table='_tmsis_var_dmgrphc_elgblty'
+    ), 
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.46',
+        id='el146t',
+        numerator='case when upper(prmry_lang_cd)="SPA" then 1 else 0 end',
+        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        table='_tmsis_var_dmgrphc_elgblty'
+    ), 
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el1.47',
+        id='el147',
+        numerator='case when upper(prmry_lang_cd) not in ("ENG", "SPA") then 1 else 0 end',
+        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        table='_tmsis_var_dmgrphc_elgblty'
+    ), 
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.37',
+        id='el637',
+        numerator='case when rstrctd_bnfts_cd not in ("2", "4") or rstrctd_bnfts_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and imgrtn_stus_cd = "3"',
+        denominator_table='_tmsis_var_dmgrphc_elgblty'
+    ),
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

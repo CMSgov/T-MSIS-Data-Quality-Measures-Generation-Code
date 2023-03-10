@@ -122,6 +122,7 @@ class DQM_Metadata:
                     ,ssn_vrfctn_ind
                     ,ctznshp_ind
                     ,ctznshp_vrfctn_ind
+                    ,prmry_lang_cd
                     ,imgrtn_vrfctn_ind
                     ,imgrtn_stus_cd
                     ,hsehld_size_cd
@@ -721,7 +722,8 @@ class DQM_Metadata:
                             ,a.othr_insrnc_ind
                             ,a.othr_tpl_clctn_cd
                             ,a.pgm_type_cd
-                            ,a.bill_type_cd""",
+                            ,a.bill_type_cd
+                            ,a.pymt_lvl_ind""",
                     'rx':
                         """,a.prscrbng_prvdr_num
                             ,a.dspnsng_pd_prvdr_num"""
