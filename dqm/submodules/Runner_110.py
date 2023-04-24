@@ -355,8 +355,9 @@ class Runner_110:
                     case when a.msis_ident_num is not null then 1 else 0 end denom,
                     case when b.last_chg_rsn_cd is null or
                                 b.last_chg_rsn_cd not in (
-                                    '01','02','03','04','05','06','07','08','09','10',
-                                    '11','12','13','14','15','16','17','18','19','20')
+                                    '01','02','04','06','07','08','09','10','11','12',
+                                    '13','14','15','16','17','18','19','20','23','24', 
+                                    '25','26','27','28','29','30','31')
                         then 1
                         else 0 end as numer
                 from

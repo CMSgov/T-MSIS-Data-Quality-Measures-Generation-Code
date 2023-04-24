@@ -2,18 +2,18 @@ from pandas import DataFrame
 
 run_919_claims_schip_aq_ar = [
 
-    ['919', 'tab_clh_aq_ar', 'ip', 'FFS54_1', 'AQ'],
-    ['919', 'tab_clh_aq_ar', 'ip', 'MCR64_1', 'AR'],
-    ['919', 'tab_clh_aq_ar', 'lt', 'FFS54_2', 'AQ'],
-    ['919', 'tab_clh_aq_ar', 'lt', 'MCR64_2', 'AR'],
+    ['919', 'tab_clh_aq_ar', 'ip', 'FFS54_1', 'AQ', '1=1'],
+    ['919', 'tab_clh_aq_ar', 'ip', 'MCR64_1', 'AR', "src_lctn_cd not in ('22','23')"],
+    ['919', 'tab_clh_aq_ar', 'lt', 'FFS54_2', 'AQ', '1=1'],
+    ['919', 'tab_clh_aq_ar', 'lt', 'MCR64_2', 'AR', "src_lctn_cd not in ('22','23')"],
 
-    ['919', 'tab_cll_to_clh_aq_ar', 'ot', 'FFS54_3', 'AQ'],
-    ['919', 'tab_cll_to_clh_aq_ar', 'ot', 'MCR64_3', 'AR'],
-    ['919', 'tab_cll_to_clh_aq_ar', 'rx', 'FFS54_4', 'AQ'],
-    ['919', 'tab_cll_to_clh_aq_ar', 'rx', 'MCR64_4', 'AR']
+    ['919', 'tab_cll_to_clh_aq_ar', 'ot', 'FFS54_3', 'AQ', '1=1'],
+    ['919', 'tab_cll_to_clh_aq_ar', 'ot', 'MCR64_3', 'AR', "src_lctn_cd not in ('22','23')"],
+    ['919', 'tab_cll_to_clh_aq_ar', 'rx', 'FFS54_4', 'AQ', '1=1'],
+    ['919', 'tab_cll_to_clh_aq_ar', 'rx', 'MCR64_4', 'AR', "src_lctn_cd not in ('22','23')"]
 ]
 
-df = DataFrame(run_919_claims_schip_aq_ar, columns=['series', 'cb', 'claim_type', 'measure_id', 'claim_cat'])
+df = DataFrame(run_919_claims_schip_aq_ar, columns=['series', 'cb', 'claim_type', 'measure_id', 'claim_cat', 'denom'])
 df['measure_id'] = df['measure_id'].str.upper()
 df['claim_cat'] = df['claim_cat'].str.upper()
 print(df.head())
