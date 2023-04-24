@@ -1,11 +1,16 @@
+import os
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+if 'VERSION' not in os.environ:
+    print("Please set VERSION environment variable, see workflow.md.")
+    quit(1)
+
 setuptools.setup(
     name="dqm",
-    version="3.6.00",
+    version=os.environ['VERSION'],
     author="Sarah Schoenfeldt",
     author_email="Sarah.Schoenfeldt@cms.hhs.gov",
     description="A package to calculate data quality measures on T-MSIS data using Databricks",

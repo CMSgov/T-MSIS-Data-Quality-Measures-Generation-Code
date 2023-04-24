@@ -48,9 +48,15 @@ We could cleanup the clusters too because the installed library wheels will accu
 
 ## Local Workflow
 
-### Build the library
-
 DQ Measures is deployed as distributable WHL ("Wheel") file. WHL files are built using [_setuptools_](https://pypi.org/project/setuptools/)
+
+Building and deploying the WHL can be done automatically through the `deploy.sh` script in the root of the repository, as long as your VERSION is set in your environment. One way to do this is to place `export VERSION=1.2.3` as a line in a file named `.env`, also in the root of the repository. Then you can either restart your terminal, or run `source .env` from the command line, and the variable should get picked up. This must be done every time the `.env` file is updated.
+
+To run the deployment, you must a `bash` terminal, *not* a `powershell` terminal. The command to run it is `bash deploy.sh`.
+
+The script will default to uploading the wheel file to the `VAL` environment, but if deploying for production add another variable to the `.env` file to set `export ENVIRON=PROD`.
+
+### Manually build the library
 
 If not done so already, run these commands:
 
@@ -58,6 +64,8 @@ If not done so already, run these commands:
 2. > ```.venv/Scripts/Activate.ps1```
 3. > ```python -m pip install --upgrade pip```
 4. > ```python -m pip install -r requirements.txt```
+
+If there have been any updates to measures, run the reverse lookup as described in the README file.
 
 From the top level folder, run these commands:
 

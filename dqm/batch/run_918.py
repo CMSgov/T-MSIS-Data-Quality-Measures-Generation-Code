@@ -1,13 +1,13 @@
 from pandas import DataFrame
 
 run_918_claims_cll_amt = [
-    ['918', 'amt_cll_to_clh', 'ffs53_3', 'AO', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'ot'],
-    ['918', 'amt_cll_to_clh', 'mcr63_3', 'AP', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'ot'],
-    ['918', 'amt_cll_to_clh', 'ffs53_4', 'AO', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'rx'],
-    ['918', 'amt_cll_to_clh', 'mcr63_4', 'AP', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'rx'],
+    ['918', 'amt_cll_to_clh', 'ffs53_3', 'AO', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'ot', '1=1'],
+    ['918', 'amt_cll_to_clh', 'mcr63_3', 'AP', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'ot', "src_lctn_cd not in ('22','23')"],
+    ['918', 'amt_cll_to_clh', 'ffs53_4', 'AO', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'rx', '1=1'],
+    ['918', 'amt_cll_to_clh', 'mcr63_4', 'AP', 'MDCR_PD_AMT', "tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'rx', "src_lctn_cd not in ('22','23')"],
 ]
 
-df = DataFrame(run_918_claims_cll_amt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'var_l', 'cond_h', 'claim_type'])
+df = DataFrame(run_918_claims_cll_amt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'var_l', 'cond_h', 'claim_type', 'denom'])
 df['measure_id'] = df['measure_id'].str.upper()
 df['claim_cat'] = df['claim_cat'].str.upper()
 print(df.head())

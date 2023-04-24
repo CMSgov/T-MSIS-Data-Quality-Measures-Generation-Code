@@ -42,6 +42,12 @@ class Runner_802:
         else:
             sum = DQClosure.parse(f'%miss_misslogic({x["numer"]})')
 
+        if x['sub_cap_exclusion'] == "1":
+            subcap_filter = "and src_lctn_cd not in ('22','23')"
+        else:
+            subcap_filter = ""
+
+
         # suppressed
         # ,1 as miss_position
         # ,'{x["numer"]}' as miss_varname
@@ -65,7 +71,7 @@ class Runner_802:
 
                     where
                         ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
-
+                        {subcap_filter}
                         {header_filter})
                 """
         dqm.logger.debug(z)

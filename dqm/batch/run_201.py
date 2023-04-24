@@ -55,24 +55,24 @@ run_201_exp_claims_pct_macros = [
 
     # new measures
 
-    ['201', 'claims_pct', 'exp29_1', 'p', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
-    ['201', 'claims_pct', 'exp33_1', 'p', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
-    ['201', 'claims_pct', 'exp37_1', 'p', '1=1', 'mdcd_pd_amt=0 or mdcd_pd_amt is null',              'cll', 'ot'],
-    ['201', 'claims_pct', 'exp41_1', 'p', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'rx'],
+    ['201', 'claims_pct', 'exp29_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
+    ['201', 'claims_pct', 'exp33_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
+    ['201', 'claims_pct', 'exp37_1', 'p', "src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null',              'cll', 'ot'],
+    ['201', 'claims_pct', 'exp41_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'rx'],
 
-    ['201', 'claims_pct', 'exp30_1', 't', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
-    ['201', 'claims_pct', 'exp34_1', 't', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
-    ['201', 'claims_pct', 'exp38_1', 't', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ot'],
+    ['201', 'claims_pct', 'exp30_1', 't', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
+    ['201', 'claims_pct', 'exp34_1', 't', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
+    ['201', 'claims_pct', 'exp38_1', 't', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ot'],
 
-    ['201', 'claims_pct', 'exp31_1', 'r', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
-    ['201', 'claims_pct', 'exp35_1', 'r', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
-    ['201', 'claims_pct', 'exp39_1', 'r', '1=1', 'mdcd_pd_amt=0 or mdcd_pd_amt is null        ',      'cll', 'ot'],
-    ['201', 'claims_pct', 'exp42_1', 'r', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'rx'],
+    ['201', 'claims_pct', 'exp31_1', 'r', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
+    ['201', 'claims_pct', 'exp35_1', 'r', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
+    ['201', 'claims_pct', 'exp39_1', 'r', "src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null        ',      'cll', 'ot'],
+    ['201', 'claims_pct', 'exp42_1', 'r', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'rx'],
 
 
-    ['201', 'claims_pct', 'exp32_1', 'v', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
-    ['201', 'claims_pct', 'exp36_1', 'v', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
-    ['201', 'claims_pct', 'exp40_1', 'v', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ot'],
+    ['201', 'claims_pct', 'exp32_1', 'v', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ip'],
+    ['201', 'claims_pct', 'exp36_1', 'v', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'lt'],
+    ['201', 'claims_pct', 'exp40_1', 'v', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null',      'clh', 'ot'],
 
     ['201', 'claims_pct', 'exp44_1', 'au', '1=1', 'tot_mdcd_pd_amt <> 0 and tot_mdcd_pd_amt is not null', 'clh', 'ip'],
     ['201', 'claims_pct', 'exp44_2', 'au', '1=1', 'tot_mdcd_pd_amt <> 0 and tot_mdcd_pd_amt is not null', 'clh', 'lt'],
@@ -88,9 +88,10 @@ run_201_exp_claims_pct_macros = [
     # updated version of EXP11_2
     create_run_201_exp_claims_entry('201', 'claims_pct', 'exp11_164', 'a', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
     # updated version of EXP37_1
-    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp37_2', 'p', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp37_2', 'p', "pymt_lvl_ind = 2 and src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
     # updated version of EXP39_1
-    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp39_2', 'r', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+    create_run_201_exp_claims_entry('201', 'claims_pct', 'exp39_2', 'r', "pymt_lvl_ind = 2 and src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+    
 ]
 
 df = DataFrame(run_201_exp_claims_pct_macros, columns=['series', 'cb', 'measure_id', 'claim_cat', 'denom', 'numer', 'level', 'claim_type'])

@@ -15,6 +15,7 @@ df_missingVars = df_missingVars.replace(np.nan, '', regex=True)
 # --------------------------------------------------------------------
 df_missingVars['measure_id'] = df_missingVars['Measure ID'].str.upper()
 df_missingVars['claim_cat'] = df_missingVars['Claims_cat_type'].str.upper()
+df_missingVars['sub_cap_exclusion'] = df_missingVars['Sub-Capitated Encounters Exclusion']
 
 # --------------------------------------------------------------------
 #
@@ -90,6 +91,7 @@ df_802_miss_claims_pct['miss_var_len'] = df_Miss_Claims['size_length']
 df_802_miss_claims_pct['numer'] = df_Miss_Claims['Data_element_var_updt']
 df_802_miss_claims_pct['level'] = df_Miss_Claims['Data_element_ln_hdr']
 df_802_miss_claims_pct['file_type'] = df_Miss_Claims['File_Type2']
+df_802_miss_claims_pct['sub_cap_exclusion'] = df_Miss_Claims['sub_cap_exclusion']
 
 df_802_miss_claims_pct = df_802_miss_claims_pct.set_index("measure_id", drop = False)
 print(df_802_miss_claims_pct)

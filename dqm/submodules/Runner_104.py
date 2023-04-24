@@ -26,7 +26,7 @@ class Runner_104:
     # --------------------------------------------------------------------
     def build_freq_measure_tables(spark, dqm: DQMeasures, measure_id, x):
 
-        if str(x['id']).upper() in ['EL6.24', 'EL18.1']:
+        if str(x['id']).upper() in ['EL6.24', 'EL18.1', 'EL20.1']:
             _ = '_'
         else:
             _ = ''

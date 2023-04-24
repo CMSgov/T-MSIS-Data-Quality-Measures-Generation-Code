@@ -2,20 +2,20 @@ from pandas import DataFrame
 
 run_913_claims_pct_amt = [
 
-    ['913', 'pct_count_cll_to_clh', 'ffs49_13', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'IP'],
-    ['913', 'pct_count_cll_to_clh', 'mcr59_13', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'IP'],
+    ['913', 'pct_count_cll_to_clh', 'ffs49_13', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'IP', '1=1'],
+    ['913', 'pct_count_cll_to_clh', 'mcr59_13', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'IP', "src_lctn_cd not in ('22','23')"],
 
-    ['913', 'pct_count_cll_to_clh', 'ffs49_14', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'LT'],
-    ['913', 'pct_count_cll_to_clh', 'mcr59_14', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'LT'],
+    ['913', 'pct_count_cll_to_clh', 'ffs49_14', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'LT', '1=1'],
+    ['913', 'pct_count_cll_to_clh', 'mcr59_14', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'LT', "src_lctn_cd not in ('22','23')"],
 
-    ['913', 'pct_count_cll_to_clh', 'ffs49_15', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'OT'],
-    ['913', 'pct_count_cll_to_clh', 'mcr59_15', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'OT'],
+    ['913', 'pct_count_cll_to_clh', 'ffs49_15', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'OT', '1=1'],
+    ['913', 'pct_count_cll_to_clh', 'mcr59_15', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'OT', "src_lctn_cd not in ('22','23')"],
 
-    ['913', 'pct_count_cll_to_clh', 'ffs49_16', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX'],
-    ['913', 'pct_count_cll_to_clh', 'mcr59_16', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX'],
+    ['913', 'pct_count_cll_to_clh', 'ffs49_16', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX', '1=1'],
+    ['913', 'pct_count_cll_to_clh', 'mcr59_16', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX', "src_lctn_cd not in ('22','23')"],
 ]
 
-df = DataFrame(run_913_claims_pct_amt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'var_l', 'var_h', 'claim_type'])
+df = DataFrame(run_913_claims_pct_amt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'var_l', 'var_h', 'claim_type', 'denom'])
 df['measure_id'] = df['measure_id'].str.upper()
 df['claim_cat'] = df['claim_cat'].str.upper()
 print(df.head())
