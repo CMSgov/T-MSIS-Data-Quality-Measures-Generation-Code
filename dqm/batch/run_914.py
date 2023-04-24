@@ -2,20 +2,20 @@ from pandas import DataFrame
 
 run_914_claims_pct_pymnt = [
 
-    ['914', 'pct_pymnt', 'ffs49_9', 'AE', 'IP'],
-    ['914', 'pct_pymnt', 'mcr59_9', 'AF', 'IP'],
+    ['914', 'pct_pymnt', 'ffs49_9', 'AE', 'IP', '1=1'],
+    ['914', 'pct_pymnt', 'mcr59_9', 'AF', 'IP', "src_lctn_cd not in ('22','23')"],
 
-    ['914', 'pct_pymnt', 'ffs49_10', 'AE', 'LT'],
-    ['914', 'pct_pymnt', 'mcr59_10', 'AF', 'LT'],
+    ['914', 'pct_pymnt', 'ffs49_10', 'AE', 'LT', '1=1'],
+    ['914', 'pct_pymnt', 'mcr59_10', 'AF', 'LT', "src_lctn_cd not in ('22','23')"],
 
-    ['914', 'pct_pymnt', 'ffs49_11', 'AE', 'OT'],
-    ['914', 'pct_pymnt', 'mcr59_11', 'AF', 'OT'],
+    ['914', 'pct_pymnt', 'ffs49_11', 'AE', 'OT', '1=1'],
+    ['914', 'pct_pymnt', 'mcr59_11', 'AF', 'OT', "src_lctn_cd not in ('22','23')"],
 
-    ['914', 'pct_pymnt', 'ffs49_12', 'AE', 'RX'],
-    ['914', 'pct_pymnt', 'mcr59_12', 'AF', 'RX'],
+    ['914', 'pct_pymnt', 'ffs49_12', 'AE', 'RX', '1=1'],
+    ['914', 'pct_pymnt', 'mcr59_12', 'AF', 'RX', "src_lctn_cd not in ('22','23')"],
 ]
 
-df = DataFrame(run_914_claims_pct_pymnt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'claim_type'])
+df = DataFrame(run_914_claims_pct_pymnt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'claim_type', 'denom'])
 df['measure_id'] = df['measure_id'].str.upper()
 df['claim_cat'] = df['claim_cat'].str.upper()
 print(df.head(8))

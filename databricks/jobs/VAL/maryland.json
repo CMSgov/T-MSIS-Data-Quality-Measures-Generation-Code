@@ -57,7 +57,7 @@
   },
   "libraries": [
     {
-      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.2.0-py3-none-any.whl"
+      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.7.0-py3-none-any.whl"
     },
     {
       "maven": {
@@ -78,7 +78,7 @@
   "max_retries": 3,
   "min_retry_interval_millis": 360000,
   "notebook_task": {
-    "notebook_path": "/DQ-Measures/DQM v3.1 UAT",
+    "notebook_path": "/DQ-Measures/DQM UAT",
     "base_parameters": {
       "reportMonth": "202206",
       "stateCode": "MD",

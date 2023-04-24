@@ -4,6 +4,7 @@
 #
 # --------------------------------------------------------------------
 from dqm.DQM_Metadata import DQM_Metadata
+from dqm.DQClosure import DQClosure
 from dqm.DQMeasures import DQMeasures
 
 class Runner_914():
@@ -63,7 +64,8 @@ class Runner_914():
                     ,1 AS has_clh_denom
                 FROM {DQMeasures.getBaseTable(dqm, 'clh', x['claim_type'])}
                 WHERE pymt_lvl_ind = '2'
-                    AND {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                    AND ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                    AND ({DQClosure.parse(x['denom'])})
              """
         dqm.logger.debug(z)
         spark.sql(z)

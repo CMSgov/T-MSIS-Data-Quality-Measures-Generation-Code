@@ -134,6 +134,15 @@ from within the ```dqm\batch``` folder:
 ## Increment the library version number(s)
 
 The library version is included the source code. It can be updated in ```_init_()``` method of the DQMeasures module.
+When running or deploying code in development, version should be set through the `VERSION` variable in your environment.
+
+### Examples
+
+> .env
+```bash
+export VERSION=2.6.10
+```
+* note, if the environment variable hasn't been picked up after you edited this file, try restarting the terminal or running `source .env` from the same directory.
 
 > DQMeasures.py ( ~ line 96 )
 ```python

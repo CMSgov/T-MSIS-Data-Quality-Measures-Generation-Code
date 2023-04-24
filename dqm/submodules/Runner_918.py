@@ -4,6 +4,7 @@
 #
 # --------------------------------------------------------------------
 from dqm.DQM_Metadata import DQM_Metadata
+from dqm.DQClosure import DQClosure
 from dqm.DQMeasures import DQMeasures
 
 
@@ -66,7 +67,8 @@ class Runner_918():
                         ELSE 0
                         END AS h_cond
                 FROM {DQMeasures.getBaseTable(dqm, 'clh', x['claim_type'])}
-                WHERE {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                WHERE ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                  AND ({DQClosure.parse(x['denom'])})
              """
         dqm.logger.debug(z)
         spark.sql(z)

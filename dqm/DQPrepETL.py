@@ -414,11 +414,16 @@ class DQPrepETL:
         df['mvalue'] = 0
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_grp_cd")
 
-        df = pd.DataFrame(
-                ['1','2','3','4','5','6','7','A','B','C','D','F','A_','N_','T_'], columns=['valid_value'])
+        df = pd.DataFrame(['A_', 'N_', 'T_'] +
+                ['1','2','3','4','5','6','7','A','B','C','D','F'], columns=['valid_value'])
         df['mvalue'] = 0
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.rstrctd_bnfts_cd")
 
+        df = pd.DataFrame(['A_','N_','T_'] +
+                ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20', \
+		        '21','22','23','24','25','26','27','28','29','30','31'], columns=['valid_value'])
+        df['mvalue'] = 0
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_chg_rsn_cd")
 
         spark.createDataFrame(dqm.zipstate_lookup).write.mode("ignore").saveAsTable("dqm_conv.zipstate_crosswalk")
         spark.createDataFrame(dqm.countystate_lookup).write.mode("ignore").saveAsTable("dqm_conv.countystate_lookup")
@@ -498,6 +503,7 @@ class DQPrepETL:
                     ,wvr_id
                     ,srvc_trkng_pymt_amt
                     ,srvc_trkng_type_cd
+                    ,src_lctn_cd
 
                     {DQM_Metadata.create_base_clh_view.select[ftype]}
 
@@ -651,6 +657,7 @@ class DQPrepETL:
                     ,a.wvr_id
                     ,a.srvc_trkng_pymt_amt
                     ,a.srvc_trkng_type_cd
+                    ,a.src_lctn_cd
 
                     {DQM_Metadata.create_claims_tables.a.select[clm_file]}
 
@@ -1425,14 +1432,25 @@ class DQPrepETL:
                 SELECT mc_plan_id
                     ,msis_ident_num
                     ,max(CASE
-                            WHEN (enrld_mc_plan_type_cd = '02')
+                            WHEN (enrld_mc_plan_type_cd in ('02','03') )
                                 THEN 1
                             ELSE 0
                             END) AS evr_pccm_mc_plan_type
+                    ,max(CASE
+                            WHEN (enrld_mc_plan_type_cd in ('05','06','07','08','09','10','11',
+                                                            '12','13','14','15','16','18','19') )
+                                THEN 1
+                            ELSE 0
+                            END) AS evr_php_mc_plan_type
+                    ,max(CASE
+                            WHEN (enrld_mc_plan_type_cd in ('01','04','17') )
+                                THEN 1
+                            ELSE 0
+                            END) AS evr_mco_mc_plan_type
                 FROM {dqm.taskprefix}_tmsis_mc_prtcptn_data
                 WHERE mc_plan_id IS NOT NULL
                 GROUP BY mc_plan_id
-                    ,msis_ident_num
+                        ,msis_ident_num
              """
         dqm.logger.debug(z)
         spark.sql(z)

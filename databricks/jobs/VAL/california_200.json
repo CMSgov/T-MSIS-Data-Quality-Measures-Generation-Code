@@ -8,27 +8,25 @@
       "spark.executor.extraJavaOptions": "-XX:+UseG1GC",
       "spark.driver.maxResultSize": "24g",
       "spark.databricks.acl.dfAclsEnabled": "true",
+      "spark.databricks.pyspark.enablePy4JSecurity": "false",
       "spark.databricks.cluster.profile": "serverless",
-      "spark.sql.legacy.parquet.datetimeRebaseModeInRead": "LEGACY",
-      "spark.databricks.pyspark.enablePy4JSecurity": "false"
+      "spark.sql.legacy.parquet.datetimeRebaseModeInRead": "LEGACY"
     },
     "aws_attributes": {
       "zone_id": "us-east-1a",
-      "first_on_demand": 0,
       "availability": "ON_DEMAND",
       "instance_profile_arn": "arn:aws:iam::810638926762:instance-profile/databricks-val-mstruser-worker-instance-profile",
-      "spot_bid_price_percent": 100,
-      "ebs_volume_count": 0
+      "spot_bid_price_percent": 100
     },
     "node_type_id": "i3.2xlarge",
     "driver_node_type_id": "i3.4xlarge",
     "custom_tags": {
-      "ResourceClass": "Serverless",
-      "stack": "val",
-      "layer": "app",
-      "business": "AREMAC",
       "business_function": "TMSIS:SAS:DQM_CONV",
-      "State": "California"
+      "business": "AREMAC",
+      "layer": "app",
+      "stack": "val",
+      "State": "California",
+      "ResourceClass": "Serverless"
     },
     "cluster_log_conf": {
       "s3": {
@@ -58,12 +56,10 @@
   },
   "libraries": [
     {
-      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.2.0-py3-none-any.whl"
+      "whl": "dbfs:/FileStore/shared_uploads/akira/lib/dqm-3.7.0-py3-none-any.whl"
     },
     {
-      "maven": {
-        "coordinates": "com.crealytics:spark-excel_2.12:0.13.7"
-      }
+      "jar": "dbfs:/FileStore/shared_uploads/dqm/spark_excel_2_12_3_3_1_0_18_5.jar"
     }
   ],
   "email_notifications": {
@@ -72,22 +68,23 @@
     ],
     "on_failure": [
       "l4a4a9h1q7k8e9f9@dataconnect-workspace.slack.com"
-    ],
-    "no_alert_for_skipped_runs": false
+    ]
   },
   "timeout_seconds": 43200,
   "notebook_task": {
     "notebook_path": "/Shared/DQ-Measures/DQ Measures (submodule)",
     "base_parameters": {
-      "reportMonth": "202206",
+      "reportMonth": "202202",
+      "module": "200",
       "stateCode": "CA",
-      "entity": "0",
       "runID": "",
-      "module": "200"
-    }
+      "entity": "0"
+    },
+    "source": "WORKSPACE"
   },
   "max_concurrent_runs": 1,
-  "created_time": 1639447254995,
+  "format": "SINGLE_TASK",
   "creator_user_name": "BMK9",
-  "run_as_user_name": "BMK9"
+  "run_as_user_name": "BMK9",
+  "run_as_owner": true
 }

@@ -6,3 +6,5 @@ DQMenv/*
 build/
 dist/
 dqm.egg-info/
+dqm/batch/*.pkl
+.env

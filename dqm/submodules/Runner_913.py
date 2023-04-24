@@ -4,6 +4,7 @@
 #
 # --------------------------------------------------------------------
 from dqm.DQM_Metadata import DQM_Metadata
+from dqm.DQClosure import DQClosure
 from dqm.DQMeasures import DQMeasures
 
 class Runner_913():
@@ -62,7 +63,8 @@ class Runner_913():
                     ,max(coalesce({x['var_h']}, 0)) AS {x['var_h']}
                 FROM {DQMeasures.getBaseTable(dqm, 'clh', x['claim_type'])}
                 WHERE pymt_lvl_ind = '2'
-                    and {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                    and ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                    and ({DQClosure.parse(x['denom'])})
                 GROUP BY orgnl_clm_num
                     ,adjstmt_clm_num
                     ,adjdctn_dt
