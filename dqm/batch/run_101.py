@@ -342,8 +342,8 @@ run_101 =[
     ['101', 'el16', 'el16.9', '', '', '', '', '', 'tmsis_enrlmt_time_sgmt_data_view'],
 
     #-------------------------------------------------------
-    ['101', 'el319t', 'el3.19', 'el319t', '', '', '', '', ''],
-    ['101', 'el333t', 'el3.33', 'el333t', '', '', '', '', ''],
+    ['101', 'el319t', 'el3.19', 'el319t', '', '', '', '', '', 3],
+    ['101', 'el333t', 'el3.33', 'el333t', '', '', '', '', '', 3],
     ['101', 'el322t', 'el3.22', 'el322t', '', '', '', '', ''],
     ['101', 'el334t', 'el3.34', 'el334t', '', '', '', '', ''],
     ['101', 'el335t', 'el3.35', 'el335t', '', '', '', '', ''],
@@ -539,7 +539,8 @@ run_101 =[
         id='el133t',
         numerator='case when race_cd="001" then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
     create_run_101_input(
@@ -549,7 +550,8 @@ run_101 =[
         id='el134t',
         numerator='case when race_cd="002" then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
     create_run_101_input(
@@ -559,7 +561,8 @@ run_101 =[
         id='el135t',
         numerator='case when race_cd="003" then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
     create_run_101_input(
@@ -569,7 +572,8 @@ run_101 =[
         id='el136t',
         numerator='case when race_cd in ("004", "005", "006", "007", "008", "009", "010", "011") then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
     create_run_101_input(
@@ -579,7 +583,8 @@ run_101 =[
         id='el137t',
         numerator='case when race_cd in ("012", "013", "014", "015", "016") then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
     create_run_101_input(
@@ -589,7 +594,8 @@ run_101 =[
         id='el138t',
         numerator='case when race_cd="018" then 1 else 0 end',
         denominator='msis_ident_num is not null',
-        table='_tmsis_race_info'
+        table='_tmsis_race_info',
+        rounding=3
     ),
 
      create_run_101_input(
@@ -693,7 +699,27 @@ run_101 =[
         numerator_table='_tmsis_elgblty_dtrmnt',
         denominator='a.msis_ident_num is not null and imgrtn_stus_cd = "3"',
         denominator_table='_tmsis_var_dmgrphc_elgblty'
+    ), 
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.37',
+        id='el337t',
+        numerator='case when gndr_cd = "M" then 1 else 0 end',
+        numerator_table='_tmsis_prmry_dmgrphc_elgblty',
+        denominator='a.msis_ident_num is not null and prgnt_ind = 1',
+        denominator_table='_tmsis_var_dmgrphc_elgblty'
     ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.38',
+        id='el338t',
+        numerator='case when gndr_cd = "M" then 1 else 0 end',
+        numerator_table='_tmsis_prmry_dmgrphc_elgblty',
+        denominator='a.msis_ident_num is not null and rstrctd_bnfts_cd in ("4")',
+        denominator_table='_tmsis_elgblty_dtrmnt'
+    )
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

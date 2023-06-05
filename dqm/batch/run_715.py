@@ -1,29 +1,24 @@
-df = None
-stack = None
+from pandas import DataFrame
 
-series = [
-    '901', '902', '903', '904', '905', '906', '907', '909', '910', '911', '912', '913', '914', '915', '916', '917', '918', '919', '920',
-    '201', '202', '204', '205', '206',
-    '801',
-    '101', '102', '103', '104', '105', '106', '107', '108', '109', '110',
-    '701', '702', '703', '704', '705', '706', '707', '708', '709', '710', '711', '712', '713', '714', '715',
-    '501', '502', '503', '504',
-    '601', '602', '603'
-    ]
+run_715 = [
 
-for i in series:
+    ['715', 'all_gndr_prg', 'all16_9', 'admsn_dt', 'ip', "stc_cd in ('086')"],
+    ['715', 'all_gndr_prg', 'all16_10', 'rx_fill_dt', 'rx', "stc_cd in ('086')"],
+    ['715', 'all_gndr_prg', 'all16_11', 'srvc_bgnng_dt', 'lt', "stc_cd in ('025','086')"],
+    ['715', 'all_gndr_prg', 'all16_12', 'admsn_dt', 'ip', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    ['715', 'all_gndr_prg', 'all16_13', 'srvc_bgnng_dt', 'lt', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    ['715', 'all_gndr_prg', 'all16_14', 'srvc_bgnng_dt', 'ot', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    ['715', 'all_gndr_prg', 'all16_15', 'rx_fill_dt', 'rx', "xix_srvc_ctgry_cd in ('14','35','42','44')"],       
 
-    exec(open('run_' + i + '.py').read())
+]
 
-    keys = df[['measure_id', 'series', 'cb']]
-    if stack is None:
-        stack = keys
-    else:
-        stack = stack.append(keys)
+df = DataFrame(run_715, columns=['series', 'cb', 'measure_id', 'date_var', 'claim_type', 'pregnancy_ind'])
+df['measure_id'] = df['measure_id'].str.upper()
+df = df.sort_values(by=['series', 'cb', 'measure_id'])
 
-stack = stack.drop_duplicates()
-print(len(stack))
-stack.to_pickle('./reverse_lookup.pkl')
+print(df.head(20))
+
+df.to_pickle('./run_715.pkl')
 
 # CC0 1.0 Universal
 

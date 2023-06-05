@@ -774,6 +774,25 @@ class DQPrepETL:
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_dtrmnt_view', z)
+        
+        
+        # -------------------------------------------------------------------------
+        z = f"""
+                create or replace temporary view base_prmry_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,msis_ident_num
+                    ,prmry_dmgrphc_ele_efctv_dt
+                    ,prmry_dmgrphc_ele_end_dt
+                    ,gndr_cd
+                    ,1 as ever_eligible_prm
+                from tmsis.tmsis_prmry_dmgrphc_elgblty
+                where tmsis_actv_ind = 1
+                    and {DQPrepETL.msis_id_not_missing}
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, 'base_prmry_view', z)
 
     # ------------------------------------------------------
     #
@@ -872,6 +891,20 @@ class DQPrepETL:
             spark.sql(z)
             DQPrepETL.log(dqm,  dqm.taskprefix + '_ever_elig_dtrmnt', z)
 
+            # ---------------------------------------------------------------------
+            # ever elig prm
+            z = f"""
+                    create or replace temporary view {dqm.taskprefix}_ever_elig_prmry  as
+                    select *
+                        ,'{dqm.state}' as submtg_state_cd
+                    from
+                        base_prmry_view
+                    where
+                        {dqm.run_id_filter()}
+                    {dqm.limit}
+                """
+            spark.sql(z)
+            DQPrepETL.log(dqm,  dqm.taskprefix + '_ever_elig_prmry', z)
             # ---------------------------------------------------------------------
             # elig in month primary demographics (for EL1.15)
             z = f"""
