@@ -29,6 +29,7 @@ else
     if [[ -z "${VERSION}" ]]; then
         echo "ERROR: Please set `VERSION` variable in .env file."
     # if all checks pass, execute deployment
+    # create temporary local version of setup.py and delete after creating wheel
     else
         echo "Deploying (VERSION=${VERSION}) ..."
         cd dqm/batch
@@ -36,7 +37,9 @@ else
         cd ../..
         rm -rf build/*
         rm -rf *.egg-info/*
-        python setup.py bdist_wheel
+        python create_setup_local.py
+        python setup_local.py bdist_wheel
+        rm -rf setup_local.py
         echo "databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/FileStore/shared_uploads/akira/lib/dqm-${VERSION}-py3-none-any.whl --overwrite"
         databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/FileStore/shared_uploads/akira/lib/dqm-${VERSION}-py3-none-any.whl --overwrite
     fi

@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.7.0'
+        self.version = '3.8.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.7'
+        self.specvrsn = 'V3.8'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -598,7 +598,7 @@ class DQMeasures:
 
             if ((series in ('802', '803')) and (measure_id not in rounded)):
                 return 3
-            elif ((series in ('103', '201', '901', '902', '906', '909', '910', '911', '912', '913', '914', '915', '916', '917')) and (measure_id not in rounded)):
+            elif ((series in ('103', '201', '715', '901', '902', '906', '909', '910', '911', '912', '913', '914', '915', '916', '917')) and (measure_id not in rounded)):
                 return 2
             elif ((series in ('202', '903', '904', '905', '907', '908', '910')) and (measure_id not in rounded)):
                 return 1

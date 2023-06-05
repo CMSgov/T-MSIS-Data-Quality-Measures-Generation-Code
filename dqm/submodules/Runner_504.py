@@ -5,6 +5,7 @@
 # --------------------------------------------------------------------
 from dqm.DQClosure import DQClosure
 from dqm.DQMeasures import DQMeasures
+import numpy as np
 
 
 class Runner_504:
@@ -24,29 +25,33 @@ class Runner_504:
     # --------------------------------------------------------------------
     #
     #   % of Submitting State Provider IDs with
-    #   FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group)
+    #   specified FACILITY-GROUP-INDIVIDUAL-CODE
     #   that do not have a Provider Classification Code
     #   that indicates a facility or group
     #
     # --------------------------------------------------------------------
-    def prv6_1(spark, dqm: DQMeasures, measure_id, x):
+    def prv6_1_2(spark, dqm: DQMeasures, measure_id, x):
 
         # Unique tmsis_prvdr_attr_mn.submtg_state_prvdr_id
 
         # WHERE
         #   tmsis_prvdr_attr_mn_Constraints
         # AND
-        #   tmsis_prvdr_attr_mn.fac_grp_indvdl_cd = "01" or "02"
+        #    tmsis_prvdr_attr_mn.fac_grp_indvdl_cd = "01" or "02" for PRV6.1
+        # or tmsis_prvdr_attr_mn.fac_grp_indvdl_cd = "03" for PRV6.2
+
+        fac_codes   = np.where(measure_id.upper() == "PRV6_1", "'01','02'", "'03'")
+        designation = np.where(measure_id.upper() == "PRV6_1", "'Non-Individual'", "'Individual'")
 
         z = f"""
-                create or replace temporary view prv6_1_denom as
+                create or replace temporary view {measure_id}_denom as
                 select
                     submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_1_denom
+                    count(distinct submtg_state_prvdr_id) as {measure_id}_denom
                 from
                     {dqm.taskprefix}_tmsis_prvdr_attr_mn
                 where
-                    fac_grp_indvdl_cd in ('01','02')
+                    fac_grp_indvdl_cd in ({fac_codes})
                 group by
                     submtg_state_cd
             """
@@ -54,51 +59,57 @@ class Runner_504:
         dqm.logger.debug(z)
         spark.sql(z)
 
-        prv6_1_numer_base = f"""
+        numer_base = f"""
                 select distinct
                     p.submtg_state_cd,
-                    p.submtg_state_prvdr_id
+                    p.submtg_state_prvdr_id,
+                    t.prvdr_clsfctn_type_cd,
+                    t.prvdr_clsfctn_cd,
+                    l.prov_class_type,
+                    l.Code,
+                    l.Designation
                 from
                     {dqm.taskprefix}_tmsis_prvdr_attr_mn as p
-                inner join
+                left join
                     {dqm.taskprefix}_tmsis_prvdr_txnmy_clsfctn as t
-                    on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
-                    and p.fac_grp_indvdl_cd in ('01','02')
-            """.format()
-
-        # (
-        #  (
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd= PROV-CLASSIFICATION-TYPE in Provider Classification Lookup
-        #   AND
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd= Code in Provider Classification Lookup
-        #   AND
-        #   Designation = "Individual" in Provider Classification Lookup
-        #  )
-
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd <> PROV-CLASSIFICATION-TYPE in Provider Classification Lookup
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd <> Code in Provider Classification Lookup
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd is NULL
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd is NULL
-        # )
+                        on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
+            """
 
         z = f"""
-                create or replace temporary view prv6_1_numer as
-                select
-                    '{dqm.state}' as submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_1_numer
+                create or replace temporary view {measure_id}_numer_flag as
+                select 
+                    submtg_state_cd,
+                    submtg_state_prvdr_id,
+                    max(case when Designation = {designation} then 1 else 0 end) as designation_flag,
+                    max(case when prov_class_type is not null and Code is not null then 1 else 0 end) as lookup_flag,
+                    max(case when prvdr_clsfctn_type_cd is not null then 1 else 0 end) as type_cd_flag,
+                    max(case when prvdr_clsfctn_cd is not null then 1 else 0 end) as cd_flag
                 from (
-                    {prv6_1_numer_base}
+                    {numer_base}
                         left join
                             dqm_conv.provider_classification_lookup as l
                                 on (t.prvdr_clsfctn_type_cd = l.prov_class_type
                                     and t.prvdr_clsfctn_cd = l.Code)
-                        where
-                            l.Designation = 'Individual' or l.Designation is null
+                    where
+                        p.fac_grp_indvdl_cd in ({fac_codes})
                     )
+                group by
+                    submtg_state_cd,
+                    submtg_state_prvdr_id
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                create or replace temporary view {measure_id}_numer as
+                select
+                    '{dqm.state}' as submtg_state_cd,
+                    count(distinct submtg_state_prvdr_id) as {measure_id}_numer
+                from 
+                    {measure_id}_numer_flag
+                where
+                    (lookup_flag = 1 and designation_flag = 0) or lookup_flag = 0 or type_cd_flag = 0 or cd_flag = 0
             """
 
         dqm.logger.debug(z)
@@ -109,13 +120,13 @@ class Runner_504:
                      '{dqm.state}' as submtg_state_cd
                     ,'{measure_id}' as measure_id
                     ,'504' as submodule
-                    ,coalesce(prv6_1_numer, 0) as numer
-                    ,prv6_1_denom as denom
-                    ,case when prv6_1_denom > 0 then (coalesce(prv6_1_numer, 0) / prv6_1_denom) else null end as mvalue
+                    ,coalesce({measure_id}_numer, 0) as numer
+                    ,{measure_id}_denom as denom
+                    ,case when {measure_id}_denom > 0 then (coalesce({measure_id}_numer, 0) / {measure_id}_denom) else null end as mvalue
                 from
-                    prv6_1_denom as d
+                    {measure_id}_denom as d
                 left join
-                    prv6_1_numer as n
+                    {measure_id}_numer as n
                         on d.submtg_state_cd = n.submtg_state_cd
              """
 
@@ -126,129 +137,30 @@ class Runner_504:
     # --------------------------------------------------------------------
     #
     #   % of Submitting State Provider IDs with
-    #   FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual)
-    #   that do not have a Provider Classification Code
-    #   that indicates an individual
-    #
-    # --------------------------------------------------------------------
-    def prv6_2(spark, dqm: DQMeasures, measure_id, x):
-
-        # Unique tmsis_prvdr_attr_mn.submtg_state_prvdr_id
-
-        # WHERE
-        #   tmsis_prvdr_attr_mn_Constraints
-        # AND
-        #   tmsis_prvdr_attr_mn.fac_grp_indvdl_cd= "03"
-
-        z = f"""
-                create or replace temporary view prv6_2_denom as
-                select
-                    submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_2_denom
-                from
-                    {dqm.taskprefix}_tmsis_prvdr_attr_mn
-                where
-                    fac_grp_indvdl_cd in ('03')
-                group by
-                    submtg_state_cd
-            """
-
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        prv6_2_numer_base = f"""
-                select distinct
-                    p.submtg_state_cd,
-                    p.submtg_state_prvdr_id
-                from
-                    {dqm.taskprefix}_tmsis_prvdr_attr_mn as p
-                inner join
-                    {dqm.taskprefix}_tmsis_prvdr_txnmy_clsfctn as t
-                    on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
-                    and p.fac_grp_indvdl_cd in ('03')
-            """.format()
-
-        # (
-        #  (
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd = PROV-CLASSIFICATION-TYPE in Provider Classification Lookup
-        #   AND
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd= Code in Provider Classification Lookup
-        #   AND
-        #   Designation = "Non-Individual" in Provider Classification Lookup
-        #  )
-
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd <> PROV-CLASSIFICATION-TYPE in Provider Classification Lookup
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd <> Code in Provider Classification Lookup
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_type_cd is NULL
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd is NULL
-        # )
-
-        z = f"""
-                create or replace temporary view prv6_2_numer as
-                select
-                    '{dqm.state}' as submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_2_numer
-                from (
-                    {prv6_2_numer_base}
-                        left join
-                            dqm_conv.provider_classification_lookup as l
-                                on (t.prvdr_clsfctn_type_cd = l.prov_class_type
-                                    and t.prvdr_clsfctn_cd = l.Code)
-                        where
-                            l.Designation = 'Non-Individual' or l.Designation is null
-                    )
-            """
-
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        z = f"""
-                select
-                     '{dqm.state}' as submtg_state_cd
-                    ,'{measure_id}' as measure_id
-                    ,'504' as submodule
-                    ,coalesce(prv6_2_numer, 0) as numer
-                    ,prv6_2_denom as denom
-                    ,case when prv6_2_denom > 0 then (coalesce(prv6_2_numer, 0) / prv6_2_denom) else null end as mvalue
-                from
-                    prv6_2_denom as d
-                left join
-                    prv6_2_numer as n
-                        on d.submtg_state_cd = n.submtg_state_cd
-             """
-
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-    # --------------------------------------------------------------------
-    #
-    #   % of Submitting State Provider IDs with
-    #   FACILITY-GROUP-INDIVIDUAL-CODE = 01, 02 (facility or group)
+    #   specified FACILITY-GROUP-INDIVIDUAL-CODE
     #   that are missing Provider Classification Code
     #
     # --------------------------------------------------------------------
-    def prv6_3(spark, dqm: DQMeasures, measure_id, x):
+    def prv6_3_4(spark, dqm: DQMeasures, measure_id, x):
 
         # Unique tmsis_prvdr_attr_mn.submtg_state_prvdr_id
         # WHERE
         #   tmsis_prvdr_attr_mn_Constraints
         # AND
-        #   tmsis_prvdr_attr_mn.fac_grp_indvdl_cd= "01" or "02"
+        #    tmsis_prvdr_attr_mn.fac_grp_indvdl_cd= "01" or "02" for PRV6.3
+        # or tmsis_prvdr_attr_mn.fac_grp_indvdl_cd= "03" for PRV6.4
+
+        fac_codes = np.where(measure_id.upper() == "PRV6_3", "'01','02'", "'03'")
 
         z = f"""
-                create or replace temporary view prv6_3_denom as
+                create or replace temporary view {measure_id}_denom as
                 select
                     submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_3_denom
+                    count(distinct submtg_state_prvdr_id) as {measure_id}_denom
                 from
                     {dqm.taskprefix}_tmsis_prvdr_attr_mn
                 where
-                    fac_grp_indvdl_cd in ('01','02')
+                    fac_grp_indvdl_cd in ({fac_codes})
                 group by
                     submtg_state_cd
             """
@@ -256,27 +168,32 @@ class Runner_504:
         dqm.logger.debug(z)
         spark.sql(z)
 
-        # Denominator Definition
-        # AND
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd does not contain (any digit 1-9)
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd is NULL
-        # WHERE
-        #   tmsis_prvdr_txnmy_clsfctn _Constraints
-
-        z = f"""
-                create or replace temporary view prv6_3_numer as
+        numer_base = f"""
                 select
                     p.submtg_state_cd,
-                    count(distinct p.submtg_state_prvdr_id) as prv6_3_numer
+                    p.submtg_state_prvdr_id,
+                    max(case when t.prvdr_clsfctn_cd is not null then 1 else 0 end) as clsfctn_cd_not_null
                 from
                     {dqm.taskprefix}_tmsis_prvdr_attr_mn as p
-                inner join
+                left join
                     {dqm.taskprefix}_tmsis_prvdr_txnmy_clsfctn as t
-                    on
-                        p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
-                        and p.fac_grp_indvdl_cd in ('01','02')
-                        and ((t.prvdr_clsfctn_cd not rlike '[1-9]') or (t.prvdr_clsfctn_cd is null))
+                        on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
+                where 
+                    p.fac_grp_indvdl_cd in ({fac_codes})
+                group by 
+                    p.submtg_state_cd,
+                    p.submtg_state_prvdr_id
+            """
+
+        z = f"""
+                create or replace temporary view {measure_id}_numer as
+                select
+                    p.submtg_state_cd,
+                    count(distinct p.submtg_state_prvdr_id) as {measure_id}_numer
+                from
+                    ({numer_base}) as p
+                where 
+                    p.clsfctn_cd_not_null = 0
                 group by
                     p.submtg_state_cd
             """
@@ -289,91 +206,13 @@ class Runner_504:
                      '{dqm.state}' as submtg_state_cd
                     ,'{measure_id}' as measure_id
                     ,'504' as submodule
-                    ,coalesce(prv6_3_numer, 0) as numer
-                    ,prv6_3_denom as denom
-                    ,case when prv6_3_denom > 0 then (coalesce(prv6_3_numer, 0) / prv6_3_denom) else null end as mvalue
+                    ,coalesce({measure_id}_numer, 0) as numer
+                    ,{measure_id}_denom as denom
+                    ,case when {measure_id}_denom > 0 then (coalesce({measure_id}_numer, 0) / {measure_id}_denom) else null end as mvalue
                 from
-                    prv6_3_denom as d
+                    {measure_id}_denom as d
                 left join
-                    prv6_3_numer as n
-                        on d.submtg_state_cd = n.submtg_state_cd
-             """
-
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-    # --------------------------------------------------------------------
-    #
-    #   % of Submitting State Provider IDs with
-    #   FACILITY-GROUP-INDIVIDUAL-CODE = 03 (individual)
-    #   that are missing Provider Classification Code
-    #
-    # --------------------------------------------------------------------
-    def prv6_4(spark, dqm: DQMeasures, measure_id, x):
-
-        # Unique tmsis_prvdr_attr_mn.submtg_state_prvdr_id
-        # WHERE
-        #   tmsis_prvdr_attr_mn_Constraints
-        # AND
-        #   tmsis_prvdr_attr_mn.fac_grp_indvdl_cd= "03"
-
-        z = f"""
-                create or replace temporary view prv6_4_denom_view as
-                select
-                    submtg_state_cd,
-                    count(distinct submtg_state_prvdr_id) as prv6_4_denom
-                from
-                    {dqm.taskprefix}_tmsis_prvdr_attr_mn
-                where
-                    fac_grp_indvdl_cd = '03'
-                group by
-                    submtg_state_cd
-            """
-
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        # Denominator Definition
-        # AND
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd does not contain (any digit 1-9)
-        # OR
-        #   tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd is NULL
-        # WHERE
-        #   tmsis_prvdr_txnmy_clsfctn _Constraints
-
-        z = f"""
-                create or replace temporary view prv6_4_numer as
-                select
-                    p.submtg_state_cd,
-                    count(distinct p.submtg_state_prvdr_id) as prv6_4_numer
-                from
-                    {dqm.taskprefix}_tmsis_prvdr_attr_mn as p
-                inner join
-                    {dqm.taskprefix}_tmsis_prvdr_txnmy_clsfctn as t
-                    on
-                        p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
-                        and p.fac_grp_indvdl_cd = '03'
-                        and ((t.prvdr_clsfctn_cd not rlike '[1-9]') or (t.prvdr_clsfctn_cd is null))
-                group by
-                    p.submtg_state_cd
-            """
-
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        z = f"""
-                select
-                     '{dqm.state}' as submtg_state_cd
-                    ,'{measure_id}' as measure_id
-                    ,'504' as submodule
-                    ,coalesce(prv6_4_numer, 0) as numer
-                    ,prv6_4_denom as denom
-                    ,case when prv6_4_denom > 0 then (coalesce(prv6_4_numer, 0) / prv6_4_denom) else null end as mvalue
-                from
-                    prv6_4_denom_view as d
-                left join
-                    prv6_4_numer as n
+                    {measure_id}_numer as n
                         on d.submtg_state_cd = n.submtg_state_cd
              """
 
@@ -486,10 +325,8 @@ class Runner_504:
     #
     # --------------------------------------------------------------------
     v_table = {
-            "prv6_1": prv6_1,
-            "prv6_2": prv6_2,
-            "prv6_3": prv6_3,
-            "prv6_4": prv6_4,
+            "prv6_1_2": prv6_1_2,
+            "prv6_3_4": prv6_3_4,
             "prv2_11": prv2_11
         }
 

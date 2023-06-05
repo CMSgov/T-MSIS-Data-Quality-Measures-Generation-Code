@@ -8,3 +8,4 @@ dist/
 dqm.egg-info/
 dqm/batch/*.pkl
 .env
+setup_local.py

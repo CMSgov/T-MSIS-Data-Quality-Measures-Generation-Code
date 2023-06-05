@@ -133,7 +133,8 @@ elif _module == "700":
         + dqm.where(series="711")
         + dqm.where(series="712")
         + dqm.where(series="713")
-        + dqm.where(series="714"),
+        + dqm.where(series="714")
+        + dqm.where(series="715"),
     )
 elif _module == "800":
     dqm.run(spark, dqm.where(series="802") + dqm.where(series="803"))
