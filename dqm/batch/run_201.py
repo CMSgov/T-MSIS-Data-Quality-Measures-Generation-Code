@@ -42,6 +42,8 @@ run_201_exp_claims_pct_macros = [
     ['201', 'claims_pct', 'exp13_2', 'f', '1=1', 'mdcd_pd_amt=0 or mdcd_pd_amt is null',              'cll', 'ot'],
     ['201', 'claims_pct', 'exp13_3', 'f', '1=1', 'mdcd_pd_amt > 100000',                              'cll', 'ot'],
     ['201', 'claims_pct', 'exp13_4', 'f', "stc_cd in ('002', '061')", 'mdcd_pd_amt=0 ',               'cll', 'ot'],
+    ['201', 'claims_pct', 'exp13_6', 'f', 'pymt_lvl_ind = 2', 'bill_amt=0',                           'cll', 'ot'],
+    ['201', 'claims_pct', 'exp13_7', 'f', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'],
     ['201', 'claims_pct', 'exp18_1', 'f', '1=1', 'tot_mdcd_pd_amt > 300000',                          'clh', 'rx'],
     ['201', 'claims_pct', 'exp18_2', 'f', '1=1', 'tot_bill_amt=0',                                    'clh', 'rx'],
     ['201', 'claims_pct', 'exp18_3', 'f', '1=1', 'tot_mdcd_pd_amt =0 or tot_mdcd_pd_amt is null',     'clh', 'rx'],

@@ -130,7 +130,8 @@ class DQM_Metadata:
                     ,mrtl_stus_cd
                     ,vet_ind
                     ,chip_cd
-                    ,mdcr_bene_id""",
+                    ,mdcr_bene_id
+                    ,prgnt_ind""",
             'tmsis_elgbl_cntct':
                 """,elgbl_state_cd
                     ,elgbl_cnty_cd
@@ -342,7 +343,8 @@ class DQM_Metadata:
                             ,a.bill_type_cd """,
                     'rx':
                         """,a.prscrbng_prvdr_num
-                            ,a.dspnsng_pd_prvdr_num"""
+                            ,a.dspnsng_pd_prvdr_num
+                            ,a.rx_fill_dt"""
                 }
 
     class create_base_cll_view():
@@ -726,7 +728,8 @@ class DQM_Metadata:
                             ,a.pymt_lvl_ind""",
                     'rx':
                         """,a.prscrbng_prvdr_num
-                            ,a.dspnsng_pd_prvdr_num"""
+                            ,a.dspnsng_pd_prvdr_num
+                            ,a.rx_fill_dt"""
                 }
 
     # -------------------------------------------------------------------------------------------------
@@ -1052,10 +1055,10 @@ class DQM_Metadata:
                   'EXP14_4', 'EXP45_4', 'EXP45_5', 'EXP45_6',
                   'EL10_3', 'EL10_4',
                   'EL1_5',
-                  'MCR28_1', 'MCR56_1', 'MCR57_1', 'FFS47_1', 'FFS48_1']
+                  'MCR28_1', 'MCR56_1', 'MCR57_1', 'FFS47_1', 'FFS48_1',
+                  'EL3_37','EL3_38']
 
         round3 = ['EL1_20',
-                  'EL3_19',
                   'EL3_21',
                   'FFS19_1',
                   'FFS11_9',
@@ -1073,7 +1076,7 @@ class DQM_Metadata:
                   'EXP16_1', 'EXP2_1',
                   'MIS5_13',
                   'EL3_22',
-                  'ALL34_1', 'ALL34_2', 'ALL35_1', 'ALL35_2', 'ALL35_3', 'ALL35_4', 'ALL36_1'
+                  'ALL34_1', 'ALL34_2', 'ALL35_1', 'ALL35_2', 'ALL35_3', 'ALL35_4', 'ALL36_1',
                   ]
 
         round4 = ['FFS10_3',
@@ -1143,6 +1146,7 @@ class DQM_Metadata:
             'AK': '02',
             'AL': '01',
             'AR': '05',
+            'AS': '60',
             'AZ': '04',
             'CA': '06',
             'CO': '08',
@@ -1151,6 +1155,7 @@ class DQM_Metadata:
             'DE': '10',
             'FL': '12',
             'GA': '13',
+            'GU': '66',
             'HI': '15',
             'IA': '19',
             'ID': '16',
@@ -1166,6 +1171,7 @@ class DQM_Metadata:
             'MN': '27',
             'MO': '29',
             'MS': '28',
+            'MP': '69',
             'MT': '30',
             'NC': '37',
             'ND': '38',
