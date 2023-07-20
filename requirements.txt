@@ -33,7 +33,7 @@ pip==22.0.4
 py4j==0.10.9
 pyarrow==5.0.0
 pycodestyle==2.7.0
-Pygments==2.9.0
+Pygments==2.15.0
 pylint==2.7.4
 pyparsing==2.4.7
 pyspark==3.1.1
