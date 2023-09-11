@@ -71,6 +71,7 @@ elgblty_grp_cd,68,Pregnant Women with Access to Public Employee Coverage
 elgblty_grp_cd,69,Individuals with Mental Health Conditions (expansion group)
 elgblty_grp_cd,70,Family Planning Participants (expansion group)
 elgblty_grp_cd,71,Other expansion group
+elgblty_grp_cd,76,Uninsured Individual eligible for COVID-19 testing
 enrld_mc_plan_type_cd,00,"Not applicable, individual is eligible for Medicaid or CHIP but not enrolled in a managed care plan "
 enrld_mc_plan_type_cd,01,Individual is enrolled in a Comprehensive MCO
 enrld_mc_plan_type_cd,02,Individual is enrolled in a Traditional PCCM Provider arrangement
@@ -90,6 +91,8 @@ enrld_mc_plan_type_cd,15,Individual is enrolled in a Transportation PAHP
 enrld_mc_plan_type_cd,16,Individual is enrolled in a Disease Management PAHP
 enrld_mc_plan_type_cd,17,Individual is enrolled in Program for All-Inclusive Care for the Elderly (PACE)
 enrld_mc_plan_type_cd,18,Pharmacy PAHP
+enrld_mc_plan_type_cd,19,Long-Term Services & Supports (LTSS) and Mental Health (MH) PIHP
+enrld_mc_plan_type_cd,20,Other
 enrld_mc_plan_type_cd,60,Accountable Care Organization
 enrld_mc_plan_type_cd,70,Health/Medical Home
 enrld_mc_plan_type_cd,80,Integrated Care For Dual Eligibles
@@ -111,7 +114,7 @@ race_cd,014,Samoan
 race_cd,015,Other Pacific Islander
 race_cd,016,Native Hawaiian or Other Pacific Islander Unknown
 race_cd,017,Unspecified
-race_cd,999,Unknown  
+race_cd,018,Other 
 ethncty_cd,00,"Not of Hispanic or, Latino/a, or Spanish origin"
 ethncty_cd,01,"Mexican, Mexican American, Chicano/a"
 ethncty_cd,02,Puerto Rican
@@ -123,8 +126,7 @@ ethncty_cd,09,Ethnicity Unknown
 imgrtn_stus_cd,1,Qualified non-citizen
 imgrtn_stus_cd,2,Lawfully present under CHIPRA 214
 imgrtn_stus_cd,3,Eligible only for payment for emergency services
-imgrtn_stus_cd,8,Not Applicable (U.S. citizen)
-imgrtn_stus_cd,9,Unknown
+imgrtn_stus_cd,8,Not Applicable (U.S. citizen or U.S. national)
 enrlmt_type_cd,1,Medicaid
 enrlmt_type_cd,2,CHIP
 enrlmt_type_cd,9,Unknown
@@ -165,6 +167,14 @@ oprtg_authrty_cd,12,Concurrent 1915(b)/1915(i) HCBS state plan services - the op
 oprtg_authrty_cd,13,Concurrent 1915(a)/ 1915(i) HCBS state plan services - the optional 1915(i) state plan Home and Community-Based Services (HCBS) benefit operated in conjunction with a 1915(a) voluntary managed care program.
 oprtg_authrty_cd,14,Concurrent 1932(a)/ 1915(i) HCBS state plan services - the optional 1915(i) state plan Home and Community-Based Services (HCBS) benefit operated in conjunction with a 1932(a) managed care state plan option.
 oprtg_authrty_cd,15,1945 Health Homes.
+oprtg_authrty_cd,16,"Concurrent 1915(a)/1915(j) - programs, or portions thereof, operating under both 1915(a) and 1915(j) authorities"
+oprtg_authrty_cd,17,"Concurrent 1932(a)/1915(j) - programs, or portions thereof, operating under both 1932(a) and 1915(j) authorities"
+oprtg_authrty_cd,18,"Concurrent 1915(b)/1915(j) - programs, or portions thereof, operating under both 1915(b) and 1915(j) authorities"
+oprtg_authrty_cd,19,"Concurrent 1115/1915(j) - programs, or portions thereof, operating under both 1115 and 1915(j) authorities"
+oprtg_authrty_cd,20,"Concurrent 1915(a)/1915(k) - programs, or portions thereof, operating under both 1915(a) and 1915(k) authorities"
+oprtg_authrty_cd,21,"Concurrent 1932(a)/1915(k) - programs, or portions thereof, operating under both 1932(a) and 1915(k) authorities"
+oprtg_authrty_cd,22,"Concurrent 1915(b)/1915(k) - programs, or portions thereof, operating under both 1915(b) and 1915(k) authorities"
+oprtg_authrty_cd,23,"Concurrent 1115/1915(k) - programs, or portions thereof, operating under both 1115 and 1915(k) authorities"
 cvrg_type_cd,01,Drug
 cvrg_type_cd,02,Professional (Physician) Visit - Office
 cvrg_type_cd,03,Dental Care

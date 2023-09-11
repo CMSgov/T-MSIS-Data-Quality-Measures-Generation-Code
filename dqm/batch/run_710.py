@@ -5,7 +5,12 @@ run_710 =[
     ['710', 'frq', 'ALL22_1', 'ip', 'CLH', 'clm_type_cd', '(1=1)'],
     ['710', 'frq', 'ALL23_1', 'lt', 'CLH', 'clm_type_cd', '(1=1)'],
     ['710', 'frq', 'ALL24_1', 'ot', 'CLH', 'clm_type_cd', '(1=1)'],
-    ['710', 'frq', 'ALL25_1', 'rx', 'CLH', 'clm_type_cd', '(1=1)']
+    ['710', 'frq', 'ALL25_1', 'rx', 'CLH', 'clm_type_cd', '(1=1)'],
+
+    ['710', 'frq', 'ALL37_1', 'ip', 'CLH', 'src_lctn_cd', '(1=1)'],
+    ['710', 'frq', 'ALL38_1', 'lt', 'CLH', 'src_lctn_cd', '(1=1)'],
+    ['710', 'frq', 'ALL39_1', 'ot', 'CLH', 'src_lctn_cd', '(1=1)'],
+    ['710', 'frq', 'ALL40_1', 'rx', 'CLH', 'src_lctn_cd', '(1=1)']
 
 ]
 

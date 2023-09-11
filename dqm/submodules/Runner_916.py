@@ -76,7 +76,7 @@ class Runner_916():
                         SELECT *
                             ,CASE
                                 WHEN substring(blg_prvdr_npi_num, 1, 1) <> '1'
-                                    OR dqm_conv.dqm_valid_npi(blg_prvdr_npi_num) = 0
+                                    OR luhn_check(concat('80840', trim(blg_prvdr_npi_num))) = 0
                                     THEN 1
                                 ELSE 0
                                 END AS has_numer

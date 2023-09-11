@@ -1,9 +1,9 @@
 shopt -s nocasematch
 # if environment is not specified in .env, default to VAL
 if [[ -z "${ENVIRON}" ]]; then 
-    ENVIRON=val
+    ENVIRON=e2val
     echo environment=${ENVIRON}
-else if ! [[ "${ENVIRON}" =~ ^(val)$ ]]; then 
+else if ! [[ "${ENVIRON}" =~ ^(e2val)$ ]]; then 
 # user must confirm they want to deploy to an environment that is not VAL
     read -p "Are you sure you want to deploy to ${ENVIRON}? (enter y or n) " -n 1 -r
         if [[ ! $REPLY =~ ^[Yy]$ ]]
@@ -15,14 +15,14 @@ else if ! [[ "${ENVIRON}" =~ ^(val)$ ]]; then
     fi
 fi
 # if deploying to PROD, check that the version name does not have the user's initials from testing
-if [[ "${ENVIRON}" =~ ^(prod)$ ]]; then
+if [[ "${ENVIRON}" =~ ^(e2prod)$ ]]; then
     if ! [[ "${VERSION}" =~ ^[1-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$ ]]; then 
         echo "ERROR: Prod deployment must not include initials/characters in version (or must be specified)" ;
         exit 1
     fi
 fi
 # if the environment specified is not VAL or PROD, do not deploy
-if ! [[ "${ENVIRON}" =~ ^(val|prod)$ ]]; then 
+if ! [[ "${ENVIRON}" =~ ^(e2val|e2prod)$ ]]; then 
     echo "ERROR: Environment is not valid (must be val (default) or prod)" ;
 else
     # confirm that the version is specified

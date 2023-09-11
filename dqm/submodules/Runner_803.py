@@ -52,6 +52,11 @@ class Runner_803:
 
         dqm.logger.debug('min = ' + min)
 
+        if (x['numer'].lower() == 'prvdr_org_name') and (x['measure_id'].upper() == 'MIS11_58'):
+            where = 'where fac_grp_indvdl_cd in ("01","02")'
+        else:
+            where = ''
+
 
         # suppressed
         # ,1 as miss_position
@@ -72,6 +77,7 @@ class Runner_803:
                         min(case when {min} then 1 else 0 end) as has_numerator
                      from
                         {dqm.taskprefix}_msng_{x["claims_table2"]}
+                        {where}
 
                         {DQM_Metadata.Missingness().non_claims_pct().group_by[x["file_type"]]}
 	        		) c

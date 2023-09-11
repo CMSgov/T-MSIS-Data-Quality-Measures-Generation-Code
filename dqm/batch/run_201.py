@@ -20,7 +20,7 @@ run_201_exp_claims_pct_macros = [
     ['201', 'claims_pct', 'exp11_1', 'a', '1=1', 'bill_amt=0',                                        'cll', 'ot'],
     ['201', 'claims_pct', 'exp11_2', 'a', '1=1', 'mdcd_pd_amt=0 or mdcd_pd_amt is null',              'cll', 'ot'],
     ['201', 'claims_pct', 'exp11_3', 'a', '1=1', 'mdcd_pd_amt > 100000',                              'cll', 'ot'],
-    ['201', 'claims_pct', 'exp11_4', 'a', "stc_cd in ('002', '061')", 'mdcd_pd_amt=0',               'cll', 'ot'],
+    ['201', 'claims_pct', 'exp11_4', 'a', "stc_cd in ('002', '061')", 'mdcd_pd_amt=0',                'cll', 'ot'],
     ['201', 'claims_pct', 'exp16_1', 'a', '1=1', 'tot_mdcd_pd_amt > 300000',                          'clh', 'rx'],
     ['201', 'claims_pct', 'exp16_2', 'a', '1=1', 'tot_bill_amt=0',                                    'clh', 'rx'],
     ['201', 'claims_pct', 'exp16_3', 'a', '1=1', 'tot_mdcd_pd_amt =0 or tot_mdcd_pd_amt is null',     'clh', 'rx'],
@@ -84,14 +84,16 @@ run_201_exp_claims_pct_macros = [
     ['201', 'claims_pct', 'exp45_2', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],
     ['201', 'claims_pct', 'exp45_3', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot'],
 
-    # v3.6
-    # updated version of EXP11_1
+    # plan id measures
+    ['201', 'claims_pct_planid', 'exp29p_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ip'],
+    ['201', 'claims_pct_planid', 'exp33p_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],
+    ['201', 'claims_pct_planid', 'exp41p_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'rx'],
+    ['201', 'claims_pct_planid', 'exp22p_9', 'd', '1=1',                            'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot'],
+    create_run_201_exp_claims_entry('201', 'claims_pct_planid', 'exp37p_2', 'p', "pymt_lvl_ind = 2 and src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
+
     create_run_201_exp_claims_entry('201', 'claims_pct', 'exp11_163', 'a', 'pymt_lvl_ind = 2', 'bill_amt=0', 'cll', 'ot'),
-    # updated version of EXP11_2
     create_run_201_exp_claims_entry('201', 'claims_pct', 'exp11_164', 'a', 'pymt_lvl_ind = 2', 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
-    # updated version of EXP37_1
     create_run_201_exp_claims_entry('201', 'claims_pct', 'exp37_2', 'p', "pymt_lvl_ind = 2 and src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
-    # updated version of EXP39_1
     create_run_201_exp_claims_entry('201', 'claims_pct', 'exp39_2', 'r', "pymt_lvl_ind = 2 and src_lctn_cd not in ('22','23')", 'mdcd_pd_amt=0 or mdcd_pd_amt is null', 'cll', 'ot'),
     
 ]

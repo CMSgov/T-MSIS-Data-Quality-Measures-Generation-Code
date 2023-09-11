@@ -103,12 +103,120 @@ class Runner_913():
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    # Tabulate the claims by Plan ID
+    #
+    # --------------------------------------------------------------------
+    def pct_count_cll_to_clh_planid(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_cll AS
+
+                SELECT orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+                    ,sum(CASE
+                            WHEN ({x['var_l']} IS NOT NULL)
+                                THEN {x['var_l']}
+                            ELSE 0
+                            END) AS sum_{x['var_l']}
+                FROM {DQMeasures.getBaseTable(dqm, 'cll', x['claim_type'])}
+                WHERE {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                    AND childless_header_flag = 0
+                GROUP BY orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_planid_clh AS
+
+                SELECT orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+                    ,plan_id_num
+                    ,max(coalesce({x['var_h']}, 0)) AS {x['var_h']}
+                    ,max(1) as denom
+                FROM {DQMeasures.getBaseTable(dqm, 'clh', x['claim_type'])}
+                WHERE pymt_lvl_ind = '2'
+                    and ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                    and ({DQClosure.parse(x['denom'])})
+                GROUP BY orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+                    ,plan_id_num
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_planid_clh_2 AS
+
+                SELECT b.*
+                      ,a.plan_id
+                       
+                FROM {dqm.taskprefix}_plan_ids as a
+                        full join (
+                                select c.*
+                                        ,d.sum_{x['var_l']}
+                                from {dqm.taskprefix}_planid_clh as c
+                                inner JOIN {dqm.taskprefix}_cll as d
+                                        ON c.orgnl_clm_num = d.orgnl_clm_num
+                                    AND c.adjstmt_clm_num = d.adjstmt_clm_num
+                                    AND c.adjdctn_dt = d.adjdctn_dt
+                                    AND c.adjstmt_ind = d.adjstmt_ind 
+                                  ) as b
+                        on a.plan_id = b.plan_id_num
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'913' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,plan_id
+                FROM (
+                    SELECT coalesce(plan_id, 'No Plan ID') as plan_id
+                           ,sum(denom) AS denom
+                           ,sum(CASE
+                                    WHEN denom=1 and 
+                                        (sum_{x['var_l']} <> {x['var_h']})
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+
+                    FROM {dqm.taskprefix}_planid_clh_2
+
+                    group by plan_id
+                    ) d
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
 
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    v_table = { 'pct_count_cll_to_clh' : pct_count_cll_to_clh }
+    v_table = { 'pct_count_cll_to_clh' : pct_count_cll_to_clh,
+                'pct_count_cll_to_clh_planid' : pct_count_cll_to_clh_planid }
 
 # CC0 1.0 Universal
 

@@ -972,7 +972,10 @@ run_901 = [
     ['901', 'claims_pct', 'mcr10_15', 'P', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='06' and (%not_missing_1(PRCDR_CD, 8)) and ((PRCDR_CD rlike '[W-Z][0-9]{4}'))",  'CLL', 'ot'],
 
     ['901', 'claims_pct', 'mcr21_3', 'P', '1=1', "%not_missing_1(BLG_PRVDR_NUM, 30)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr24_3', 'R', '1=1', "%not_missing_1(BLG_PRVDR_NUM, 30)", 'CLL', 'ot']
+    ['901', 'claims_pct', 'mcr24_3', 'R', '1=1', "%not_missing_1(BLG_PRVDR_NUM, 30)", 'CLL', 'ot'],
+
+    #plan id measures
+    ['901', 'claims_pct_planid', 'mcr56p_1', 'O', "PTNT_STUS_CD <> '30' or PTNT_STUS_CD is NULL", "DSCHRG_DT is NULL", 'CLH', 'ip'],
 ]
 
 df = DataFrame(run_901, columns=['series', 'cb', 'measure_id', 'claim_cat', 'denom', 'numer', 'level', 'claim_type'])

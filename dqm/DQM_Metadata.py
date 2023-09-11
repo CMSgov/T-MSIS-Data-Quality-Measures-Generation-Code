@@ -623,6 +623,9 @@ class DQM_Metadata:
             ,'BB': "(clm_type_cd in ('B') and (adjstmt_ind in ('0','4')) )"     #   S-CHIP Capitation Payment: Original and Replacement, Paid Claims
             ,'BC': "(clm_type_cd in ('1','A') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
             ,'BD': "(clm_type_cd in ('3','C') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
+            # BE claim category not used in code as of v3.9, so not coded
+            ,'BF': "(clm_type_cd in ('6') and adjstmt_ind in ('0') )"
+            ,'BG': "(clm_type_cd in ('F') and adjstmt_ind in ('0') )"
         }
 
     class create_claims_tables():
@@ -718,7 +721,6 @@ class DQM_Metadata:
                     'ot':
                         """,a.srvc_plc_cd
                             ,a.dgns_1_cd
-                            ,a.plan_id_num
                             ,a.blg_prvdr_npi_num
                             ,a.prvdr_lctn_id
                             ,a.othr_insrnc_ind
@@ -915,7 +917,8 @@ class DQM_Metadata:
                 'in_thresholds',
                 'numer',
                 'denom',
-                'claim_type']
+                'claim_type',
+                'plan_id']
 
             types = {
                 'Report_State': str,
@@ -936,7 +939,8 @@ class DQM_Metadata:
                 'in_thresholds': int64,
                 'numer': float64,
                 'denom': float64,
-                'claim_type': str
+                'claim_type': str,
+                'plan_id': str
             }
 
         class spark():
@@ -1056,6 +1060,7 @@ class DQM_Metadata:
                   'EL10_3', 'EL10_4',
                   'EL1_5',
                   'MCR28_1', 'MCR56_1', 'MCR57_1', 'FFS47_1', 'FFS48_1',
+                  'MCR56P_1',
                   'EL3_37','EL3_38']
 
         round3 = ['EL1_20',

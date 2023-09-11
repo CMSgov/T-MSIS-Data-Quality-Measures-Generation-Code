@@ -30,6 +30,10 @@ class Runner_710:
         else:
             header_filter = ""
 
+        df=spark.sql(f"select * from dqm_conv.{x['var']}")
+        list_val=df.rdd.map(lambda x: x.valid_value).collect()
+        vvalue ="(" + ','.join(repr(str(i)) for i in list_val) + ")"
+        
         z = f"""
             select 
                 '{dqm.state}' as submtg_state_cd,
@@ -40,7 +44,7 @@ class Runner_710:
                 coalesce(m.mvalue, v.mvalue) as mvalue,
                 v.valid_value
             from 
-                dqm_conv.clm_type_cd as v
+                dqm_conv.{x['var']} as v
             left join (
 
                 select
@@ -54,7 +58,7 @@ class Runner_710:
                 from (
                     select distinct submtg_state_cd, {x['var']} as valid_value, count({x['var']}) as mvalue
                     from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
-                    where ({x['constraint']} and {x['var']} in ('1','2','3','4','5','A','B','C','D','E','U','V','W','X','Y','Z'))
+                    where ({x['constraint']} and {x['var']} in {vvalue} )
                     {header_filter}
                 group by submtg_state_cd, valid_value ) a
 
@@ -71,7 +75,7 @@ class Runner_710:
                 from (
                     select distinct submtg_state_cd, 'A_' as valid_value, count({x['var']}) as mvalue
                     from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
-                    where ({x['constraint']} and {x['var']} in ('1','2','3','4','5','A','B','C','D','E','U','V','W','X','Y','Z') )
+                    where ({x['constraint']} and {x['var']} in {vvalue} )
                     {header_filter}
                 group by submtg_state_cd ) a
 
@@ -89,7 +93,7 @@ class Runner_710:
                 from (
                     select distinct submtg_state_cd, 'N_' as valid_value, count(submtg_state_cd) as mvalue
                     from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
-                    where ({x['constraint']} and ({x['var']} is null or {x['var']} not in ('1','2','3','4','5','A','B','C','D','E','U','V','W','X','Y','Z') ))
+                    where ({x['constraint']} and ({x['var']} is null or {x['var']} not in {vvalue} ))
                     {header_filter}
                     group by submtg_state_cd) a
 
