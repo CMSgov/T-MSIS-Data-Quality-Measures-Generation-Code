@@ -27,12 +27,18 @@ class Runner_103:
     # --------------------------------------------------------------------
     def build_index_measure_tables(spark, dqm: DQMeasures, measure_id, x) :
 
+        if x['vvalue_table'] != '':
+            join_vvalue = f"left join dqm_conv.{x['vvalue_table']} as b on a.{x['var']} = b.valid_value"
+        else:
+            join_vvalue = ""
+
         z = f"""
                 create or replace temporary view {dqm.taskprefix}_{measure_id}a as
                 select
                     {x['var']},
                     count(distinct msis_ident_num) as rec_count
-                from {dqm.taskprefix}_{x['input_dsn']}
+                from {dqm.taskprefix}_{x['input_dsn']} as a
+                {join_vvalue}
                 where {DQClosure.parse(x['condition'])}
                 group by {x['var']}
              """
@@ -59,7 +65,8 @@ class Runner_103:
                 select
                     {x['var']},
                     count(distinct msis_ident_num) as rec_count
-                from {dqm.taskprefix}_{x['input_dsn']}_prior
+                from {dqm.taskprefix}_{x['input_dsn']}_prior as a
+                {join_vvalue}
                 where {DQClosure.parse(x['condition'])}
                 group by {x['var']}
              """

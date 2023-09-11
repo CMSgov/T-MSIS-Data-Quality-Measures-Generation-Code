@@ -13,6 +13,16 @@ run_913_claims_pct_amt = [
 
     ['913', 'pct_count_cll_to_clh', 'ffs49_16', 'AE', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX', '1=1'],
     ['913', 'pct_count_cll_to_clh', 'mcr59_16', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX', "src_lctn_cd not in ('22','23')"],
+
+    #  plan id measures
+    ['913', 'pct_count_cll_to_clh_planid', 'mcr59p_13', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'IP', "src_lctn_cd not in ('22','23')"],
+
+    ['913', 'pct_count_cll_to_clh_planid', 'mcr59p_14', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'LT', "src_lctn_cd not in ('22','23')"],
+
+    ['913', 'pct_count_cll_to_clh_planid', 'mcr59p_15', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'OT', "src_lctn_cd not in ('22','23')"],
+
+    ['913', 'pct_count_cll_to_clh_planid', 'mcr59p_16', 'AF', 'MDCD_PD_AMT', 'TOT_MDCD_PD_AMT', 'RX', "src_lctn_cd not in ('22','23')"],
+
 ]
 
 df = DataFrame(run_913_claims_pct_amt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'var_l', 'var_h', 'claim_type', 'denom'])

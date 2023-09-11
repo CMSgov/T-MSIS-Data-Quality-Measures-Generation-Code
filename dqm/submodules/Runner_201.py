@@ -28,9 +28,9 @@ class Runner_201:
     def claims_pct(spark, dqm: DQMeasures, measure_id, x) :
 
         if x['level'].lower() == "cll":
-            header_filter = f"""WHERE childless_header_flag = 0"""
+            header_filter = "WHERE childless_header_flag = 0"
         else:
-            header_filter = f""""""
+            header_filter = ""
 
         z = f"""
                 SELECT '{dqm.state}' AS submtg_state_cd
@@ -69,7 +69,59 @@ class Runner_201:
     #
     #
     # --------------------------------------------------------------------
-    v_table = {"claims_pct": claims_pct}
+    def claims_pct_planid(spark, dqm: DQMeasures, measure_id, x) :
+
+        if x['level'].lower() == "cll":
+            header_filter = "WHERE childless_header_flag = 0"
+        else:
+            header_filter = ""
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'201' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,plan_id
+                FROM (
+                    SELECT coalesce(a.plan_id, 'No Plan ID') as plan_id
+                        ,sum(CASE
+                                WHEN ({x['denom']})
+                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                                    THEN 1
+                                ELSE 0
+                                END) AS denom
+                        ,sum(CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']})
+                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_plan_ids as a
+                        full join (
+                                select * 
+                                from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                                {header_filter}
+                                    ) as b
+                        on a.plan_id = b.plan_id_num
+                    GROUP BY a.plan_id
+                    ) a
+             """
+        dqm.logger.debug(z)
+        return spark.sql(z)
+    
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    v_table = {"claims_pct": claims_pct,
+               "claims_pct_planid": claims_pct_planid}
 
 # CC0 1.0 Universal
 

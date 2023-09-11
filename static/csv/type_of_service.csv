@@ -104,3 +104,15 @@ TypeOfService,Description
 133,Supplemental payment - nursing
 134,Supplemental payment - outpatient
 135,EHR payments to provider
+136,"In vitro diagnostic products (as defined in section 809.3(a) of title 21, Code of Federal Regulations) administered during any portion of the emergency period defined in paragraph (1)(B) of section 1135(g) beginning on or after the date of the enactment of this subparagraph for the detection of SARS–CoV–2 or the diagnosis of the virus that causes COVID–19, and the administration of such in vitro diagnostic products"
+137,COVID–19 testing-related services
+138,Per member per month (PMPM) payments for health home services
+139,Per member per month (PMPM) payments for Medicare Part A premiums
+140,Per member per month (PMPM) payments for Medicare Part B premiums
+141,Per member per month (PMPM) payments for Medicare Advantage Dual Special Needs Plans (D-SNP) – Medicare Part C
+142,Per member per month (PMPM) payments for Medicare Part D premiums
+143,Per member per month (PMPM) payments for other payments
+144,Payments to individuals for personal assistance services under 1915(j)
+145,Medication Assisted Treatment (MAT) services and drugs for evidenced-based treatment of Opioid Use Disorder (OUD) in accordance with section 1905(a)(29) of the Social Security Act
+146,Inpatient Psychiatric Services for beneficiaries between the ages of 22 and 64 who receive services in an institution for mental disease (IMD)
+147,Residential Pediatric Recovery Center (RPRC): A center or facility that furnishes items and services for which medical assistance is available under the State plan to infants with the diagnosis of neonatal abstinence syndrome without any other significant medical risk factors

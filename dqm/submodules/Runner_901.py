@@ -145,13 +145,64 @@ class Runner_901():
         dqm.logger.debug(z)
 
         return spark.sql(z)
+    
+    # --------------------------------------------------------------------
+    # MCR claims Plan ID related measures
+    #
+    # --------------------------------------------------------------------
+   
+    def claims_pct_planid(spark, dqm: DQMeasures, measure_id, x) :
 
+        if x['level'].lower() == "cll":
+            header_filter = "and childless_header_flag = 0"
+        else:
+            header_filter = ""
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'901' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,plan_id
+                FROM (
+                    SELECT coalesce(a.plan_id, 'No Plan ID') as plan_id
+                        ,sum(denom) AS denom
+                        ,sum(numer) AS numer
+                    FROM {dqm.taskprefix}_plan_ids as a
+                        full join (
+                                    SELECT *
+                                          ,1 AS denom 
+                                          ,case when ({x['numer']}) THEN 1 ELSE 0 END AS numer
+                                    FROM  {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                                    WHERE
+                                        ({DQClosure.parse(x['denom'])})
+                                        and {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                                        {header_filter}
+                                    ) as b
+
+                        on a.plan_id = b.plan_id_num
+                        
+                    GROUP BY a.plan_id
+                    ) c
+
+
+             """
+        
+        dqm.logger.debug(z)
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = { 'claims_pct': claims_pct,
-                'claims_pct_cll_to_clh': claims_pct_cll_to_clh }
+                'claims_pct_cll_to_clh': claims_pct_cll_to_clh,
+                'claims_pct_planid': claims_pct_planid }
 
 # CC0 1.0 Universal
 

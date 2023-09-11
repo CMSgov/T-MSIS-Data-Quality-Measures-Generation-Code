@@ -2,23 +2,15 @@ from pandas import pandas as pd
 from pandas import DataFrame
 
 run_102 = [
-    ['104', 'build_freq_measure_tables', 'el201', 'el2.1', 'tmsis_var_dmgrphc_elgblty', 'imgrtn_stus_cd', "('1','2','3','8','9')", "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el401', 'el4.1', 'el401a', 'enrlmt_type_cd', "('1','2','9')", "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el1201', 'el12.1', 'tmsis_elgblty_dtrmnt', 'elgblty_grp_cd',
-        "('01','02','03','04','05','06','07','08','09', \
-        '11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26', \
-        '27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42', \
-        '43','44','45','46','47','48','49','50','51','52','53','54','55','56', \
-        '59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74', \
-        '75','76')", "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el181', 'el18.1', 'tmsis_race_info', 'race_cd', "('001','002','003','004','005','006','007','008','009','010','011','012','013','014','015','016','017','018')", "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el624', 'el6.24', 'tmsis_elgblty_dtrmnt', 'rstrctd_bnfts_cd', "('1','2','3','4','5','6','7','A','B','C','D','F')", "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el2001', 'el20.1', 'tmsis_elgblty_dtrmnt', 'elgblty_chg_rsn_cd', 
-        "('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20', \
-		'21','22','23','24','25','26','27','28','29','30','31')", "(1=1)"]
+    ['104', 'build_freq_measure_tables', 'el201', 'el2.1', 'tmsis_var_dmgrphc_elgblty', 'imgrtn_stus_cd', "(1=1)"],
+    ['104', 'build_freq_measure_tables', 'el401', 'el4.1', 'el401a', 'enrlmt_type_cd', "(1=1)"],
+    ['104', 'build_freq_measure_tables', 'el1201', 'el12.1', 'tmsis_elgblty_dtrmnt', 'elgblty_grp_cd', "(1=1)"],
+    ['104', 'build_freq_measure_tables', 'el181', 'el18.1', 'tmsis_race_info', 'race_cd', "(1=1)"],
+    ['104', 'build_freq_measure_tables', 'el624', 'el6.24', 'tmsis_elgblty_dtrmnt', 'rstrctd_bnfts_cd', "(1=1)"],
+    ['104', 'build_freq_measure_tables', 'el2001', 'el20.1', 'tmsis_elgblty_dtrmnt', 'elgblty_chg_rsn_cd', "(1=1)"]
 ]
 
-df = DataFrame(run_102, columns=['series', 'cb', 'measure_id', 'id', 'input_dsn', 'var', 'vvalue', 'condition'])
+df = DataFrame(run_102, columns=['series', 'cb', 'measure_id', 'id', 'input_dsn', 'var', 'condition'])
 
 df['measure_id'] = df['id'].str.replace('.', '_', regex=False).str.upper()
 
