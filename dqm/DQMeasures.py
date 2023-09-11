@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.8.0'
+        self.version = '3.9.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.8'
+        self.specvrsn = 'V3.9'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -114,6 +114,7 @@ class DQMeasures:
         self.abd['Medicaid Determination'] = self.abd['Medicaid Determination'].str.strip()
         self.abd['Medicaid Determination'] = self.abd['Medicaid Determination'].str.upper()
         self.apdxc = self.load_metadata_file('apdxc')
+        self.apdxc['Variable'] = self.apdxc['Variable'].str.lower()
         self.countystate_lookup = self.load_metadata_file('countystate_lookup')
         self.fmg = self.load_metadata_file('fmg')
         self.missVar = self.load_metadata_file('missVar')
@@ -627,7 +628,7 @@ class DQMeasures:
 
         # ffs module logic to handle empty numerator values
         def fill_empty_results_numer(x):
-            if ((x['series'].startswith('9')) and (pd.isna(x['mvalue'])) and (pd.isna(x['valid_value']))):
+            if ((x['series'].startswith('9')) and (pd.isna(x['mvalue'])) and (pd.isna(x['valid_value'])) and (pd.isna(x['plan_id']))):
                 return Decimal(0)
             else:
                 return x['numer']
@@ -636,7 +637,7 @@ class DQMeasures:
         def fill_empty_results_denom(x):
             if pd.isna(x['denom']) and (x['Measure_Type'] in ('Claims Percentage','Non-Claims Percentage','Duplicate Percentage','Ratio')):
                 return Decimal(0)
-            elif ((x['series'].startswith('9')) and (pd.isna(x['mvalue'])) and (pd.isna(x['valid_value']))):
+            elif ((x['series'].startswith('9')) and (pd.isna(x['mvalue'])) and (pd.isna(x['valid_value'])) and (pd.isna(x['plan_id']))):
                 return Decimal(0)
             else:
                 return x['denom']
@@ -752,7 +753,7 @@ class DQMeasures:
                 summary['Statistic'] = summary.apply(lambda x: schip_test(x), axis=1)
 
             # NaN on Numerator/Denominator/Valid Value
-            summary = summary.fillna({ 'valid_value': '' })
+            summary = summary.fillna({'valid_value': '', 'plan_id': ''})
 
             summary['Numerator'] = summary.apply(lambda x:  str(remove_zeros(x['numer'])) if (pd.notnull(x['numer'])) else '', axis=1)
             summary['Denominator'] = summary.apply(lambda x: str(remove_zeros(x['denom'])) if (pd.notnull(x['denom'])) else '', axis=1)
@@ -764,6 +765,8 @@ class DQMeasures:
 
             if not set(['valid_value']).issubset(summary.columns):
                 summary['valid_value'] = ''
+            if not set(['plan_id']).issubset(summary.columns):
+                summary['plan_id'] = ''
 
             summary = summary.astype(DQM_Metadata.Reports.summary.types)
             summary = summary[DQM_Metadata.Reports.summary.columns]
@@ -771,6 +774,7 @@ class DQMeasures:
             # handle various values representing not a number
             summary['Statistic'] = summary['Statistic'].str.replace('nan', '')
             summary['valid_value'] = summary['valid_value'].str.replace('nan', '')
+            summary['plan_id'] = summary['plan_id'].str.replace('nan', '')
             summary['claim_type'] = summary['claim_type'].str.replace('nan', '')
 
         else:
@@ -783,8 +787,8 @@ class DQMeasures:
             pd_el7_1 = pd_el7_1.sort_values(['Measure_ID'], ascending=True)
             pd_el7_1['submtg_state_cd'] = str(self.state)
             pd_el7_1['statistic_type'] = 'enrollment'
-            pd_el7_1['Statistic'] = pd_el7_1['mvalue']
-            pd_el7_1['Statistic'] = pd_el7_1.apply(lambda x: round(x['mvalue']), axis=1)
+            pd_el7_1['Statistic'] = pd_el7_1['mvalue'].fillna(0, inplace=True)
+            pd_el7_1['Statistic'] = pd_el7_1['mvalue'].apply(lambda x: round(x))
             pd_el7_1 = pd_el7_1.astype(DQM_Metadata.Reports.waiver.types)
 
             pd_el7_1['waiver_id'] = pd_el7_1['waiver_id'].str.replace('nan','.')

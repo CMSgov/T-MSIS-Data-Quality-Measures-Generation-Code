@@ -55,7 +55,7 @@ class Runner_715:
                 ,'715' as submodule
                 ,sum(male) as numer
                 ,count(submtg_state_cd) as denom
-                ,round((sum(male)/count(submtg_state_cd)),3) as mvalue
+                ,sum(male)/count(submtg_state_cd) as mvalue
                 from
                     (select cl.submtg_state_cd, cl.msis_ident_num, case when gndr_cd = 'M' then 1 else 0 end as male
                     from {dqm.taskprefix}_base_cll_{x['claim_type']} cl

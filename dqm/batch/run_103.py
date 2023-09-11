@@ -2,15 +2,15 @@ from pandas import pandas as pd
 from pandas import DataFrame
 
 run_103 =[
-    ['103', 'build_index_measure_tables', 'el104', 'el1.4', 'tmsis_elgbl_cntct', 'elgbl_cnty_cd', "((%nmisslogic(elgbl_cnty_cd,3)=1) and elgbl_adr_type_cd = '01')"],
-    ['103', 'build_index_measure_tables', 'el105', 'el1.5', 'tmsis_elgbl_cntct', 'elgbl_zip_cd', "((%nmisslogic(elgbl_zip_cd,9)=1) and elgbl_adr_type_cd = '01')"],
-    ['103', 'build_index_measure_tables', 'el107', 'el1.7', 'tmsis_race_info', 'race_cd', "(race_cd in ('001','002','003','004','005','006','007','008','009','010','011','012','013','014','015','016','017','018','999') and (%nmisslogic(race_cd,3)=1))"],
-    ['103', 'build_index_measure_tables', 'el108', 'el1.8', 'tmsis_ethncty_info', 'ethncty_cd', "(ethncty_cd in ('0','1','2','3','4','5','6','9') and (%nmisslogic(ethncty_cd,1) = 1))"],
-    ['103', 'build_index_measure_tables', 'el1001', 'el10.1', 'tmsis_mc_prtcptn_data', 'enrld_mc_plan_type_cd', "(enrld_mc_plan_type_cd in ('00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','60','70','80','99') and (%nmisslogic(enrld_mc_plan_type_cd,2)=1))"],
+    ['103', 'build_index_measure_tables', 'el104', 'el1.4', 'tmsis_elgbl_cntct', 'elgbl_cnty_cd', '', "((%nmisslogic(elgbl_cnty_cd,3)=1) and elgbl_adr_type_cd = '01')"],
+    ['103', 'build_index_measure_tables', 'el105', 'el1.5', 'tmsis_elgbl_cntct', 'elgbl_zip_cd', '', "((%nmisslogic(elgbl_zip_cd,9)=1) and elgbl_adr_type_cd = '01')"],
+    ['103', 'build_index_measure_tables', 'el107', 'el1.7', 'tmsis_race_info', 'race_cd', 'race_cd', "(b.valid_value is not null and (%nmisslogic(race_cd,3)=1))"],
+    ['103', 'build_index_measure_tables', 'el108', 'el1.8', 'tmsis_ethncty_info', 'ethncty_cd', '', "(ethncty_cd in ('0','1','2','3','4','5','6','9') and (%nmisslogic(ethncty_cd,1) = 1))"],
+    ['103', 'build_index_measure_tables', 'el1001', 'el10.1', 'tmsis_mc_prtcptn_data', 'enrld_mc_plan_type_cd', '', "(enrld_mc_plan_type_cd in ('00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','60','70','80','99') and (%nmisslogic(enrld_mc_plan_type_cd,2)=1))"],
 ]
 
 
-df = DataFrame(run_103, columns=['series', 'cb', 'measure_id', 'id', 'input_dsn', 'var', 'condition'])
+df = DataFrame(run_103, columns=['series', 'cb', 'measure_id', 'id', 'input_dsn', 'var', 'vvalue_table', 'condition'])
 
 df['measure_id'] = df['id'].str.replace('.', '_', regex=False).str.upper()
 

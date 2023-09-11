@@ -270,6 +270,9 @@ class DQPrepETL:
 
         dqm.logger.info('Creating Peripheral Tables...')
 
+        # plan IDs
+        DQPrepETL.all_plan_ids(dqm)
+
         # 900 series
         DQPrepETL.run_912_other_measures_PCCM(dqm)
 
@@ -380,10 +383,15 @@ class DQPrepETL:
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_tax")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
-                ['1','2','3','4','5','A','B','C','D','E','U','V','W','X','Y','Z'], columns=['valid_value'])
+                ['1','2','3','4','5','6','A','B','C','D','E','F','U','V','W','X','Y','Z'], columns=['valid_value'])
         df['mvalue'] = 0
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.clm_type_cd")
 
+        df = pd.DataFrame(['A_', 'N_', 'T_'] +
+                ['01','02','03','04','05','06','07','08','09','10','20','22','23'], columns=['valid_value'])
+        df['mvalue'] = 0
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.src_lctn_cd")
+        
         df = pd.DataFrame([['1','TAXONOMY CODE'],['2','PROVIDER SPECIALTY CODE'],['3','PROVIDER TYPE CODE'],
                         ['4','AUTHORIZED CATEGORY OF SERVICE CODE'],['A','ANY VALID VALUE'],['N','NO VALID VALUE'],
                         ['T','TOTAL']], columns=['valid_value','label'])
@@ -391,31 +399,20 @@ class DQPrepETL:
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.prvdr_clsfctn_type_cd")
 
         df = pd.DataFrame(['A', 'N', 'T'] +
-                ['1','2','3','8','9'], columns=['valid_value'])
-        df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.imgrtn_stus_cd")
-
-        df = pd.DataFrame(['A_', 'N_', 'T_'] +
-            ['001','002','003','004','005','006','007','008','009','010','011','012','013','014','015','016','017','018'],
-            columns=['valid_value'])
-        df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.race_cd")
-
-        df = pd.DataFrame(['A', 'N', 'T'] +
                 ['1','2','9'], columns=['valid_value'])
         df['mvalue'] = 0
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.enrlmt_type_cd")
 
-        df = pd.DataFrame(['A', 'N', 'T'] +
-                ['01','02','03','04','05','06','07','08','09','11','12','13','14','15','16','17','18','19','20',
-                 '21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39',
-                 '40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','59','60',
-                 '61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76'], columns=['valid_value'])
-        df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_grp_cd")
+        apdxc_dict = {'elgblty_grp_cd': [2, ['A', 'N', 'T']], 'race_cd': [3, ['A_', 'N_', 'T_']], 'imgrtn_stus_cd': [0, ['A', 'N', 'T']]}
+        for var in apdxc_dict.keys():
+            var_df = dqm.apdxc.loc[dqm.apdxc['Variable'] == f"{var}"]
+            var_df['z_code'] = var_df['Code'].apply(lambda x: x.zfill(apdxc_dict[var][0]))
+            df = pd.DataFrame(apdxc_dict[var][1] + var_df['z_code'].tolist(), columns=['valid_value'])
+            df['mvalue'] = 0
+            spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"dqm_conv.{var}")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
-                ['1','2','3','4','5','6','7','A','B','C','D','F'], columns=['valid_value'])
+                ['0','1','2','3','4','5','6','7','A','B','C','D','E','F','G'], columns=['valid_value'])
         df['mvalue'] = 0
         spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.rstrctd_bnfts_cd")
 
@@ -658,6 +655,7 @@ class DQPrepETL:
                     ,a.srvc_trkng_pymt_amt
                     ,a.srvc_trkng_type_cd
                     ,a.src_lctn_cd
+                    ,a.plan_id_num
 
                     {DQM_Metadata.create_claims_tables.a.select[clm_file]}
 
@@ -1448,6 +1446,46 @@ class DQPrepETL:
             """
         spark.sql(z)
         DQPrepETL.log(dqm, dqm.taskprefix + '_msng_' + sgmt, z)
+
+
+   # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    @staticmethod
+    def all_plan_ids(dqm: DQMeasures):
+
+        spark = SparkSession.getActiveSession()
+
+        def claim_plan_ids(clm_type):
+            return f"""
+                        SELECT plan_id_num AS plan_id
+                        FROM {DQMeasures.getBaseTable(dqm, 'clh', clm_type)}
+                        WHERE plan_id_num IS NOT NULL
+                            AND clm_type_cd in ('2','3','B','C')
+                        GROUP BY plan_id_num
+                        UNION
+                    """
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_plan_ids AS
+                SELECT mc_plan_id AS plan_id
+                FROM {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                WHERE mc_plan_id IS NOT NULL
+                GROUP BY mc_plan_id
+                UNION
+                {claim_plan_ids('ip')}
+                {claim_plan_ids('lt')}
+                {claim_plan_ids('ot')}
+                {claim_plan_ids('rx')}
+                SELECT state_plan_id_num AS plan_id
+                FROM {dqm.taskprefix}_tmsis_mc_mn_data
+                where state_plan_id_num IS NOT NULL
+                GROUP BY state_plan_id_num
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+        DQPrepETL.log(dqm, dqm.taskprefix + '_plan_ids', z)
 
 
     # --------------------------------------------------------------------

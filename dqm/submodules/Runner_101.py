@@ -456,8 +456,8 @@ class Runner_101:
                         else null end as mvalue
                 from (
                     select msis_ident_num
-                        , max(case when rstrctd_bnfts_cd = '3' then 1 else 0 end) as denom_val
-                        , max(case when rstrctd_bnfts_cd = '3' and
+                        , max(case when rstrctd_bnfts_cd in ('3', 'G') then 1 else 0 end) as denom_val
+                        , max(case when rstrctd_bnfts_cd in ('3', 'G') and
                             (dual_elgbl_cd not in ('01', '03', '05', '06') or dual_elgbl_cd is null)
                             then 1 else 0 end) as numer_val
                     from
@@ -492,7 +492,7 @@ class Runner_101:
                 from (
                     select msis_ident_num
                         , max(case when dual_elgbl_cd in ('01', '03', '05', '06') then 1 else 0 end) as denom_val
-                        , max(case when dual_elgbl_cd in ('01', '03', '05', '06') and (rstrctd_bnfts_cd <> '3' or rstrctd_bnfts_cd is null)
+                        , max(case when dual_elgbl_cd in ('01', '03', '05', '06') and (rstrctd_bnfts_cd not in ('3', 'G') or rstrctd_bnfts_cd is null)
                             then 1 else 0 end) as numer_val
                     from
                         {dqm.taskprefix}_tmsis_elgblty_dtrmnt

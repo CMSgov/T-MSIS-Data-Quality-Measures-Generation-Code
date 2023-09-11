@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open(".github/README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="dqm",
-    version="3.8.00",
+    version="3.9.00",
     author="Sarah Schoenfeldt",
     author_email="Sarah.Schoenfeldt@cms.hhs.gov",
     description="A package to calculate data quality measures on T-MSIS data using Databricks",

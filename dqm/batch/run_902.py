@@ -101,7 +101,18 @@ run_902_countt = [
     ['902', 'countt', 'mcr13_16', 'J', "stc_cd='119' and SRVC_ENDG_DT < TMSIS_RPTG_PRD and SRVC_ENDG_DT >= date_sub(TMSIS_RPTG_PRD,30) ",              'CLL', 'OT'],
     ['902', 'countt', 'mcr13_17', 'J', '1=1',  'CLL', 'OT'],
     ['902', 'countt', 'summcr_23', 'E', '1=1', 'CLL', 'OT'],
-    ['902', 'countt', 'summcr_24', 'K', '1=1', 'CLL', 'OT']
+    ['902', 'countt', 'summcr_24', 'K', '1=1', 'CLL', 'OT'],
+
+    # * mcr12_156 through mcr12_163;
+    ['902', 'countt', 'mcr12_156', 'BF', "clm_type_cd='6' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_157', 'BG', "clm_type_cd='F' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_158', 'Q', "src_lctn_cd='22' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_159', 'S', "src_lctn_cd='22' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_160', 'Q', "src_lctn_cd='23' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_161', 'S', "src_lctn_cd='23' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_162', 'BF', "src_lctn_cd='20' ", 'CLH', 'OT'],
+    ['902', 'countt', 'mcr12_163', 'BG', "src_lctn_cd='20' ", 'CLH', 'OT'],
+
 ]
 
 df = DataFrame(run_902_countt, columns=['series', 'cb', 'measure_id', 'claim_cat', 'constraint', 'level', 'claim_type'])

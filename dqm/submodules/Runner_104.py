@@ -31,6 +31,10 @@ class Runner_104:
         else:
             _ = ''
 
+        df = spark.sql(f"select * from dqm_conv.{x['var']}")
+        list_val = df.rdd.map(lambda x: x.valid_value).collect()
+        vvalue ="(" + ','.join(repr(str(i)) for i in list_val) + ")"
+
         z = f"""
                 create or replace temporary view {dqm.taskprefix}_{measure_id}_tmp as
                 select
@@ -82,7 +86,7 @@ class Runner_104:
 
                     select
                         'A{_}' as valid_value,
-                        count(distinct case when valid_value in {x['vvalue']} then msis_ident_num else null end) as pct
+                        count(distinct case when valid_value in {vvalue} then msis_ident_num else null end) as pct
                     from (
                         select
                             *,
@@ -96,7 +100,7 @@ class Runner_104:
 
                     select
                         'N{_}' as valid_value,
-                        count(distinct case when ((valid_value not in {x['vvalue']}) or (valid_value is null))
+                        count(distinct case when ((valid_value not in {vvalue}) or (valid_value is null))
                             then msis_ident_num else null end) as pct
                     from (
                         select
