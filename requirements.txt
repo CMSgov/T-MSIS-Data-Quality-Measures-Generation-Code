@@ -31,7 +31,7 @@ pandas==1.2.4
 pep8==1.7.1
 pip==22.0.4
 py4j==0.10.9
-pyarrow==5.0.0
+pyarrow==14.0.1
 pycodestyle==2.7.0
 Pygments==2.9.0
 pylint==2.7.4
