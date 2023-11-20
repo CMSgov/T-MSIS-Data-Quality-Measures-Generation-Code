@@ -1,0 +1,52 @@
+name: Build and Deploy
+
+# CD runs on merge to main.
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Build-And-Deploy:
+    runs-on: ubuntu-latest
+
+    # 5 minutes should be plenty of time
+    timeout-minutes: 5
+
+    # Permissions needed to interact with credentials
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Assume the appropriate AWS role
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-region: us-east-1
+        role-to-assume: arn:aws:iam::810638926762:role/dqm_github_actions_cd_role
+        role-session-name: DQM_Build_Deploy
+
+    # Set python version
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.12
+
+    # Install requirements
+    - name: Install Python requirements
+      run: |
+        pip install -r requirements.txt
+
+    # Build the wheel
+    - name: Build wheel
+      run: |
+        python setup.py bdist_wheel
+
+    # # Deploy the wheel to S3
+    # - name: Deploy wheel
+    #   run: |
+    #     aws s3 cp dist s3://dataconnect-dbx-rootbucket-val/nvirginia-prod/955724715920583/shared_uploads/dqm/ --recursive'
+    #     aws s3 cp dist s3://dataconnect-dbx-rootbucket-prod/nvirginia-prod/667862292061707/shared_uploads/dqm/ --recursive'

@@ -53,7 +53,7 @@ def createMeasureCols(measure_id):
 
 df[['measure_cat', 'measure_major', 'measure_minor']] = df.apply(
      lambda x: createMeasureCols(x['measure_id']), axis=1).apply(pd.Series)
-df[['z_display_order', 'display_suffix']] = df['display_order'].str.split('_', 1, expand=True)
+df[['z_display_order', 'display_suffix']] = df['display_order'].str.split('_', expand=True)
 
 df['z_display_order'] = df['z_display_order'].str.zfill(3)
 

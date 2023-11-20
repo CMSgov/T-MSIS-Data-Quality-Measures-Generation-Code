@@ -493,9 +493,9 @@ class DQPrepETL:
                     ,msis_ident_num
                     ,blg_prvdr_num
                     ,blg_prvdr_txnmy_cd
-                    ,bene_coinsrnc_amt
-                    ,bene_copmt_amt
-                    ,bene_ddctbl_amt
+                    ,tot_bene_coinsrnc_pd_amt
+                    ,tot_bene_copmt_pd_amt
+                    ,tot_bene_ddctbl_pd_amt
                     ,cll_cnt
                     ,wvr_id
                     ,srvc_trkng_pymt_amt
@@ -746,9 +746,27 @@ class DQPrepETL:
                 from tmsis.tmsis_enrlmt_time_sgmt_data
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}
+                    and (is_archived = 'false' or is_archived is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_elig_view', z)
+
+        # -------------------------------------------------------------------------
+        z = f"""
+                create or replace temporary view base_elig_all_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,msis_ident_num
+                    ,enrlmt_type_cd
+                    ,enrlmt_efctv_dt
+                    ,enrlmt_end_dt
+                    ,1 as is_eligible_all
+                from tmsis.tmsis_enrlmt_time_sgmt_data
+                where tmsis_actv_ind = 1
+                    and {DQPrepETL.msis_id_not_missing}            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, 'base_elig_all_view', z)
 
         # -------------------------------------------------------------------------
         z = f"""
@@ -810,6 +828,26 @@ class DQPrepETL:
                     ,submtg_state_prvdr_id
                     ,prvdr_mdcd_efctv_dt
                     ,prvdr_mdcd_end_dt
+                    ,1 as is_enrolled_provider
+                from tmsis.tmsis_prvdr_mdcd_enrlmt
+                where tmsis_actv_ind = 1
+                    and submtg_state_prvdr_id is not null
+                    and submtg_state_prvdr_id not rlike '[89]{{30}}'
+                    and submtg_state_prvdr_id rlike '[A-Za-z1-9]'
+                    and (is_archived = 'false' or is_archived is null)
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, 'base_prov_view', z)
+
+        z = f"""
+                create or replace temporary view base_prov_all_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,submtg_state_prvdr_id
+                    ,prvdr_mdcd_efctv_dt
+                    ,prvdr_mdcd_end_dt
+                    ,1 as is_enrolled_provider_all
                 from tmsis.tmsis_prvdr_mdcd_enrlmt
                 where tmsis_actv_ind = 1
                     and submtg_state_prvdr_id is not null
@@ -817,7 +855,7 @@ class DQPrepETL:
                     and submtg_state_prvdr_id rlike '[A-Za-z1-9]'
             """
         spark.sql(z)
-        DQPrepETL.log(dqm, 'base_prov_view', z)
+        DQPrepETL.log(dqm, 'base_prov_all_view', z)
 
 
     # -------------------------------------------------------------------------
@@ -866,7 +904,7 @@ class DQPrepETL:
                         ,'{dqm.state}' as submtg_state_cd
                         ,1 as ever_eligible
                     from
-                        base_elig_view
+                        base_elig_all_view
                     where
                         {dqm.run_id_filter()}
                     {dqm.limit}
@@ -1065,6 +1103,7 @@ class DQPrepETL:
                     tmsis.{ftype}
                 where
                     tmsis_actv_ind = 1
+                    and (is_archived = 'false' or is_archived is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)
@@ -1218,6 +1257,7 @@ class DQPrepETL:
                     tmsis.{ftype}
                 where
                     tmsis_actv_ind = 1
+                    and (is_archived = 'false' or is_archived is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)

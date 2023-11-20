@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.9.0'
+        self.version = '3.10.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.9'
+        self.specvrsn = 'V3.10'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -117,7 +117,6 @@ class DQMeasures:
         self.apdxc['Variable'] = self.apdxc['Variable'].str.lower()
         self.countystate_lookup = self.load_metadata_file('countystate_lookup')
         self.fmg = self.load_metadata_file('fmg')
-        self.missVar = self.load_metadata_file('missVar')
         self.prgncy = self.load_metadata_file('prgncy')
         self.prgncy['Code'] = self.prgncy['Code'].str.strip()
         self.prgncy['Code'] = self.prgncy['Code'].str.upper()

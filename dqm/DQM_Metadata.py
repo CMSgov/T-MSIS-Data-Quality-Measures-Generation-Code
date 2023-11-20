@@ -275,7 +275,7 @@ class DQM_Metadata:
                             ,b.alowd_amt""",
                     'ot':
                         """,b.cms_64_fed_reimbrsmt_ctgry_cd
-                            ,b.othr_toc_rx_clm_actl_qty
+                            ,b.svc_qty_actl
                             ,b.srvc_bgnng_dt
                             ,b.srvc_endg_dt
                             ,b.prcdr_cd
@@ -291,7 +291,7 @@ class DQM_Metadata:
                             ,b.hcpcs_srvc_cd
                             ,b.hcpcs_txnmy_cd
                             ,b.bnft_type_cd
-                            ,b.copay_amt
+                            ,b.bene_copmt_pd_amt
                             ,b.mdcr_pd_amt
                             ,b.othr_insrnc_amt
                             ,b.prcdr_1_mdfr_cd
@@ -303,14 +303,14 @@ class DQM_Metadata:
                     'rx':
                         """,b.cms_64_fed_reimbrsmt_ctgry_cd
                             ,b.suply_days_cnt
-                            ,b.othr_toc_rx_clm_actl_qty
+                            ,b.rx_qty_actl
                             ,b.ndc_cd
                             ,b.stc_cd
                             ,b.alowd_amt
                             ,b.bill_amt
                             ,b.brnd_gnrc_ind
-                            ,b.copay_amt
-                            ,b.dspns_fee_amt
+                            ,b.bene_copmt_pd_amt
+                            ,b.dspns_fee_sbmtd
                             ,b.mdcr_pd_amt
                             ,b.new_refl_ind
                             ,b.othr_insrnc_amt
@@ -381,7 +381,7 @@ class DQM_Metadata:
                     ,alowd_amt""",
             'ot':
                 """,cms_64_fed_reimbrsmt_ctgry_cd
-                    ,othr_toc_rx_clm_actl_qty
+                    ,svc_qty_actl
                     ,srvc_bgnng_dt
                     ,srvc_endg_dt
                     ,prcdr_cd
@@ -397,7 +397,7 @@ class DQM_Metadata:
                     ,hcpcs_srvc_cd
                     ,hcpcs_txnmy_cd
                     ,bnft_type_cd
-                    ,copay_amt
+                    ,bene_copmt_pd_amt
                     ,mdcr_pd_amt
                     ,othr_insrnc_amt
                     ,prcdr_1_mdfr_cd
@@ -409,14 +409,14 @@ class DQM_Metadata:
             'rx':
                 """,cms_64_fed_reimbrsmt_ctgry_cd
                     ,suply_days_cnt
-                    ,othr_toc_rx_clm_actl_qty
+                    ,rx_qty_actl
                     ,ndc_cd
                     ,stc_cd
                     ,alowd_amt
                     ,bill_amt
                     ,brnd_gnrc_ind
-                    ,copay_amt
-                    ,dspns_fee_amt
+                    ,bene_copmt_pd_amt
+                    ,dspns_fee_sbmtd
                     ,mdcr_pd_amt
                     ,new_refl_ind
                     ,othr_insrnc_amt
@@ -663,7 +663,7 @@ class DQM_Metadata:
                         ,b.alowd_amt""",
                 'ot':
                     """,b.cms_64_fed_reimbrsmt_ctgry_cd
-                        ,b.othr_toc_rx_clm_actl_qty
+                        ,b.svc_qty_actl
                         ,b.srvc_bgnng_dt
                         ,b.srvc_endg_dt
                         ,b.prcdr_cd
@@ -679,7 +679,7 @@ class DQM_Metadata:
                         ,b.hcpcs_srvc_cd
                         ,b.hcpcs_txnmy_cd
                         ,b.bnft_type_cd
-                        ,b.copay_amt
+                        ,b.bene_copmt_pd_amt
                         ,b.mdcr_pd_amt
                         ,b.othr_insrnc_amt
                         ,b.prcdr_1_mdfr_cd
@@ -691,14 +691,14 @@ class DQM_Metadata:
                 'rx':
                     """,b.cms_64_fed_reimbrsmt_ctgry_cd
                         ,b.suply_days_cnt
-                        ,b.othr_toc_rx_clm_actl_qty
+                        ,b.rx_qty_actl
                         ,b.ndc_cd
                         ,b.stc_cd
                         ,b.alowd_amt
                         ,b.bill_amt
                         ,b.brnd_gnrc_ind
-                        ,b.copay_amt
-                        ,b.dspns_fee_amt
+                        ,b.bene_copmt_pd_amt
+                        ,b.dspns_fee_sbmtd
                         ,b.mdcr_pd_amt
                         ,b.new_refl_ind
                         ,b.othr_insrnc_amt
