@@ -15,9 +15,8 @@ This job will:
 1. Launch a Docker container using the Dockerfile to run the Jenkins job in.
 1. Build the wheel and version it according to the version number parameter configured in setup.py.
 1. Upload the wheel file to s3 bucket attached to databricks clusters:
-    - s3://aws-hhs-cms-cmcs-databricks-dev/databricks-macbis-dev/0/FileStore/shared_uploads/dqm/
-    - s3://aws-hhs-cms-cmcs-databricks-dev/databricks-macbis-val/0/FileStore/shared_uploads/dqm/
-    - s3://aws-hhs-cms-cmcs-databricks-dev/databricks-macbis-prod/0/FileStore/shared_uploads/dqm/
+    - s3://dataconnect-dbx-rootbucket-val/nvirginia-prod/955724715920583/shared_uploads/dqm/
+    - s3://dataconnect-dbx-rootbucket-prod/nvirginia-prod/667862292061707/shared_uploads/dqm/
 
 ### To Be Done
 

@@ -76,9 +76,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 92,ELG,Non-claims,MIS-1-092-92,MIS1.92,ELG00021,,,% distinct MSIS IDs with only missing values in any active segment: ENROLLMENT-TYPE (ELG00021),tmsis_enrlmt_time_sgmt_data.enrlmt_type_cd,ENROLLMENT-TYPE,ELG252,X(1),Character,Y
 96,IP,Claims,MIS-2-003-3,MIS2.3,,AA,,% missing: ADMISSION-DATE (CIP00002),tmsis_clh_rec_ip.admsn_dt,ADMISSION-DATE,CIP094,9(8),Numeric,Y
 97,IP,Claims,MIS-2-004-4,MIS2.4,,AA,,% missing: ADMISSION-TYPE (CIP00002),tmsis_clh_rec_ip.admsn_type_cd,ADMISSION-TYPE,CIP028,X(1),Character,Y
-98,IP,Claims,MIS-2-005-5,MIS2.5,,AA,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CIP206,S9(11)V99,Numeric,Y
-99,IP,Claims,MIS-2-006-6,MIS2.6,,AA,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CIP208,S9(11)V99,Numeric,Y
-100,IP,Claims,MIS-2-007-7,MIS2.7,,AA,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CIP210,S9(11)V99,Numeric,Y
+98,IP,Claims,MIS-2-005-5,MIS2.5,,AA,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CIP206,S9(11)V99,Numeric,Y
+99,IP,Claims,MIS-2-006-6,MIS2.6,,AA,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CIP208,S9(11)V99,Numeric,Y
+100,IP,Claims,MIS-2-007-7,MIS2.7,,AA,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CIP210,S9(11)V99,Numeric,Y
 101,IP,Claims,MIS-2-008-8,MIS2.8,,AA,,% missing: BILLING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CIP180,X(10),Character,Y
 102,IP,Claims,MIS-2-009-9,MIS2.9,,AA,,% missing: BILLING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_num,BILLING-PROV-NUM,CIP179,X(30),Character,Y
 103,IP,Claims,MIS-2-010-10,MIS2.10,,AA,,% missing: BILLING-PROV-TYPE (CIP00002),tmsis_clh_rec_ip.blg_prvdr_type_cd,BILLING-PROV-TYPE,CIP182,X(2),Character,Y
@@ -143,9 +143,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 165,IP,Claims,MIS-3-016-16,MIS3.16,,AA,,% missing: SERVICING-PROV-TYPE (CIP00003),tmsis_cll_rec_ip.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,CIP263,X(2),Character,Y
 166,IP,Claims,MIS-3-017-17,MIS3.17,,AA,,% missing: TYPE-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.stc_cd,TYPE-OF-SERVICE,CIP257,X(3),Character,Y
 169,LT,Claims,MIS-4-003-3,MIS4.3,,AA,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,CLT048,9(8),Numeric,Y
-170,LT,Claims,MIS-4-004-4,MIS4.4,,AA,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CLT153,S9(11)V99,Numeric,Y
-171,LT,Claims,MIS-4-005-5,MIS4.5,,AA,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CLT155,S9(11)V99,Numeric,Y
-172,LT,Claims,MIS-4-006-6,MIS4.6,,AA,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CLT157,S9(11)V99,Numeric,Y
+170,LT,Claims,MIS-4-004-4,MIS4.4,,AA,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CLT153,S9(11)V99,Numeric,Y
+171,LT,Claims,MIS-4-005-5,MIS4.5,,AA,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CLT155,S9(11)V99,Numeric,Y
+172,LT,Claims,MIS-4-006-6,MIS4.6,,AA,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CLT157,S9(11)V99,Numeric,Y
 173,LT,Claims,MIS-4-007-7,MIS4.7,,AA,,% missing: BILLING-PROV-NPI-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CLT131,X(10),Character,Y
 174,LT,Claims,MIS-4-008-8,MIS4.8,,AA,,% missing: BILLING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_num,BILLING-PROV-NUM,CLT130,X(30),Character,Y
 175,LT,Claims,MIS-4-009-9,MIS4.9,,AA,,% missing: BILLING-PROV-TYPE (CLT00002),tmsis_clh_rec_lt.blg_prvdr_type_cd,BILLING-PROV-TYPE,CLT133,X(2),Character,Y
@@ -198,9 +198,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 227,LT,Claims,MIS-5-018-18,MIS5.18,,AA,,% missing: SERVICING-PROV-TYPE (CLT00003),tmsis_cll_rec_lt.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,CLT215,X(2),Character,Y
 228,LT,Claims,MIS-5-019-19,MIS5.19,,AA,,% missing: TYPE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.stc_cd,TYPE-OF-SERVICE,CLT211,X(3),Character,Y
 231,OT,Claims,MIS-6-003-3,MIS6.3,,AA,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT033,9(8),Numeric,Y
-232,OT,Claims,MIS-6-004-4,MIS6.4,,AA,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,COT130,S9(11)V99,Numeric,Y
-233,OT,Claims,MIS-6-005-5,MIS6.5,,AA,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,COT132,S9(11)V99,Numeric,Y
-234,OT,Claims,MIS-6-006-6,MIS6.6,,AA,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,COT134,S9(11)V99,Numeric,Y
+232,OT,Claims,MIS-6-004-4,MIS6.4,,AA,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,COT130,S9(11)V99,Numeric,Y
+233,OT,Claims,MIS-6-005-5,MIS6.5,,AA,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT132,S9(11)V99,Numeric,Y
+234,OT,Claims,MIS-6-006-6,MIS6.6,,AA,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,COT134,S9(11)V99,Numeric,Y
 235,OT,Claims,MIS-6-007-7,MIS6.7,,AA,,% missing: BILLING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,COT113,X(10),Character,Y
 236,OT,Claims,MIS-6-008-8,MIS6.8,,AA,,% missing: BILLING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_num,BILLING-PROV-NUM,COT112,X(30),Character,Y
 237,OT,Claims,MIS-6-009-9,MIS6.9,,AA,,% missing: BILLING-PROV-TYPE (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_type_cd,BILLING-PROV-TYPE,COT115,X(2),Character,Y
@@ -230,7 +230,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 261,OT,Claims,MIS-6-033-33,MIS6.33,,AA,,% missing: TYPE-OF-BILL (COT00002),tmsis_clh_rec_othr_toc.bill_type_cd,TYPE-OF-BILL,COT038,X(4),Character,Y
 265,OT,Claims,MIS-7-003-3,MIS7.3,,AA,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
 266,OT,Claims,MIS-7-004-4,MIS7.4,,AA,1,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
-267,OT,Claims,MIS-7-005-5,MIS7.5,,AA,,% missing: COPAY-AMT (COT00003),tmsis_cll_rec_othr_toc.copay_amt,COPAY-AMT,COT176,S9(11)V99,Numeric,Y
+267,OT,Claims,MIS-7-005-5,MIS7.5,,AA,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 268,OT,Claims,MIS-7-006-6,MIS7.6,,AA,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
 269,OT,Claims,MIS-7-007-7,MIS7.7,,AA,,% missing: HCBS-SERVICE-CODE (COT00003),tmsis_cll_rec_othr_toc.hcpcs_srvc_cd,HCBS-SERVICE-CODE,COT187,X(1),Character,Y
 270,OT,Claims,MIS-7-008-8,MIS7.8,,AA,,% missing: HCBS-TAXONOMY (COT00003),tmsis_cll_rec_othr_toc.hcpcs_txnmy_cd,HCBS-TAXONOMY,COT188,X(5),Character,Y
@@ -244,7 +244,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 279,OT,Claims,MIS-7-017-17,MIS7.17,,AA,1,% missing: MEDICARE-PAID-AMT (COT00003),tmsis_cll_rec_othr_toc.mdcr_pd_amt,MEDICARE-PAID-AMT,COT182,S9(11)V99,Numeric,Y
 280,OT,Claims,MIS-7-018-18,MIS7.18,,AA,,% missing: MSIS-IDENTIFICATION-NUM (COT00003),tmsis_cll_rec_othr_toc.msis_ident_num,MSIS-IDENTIFICATION-NUM,COT157,X(20),Character,Y
 281,OT,Claims,MIS-7-019-19,MIS7.19,,AA,,% missing: OTHER-INSURANCE-AMT (COT00003),tmsis_cll_rec_othr_toc.othr_insrnc_amt,OTHER-INSURANCE-AMT,COT213,S9(11)V99,Numeric,Y
-282,OT,Claims,MIS-7-020-20,MIS7.20,,AA,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
+282,OT,Claims,MIS-7-020-20,MIS7.20,,AA,,% missing: SERVICE-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.svc_qty_actl,SERVICE-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
 283,OT,Claims,MIS-7-021-21,MIS7.21,,AA,,% missing: PROCEDURE-CODE (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd,PROCEDURE-CODE,COT169,X(8),Character,Y
 284,OT,Claims,MIS-7-022-22,MIS7.22,,AA,,% missing: PROCEDURE-CODE-FLAG (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd_ind,PROCEDURE-CODE-FLAG,COT171,X(2),Character,Y
 285,OT,Claims,MIS-7-023-23,MIS7.23,,AA,,% missing: PROCEDURE-CODE-MOD-1 (COT00003),tmsis_cll_rec_othr_toc.prcdr_1_mdfr_cd,PROCEDURE-CODE-MOD-1,COT172,X(2),Character,Y
@@ -256,9 +256,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 291,OT,Claims,MIS-7-029-29,MIS7.29,,AA,,% missing: SERVICING-PROV-TYPE (COT00003),tmsis_cll_rec_othr_toc.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,COT192,X(2),Character,Y
 292,OT,Claims,MIS-7-030-30,MIS7.30,,AA,,% missing: TPL-AMT (COT00003),tmsis_cll_rec_othr_toc.tpl_amt,TPL-AMT,COT177,S9(11)V99,Numeric,Y
 293,OT,Claims,MIS-7-030-31,MIS7.31,,AA,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
-296,RX,Claims,MIS-8-003-3,MIS8.3,,AA,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CRX087,S9(11)V99,Numeric,Y
-297,RX,Claims,MIS-8-004-4,MIS8.4,,AA,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CRX089,S9(11)V99,Numeric,Y
-298,RX,Claims,MIS-8-005-5,MIS8.5,,AA,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CRX092,S9(11)V99,Numeric,Y
+296,RX,Claims,MIS-8-003-3,MIS8.3,,AA,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CRX087,S9(11)V99,Numeric,Y
+297,RX,Claims,MIS-8-004-4,MIS8.4,,AA,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX089,S9(11)V99,Numeric,Y
+298,RX,Claims,MIS-8-005-5,MIS8.5,,AA,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CRX092,S9(11)V99,Numeric,Y
 299,RX,Claims,MIS-8-006-6,MIS8.6,,AA,,% missing: BILLING-PROV-NPI-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CRX071,X(10),Character,Y
 300,RX,Claims,MIS-8-007-7,MIS8.7,,AA,,% missing: BILLING-PROV-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_num,BILLING-PROV-NUM,CRX070,X(30),Character,Y
 301,RX,Claims,MIS-8-008-8,MIS8.8,,AA,,% missing: CLAIM-LINE-COUNT (CRX00002),tmsis_clh_rec_rx.cll_cnt,CLAIM-LINE-COUNT,CRX060,9(4),Numeric,Y
@@ -289,9 +289,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 328,RX,Claims,MIS-9-002-2,MIS9.2,,AA,1,% missing: ALLOWED-AMT (CRX00003),tmsis_cll_rec_rx.alowd_amt,ALLOWED-AMT,CRX122,S9(11)V99,Numeric,Y
 329,RX,Claims,MIS-9-003-3,MIS9.3,,AA,1,% missing: BILLED-AMT (CRX00003),tmsis_cll_rec_rx.bill_amt,BILLED-AMT,CRX121,S9(11)V99,Numeric,Y
 330,RX,Claims,MIS-9-004-4,MIS9.4,,AA,,% missing: BRAND-GENERIC-IND (CRX00003),tmsis_cll_rec_rx.brnd_gnrc_ind,BRAND-GENERIC-IND,CRX140,X(1),Character,Y
-331,RX,Claims,MIS-9-005-5,MIS9.5,,AA,,% missing: COPAY-AMT (CRX00003),tmsis_cll_rec_rx.copay_amt,COPAY-AMT,CRX123,S9(5)V99,Numeric,Y
+331,RX,Claims,MIS-9-005-5,MIS9.5,,AA,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00003),tmsis_cll_rec_rx.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX123,S9(5)V99,Numeric,Y
 332,RX,Claims,MIS-9-006-6,MIS9.6,,AA,,% missing: DAYS-SUPPLY (CRX00003),tmsis_cll_rec_rx.suply_days_cnt,DAYS-SUPPLY,CRX138,S9(5),Numeric,Y
-333,RX,Claims,MIS-9-007-7,MIS9.7,,AA,,% missing: DISPENSE-FEE (CRX00003),tmsis_cll_rec_rx.dspns_fee_amt,DISPENSE-FEE,CRX141,S9(6)V99,Numeric,Y
+333,RX,Claims,MIS-9-007-7,MIS9.7,,AA,,% missing: DISPENSE-FEE-SUBMITTED (CRX00003),tmsis_cll_rec_rx.dspns_fee_sbmtd,DISPENSE-FEE-SUBMITTED,CRX141,S9(6)V99,Numeric,Y
 334,RX,Claims,MIS-9-008-8,MIS9.8,,AA,,% missing: ICN-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_clm_num,ICN-ADJ,CRX113,X(50),Character,Y
 335,RX,Claims,MIS-9-009-9,MIS9.9,,AA,,% missing: ICN-ORIG (CRX00003),tmsis_cll_rec_rx.orgnl_clm_num,ICN-ORIG,CRX112,X(50),Character,Y
 337,RX,Claims,MIS-9-011-11,MIS9.11,,AA,,% missing: LINE-NUM-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_line_num,LINE-NUM-ADJ,CRX115,X(3),Character,Y
@@ -302,7 +302,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 342,RX,Claims,MIS-9-016-16,MIS9.16,,AA,,% missing: NATIONAL-DRUG-CODE (CRX00003),tmsis_cll_rec_rx.ndc_cd,NATIONAL-DRUG-CODE,CRX120,X(12),Character,Y
 343,RX,Claims,MIS-9-017-17,MIS9.17,,AA,,% missing: NEW-REFILL-IND (CRX00003),tmsis_cll_rec_rx.new_refl_ind,NEW-REFILL-IND,CRX139,X(2),Character,Y
 344,RX,Claims,MIS-9-018-18,MIS9.18,,AA,,% missing: OTHER-INSURANCE-AMT (CRX00003),tmsis_cll_rec_rx.othr_insrnc_amt,OTHER-INSURANCE-AMT,CRX152,S9(11)V99,Numeric,Y
-345,RX,Claims,MIS-9-019-19,MIS9.19,,AA,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
+345,RX,Claims,MIS-9-019-19,MIS9.19,,AA,,% missing: PRESCRIPTION-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.rx_qty_actl,PRESCRIPTION-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
 346,RX,Claims,MIS-9-020-20,MIS9.20,,AA,,% missing: REBATE-ELIGIBLE-INDICATOR (CRX00003),tmsis_cll_rec_rx.rebt_elgbl_ind,REBATE-ELIGIBLE-INDICATOR,CRX146,X(1),Character,Y
 347,RX,Claims,MIS-9-021-21,MIS9.21,,AA,,% missing: TPL-AMT (CRX00003),tmsis_cll_rec_rx.tpl_amt,TPL-AMT,CRX124,S9(11)V99,Numeric,Y
 348,RX,Claims,MIS-9-022-22,MIS9.22,,AA,,% missing: TYPE-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.stc_cd,TYPE-OF-SERVICE,CRX134,X(3),Character,Y
@@ -453,9 +453,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 520,IP,Claims,MIS-21-002-2,MIS21.2,,AH,,% missing: ADMITTING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_npi_num,ADMITTING-PROV-NPI-NUM,CIP184,X(10),Character,Y
 521,IP,Claims,MIS-21-003-3,MIS21.3,,AH,,% missing: ADMITTING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_num,ADMITTING-PROV-NUM,CIP185,X(30),Character,Y
 522,IP,Claims,MIS-21-004-4,MIS21.4,,AH,,% missing: ADMISSION-TYPE (CIP00002),tmsis_clh_rec_ip.admsn_type_cd,ADMISSION-TYPE,CIP028,X(1),Character,Y
-523,IP,Claims,MIS-21-005-5,MIS21.5,,AH,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CIP206,S9(11)V99,Numeric,Y
-524,IP,Claims,MIS-21-006-6,MIS21.6,,AH,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CIP208,S9(11)V99,Numeric,Y
-525,IP,Claims,MIS-21-007-7,MIS21.7,,AH,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CIP210,S9(11)V99,Numeric,Y
+523,IP,Claims,MIS-21-005-5,MIS21.5,,AH,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CIP206,S9(11)V99,Numeric,Y
+524,IP,Claims,MIS-21-006-6,MIS21.6,,AH,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CIP208,S9(11)V99,Numeric,Y
+525,IP,Claims,MIS-21-007-7,MIS21.7,,AH,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CIP210,S9(11)V99,Numeric,Y
 526,IP,Claims,MIS-21-008-8,MIS21.8,,AH,,% missing: BILLING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CIP180,X(10),Character,Y
 527,IP,Claims,MIS-21-009-9,MIS21.9,,AH,,% missing: BILLING-PROV-TAXONOMY (CIP00002),tmsis_clh_rec_ip.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CIP181,X(12),Character,Y
 528,IP,Claims,MIS-21-010-10,MIS21.10,,AH,,% missing: BILLING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_num,BILLING-PROV-NUM,CIP179,X(30),Character,Y
@@ -529,9 +529,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 596,LT,Claims,MIS-23-001-1,MIS23.1,,AH,,% missing: ADMITTING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.admtg_prvdr_num,ADMITTING-PROV-NUM,CLT175,X(30),Character,Y
 597,LT,Claims,MIS-23-002-2,MIS23.2,,AH,,% missing: ADMITTING-PROV-NPI-NUM (CLT00002),tmsis_clh_rec_lt.admtg_prvdr_npi_num,ADMITTING-PROV-NPI-NUM,CLT174,X(10),Character,Y
 598,LT,Claims,MIS-23-003-3,MIS23.3,,AH,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,CLT048,9(8),Numeric,Y
-599,LT,Claims,MIS-23-004-4,MIS23.4,,AH,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CLT153,S9(11)V99,Numeric,Y
-600,LT,Claims,MIS-23-005-5,MIS23.5,,AH,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CLT155,S9(11)V99,Numeric,Y
-601,LT,Claims,MIS-23-006-6,MIS23.6,,AH,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CLT157,S9(11)V99,Numeric,Y
+599,LT,Claims,MIS-23-004-4,MIS23.4,,AH,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CLT153,S9(11)V99,Numeric,Y
+600,LT,Claims,MIS-23-005-5,MIS23.5,,AH,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CLT155,S9(11)V99,Numeric,Y
+601,LT,Claims,MIS-23-006-6,MIS23.6,,AH,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CLT157,S9(11)V99,Numeric,Y
 602,LT,Claims,MIS-23-007-7,MIS23.7,,AH,,% missing: BILLING-PROV-NPI-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CLT131,X(10),Character,Y
 603,LT,Claims,MIS-23-008-8,MIS23.8,,AH,,% missing: BILLING-PROV-TAXONOMY (CLT00002),tmsis_clh_rec_lt.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CLT132,X(12),Character,Y
 604,LT,Claims,MIS-23-009-9,MIS23.9,,AH,,% missing: BILLING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_num,BILLING-PROV-NUM,CLT130,X(30),Character,Y
@@ -591,9 +591,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 658,LT,Claims,MIS-24-017-17,MIS24.17,,AH,,% missing: SERVICING-PROV-TYPE (CLT00003),tmsis_cll_rec_lt.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,CLT215,X(2),Character,Y
 659,LT,Claims,MIS-24-018-18,MIS24.18,,AH,,% missing: TYPE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.stc_cd,TYPE-OF-SERVICE,CLT211,X(3),Character,Y
 660,OT,Claims,MIS-25-001-1,MIS25.1,,AH,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT033,9(8),Numeric,Y
-661,OT,Claims,MIS-25-002-2,MIS25.2,,AH,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,COT130,S9(11)V99,Numeric,Y
-662,OT,Claims,MIS-25-003-3,MIS25.3,,AH,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,COT132,S9(11)V99,Numeric,Y
-663,OT,Claims,MIS-25-004-4,MIS25.4,,AH,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,COT134,S9(11)V99,Numeric,Y
+661,OT,Claims,MIS-25-002-2,MIS25.2,,AH,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,COT130,S9(11)V99,Numeric,Y
+662,OT,Claims,MIS-25-003-3,MIS25.3,,AH,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT132,S9(11)V99,Numeric,Y
+663,OT,Claims,MIS-25-004-4,MIS25.4,,AH,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,COT134,S9(11)V99,Numeric,Y
 664,OT,Claims,MIS-25-005-5,MIS25.5,,AH,,% missing: BILLING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,COT113,X(10),Character,Y
 665,OT,Claims,MIS-25-006-6,MIS25.6,,AH,,% missing: BILLING-PROV-TAXONOMY (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,COT114,X(12),Character,Y
 666,OT,Claims,MIS-25-007-7,MIS25.7,,AH,,% missing: BILLING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_num,BILLING-PROV-NUM,COT112,X(30),Character,Y
@@ -632,7 +632,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 699,OT,Claims,MIS-26-003-3,MIS26.3,,AH,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
 700,OT,Claims,MIS-26-004-4,MIS26.4,,AH,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
 701,OT,Claims,MIS-26-005-5,MIS26.5,,AH,,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
-702,OT,Claims,MIS-26-006-6,MIS26.6,,AH,,% missing: COPAY-AMT (COT00003),tmsis_cll_rec_othr_toc.copay_amt,COPAY-AMT,COT176,S9(11)V99,Numeric,Y
+702,OT,Claims,MIS-26-006-6,MIS26.6,,AH,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 703,OT,Claims,MIS-26-007-7,MIS26.7,,AH,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
 704,OT,Claims,MIS-26-008-8,MIS26.8,,AH,,% missing: HCBS-SERVICE-CODE (COT00003),tmsis_cll_rec_othr_toc.hcpcs_srvc_cd,HCBS-SERVICE-CODE,COT187,X(1),Character,Y
 705,OT,Claims,MIS-26-009-9,MIS26.9,,AH,,% missing: HCBS-TAXONOMY (COT00003),tmsis_cll_rec_othr_toc.hcpcs_txnmy_cd,HCBS-TAXONOMY,COT188,X(5),Character,Y
@@ -646,7 +646,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 713,OT,Claims,MIS-26-017-17,MIS26.17,,AH,,% missing: MEDICARE-PAID-AMT (COT00003),tmsis_cll_rec_othr_toc.mdcr_pd_amt,MEDICARE-PAID-AMT,COT182,S9(11)V99,Numeric,Y
 714,OT,Claims,MIS-26-018-18,MIS26.18,,AH,,% missing: MSIS-IDENTIFICATION-NUM (COT00003),tmsis_cll_rec_othr_toc.msis_ident_num,MSIS-IDENTIFICATION-NUM,COT157,X(20),Character,Y
 715,OT,Claims,MIS-26-019-19,MIS26.19,,AH,,% missing: OTHER-INSURANCE-AMT (COT00003),tmsis_cll_rec_othr_toc.othr_insrnc_amt,OTHER-INSURANCE-AMT,COT213,S9(11)V99,Numeric,Y
-716,OT,Claims,MIS-26-002-20,MIS26.20,,AH,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
+716,OT,Claims,MIS-26-002-20,MIS26.20,,AH,,% missing: SERVICE-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.svc_qty_actl,SERVICE-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
 717,OT,Claims,MIS-26-021-21,MIS26.21,,AH,,% missing: PROCEDURE-CODE (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd,PROCEDURE-CODE,COT169,X(8),Character,Y
 718,OT,Claims,MIS-26-022-22,MIS26.22,,AH,,% missing: PROCEDURE-CODE-FLAG (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd_ind,PROCEDURE-CODE-FLAG,COT171,X(2),Character,Y
 719,OT,Claims,MIS-26-023-23,MIS26.23,,AH,,% missing: PROCEDURE-CODE-MOD-1 (COT00003),tmsis_cll_rec_othr_toc.prcdr_1_mdfr_cd,PROCEDURE-CODE-MOD-1,COT172,X(2),Character,Y
@@ -658,9 +658,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 725,OT,Claims,MIS-26-029-29,MIS26.29,,AH,,% missing: SERVICING-PROV-TYPE (COT00003),tmsis_cll_rec_othr_toc.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,COT192,X(2),Character,Y
 726,OT,Claims,MIS-26-003-30,MIS26.30,,AH,,% missing: TPL-AMT (COT00003),tmsis_cll_rec_othr_toc.tpl_amt,TPL-AMT,COT177,S9(11)V99,Numeric,Y
 727,OT,Claims,MIS-26-031-31,MIS26.31,,AH,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
-728,RX,Claims,MIS-27-001-1,MIS27.1,,AH,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CRX087,S9(11)V99,Numeric,Y
-729,RX,Claims,MIS-27-002-2,MIS27.2,,AH,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CRX089,S9(11)V99,Numeric,Y
-730,RX,Claims,MIS-27-003-3,MIS27.3,,AH,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CRX092,S9(11)V99,Numeric,Y
+728,RX,Claims,MIS-27-001-1,MIS27.1,,AH,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CRX087,S9(11)V99,Numeric,Y
+729,RX,Claims,MIS-27-002-2,MIS27.2,,AH,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX089,S9(11)V99,Numeric,Y
+730,RX,Claims,MIS-27-003-3,MIS27.3,,AH,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CRX092,S9(11)V99,Numeric,Y
 731,RX,Claims,MIS-27-004-4,MIS27.4,,AH,,% missing: BILLING-PROV-NPI-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CRX071,X(10),Character,Y
 732,RX,Claims,MIS-27-005-5,MIS27.5,,AH,,% missing: BILLING-PROV-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_num,BILLING-PROV-NUM,CRX070,X(30),Character,Y
 733,RX,Claims,MIS-27-006-6,MIS27.6,,AH,,% missing: CLAIM-LINE-COUNT (CRX00002),tmsis_clh_rec_rx.cll_cnt,CLAIM-LINE-COUNT,CRX060,9(4),Numeric,Y
@@ -693,9 +693,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 760,RX,Claims,MIS-28-002-2,MIS28.2,,AH,,% missing: ALLOWED-AMT (CRX00003),tmsis_cll_rec_rx.alowd_amt,ALLOWED-AMT,CRX122,S9(11)V99,Numeric,Y
 761,RX,Claims,MIS-28-003-3,MIS28.3,,AH,,% missing: BILLED-AMT (CRX00003),tmsis_cll_rec_rx.bill_amt,BILLED-AMT,CRX121,S9(11)V99,Numeric,Y
 762,RX,Claims,MIS-28-004-4,MIS28.4,,AH,,% missing: BRAND-GENERIC-IND (CRX00003),tmsis_cll_rec_rx.brnd_gnrc_ind,BRAND-GENERIC-IND,CRX140,X(1),Character,Y
-763,RX,Claims,MIS-28-005-5,MIS28.5,,AH,,% missing: COPAY-AMT (CRX00003),tmsis_cll_rec_rx.copay_amt,COPAY-AMT,CRX123,S9(5)V99,Numeric,Y
+763,RX,Claims,MIS-28-005-5,MIS28.5,,AH,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00003),tmsis_cll_rec_rx.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX123,S9(5)V99,Numeric,Y
 764,RX,Claims,MIS-28-006-6,MIS28.6,,AH,,% missing: DAYS-SUPPLY (CRX00003),tmsis_cll_rec_rx.suply_days_cnt,DAYS-SUPPLY,CRX138,S9(5),Numeric,Y
-765,RX,Claims,MIS-28-007-7,MIS28.7,,AH,,% missing: DISPENSE-FEE (CRX00003),tmsis_cll_rec_rx.dspns_fee_amt,DISPENSE-FEE,CRX141,S9(6)V99,Numeric,Y
+765,RX,Claims,MIS-28-007-7,MIS28.7,,AH,,% missing: DISPENSE-FEE-SUBMITTED (CRX00003),tmsis_cll_rec_rx.dspns_fee_sbmtd,DISPENSE-FEE-SUBMITTED,CRX141,S9(6)V99,Numeric,Y
 766,RX,Claims,MIS-28-008-8,MIS28.8,,AH,,% missing: ICN-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_clm_num,ICN-ADJ,CRX113,X(50),Character,Y
 767,RX,Claims,MIS-28-009-9,MIS28.9,,AH,,% missing: ICN-ORIG (CRX00003),tmsis_cll_rec_rx.orgnl_clm_num,ICN-ORIG,CRX112,X(50),Character,Y
 768,RX,Claims,MIS-28-001-10,MIS28.10,,AH,,% missing: LINE-NUM-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_line_num,LINE-NUM-ADJ,CRX115,X(3),Character,Y
@@ -706,7 +706,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 773,RX,Claims,MIS-28-015-15,MIS28.15,,AH,,% missing: NATIONAL-DRUG-CODE (CRX00003),tmsis_cll_rec_rx.ndc_cd,NATIONAL-DRUG-CODE,CRX120,X(12),Character,Y
 774,RX,Claims,MIS-28-016-16,MIS28.16,,AH,,% missing: NEW-REFILL-IND (CRX00003),tmsis_cll_rec_rx.new_refl_ind,NEW-REFILL-IND,CRX139,X(2),Character,Y
 775,RX,Claims,MIS-28-017-17,MIS28.17,,AH,,% missing: OTHER-INSURANCE-AMT (CRX00003),tmsis_cll_rec_rx.othr_insrnc_amt,OTHER-INSURANCE-AMT,CRX152,S9(11)V99,Numeric,Y
-776,RX,Claims,MIS-28-018-18,MIS28.18,,AH,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
+776,RX,Claims,MIS-28-018-18,MIS28.18,,AH,,% missing: PRESCRIPTION-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.rx_qty_actl,PRESCRIPTION-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
 777,RX,Claims,MIS-28-019-19,MIS28.19,,AH,,% missing: REBATE-ELIGIBLE-INDICATOR (CRX00003),tmsis_cll_rec_rx.rebt_elgbl_ind,REBATE-ELIGIBLE-INDICATOR,CRX146,X(1),Character,Y
 778,RX,Claims,MIS-28-020-20,MIS28.20,,AH,,% missing: TPL-AMT (CRX00003),tmsis_cll_rec_rx.tpl_amt,TPL-AMT,CRX124,S9(11)V99,Numeric,Y
 779,RX,Claims,MIS-28-021-21,MIS28.21,,AH,,% missing: TYPE-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.stc_cd,TYPE-OF-SERVICE,CRX134,X(3),Character,Y
@@ -714,9 +714,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 781,IP,Claims,MIS-79-002-2,MIS79.2,,AZ,,% missing: ADMITTING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_npi_num,ADMITTING-PROV-NPI-NUM,CIP184,X(10),Character,Y
 782,IP,Claims,MIS-79-003-3,MIS79.3,,AZ,,% missing: ADMITTING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_num,ADMITTING-PROV-NUM,CIP185,X(30),Character,Y
 783,IP,Claims,MIS-79-004-4,MIS79.4,,AZ,,% missing: ADMISSION-TYPE (CIP00002),tmsis_clh_rec_ip.admsn_type_cd,ADMISSION-TYPE,CIP028,X(1),Character,Y
-784,IP,Claims,MIS-79-005-5,MIS79.5,,AZ,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CIP206,S9(11)V99,Numeric,Y
-785,IP,Claims,MIS-79-006-6,MIS79.6,,AZ,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CIP208,S9(11)V99,Numeric,Y
-786,IP,Claims,MIS-79-007-7,MIS79.7,,AZ,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CIP00002),tmsis_clh_rec_ip.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CIP210,S9(11)V99,Numeric,Y
+784,IP,Claims,MIS-79-005-5,MIS79.5,,AZ,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CIP206,S9(11)V99,Numeric,Y
+785,IP,Claims,MIS-79-006-6,MIS79.6,,AZ,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CIP208,S9(11)V99,Numeric,Y
+786,IP,Claims,MIS-79-007-7,MIS79.7,,AZ,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CIP00002),tmsis_clh_rec_ip.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CIP210,S9(11)V99,Numeric,Y
 787,IP,Claims,MIS-79-008-8,MIS79.8,,AZ,,% missing: BILLING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CIP180,X(10),Character,Y
 788,IP,Claims,MIS-79-009-9,MIS79.9,,AZ,,% missing: BILLING-PROV-TAXONOMY (CIP00002),tmsis_clh_rec_ip.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CIP181,X(12),Character,Y
 789,IP,Claims,MIS-79-010-10,MIS79.10,,AZ,,% missing: BILLING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.blg_prvdr_num,BILLING-PROV-NUM,CIP179,X(30),Character,Y
@@ -790,9 +790,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 857,LT,Claims,MIS-81-001-1,MIS81.1,,AZ,,% missing: ADMITTING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.admtg_prvdr_num,ADMITTING-PROV-NUM,CLT175,X(30),Character,Y
 858,LT,Claims,MIS-81-002-2,MIS81.2,,AZ,,% missing: ADMITTING-PROV-NPI-NUM (CLT00002),tmsis_clh_rec_lt.admtg_prvdr_npi_num,ADMITTING-PROV-NPI-NUM,CLT174,X(10),Character,Y
 859,LT,Claims,MIS-81-003-3,MIS81.3,,AZ,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,CLT048,9(8),Numeric,Y
-860,LT,Claims,MIS-81-004-4,MIS81.4,,AZ,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CLT153,S9(11)V99,Numeric,Y
-861,LT,Claims,MIS-81-005-5,MIS81.5,,AZ,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CLT155,S9(11)V99,Numeric,Y
-862,LT,Claims,MIS-81-006-6,MIS81.6,,AZ,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CLT00002),tmsis_clh_rec_lt.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CLT157,S9(11)V99,Numeric,Y
+860,LT,Claims,MIS-81-004-4,MIS81.4,,AZ,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CLT153,S9(11)V99,Numeric,Y
+861,LT,Claims,MIS-81-005-5,MIS81.5,,AZ,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CLT155,S9(11)V99,Numeric,Y
+862,LT,Claims,MIS-81-006-6,MIS81.6,,AZ,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CLT00002),tmsis_clh_rec_lt.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CLT157,S9(11)V99,Numeric,Y
 863,LT,Claims,MIS-81-007-7,MIS81.7,,AZ,,% missing: BILLING-PROV-NPI-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CLT131,X(10),Character,Y
 864,LT,Claims,MIS-81-008-8,MIS81.8,,AZ,,% missing: BILLING-PROV-TAXONOMY (CLT00002),tmsis_clh_rec_lt.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CLT132,X(12),Character,Y
 865,LT,Claims,MIS-81-009-9,MIS81.9,,AZ,,% missing: BILLING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.blg_prvdr_num,BILLING-PROV-NUM,CLT130,X(30),Character,Y
@@ -852,9 +852,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 919,LT,Claims,MIS-82-016-16,MIS82.16,,AZ,,% missing: SERVICING-PROV-TYPE (CLT00003),tmsis_cll_rec_lt.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,CLT215,X(2),Character,Y
 920,LT,Claims,MIS-82-017-17,MIS82.17,,AZ,,% missing: TYPE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.stc_cd,TYPE-OF-SERVICE,CLT211,X(3),Character,Y
 921,OT,Claims,MIS-83-001-1,MIS83.1,,AZ,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT033,9(8),Numeric,Y
-922,OT,Claims,MIS-83-002-2,MIS83.2,,AZ,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,COT130,S9(11)V99,Numeric,Y
-923,OT,Claims,MIS-83-003-3,MIS83.3,,AZ,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,COT132,S9(11)V99,Numeric,Y
-924,OT,Claims,MIS-83-004-4,MIS83.4,,AZ,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,COT134,S9(11)V99,Numeric,Y
+922,OT,Claims,MIS-83-002-2,MIS83.2,,AZ,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,COT130,S9(11)V99,Numeric,Y
+923,OT,Claims,MIS-83-003-3,MIS83.3,,AZ,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT132,S9(11)V99,Numeric,Y
+924,OT,Claims,MIS-83-004-4,MIS83.4,,AZ,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (COT00002),tmsis_clh_rec_othr_toc.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,COT134,S9(11)V99,Numeric,Y
 925,OT,Claims,MIS-83-005-5,MIS83.5,,AZ,,% missing: BILLING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,COT113,X(10),Character,Y
 926,OT,Claims,MIS-83-006-6,MIS83.6,,AZ,,% missing: BILLING-PROV-TAXONOMY (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,COT114,X(12),Character,Y
 927,OT,Claims,MIS-83-007-7,MIS83.7,,AZ,,% missing: BILLING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_num,BILLING-PROV-NUM,COT112,X(30),Character,Y
@@ -893,7 +893,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 960,OT,Claims,MIS-84-002-2,MIS84.2,,AZ,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
 961,OT,Claims,MIS-84-003-3,MIS84.3,,AZ,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
 962,OT,Claims,MIS-84-004-4,MIS84.4,,AZ,1,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
-963,OT,Claims,MIS-84-005-5,MIS84.5,,AZ,,% missing: COPAY-AMT (COT00003),tmsis_cll_rec_othr_toc.copay_amt,COPAY-AMT,COT176,S9(11)V99,Numeric,Y
+963,OT,Claims,MIS-84-005-5,MIS84.5,,AZ,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 964,OT,Claims,MIS-84-006-6,MIS84.6,,AZ,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
 965,OT,Claims,MIS-84-007-7,MIS84.7,,AZ,,% missing: HCBS-SERVICE-CODE (COT00003),tmsis_cll_rec_othr_toc.hcpcs_srvc_cd,HCBS-SERVICE-CODE,COT187,X(1),Character,Y
 966,OT,Claims,MIS-84-008-8,MIS84.8,,AZ,,% missing: HCBS-TAXONOMY (COT00003),tmsis_cll_rec_othr_toc.hcpcs_txnmy_cd,HCBS-TAXONOMY,COT188,X(5),Character,Y
@@ -907,7 +907,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 974,OT,Claims,MIS-84-016-16,MIS84.16,,AZ,1,% missing: MEDICARE-PAID-AMT (COT00003),tmsis_cll_rec_othr_toc.mdcr_pd_amt,MEDICARE-PAID-AMT,COT182,S9(11)V99,Numeric,Y
 975,OT,Claims,MIS-84-017-17,MIS84.17,,AZ,,% missing: MSIS-IDENTIFICATION-NUM (COT00003),tmsis_cll_rec_othr_toc.msis_ident_num,MSIS-IDENTIFICATION-NUM,COT157,X(20),Character,Y
 976,OT,Claims,MIS-84-018-18,MIS84.18,,AZ,,% missing: OTHER-INSURANCE-AMT (COT00003),tmsis_cll_rec_othr_toc.othr_insrnc_amt,OTHER-INSURANCE-AMT,COT213,S9(11)V99,Numeric,Y
-977,OT,Claims,MIS-84-019-19,MIS84.19,,AZ,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
+977,OT,Claims,MIS-84-019-19,MIS84.19,,AZ,,% missing: SERVICE-QUANTITY-ACTUAL (COT00003),tmsis_cll_rec_othr_toc.svc_qty_actl,SERVICE-QUANTITY-ACTUAL,COT183,S9(6)V999,Numeric,Y
 978,OT,Claims,MIS-84-020-20,MIS84.20,,AZ,,% missing: PROCEDURE-CODE (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd,PROCEDURE-CODE,COT169,X(8),Character,Y
 979,OT,Claims,MIS-84-021-21,MIS84.21,,AZ,,% missing: PROCEDURE-CODE-FLAG (COT00003),tmsis_cll_rec_othr_toc.prcdr_cd_ind,PROCEDURE-CODE-FLAG,COT171,X(2),Character,Y
 980,OT,Claims,MIS-84-022-22,MIS84.22,,AZ,,% missing: PROCEDURE-CODE-MOD-1 (COT00003),tmsis_cll_rec_othr_toc.prcdr_1_mdfr_cd,PROCEDURE-CODE-MOD-1,COT172,X(2),Character,Y
@@ -919,9 +919,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 986,OT,Claims,MIS-84-028-28,MIS84.28,,AZ,,% missing: SERVICING-PROV-TYPE (COT00003),tmsis_cll_rec_othr_toc.srvcng_prvdr_type_cd,SERVICING-PROV-TYPE,COT192,X(2),Character,Y
 987,OT,Claims,MIS-84-029-29,MIS84.29,,AZ,,% missing: TPL-AMT (COT00003),tmsis_cll_rec_othr_toc.tpl_amt,TPL-AMT,COT177,S9(11)V99,Numeric,Y
 988,OT,Claims,MIS-84-030-30,MIS84.30,,AZ,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
-989,RX,Claims,MIS-85-001-1,MIS85.1,,AZ,,% missing: BENEFICIARY-COINSURANCE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_coinsrnc_amt,BENEFICIARY-COINSURANCE-AMOUNT,CRX087,S9(11)V99,Numeric,Y
-990,RX,Claims,MIS-85-002-2,MIS85.2,,AZ,,% missing: BENEFICIARY-COPAYMENT-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_copmt_amt,BENEFICIARY-COPAYMENT-AMOUNT,CRX089,S9(11)V99,Numeric,Y
-991,RX,Claims,MIS-85-003-3,MIS85.3,,AZ,,% missing: BENEFICIARY-DEDUCTIBLE-AMOUNT (CRX00002),tmsis_clh_rec_rx.bene_ddctbl_amt,BENEFICIARY-DEDUCTIBLE-AMOUNT,CRX092,S9(11)V99,Numeric,Y
+989,RX,Claims,MIS-85-001-1,MIS85.1,,AZ,,% missing: TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_coinsrnc_pd_amt,TOT-BENEFICIARY-COINSURANCE-PAID-AMOUNT,CRX087,S9(11)V99,Numeric,Y
+990,RX,Claims,MIS-85-002-2,MIS85.2,,AZ,,% missing: TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_copmt_pd_amt,TOT-BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX089,S9(11)V99,Numeric,Y
+991,RX,Claims,MIS-85-003-3,MIS85.3,,AZ,,% missing: TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT (CRX00002),tmsis_clh_rec_rx.tot_bene_ddctbl_pd_amt,TOT-BENEFICIARY-DEDUCTIBLE-PAID-AMOUNT,CRX092,S9(11)V99,Numeric,Y
 992,RX,Claims,MIS-85-004-4,MIS85.4,,AZ,,% missing: BILLING-PROV-NPI-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_npi_num,BILLING-PROV-NPI-NUM,CRX071,X(10),Character,Y
 993,RX,Claims,MIS-85-005-5,MIS85.5,,AZ,,% missing: BILLING-PROV-NUM (CRX00002),tmsis_clh_rec_rx.blg_prvdr_num,BILLING-PROV-NUM,CRX070,X(30),Character,Y
 994,RX,Claims,MIS-85-006-6,MIS85.6,,AZ,,% missing: CLAIM-LINE-COUNT (CRX00002),tmsis_clh_rec_rx.cll_cnt,CLAIM-LINE-COUNT,CRX060,9(4),Numeric,Y
@@ -954,9 +954,9 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 1021,RX,Claims,MIS-86-001-1,MIS86.1,,AZ,1,% missing: ALLOWED-AMT (CRX00003),tmsis_cll_rec_rx.alowd_amt,ALLOWED-AMT,CRX122,S9(11)V99,Numeric,Y
 1022,RX,Claims,MIS-86-002-2,MIS86.2,,AZ,1,% missing: BILLED-AMT (CRX00003),tmsis_cll_rec_rx.bill_amt,BILLED-AMT,CRX121,S9(11)V99,Numeric,Y
 1023,RX,Claims,MIS-86-003-3,MIS86.3,,AZ,,% missing: BRAND-GENERIC-IND (CRX00003),tmsis_cll_rec_rx.brnd_gnrc_ind,BRAND-GENERIC-IND,CRX140,X(1),Character,Y
-1024,RX,Claims,MIS-86-004-4,MIS86.4,,AZ,,% missing: COPAY-AMT (CRX00003),tmsis_cll_rec_rx.copay_amt,COPAY-AMT,CRX123,S9(5)V99,Numeric,Y
+1024,RX,Claims,MIS-86-004-4,MIS86.4,,AZ,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (CRX00003),tmsis_cll_rec_rx.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,CRX123,S9(5)V99,Numeric,Y
 1025,RX,Claims,MIS-86-005-5,MIS86.5,,AZ,,% missing: DAYS-SUPPLY (CRX00003),tmsis_cll_rec_rx.suply_days_cnt,DAYS-SUPPLY,CRX138,S9(5),Numeric,Y
-1026,RX,Claims,MIS-86-006-6,MIS86.6,,AZ,,% missing: DISPENSE-FEE (CRX00003),tmsis_cll_rec_rx.dspns_fee_amt,DISPENSE-FEE,CRX141,S9(6)V99,Numeric,Y
+1026,RX,Claims,MIS-86-006-6,MIS86.6,,AZ,,% missing: DISPENSE-FEE-SUBMITTED (CRX00003),tmsis_cll_rec_rx.dspns_fee_sbmtd,DISPENSE-FEE-SUBMITTED,CRX141,S9(6)V99,Numeric,Y
 1027,RX,Claims,MIS-86-007-7,MIS86.7,,AZ,,% missing: ICN-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_clm_num,ICN-ADJ,CRX113,X(50),Character,Y
 1028,RX,Claims,MIS-86-008-8,MIS86.8,,AZ,,% missing: ICN-ORIG (CRX00003),tmsis_cll_rec_rx.orgnl_clm_num,ICN-ORIG,CRX112,X(50),Character,Y
 1029,RX,Claims,MIS-86-009-9,MIS86.9,,AZ,,% missing: LINE-NUM-ADJ (CRX00003),tmsis_cll_rec_rx.adjstmt_line_num,LINE-NUM-ADJ,CRX115,X(3),Character,Y
@@ -967,7 +967,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 1034,RX,Claims,MIS-86-014-14,MIS86.14,,AZ,,% missing: NATIONAL-DRUG-CODE (CRX00003),tmsis_cll_rec_rx.ndc_cd,NATIONAL-DRUG-CODE,CRX120,X(12),Character,Y
 1035,RX,Claims,MIS-86-015-15,MIS86.15,,AZ,,% missing: NEW-REFILL-IND (CRX00003),tmsis_cll_rec_rx.new_refl_ind,NEW-REFILL-IND,CRX139,X(2),Character,Y
 1036,RX,Claims,MIS-86-016-16,MIS86.16,,AZ,,% missing: OTHER-INSURANCE-AMT (CRX00003),tmsis_cll_rec_rx.othr_insrnc_amt,OTHER-INSURANCE-AMT,CRX152,S9(11)V99,Numeric,Y
-1037,RX,Claims,MIS-86-017-17,MIS86.17,,AZ,,% missing: OT-RX-CLAIM-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.othr_toc_rx_clm_actl_qty,OT-RX-CLAIM-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
+1037,RX,Claims,MIS-86-017-17,MIS86.17,,AZ,,% missing: PRESCRIPTION-QUANTITY-ACTUAL (CRX00003),tmsis_cll_rec_rx.rx_qty_actl,PRESCRIPTION-QUANTITY-ACTUAL,CRX132,S9(6)V999,Numeric,Y
 1038,RX,Claims,MIS-86-018-18,MIS86.18,,AZ,,% missing: REBATE-ELIGIBLE-INDICATOR (CRX00003),tmsis_cll_rec_rx.rebt_elgbl_ind,REBATE-ELIGIBLE-INDICATOR,CRX146,X(1),Character,Y
 1039,RX,Claims,MIS-86-019-19,MIS86.19,,AZ,,% missing: TPL-AMT (CRX00003),tmsis_cll_rec_rx.tpl_amt,TPL-AMT,CRX124,S9(11)V99,Numeric,Y
 1040,RX,Claims,MIS-86-020-20,MIS86.20,,AZ,,% missing: TYPE-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.stc_cd,TYPE-OF-SERVICE,CRX134,X(3),Character,Y

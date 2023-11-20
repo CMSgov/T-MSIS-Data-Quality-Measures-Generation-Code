@@ -12,7 +12,7 @@ class DQClosure():
 
     def miss_misslogic_c6(var):
         return f"""( {var} ='6' or
-            not {var} rlike '[a-zA-Z1-9]' or
+            not {var} rlike '[a-zA-Z0-9]' or
             {var} is null
             )"""
 
