@@ -97,10 +97,10 @@ run_901 = [
     ['901', 'claims_pct', 'mcr10_1', 'P', "STC_CD IN('002', '061')", "SUBSTRING(REV_CD, 1, 2)='01' or SUBSTRING(REV_CD, 1, 3) in ('020', '021')", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr14_1', 'R', "STC_CD IN('002', '061')", "SUBSTRING(REV_CD, 1, 2)='01' or SUBSTRING(REV_CD, 1, 3) in ('020', '021')", 'CLL', 'ot'],
 
-    ['901', 'claims_pct', 'ffs9_2', 'A', '1=1', "OTHR_TOC_RX_CLM_ACTL_QTY=1", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'ffs11_2', 'F', '1=1', "OTHR_TOC_RX_CLM_ACTL_QTY=1", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr10_2', 'P', '1=1', "OTHR_TOC_RX_CLM_ACTL_QTY=1", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr14_2', 'R', '1=1', "OTHR_TOC_RX_CLM_ACTL_QTY=1", 'CLL', 'ot'],
+    ['901', 'claims_pct', 'ffs9_2', 'A', '1=1', "svc_qty_actl=1", 'CLL', 'ot'],
+    ['901', 'claims_pct', 'ffs11_2', 'F', '1=1', "svc_qty_actl=1", 'CLL', 'ot'],
+    ['901', 'claims_pct', 'mcr10_2', 'P', '1=1', "svc_qty_actl=1", 'CLL', 'ot'],
+    ['901', 'claims_pct', 'mcr14_2', 'R', '1=1', "svc_qty_actl=1", 'CLL', 'ot'],
 
     ['901', 'claims_pct', 'ffs9_3', 'A', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='01'", 'CLL', 'ot'],
     ['901', 'claims_pct', 'ffs11_3', 'F', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='01'", 'CLL', 'ot'],
@@ -868,10 +868,10 @@ run_901 = [
     ['901', 'claims_pct', 'ffs49_8', 'AE', "TOT_MDCD_PD_AMT is not NULL and TOT_ALOWD_AMT is not NULL and TOT_ALOWD_AMT <> 0", "TOT_MDCD_PD_AMT > TOT_ALOWD_AMT", 'CLH', 'rx'],
     ['901', 'claims_pct', 'mcr59_8', 'AF', "TOT_MDCD_PD_AMT is not NULL and TOT_ALOWD_AMT is not NULL and TOT_ALOWD_AMT <> 0 and src_lctn_cd not in ('22','23')", "TOT_MDCD_PD_AMT > TOT_ALOWD_AMT", 'CLH', 'rx'],
 
-    ['901', 'claims_pct_cll_to_clh', 'ffs14_4', 'A', "1=1", 'OTHR_TOC_RX_CLM_ACTL_QTY=1', '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'ffs16_4', 'F', "1=1", 'OTHR_TOC_RX_CLM_ACTL_QTY=1', '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'mcr17_4', 'P', "1=1", 'OTHR_TOC_RX_CLM_ACTL_QTY=1', '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'mcr19_4', 'R', "1=1", 'OTHR_TOC_RX_CLM_ACTL_QTY=1', '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'ffs14_4', 'A', "1=1", 'rx_qty_actl=1', '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'ffs16_4', 'F', "1=1", 'rx_qty_actl=1', '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'mcr17_4', 'P', "1=1", 'rx_qty_actl=1', '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'mcr19_4', 'R', "1=1", 'rx_qty_actl=1', '', 'rx'],
 
     ['901', 'claims_pct_cll_to_clh', 'ffs1_24', 'A', "1=1", "SUBSTRING(REV_CD, 1, 2)='01' or SUBSTRING(REV_CD, 1, 3) in ('020', '021')", '', 'ip'],
     ['901', 'claims_pct_cll_to_clh', 'ffs3_12', 'F', "1=1", "SUBSTRING(REV_CD, 1, 2)='01' or SUBSTRING(REV_CD, 1, 3) in ('020', '021')", '', 'ip'],
@@ -888,10 +888,10 @@ run_901 = [
     ['901', 'claims_pct_cll_to_clh', 'mcr17_1', 'P', "1=1", "%is_missing_2(SUPLY_DAYS_CNT, 5)", '', 'rx'],
     ['901', 'claims_pct_cll_to_clh', 'mcr19_1', 'R', "1=1", "%is_missing_2(SUPLY_DAYS_CNT, 5)", '', 'rx'],
 
-    ['901', 'claims_pct_cll_to_clh', 'ffs14_2', 'A', "1=1", "%is_missing_3(OTHR_TOC_RX_CLM_ACTL_QTY, 9, 3)", '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'ffs16_2', 'F', "1=1", "%is_missing_3(OTHR_TOC_RX_CLM_ACTL_QTY, 9, 3)", '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'mcr17_2', 'P', "1=1", "%is_missing_3(OTHR_TOC_RX_CLM_ACTL_QTY, 9, 3)", '', 'rx'],
-    ['901', 'claims_pct_cll_to_clh', 'mcr19_2', 'R', "1=1", "%is_missing_3(OTHR_TOC_RX_CLM_ACTL_QTY, 9, 3)", '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'ffs14_2', 'A', "1=1", "%is_missing_3(rx_qty_actl, 9, 3)", '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'ffs16_2', 'F', "1=1", "%is_missing_3(rx_qty_actl, 9, 3)", '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'mcr17_2', 'P', "1=1", "%is_missing_3(rx_qty_actl, 9, 3)", '', 'rx'],
+    ['901', 'claims_pct_cll_to_clh', 'mcr19_2', 'R', "1=1", "%is_missing_3(rx_qty_actl, 9, 3)", '', 'rx'],
 
     ['901', 'claims_pct_cll_to_clh', 'ffs14_3', 'A', "1=1", "NDC_CD rlike '^\\\\d{{11}}$'", '', 'rx'],
     ['901', 'claims_pct_cll_to_clh', 'ffs16_3', 'F', "1=1", "NDC_CD rlike '^\\\\d{{11}}$'", '', 'rx'],
