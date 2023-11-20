@@ -5,7 +5,7 @@ black
 databricks-cli
 flake8
 isort
-numpy==1.21.5
+numpy==1.22.0
 pandas==1.4.4
 pyspark==3.4.0
 pytest
