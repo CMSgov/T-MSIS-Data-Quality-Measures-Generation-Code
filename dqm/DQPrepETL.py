@@ -638,6 +638,7 @@ class DQPrepETL:
                     ,b.cll_stus_cd
                     ,b.mdcd_ffs_equiv_amt
                     ,b.mdcd_pd_amt
+                    ,b.ihs_svc_ind
 
                     {DQM_Metadata.create_claims_tables.b.select[clm_file]}
 
@@ -708,6 +709,7 @@ class DQPrepETL:
                     ,cll_stus_cd
                     ,mdcd_ffs_equiv_amt
                     ,mdcd_pd_amt
+                    ,ihs_svc_ind
 
                     {DQM_Metadata.create_base_cll_view.select[ftype]}
 
@@ -809,7 +811,27 @@ class DQPrepETL:
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_prmry_view', z)
-
+        
+        # -------------------------------------------------------------------------
+        z = f"""
+                create or replace temporary view base_race_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,msis_ident_num
+                    ,race_dclrtn_efctv_dt
+                    ,race_dclrtn_end_dt
+                    ,race_cd
+                    ,race_othr_txt
+                    ,crtfd_amrcn_indn_alskn_ntv_ind
+                    ,1 as ever_eligible_race
+                from tmsis.tmsis_race_info
+                where tmsis_actv_ind = 1
+                    and {DQPrepETL.msis_id_not_missing}
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, 'base_race_view', z)         
+        
     # ------------------------------------------------------
     #
     #   %macro create_base_prov_view()
@@ -941,6 +963,22 @@ class DQPrepETL:
                 """
             spark.sql(z)
             DQPrepETL.log(dqm,  dqm.taskprefix + '_ever_elig_prmry', z)
+            
+            # ---------------------------------------------------------------------
+            # ever elig race (for ALL16.16 - ALL16.23)
+            z = f"""
+                    create or replace temporary view {dqm.taskprefix}_ever_elig_race  as
+                    select *
+                        ,'{dqm.state}' as submtg_state_cd
+                    from
+                        base_race_view
+                    where
+                        {dqm.run_id_filter()}
+                    {dqm.limit}
+                """
+            spark.sql(z)
+            DQPrepETL.log(dqm,  dqm.taskprefix + '_ever_elig_race', z)              
+             
             # ---------------------------------------------------------------------
             # elig in month primary demographics (for EL1.15)
             z = f"""

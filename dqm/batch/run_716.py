@@ -1,29 +1,25 @@
-df = None
-stack = None
+from pandas import DataFrame
 
-series = [
-    '901', '902', '903', '904', '905', '906', '907', '909', '910', '911', '912', '913', '914', '915', '916', '917', '918', '919', '920',
-    '201', '202', '204', '205', '206',
-    '801',
-    '101', '102', '103', '104', '105', '106', '107', '108', '109', '110',
-    '701', '702', '703', '704', '705', '706', '707', '708', '709', '710', '711', '712', '713', '714', '715', '716',
-    '501', '502', '503', '504',
-    '601', '602', '603'
-    ]
+run_716 = [
 
-for i in series:
+    ['716', 'all_race_prg', 'all16_16', 'admsn_dt', 'ip', 'crtfd_amrcn_indn_alskn_ntv_ind', "'1'"],
+    ['716', 'all_race_prg', 'all16_17', 'srvc_bgnng_dt', 'lt', 'crtfd_amrcn_indn_alskn_ntv_ind', "'1'"],
+    ['716', 'all_race_prg', 'all16_18', 'srvc_bgnng_dt', 'ot', 'crtfd_amrcn_indn_alskn_ntv_ind', "'1'"],
+    ['716', 'all_race_prg', 'all16_19', 'rx_fill_dt', 'rx', 'crtfd_amrcn_indn_alskn_ntv_ind', "'1'"],
+    ['716', 'all_race_prg', 'all16_20', 'admsn_dt', 'ip', 'race_cd', "'003'"],
+    ['716', 'all_race_prg', 'all16_21', 'srvc_bgnng_dt', 'lt', 'race_cd', "'003'"],
+    ['716', 'all_race_prg', 'all16_22', 'srvc_bgnng_dt', 'ot', 'race_cd', "'003'"],
+    ['716', 'all_race_prg', 'all16_23', 'rx_fill_dt', 'rx', 'race_cd', "'003'"],
+    
+]
 
-    exec(open('run_' + i + '.py').read())
+df = DataFrame(run_716, columns=['series', 'cb', 'measure_id', 'date_var', 'claim_type', 'race_var', 'race_val'])
+df['measure_id'] = df['measure_id'].str.upper()
+df = df.sort_values(by=['series', 'cb', 'measure_id'])
 
-    keys = df[['measure_id', 'series', 'cb']]
-    if stack is None:
-        stack = keys
-    else:
-        stack = stack.append(keys)
+print(df.head(20))
 
-stack = stack.drop_duplicates()
-print(len(stack))
-stack.to_pickle('./reverse_lookup.pkl')
+df.to_pickle('./run_716.pkl')
 
 # CC0 1.0 Universal
 

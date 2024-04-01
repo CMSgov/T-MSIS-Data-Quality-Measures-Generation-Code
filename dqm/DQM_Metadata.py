@@ -539,7 +539,9 @@ class DQM_Metadata:
                     ,tot_alowd_amt
                     ,pymt_lvl_ind
                     ,rfrg_prvdr_npi_num
-                    ,rfrg_prvdr_num""",
+                    ,rfrg_prvdr_num
+                    ,ordrg_prvdr_num
+                    ,ordrg_prvdr_npi_num""",
             'rx':
                 """,prscrbd_dt
                     ,rx_fill_dt
@@ -1082,6 +1084,7 @@ class DQM_Metadata:
                   'MIS5_13',
                   'EL3_22',
                   'ALL34_1', 'ALL34_2', 'ALL35_1', 'ALL35_2', 'ALL35_3', 'ALL35_4', 'ALL36_1',
+                  'EL6_38', 'EL6_39', 'EL6_42', 'EL6_43', 'EL6_44'
                   ]
 
         round4 = ['FFS10_3',

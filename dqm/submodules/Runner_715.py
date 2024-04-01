@@ -57,16 +57,31 @@ class Runner_715:
                 ,count(submtg_state_cd) as denom
                 ,sum(male)/count(submtg_state_cd) as mvalue
                 from
-                    (select cl.submtg_state_cd, cl.msis_ident_num, case when gndr_cd = 'M' then 1 else 0 end as male
-                    from {dqm.taskprefix}_base_cll_{x['claim_type']} cl
-                    inner join {dqm.taskprefix}_ever_elig_prmry el on cl.msis_ident_num = el.msis_ident_num
+                    (select cl.submtg_state_cd
+                           ,cl.msis_ident_num
+                           ,cl.orgnl_clm_num
+                           ,cl.adjstmt_clm_num
+                           ,cl.adjdctn_dt
+                           ,cl.orgnl_line_num
+                           ,cl.adjstmt_line_num
+                           ,cl.line_adjstmt_ind
+                           ,max(case when gndr_cd = 'M' then 1 else 0 end) as male
+                    from       {dqm.taskprefix}_base_cll_{x['claim_type']} cl
+                    inner join {dqm.taskprefix}_ever_elig_prmry el 
+                      on cl.msis_ident_num = el.msis_ident_num
                     where (cl.{x['date_var']} >= prmry_dmgrphc_ele_efctv_dt and (cl.{x['date_var']} <= prmry_dmgrphc_ele_end_dt or prmry_dmgrphc_ele_end_dt is NULL))
-                    and ever_eligible_prm = 1
-		            and gndr_cd is not null
-                    and {x['pregnancy_ind']}) 
-                group by submtg_state_cd                                     
-            
-                                
+                      and ever_eligible_prm = 1
+		              and gndr_cd is not null
+                      and {x['pregnancy_ind']}
+                    group by cl.submtg_state_cd
+                            ,cl.msis_ident_num
+                            ,cl.orgnl_clm_num
+                            ,cl.adjstmt_clm_num
+                            ,cl.adjdctn_dt
+                            ,cl.orgnl_line_num
+                            ,cl.adjstmt_line_num
+                            ,cl.line_adjstmt_ind) 
+                group by submtg_state_cd
             """
 
         dqm.logger.debug(z)
