@@ -538,6 +538,105 @@ class Runner_101:
 
         return spark.sql(z)
 
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def el640t(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+            create or replace temporary view pivot1 as
+            select msis_ident_num
+                        ,max(enrol_01) as Enrollment_Status_01   
+                        ,max(enrol_02) as Enrollment_Status_02
+                        ,max(enrol_03) as Enrollment_Status_03
+                        ,max(enrol_04) as Enrollment_Status_04
+                        ,max(enrol_05) as Enrollment_Status_05
+                        ,max(enrol_06) as Enrollment_Status_06
+                        ,max(enrol_07) as Enrollment_Status_07
+                        ,max(enrol_08) as Enrollment_Status_08
+                        ,max(enrol_09) as Enrollment_Status_09
+                        ,max(enrol_10) as Enrollment_Status_10
+                        ,max(enrol_11) as Enrollment_Status_11
+                        ,max(enrol_12) as Enrollment_Status_12
+            from (select msis_ident_num, enrlmt_efctv_dt, enrlmt_end_dt
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -11, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -11, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_01
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -10, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -10, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_02
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -9, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -9, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_03
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -8, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -8, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_04
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -7, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -7, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_05 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -6, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -6, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_06 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -5, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -5, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_07 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -4, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -4, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_08 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -3, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -3, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_09 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -2, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -2, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_10 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, -1, '{dqm.m_start}') and (enrlmt_end_dt >= DATEADD(month, -1, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_11 
+            ,case when enrlmt_efctv_dt <= DATEADD(month, 0, '{dqm.m_start}') and (enrlmt_end_dt >=  DATEADD(month, 0, '{dqm.m_end}') or enrlmt_end_dt is NULL) then 1 else 0 end as enrol_12  
+            from {dqm.taskprefix}_ever_elig
+            where enrlmt_efctv_dt <= '{dqm.m_end}' and (enrlmt_end_dt >= DATEADD(month, -12, '{dqm.m_end}') or enrlmt_end_dt is null) and enrlmt_type_cd in (1, 2))
+            group by msis_ident_num
+            """
+        spark.sql(z)    
+        z = f"""
+            create or replace temporary view allenrol as
+            select msis_ident_num, ROW_NUMBER() OVER(PARTITION BY msis_ident_num ORDER BY Enrollment_Month ASC) AS month, status
+            from (select msis_ident_num, Enrollment_Status_01, Enrollment_Status_02, Enrollment_Status_03, Enrollment_Status_04, Enrollment_Status_05, Enrollment_Status_06, Enrollment_Status_07, Enrollment_Status_08,
+                                            Enrollment_Status_09, Enrollment_Status_10, Enrollment_Status_11, Enrollment_Status_12  from pivot1) as p1
+            unpivot (status for Enrollment_Month in (Enrollment_Status_01, Enrollment_Status_02, Enrollment_Status_03, Enrollment_Status_04, Enrollment_Status_05, Enrollment_Status_06, Enrollment_Status_07, Enrollment_Status_08,
+                                            Enrollment_Status_09, Enrollment_Status_10, Enrollment_Status_11, Enrollment_Status_12)) as unpivot1
+            order by msis_ident_num, month
+            """
+        spark.sql(z)        
+        z = f"""
+            create or replace temporary view gaps1 as
+            select * from allenrol where status = 0
+            order by msis_ident_num, month    
+            """
+        spark.sql(z) 
+        z = f"""
+            create or replace temporary view pre_gap as 
+            select a.msis_ident_num, a.month, sum(b.status) as enrol_pregap from gaps1 a
+            left join allenrol b on a.msis_ident_num = b.msis_ident_num where a.month > b.month
+            group by a.msis_ident_num, a.month order by a.msis_ident_num, a.month
+            """
+        spark.sql(z)
+        z = f"""
+            create or replace temporary view post_gap as
+            select a.msis_ident_num, a.month, sum(b.status) as enrol_postgap from gaps1 a
+            left join allenrol b on a.msis_ident_num = b.msis_ident_num where a.month < b.month
+            group by a.msis_ident_num, a.month order by a.msis_ident_num, a.month
+            """
+        spark.sql(z)    
+        z = f"""
+            create or replace temporary view gaps_first as
+            select msis_ident_num, 1 as enrollment_gap from (
+            select *, ROW_NUMBER() OVER(PARTITION BY msis_ident_num ORDER BY month ASC) AS gap_order from (
+            select coalesce(a.msis_ident_num,b.msis_ident_num) as msis_ident_num, coalesce(a.month,b.month) as month, coalesce(enrol_pregap,0) as enrol_pregap, coalesce(enrol_postgap,0) as enrol_postgap from post_gap a
+            full join pre_gap b on a.msis_ident_num = b.msis_ident_num and a.month = b.month order by msis_ident_num, month) where enrol_pregap > 0 and enrol_postgap >0)
+            where gap_order = 1
+            """
+        spark.sql(z)
+        z = f"""
+            select
+                    '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'101' as submodule
+                    ,coalesce(sum(enrollment_gap), 0) as numer
+                    ,count(*) as denom
+                    ,round(case when count(*) > 0 then (coalesce(sum(enrollment_gap), 0) / count(*)) else null end,{x['round']}) as mvalue
+                from
+                    pivot1 as p
+                left join
+                    gaps_first as h on p.msis_ident_num = h.msis_ident_num
+            """        
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)        
+    
+
     # --------------------------------------------------------------------
     #
     #
@@ -557,7 +656,8 @@ class Runner_101:
         "el627t": el627t,
         "el122t": el122t,
         "el335t": el335t,
-        "el336t": el336t
+        "el336t": el336t,
+        "el640t": el640t
     }
 
 # CC0 1.0 Universal

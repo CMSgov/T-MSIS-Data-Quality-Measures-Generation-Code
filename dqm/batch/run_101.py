@@ -266,7 +266,7 @@ run_101 =[
     ['101', 'nonclaimspct2tbl', 'el10.5', 'el1005t',
         "case when enrld_mc_plan_type_cd='01' then 1 else 0 end",
         '_tmsis_mc_prtcptn_data',
-        "rstrctd_bnfts_cd in ('2','3','4','5','6')",
+        "rstrctd_bnfts_cd in ('2','3','6')",
         '_tmsis_elgblty_dtrmnt',
         '',
         2],
@@ -719,7 +719,161 @@ run_101 =[
         numerator_table='_tmsis_prmry_dmgrphc_elgblty',
         denominator='a.msis_ident_num is not null and rstrctd_bnfts_cd in ("4")',
         denominator_table='_tmsis_elgblty_dtrmnt'
-    )
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.45',
+        id='el645t',
+        numerator='case when rstrctd_bnfts_cd not in ("1","2","3","4","5","6","7","A","B","C","D","E","F","G") or rstrctd_bnfts_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age < 19',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.46',
+        id='el646t',
+        numerator='case when rstrctd_bnfts_cd not in ("1","2","3","4","5","6","7","A","B","C","D","E","F","G") or rstrctd_bnfts_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 19 and age <= 64',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.47',
+        id='el647t',
+        numerator='case when rstrctd_bnfts_cd not in ("1","2","3","4","5","6","7","A","B","C","D","E","F","G") or rstrctd_bnfts_cd is null then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 65',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.39',
+        id='el339t',
+        numerator="case when (%misslogic(elgblty_grp_cd,2) = 1) or elgblty_grp_cd not in \
+            ('01','02','03','04','05','06','07','08','09', \
+            '11','12','13','14','15','16','17','18','19','20', \
+            '21','22','23','24','25','26','27','28','29','30', \
+            '31','32','33','34','35','36','37','38','39','40', \
+            '41','42','43','44','45','46','47','48','49','50', \
+            '51','52','53','54','55','56','59','60', \
+            '61','62','63','64','65','66','67','68','69','70', \
+            '71','72','73','74','75','76') then 1 else 0 end",
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age < 19',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.40',
+        id='el340t',
+        numerator="case when (%misslogic(elgblty_grp_cd,2) = 1) or elgblty_grp_cd not in \
+            ('01','02','03','04','05','06','07','08','09', \
+            '11','12','13','14','15','16','17','18','19','20', \
+            '21','22','23','24','25','26','27','28','29','30', \
+            '31','32','33','34','35','36','37','38','39','40', \
+            '41','42','43','44','45','46','47','48','49','50', \
+            '51','52','53','54','55','56','59','60', \
+            '61','62','63','64','65','66','67','68','69','70', \
+            '71','72','73','74','75','76') then 1 else 0 end",
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 19 and age <= 64',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.41',
+        id='el341t',
+        numerator="case when (%misslogic(elgblty_grp_cd,2) = 1) or elgblty_grp_cd not in \
+            ('01','02','03','04','05','06','07','08','09', \
+            '11','12','13','14','15','16','17','18','19','20', \
+            '21','22','23','24','25','26','27','28','29','30', \
+            '31','32','33','34','35','36','37','38','39','40', \
+            '41','42','43','44','45','46','47','48','49','50', \
+            '51','52','53','54','55','56','59','60', \
+            '61','62','63','64','65','66','67','68','69','70', \
+            '71','72','73','74','75','76') then 1 else 0 end",
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 65',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='el640t',
+        measure='el6.40',
+        id='el640t',
+        numerator=" ",
+        numerator_table=' ',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    ),
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el6.38',
+        id='el638',
+        numerator='case when imgrtn_stus_cd = "3" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_var_dmgrphc_elgblty',
+        rounding=3
+    ),    
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el6.39',
+        id='el639',
+        numerator='case when rstrctd_bnfts_cd = "2" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_elgblty_dtrmnt',
+        rounding=3
+    ),  
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.42',
+        id='el642',
+        numerator='case when rstrctd_bnfts_cd in ("2", "3", "6") then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age < 19',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),         
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.43',
+        id='el643',
+        numerator='case when rstrctd_bnfts_cd in ("2", "3", "6") then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 19 and age <= 64',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    ),       
+    create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el6.44',
+        id='el644',
+        numerator='case when rstrctd_bnfts_cd in ("2", "3", "6") then 1 else 0 end',
+        numerator_table='_tmsis_elgblty_dtrmnt',
+        denominator='a.msis_ident_num is not null and age >= 65',
+        denominator_table='_tmsis_prmry_dmgrphc_elgblty',
+        rounding=3
+    )              
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

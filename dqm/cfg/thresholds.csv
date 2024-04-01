@@ -23,7 +23,7 @@ IP,1,ALL3.1,ALL-3-001-1,% of claim headers with Benefit Type values representing
 EL,1,EL10.1,EL-10-001-1,Index of dissimilarity - plan type,Frequency,N/A,Y,2,Default,EL10_1,EL,10,1,001,,001,2
 EL,2,EL10.4,EL-10-002-4,Average # of managed care plans per enrollee,Average,N/A,Y,2,Default,EL10_4,EL,10,4,002,,002,2
 EL,3,EL10.2,EL-10-003-2,# of managed care plan enrollees,Count ,N/A,Y,0,Default,EL10_2,EL,10,2,003,,003,0
-EL,4,EL10.5,EL-10-004-5,% of MSIS IDs with restricted benefit (RESTRICTED-BENEFITS-CODE = 02 through 06) enrolled in comprehensive managed care (MANAGED-CARE-PLAN-TYPE = 01),Non-Claims Percentage,N/A,Y,2,Default,EL10_5,EL,10,5,004,,004,2
+EL,4,EL10.5,EL-10-004-5,"% of MSIS IDs with restricted benefit (RESTRICTED-BENEFITS-CODE = 02, 03, or 06) enrolled in comprehensive managed care (MANAGED-CARE-PLAN-TYPE = 01)",Non-Claims Percentage,N/A,Y,2,Default,EL10_5,EL,10,5,004,,004,2
 EL,5,EL10.6,EL-10-005-6,% of MSIS IDs in CHIP enrolled in comprehensive managed care (MANAGED-CARE-PLAN-TYPE = 01),Non-Claims Percentage,N/A,Y,2,Default,EL10_6,EL,10,6,005,,005,2
 EL,6,EL10.3,EL-10-006-3,% of MSIS IDs with more than one valid Managed Care Plan Type,Non-Claims Percentage,N/A,Y,2,Default,EL10_3,EL,10,3,006,,006,2
 EL,1,EL1.1,EL-1-001-1,% of MSIS IDs with SSN and MSIS ID,Non-Claims Percentage,N/A,Y,2,Default,EL1_1,EL,1,1,001,,001,2
@@ -76,7 +76,7 @@ EL,18,EL6.18,EL-6-018-18,# of Other duals (DUAL-ELIGIBLE-CODE = 08),Count,N/A,Y,
 EL,19,EL6.19,EL-6-019-19,# of Other - specific CMS approval duals (DUAL-ELIGIBLE-CODE = 09),Count,N/A,Y,0,Default,EL6_19,EL,6,19,019,,019,0
 EL,20,EL6.20,EL-6-020-20,# of MSIS IDs in S-CHIP entitled to Medicare (DUAL-ELIGIBLE-CODE = 10),Count,N/A,Y,0,Default,EL6_20,EL,6,20,020,,020,0
 EL,21,EL6.21,EL-6-021-21,# of 1115A demonstration participants,Count,N/A,Y,0,Default,EL6_21,EL,6,21,021,,021,0
-EL,22,EL6.22,EL-6-022-22,Family Planning (FP): % MSIS IDs with FP-waivers (WAIVER TYPE = 24) that have RESTRICTED-BENEFIT-CODE = 6 (FP),Non-Claims Percentage,N/A,Y,2,Default,EL6_22,EL,6,22,022,,022,2
+EL,7,EL10.7,EL-10-007-7,% MSIS IDs with a valid plan type that are missing plan ID,Non-Claims Percentage,N/A,Y,2,Default,EL10_7,EL,10,7,007,,007,2
 EL,1,EL7.1,EL-7-001-1,Enrollment by waiver ID,Frequency,N/A,Y,0,EL7.1,EL7_1,EL,7,1,001,,001,0
 EL,2,EL8.2,EL-8-002-2,"Enrollment, capitation payments, capitation ratios, encounters (by claim file type) and encounter ratios (by claim file type) by plan ID with plan ID linking to MC file",Data Profile,N/A,Y,2,EL8.2,EL8_2,EL,8,2,002,,002,2
 EL,1,EL9.1,EL-9-001-1,Enrollment by plan ID,Data Profile,N/A,Y,2,EL8.2,EL9_1,EL,9,1,001,,001,2
@@ -612,7 +612,7 @@ LT,6,ALL5.6,ALL-5-006-6,% of duplicate claim lines,Duplicate percentage,All Paid
 OT,7,ALL5.7,ALL-5-007-7,% of duplicate claim lines,Duplicate percentage,All Paid Claims,Y,3,Default,ALL5_7,ALL,5,7,007,,007,3
 RX,8,ALL5.8,ALL-5-008-8,% of duplicate claim lines,Duplicate percentage,All Paid Claims,Y,3,Default,ALL5_8,ALL,5,8,008,,008,3
 EL,1,EL12.1,EL-12-001-1,Eligibility Group values,Frequency,N/A,Y,0,Frequency,EL12_1,EL,12,1,001,,001,0
-EL,0,EL3.12,EL-3-000-12,% of MSIS IDs without a valid Eligibility Group,Non-claims percentage,N/A,Y,2,Default,EL3_12,EL,3,12,000,,000,2
+EL,8,EL10.8,EL-10-008-8,% of MSIS IDs with a non-missing plan ID that are missing plan type,Non-Claims Percentage,N/A,Y,2,Default,EL10_8,EL,10,8,008,,008,2
 IP,1,FFS24.1,FFS-24-001-1,% of MSIS IDs with any enrollment time span,Claims percentage,"Medicaid FFS: Original and Adjustment, Paid Claims",Y,2,Default,FFS24_1,FFS,24,1,001,,001,2
 LT,2,FFS24.2,FFS-24-002-2,% of MSIS IDs with any enrollment time span,Claims percentage,"Medicaid FFS: Original and Adjustment, Paid Claims",Y,2,Default,FFS24_2,FFS,24,2,002,,002,2
 OT,3,FFS24.3,FFS-24-003-3,% of MSIS IDs with any enrollment time span,Claims percentage,"Medicaid FFS: Original and Adjustment, Paid Claims",Y,2,Default,FFS24_3,FFS,24,3,003,,003,2
@@ -724,8 +724,7 @@ RX,1,MCR52.1,MCR-52-001-1,Line Adjustment Indicator values,Frequency,"S-CHIP Enc
 TPL,5,TPL1.5,TPL-1-005-5,% of MSIS IDs with any enrollment time span,Non-claims percentage,N/A,Y,4,Default,TPL1_5,TPL,1,5,005,,005,4
 EL,5_1,EL1.20,EL-1-005_1-20,% of SSNs with more than one MSIS ID,Non-claims percentage,N/A,Y,3,Default,EL1_20,EL,1,20,005,1,005_1,3
 EL,1_1,EL3.13,EL-3-001_1-13,# of distinct mandatory eligibility group values,Count,N/A,Y,0,Default,EL3_13,EL,3,13,001,1,001_1,0
-EL,1_2,EL3.14,EL-3-001_2-14,% of MSIS IDs with more than one primary segment (PRIMARY-ELIGIBILITY-GROUP-IND = 1),Duplicate percentage,N/A,Y,3,Default,EL3_14,EL,3,14,001,2,001_2,3
-EL,2_3,EL3.16,EL-3-002_3-16,% of MSIS IDs with CHIP-CODE = 2 (M-CHIP) that have ENROLLMENT-TYPE = 2 (Separate Title XXI CHIP),Non-claims percentage,N/A,Y,2,Default,EL3_16,EL,3,16,002,3,002_3,2
+EL,21,EL1.21,EL-1-021-21,% of MSIS IDs with age over 120 or less than -1,Non-Claims Percentage,N/A,Y,3,Default,EL1_21,EL,1,21,021,,021,3
 EL,3_1,EL3.15,EL-3-003_1-15,% of MSIS IDs that are duals,Non-claims percentage,N/A,Y,2,Default,EL3_15,EL,3,15,003,1,003_1,2
 EL,3,SUMEL.3,EL-S-003-3,Total # of MSIS IDs in CHIP (CHIP-CODE = 2 + CHIP-CODE = 3),Count,N/A,Y,0,Default,SUMEL_3,SUMEL,3,,003,,003,0
 OT,6,MCR13.18,MCR-13-006_1-18,% of PCCM (TYPE-OF-SERVICE) capitation payments with a non-missing plan ID that do not have a corresponding managed care participation PCCM plan,Claims percentage,"S-CHIP Capitation Payment: Original, Paid Claims",Y,3,Default,MCR13_18,MCR,13,18,006,,006,3
@@ -757,7 +756,6 @@ MCR,4,MIS10.4,MIS-10-004-4,% distinct STATE-PLAN-ID-NUMs with only missing value
 MCR,6,MIS10.6,MIS-10-006-6,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-ADDR-TYPE (MCR00003),Non-Claims Percentage,N/A,Y,3,Default,MIS10_6,MIS,10,6,006,,006,3
 MCR,7,MIS10.7,MIS-10-007-7,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-LOCATION-AND-CONTACT-INFO-EFF-DATE (MCR00003),Non-Claims Percentage,N/A,Y,3,Default,MIS10_7,MIS,10,7,007,,007,3
 MCR,8,MIS10.8,MIS-10-008-8,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-LOCATION-ID (MCR00003),Non-Claims Percentage,N/A,Y,3,Default,MIS10_8,MIS,10,8,008,,008,3
-EL,1,MIS1.1,MIS-1-001-1,% distinct MSIS IDs with only missing values in any active segment: DATE-OF-BIRTH (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_1,MIS,1,1,001,,001,3
 MCR,11,MIS10.11,MIS-10-011-11,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-SERVICE-AREA-EFF-DATE (MCR00004),Non-Claims Percentage,N/A,Y,3,Default,MIS10_11,MIS,10,11,011,,011,3
 MCR,12,MIS10.12,MIS-10-012-12,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-SERVICE-AREA-NAME (MCR00004),Non-Claims Percentage,N/A,Y,3,Default,MIS10_12,MIS,10,12,012,,012,3
 MCR,14,MIS10.14,MIS-10-014-14,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: MANAGED-CARE-OP-AUTHORITY-EFF-DATE (MCR00005),Non-Claims Percentage,N/A,Y,3,Default,MIS10_14,MIS,10,14,014,,014,3
@@ -770,7 +768,6 @@ EL,2,MIS1.2,MIS-1-002-2,% distinct MSIS IDs with only missing values in any acti
 MCR,22,MIS10.22,MIS-10-022-22,% distinct STATE-PLAN-ID-NUMs with only missing values in any active segment: DATE-ACCREDITATION-ACHIEVED (MCR00007),Non-Claims Percentage,N/A,Y,3,Default,MIS10_22,MIS,10,22,022,,022,3
 EL,4,MIS1.4,MIS-1-004-4,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-DEMOGRAPHIC-ELEMENT-EFF-DATE (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_4,MIS,1,4,004,,004,3
 EL,5,MIS1.5,MIS-1-005-5,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-DEMOGRAPHIC-ELEMENT-END-DATE (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_5,MIS,1,5,005,,005,3
-EL,6,MIS1.6,MIS-1-006-6,% distinct MSIS IDs with only missing values in any active segment: SEX (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_6,MIS,1,6,006,,006,3
 EL,7,MIS1.7,MIS-1-007-7,% distinct MSIS IDs with only missing values in any active segment: CHIP-CODE (ELG00003),Non-Claims Percentage,N/A,Y,3,Default,MIS1_7,MIS,1,7,007,,007,3
 EL,8,MIS1.8,MIS-1-008-8,% distinct MSIS IDs with only missing values in any active segment: CITIZENSHIP-IND (ELG00003),Non-Claims Percentage,N/A,Y,3,Default,MIS1_8,MIS,1,8,008,,008,3
 EL,9,MIS1.9,MIS-1-009-9,% distinct MSIS IDs with only missing values in any active segment: HOUSEHOLD-SIZE (ELG00003),Non-Claims Percentage,N/A,Y,3,Default,MIS1_9,MIS,1,9,009,,009,3
@@ -783,8 +780,6 @@ EL,16,MIS1.16,MIS-1-016-16,% distinct MSIS IDs with only missing values in any a
 EL,17,MIS1.17,MIS-1-017-17,% distinct MSIS IDs with only missing values in any active segment: VETERAN-IND (ELG00003),Non-Claims Percentage,N/A,Y,3,Default,MIS1_17,MIS,1,17,017,,017,3
 EL,18,MIS1.18,MIS-1-018-18,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-ADDR-TYPE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_18,MIS,1,18,018,,018,3
 EL,19,MIS1.19,MIS-1-019-19,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-ADDR-EFF-DATE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_19,MIS,1,19,019,,019,3
-EL,20,MIS1.20,MIS-1-020-20,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-COUNTY-CODE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_20,MIS,1,20,020,,020,3
-EL,21,MIS1.21,MIS-1-021-21,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-ZIP-CODE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_21,MIS,1,21,021,,021,3
 EL,23,MIS1.23,MIS-1-023-23,% distinct MSIS IDs with only missing values in any active segment: DUAL-ELIGIBLE-CODE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_23,MIS,1,23,023,,023,3
 EL,24,MIS1.24,MIS-1-024-24,% distinct MSIS IDs with only missing values in any active segment: ELIGIBILITY-DETERMINANT-EFF-DATE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_24,MIS,1,24,024,,024,3
 EL,25,MIS1.25,MIS-1-025-25,% distinct MSIS IDs with only missing values in any active segment: ELIGIBILITY-DETERMINANT-END-DATE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_25,MIS,1,25,025,,025,3
@@ -793,7 +788,6 @@ EL,27,MIS1.27,MIS-1-027-27,% distinct MSIS IDs with only missing values in any a
 EL,28,MIS1.28,MIS-1-028-28,% distinct MSIS IDs with only missing values in any active segment: MEDICAID-BASIS-OF-ELIGIBILITY (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_28,MIS,1,28,028,,028,3
 EL,29,MIS1.29,MIS-1-029-29,% distinct MSIS IDs with only missing values in any active segment: MSIS-CASE-NUM (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_29,MIS,1,29,029,,029,3
 EL,31,MIS1.31,MIS-1-031-31,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-ELIGIBILITY-GROUP-IND (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_31,MIS,1,31,031,,031,3
-EL,32,MIS1.32,MIS-1-032-32,% distinct MSIS IDs with only missing values in any active segment: RESTRICTED-BENEFITS-CODE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_32,MIS,1,32,032,,032,3
 EL,33,MIS1.33,MIS-1-033-33,% distinct MSIS IDs with only missing values in any active segment: SSDI-IND (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_33,MIS,1,33,033,,033,3
 EL,34,MIS1.34,MIS-1-034-34,% distinct MSIS IDs with only missing values in any active segment: SSI-IND (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_34,MIS,1,34,034,,034,3
 EL,35,MIS1.35,MIS-1-035-35,% distinct MSIS IDs with only missing values in any active segment: SSI-STATE-SUPPLEMENT-STATUS-CODE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_35,MIS,1,35,035,,035,3
@@ -839,7 +833,6 @@ EL,87,MIS1.87,MIS-1-087-87,% distinct MSIS IDs with only missing values in any a
 EL,88,MIS1.88,MIS-1-088-88,% distinct MSIS IDs with only missing values in any active segment: HCBS-CHRONIC-CONDITION-NON-HEALTH-HOME-EFF-DATE (ELG00020),Non-Claims Percentage,N/A,Y,3,Default,MIS1_88,MIS,1,88,088,,088,3
 EL,90,MIS1.90,MIS-1-090-90,% distinct MSIS IDs with only missing values in any active segment: ENROLLMENT-EFF-DATE (ELG00021),Non-Claims Percentage,N/A,Y,3,Default,MIS1_90,MIS,1,90,090,,090,3
 EL,91,MIS1.91,MIS-1-091-91,% distinct MSIS IDs with only missing values in any active segment: ENROLLMENT-END-DATE (ELG00021),Non-Claims Percentage,N/A,Y,3,Default,MIS1_91,MIS,1,91,091,,091,3
-EL,92,MIS1.92,MIS-1-092-92,% distinct MSIS IDs with only missing values in any active segment: ENROLLMENT-TYPE (ELG00021),Non-Claims Percentage,N/A,Y,3,Default,MIS1_92,MIS,1,92,092,,092,3
 PRV,1,MIS11.1,MIS-11-001-1,% distinct SUBMITTING-STATE-PROV-IDs with only missing values in any active segment: DATE-OF-BIRTH (PRV00002),Non-Claims Percentage,N/A,Y,3,Default,MIS11_1,MIS,11,1,001,,001,3
 PRV,2,MIS11.2,MIS-11-002-2,% distinct SUBMITTING-STATE-PROV-IDs with only missing values in any active segment: DATE-OF-DEATH (PRV00002),Non-Claims Percentage,N/A,Y,3,Default,MIS11_2,MIS,11,2,002,,002,3
 PRV,3,MIS11.3,MIS-11-003-3,% distinct SUBMITTING-STATE-PROV-IDs with only missing values in any active segment: FACILITY-GROUP-INDIVIDUAL-CODE (PRV00002),Non-Claims Percentage,N/A,Y,3,Default,MIS11_3,MIS,11,3,003,,003,3
@@ -1125,6 +1118,13 @@ LT,1,ALL7.1,ALL-7-001-1,% of claim headers that are crossover claims,Claims Perc
 OT,1,ALL8.1,ALL-8-001-1,% of claim lines that are crossover claims,Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL8_1,ALL,8,1,001,,001,2
 IP,1,ALL9.1,ALL-9-001-1,% of claim headers that are crossover claims,Claims Percentage,"S-CHIP FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL9_1,ALL,9,1,001,,001,2
 EL,1,EL13.1,EL-13-001-1,% of MC enrollments with a plan ID that does not link to a health plan affiliated with any provider in the provider file,Non-Claims Percentage,N/A,Y,2,Default,EL13_1,EL,13,1,001,,001,2
+EL,1,EL16.1,EL-16-001-1,% of ELG00002 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_1,EL,16,1,001,,001,3
+EL,2,EL16.2,EL-16-002-2,% of ELG00003 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_2,EL,16,2,002,,002,3
+EL,3,EL16.3,EL-16-003-3,% of ELG00004 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_3,EL,16,3,003,,003,3
+EL,4,EL16.4,EL-16-004-4,% of ELG00005 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_4,EL,16,4,004,,004,3
+EL,5,EL16.5,EL-16-005-5,% of ELG00012 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_5,EL,16,5,005,,005,3
+EL,6,EL16.6,EL-16-006-6,% of ELG00014 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_6,EL,16,6,006,,006,3
+EL,7,EL16.7,EL-16-007-7,% of ELG00015 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_7,EL,16,7,007,,007,3
 EL,1,EL15.1,EL-15-001-1,% difference between full-benefit T-MSIS enrollment count (EL-6-023-23) and PI enrollment count (Medicaid + CHIP) ,Non-claims percentage,N/A,Y,2,Default,EL15_1,EL,15,1,001,,001,2
 EL,2,EL15.2,EL-15-002-2,% difference between T-MSIS CHIP count (EL-S-003-3) and PI CHIP count (M-CHIP + S-CHIP),Non-claims percentage,N/A,Y,2,Default,EL15_2,EL,15,2,002,,002,2
 EL,23,EL6.23,EL-6-023-23,# of full-benefit enrollees,Count,N/A,Y,0,Default,EL6_23,EL,6,23,023,,023,0
@@ -1170,20 +1170,20 @@ IP,1,MCR57.1,MCR-57-001-1,"% of claims for which Patient Status is NOT ""still a
 OT,1,ALL12.1,ALL-12-001-1,"% of claim headers with PROGRAM TYPE = 01, 02, or 04 (EPSDT, family planning, or FQHC)",Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,ALL12_1,ALL,12,1,001,,001,2
 EL,1,ALL13.1,ALL-13-001-1,% of MSIS IDs limited to family planning (RESTRICTED-BENEFITS-CODE = 6) with non-family planning services (PROGRAM-TYPE not equal 2),Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL13_1,ALL,13,1,001,,001,2
 EL,2,ALL13.2,ALL-13-002-2,% of MSIS IDs limited to family planning (RESTRICTED-BENEFITS-CODE = 6) with non-family planning services (PROGRAM-TYPE not equal 2),Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL13_2,ALL,13,2,002,,002,2
-EL,7,EL10.7,EL-10-007-7,% MSIS IDs with a valid plan type that are missing plan ID,Non-Claims Percentage,N/A,Y,2,Default,EL10_7,EL,10,7,007,,007,2
-EL,8,EL10.8,EL-10-008-8,% of MSIS IDs with a non-missing plan ID that are missing plan type,Non-Claims Percentage,N/A,Y,2,Default,EL10_8,EL,10,8,008,,008,2
-EL,21,EL1.21,EL-1-021-21,% of MSIS IDs with age over 120 or less than -1,Non-Claims Percentage,N/A,Y,3,Default,EL1_21,EL,1,21,021,,021,3
-EL,1,EL16.1,EL-16-001-1,% of ELG00002 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_1,EL,16,1,001,,001,3
-EL,2,EL16.2,EL-16-002-2,% of ELG00003 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_2,EL,16,2,002,,002,3
-EL,3,EL16.3,EL-16-003-3,% of ELG00004 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_3,EL,16,3,003,,003,3
-EL,4,EL16.4,EL-16-004-4,% of ELG00005 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_4,EL,16,4,004,,004,3
-EL,5,EL16.5,EL-16-005-5,% of ELG00012 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_5,EL,16,5,005,,005,3
-EL,6,EL16.6,EL-16-006-6,% of ELG00014 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_6,EL,16,6,006,,006,3
-EL,7,EL16.7,EL-16-007-7,% of ELG00015 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_7,EL,16,7,007,,007,3
 EL,8,EL16.8,EL-16-008-8,% of ELG00016 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_8,EL,16,8,008,,008,3
 EL,9,EL16.9,EL-16-009-9,% of ELG00021 record segments with a missing MSIS ID,Non-Claims Percentage,N/A,Y,3,Default,EL16_9,EL,16,9,009,,009,3
-EL,13,EL3.18,EL-3-013-18,% of Medicaid MSIS IDs with a CHIP Eligibility Group,Non-Claims Percentage,N/A,Y,2,Default,EL3_18,EL,3,18,013,,013,2
+EL,1,EL17.1,EL-17-001-1,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on PRIMARY-DEMOGRAPHICS-ELIGIBILITY-ELG00002 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_1,EL,17,1,001,,001,3
+EL,2,EL17.2,EL-17-002-2,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on VARIABLE-DEMOGRAPHICS-ELIGIBILITY-ELG00003 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_2,EL,17,2,002,,002,3
+EL,3,EL17.3,EL-17-003-3,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on ELIGIBLITY-DETERMINANTS-ELG00005 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_3,EL,17,3,003,,003,3
+EL,0,EL3.12,EL-3-000-12,% of MSIS IDs without a valid Eligibility Group,Non-claims percentage,N/A,Y,2,Default,EL3_12,EL,3,12,000,,000,2
+EL,1_2,EL3.14,EL-3-001_2-14,% of MSIS IDs with more than one primary segment (PRIMARY-ELIGIBILITY-GROUP-IND = 1),Duplicate percentage,N/A,Y,3,Default,EL3_14,EL,3,14,001,2,001_2,3
+EL,2_2,EL3.31,EL-3-002_2-31,% of MSIS IDs with CHIP-CODE = 1 (Medicaid) that have ENROLLMENT-TYPE = 2 (Separate Title XXI CHIP),Non-Claims Percentage,N/A,Y,2,Default,EL3_31,EL,3,31,002,2,002_2,2
+EL,2_3,EL3.16,EL-3-002_3-16,% of MSIS IDs with CHIP-CODE = 2 (M-CHIP) that have ENROLLMENT-TYPE = 2 (Separate Title XXI CHIP),Non-claims percentage,N/A,Y,2,Default,EL3_16,EL,3,16,002,3,002_3,2
+EL,2_4,EL3.32,EL-3-002_4-32,% of MSIS IDs with CHIP-CODE = 3 (S-CHIP) that have ENROLLMENT-TYPE = 1 (Medicaid or M-CHIP),Non-Claims Percentage,N/A,Y,2,Default,EL3_32,EL,3,32,002,4,002_4,2
+EL,22,EL6.22,EL-6-022-22,Family Planning (FP): % MSIS IDs with FP-waivers (WAIVER TYPE = 24) that have RESTRICTED-BENEFIT-CODE = 6 (FP),Non-Claims Percentage,N/A,Y,2,Default,EL6_22,EL,6,22,022,,022,2
 EL,25,EL6.25,EL-6-025-25,% family planning (RESTRICTED-BENEFITS-CODE = 6) with non-family planning eligibility group,Non-Claims Percentage,N/A,Y,2,Default,EL6_25,EL,6,25,025,,025,2
+EL,13,EL3.18,EL-3-013-18,% of Medicaid MSIS IDs with a CHIP Eligibility Group,Non-Claims Percentage,N/A,Y,2,Default,EL3_18,EL,3,18,013,,013,2
+EL,28,EL6.28,EL-6-028-28,% of record segments with an invalid waiver ID format for 1115 waivers (WAIVER-TYPE = 01 or 21 - 30),Non-Claims Percentage,N/A,Y,2,Default,EL6_28,EL,6,28,028,,028,2
 OT,9,EXP22.9,EXP-22-009-9,% of claim headers with Total Medicaid Paid Amount = $0 or missing,Claims Percentage,"Medicaid Capitation Payment: Original, Paid Claims",Y,2,Default,EXP22_9,EXP,22,9,009,,009,2
 OT,9,EXP24.9,EXP-24-009-9,% of claim headers with Total Medicaid Paid Amount = $0 or missing,Claims Percentage,"S-CHIP Capitation Payment: Original, Paid Claims",Y,2,Default,EXP24_9,EXP,24,9,009,,009,2
 IP,5,FFS49.5,FFS-49-005-5,% of claim headers that have Total Medicaid Paid Amount greater than a non-zero Total Allowed Amount,Claims Percentage,"Medicaid and S-CHIP FFS: Original, Paid Claims",Y,2,Default,FFS49_5,FFS,49,5,005,,005,2
@@ -1320,17 +1320,17 @@ RX,4,ALL18.4,ALL-18-004-4,"# of claim headers with TYPE-OF-CLAIM = U, V, W, X or
 EL,9,ALL2.9,ALL-2-009-9,% of 1915(c) waiver enrollees (WAIVER-TYPE = 06 - 20 or 33) that do not have any claim headers with the corresponding waiver ID,Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL2_9,ALL,2,9,009,,009,2
 EL,10,ALL2.10,ALL-2-010-10,% of 1915(c) waiver enrollees (WAIVER-TYPE = 06 - 20 or 33) that do not have any claim headers with PROGRAM-TYPE = 07,Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL2_10,ALL,2,10,010,,010,2
 EL,11,ALL2.11,ALL-2-011-11,% of 1915(c) waiver enrollees (WAIVER-TYPE = 06 - 20 or 33) that do not have any claim headers with HCBS-SERVICE-CODE = 4,Claims Percentage,"Medicaid FFS and Encounter: Original, Paid Claims",Y,2,Default,ALL2_11,ALL,2,11,011,,011,2
-EL,1,EL17.1,EL-17-001-1,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on PRIMARY-DEMOGRAPHICS-ELIGIBILITY-ELG00002 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_1,EL,17,1,001,,001,3
-EL,2,EL17.2,EL-17-002-2,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on VARIABLE-DEMOGRAPHICS-ELIGIBILITY-ELG00003 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_2,EL,17,2,002,,002,3
-EL,3,EL17.3,EL-17-003-3,% of MSIS IDs reported on ENROLLMENT-TIME-SPAN-SEGMENT-ELG00021 that are not found on ELIGIBLITY-DETERMINANTS-ELG00005 for the same month,Non-Claims Percentage,N/A,Y,3,Default,EL17_3,EL,17,3,003,,003,3
+EL,29,EL6.29,EL-6-029-29,"% of record segments with an invalid waiver ID format for 1915(b) and 1915(c) waivers (WAIVER-TYPE = 02 - 20, 32, or 33)",Non-Claims Percentage,N/A,Y,2,Default,EL6_29,EL,6,29,029,,029,2
+EL,1,MIS1.1,MIS-1-001-1,% distinct MSIS IDs with only missing values in any active segment: DATE-OF-BIRTH (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_1,MIS,1,1,001,,001,3
+EL,6,MIS1.6,MIS-1-006-6,% distinct MSIS IDs with only missing values in any active segment: SEX (ELG00002),Non-Claims Percentage,N/A,Y,3,Default,MIS1_6,MIS,1,6,006,,006,3
 EL,20,EL3.25,EL-3-020-25,% of MSIS IDs in M-CHIP reported without an M-CHIP Eligibility Group,Non-Claims Percentage,N/A,Y,2,Default,EL3_25,EL,3,25,020,,020,2
 EL,21,EL3.26,EL-3-021-26,% of MSIS IDs in  S-CHIP reported without an S-CHIP Eligibility Group,Non-Claims Percentage,N/A,Y,2,Default,EL3_26,EL,3,26,021,,021,2
 EL,27,EL3.27,EL-3-022-27,"# of distinct mandatory eligibility group values populated for children, pregnant women, caretakers, and foster children (ELIGIBILITY-GROUP = 01, 05, 06, 07, 08 or 09)",Count,N/A,Y,0,Default,EL3_27,EL,3,27,027,,027,0
 EL,28,EL3.28,EL-3-023-28,# of distinct mandatory eligibility group values populated for transitional medical assistance (ELIGIBILITY-GROUP = 02 or 03),Count,N/A,Y,0,Default,EL3_28,EL,3,28,028,,028,0
 EL,29,EL3.29,EL-3-024-29,"# of distinct mandatory eligibility group values populated for duals (ELIGIBILITY-GROUP = 23, 24, 25, 26)",Count,N/A,Y,0,Default,EL3_29,EL,3,29,029,,029,0
 EL,30,EL3.30,EL-3-025-30,# of distinct mandatory eligibility group values for SSI or ABD individuals (ELIGIBILITY-GROUP = 11 or 12),Count,N/A,Y,0,Default,EL3_30,EL,3,30,030,,030,0
-EL,28,EL6.28,EL-6-028-28,% of record segments with an invalid waiver ID format for 1115 waivers (WAIVER-TYPE = 01 or 21 - 30),Non-Claims Percentage,N/A,Y,2,Default,EL6_28,EL,6,28,028,,028,2
-EL,29,EL6.29,EL-6-029-29,"% of record segments with an invalid waiver ID format for 1915(b) and 1915(c) waivers (WAIVER-TYPE = 02 - 20, 32, or 33)",Non-Claims Percentage,N/A,Y,2,Default,EL6_29,EL,6,29,029,,029,2
+EL,20,MIS1.20,MIS-1-020-20,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-COUNTY-CODE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_20,MIS,1,20,020,,020,3
+EL,21,MIS1.21,MIS-1-021-21,% distinct MSIS IDs with only missing values in any active segment: ELIGIBLE-ZIP-CODE (ELG00004),Non-Claims Percentage,N/A,Y,3,Default,MIS1_21,MIS,1,21,021,,021,3
 OT,1,ALL19.1,ALL-19-001-1,% of claim headers with HCBS-SERVICE-CODE = 4 that are missing Waiver ID,Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Adjustment, Paid Claims",Y,3,Default,ALL19_1,ALL,19,1,001,,001,3
 IP,1,ALL20.1,ALL-20-001-1,% of claim lines with both XIX and XXI MBESCBES Category of Service,Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,ALL20_1,ALL,20,1,001,,001,3
 LT,2,ALL20.2,ALL-20-002-2,% of claim lines with both XIX and XXI MBESCBES Category of Service,Claims Percentage,"Medicaid and S-CHIP FFS: Original and Replacement, Paid Claims",Y,3,Default,ALL20_2,ALL,20,2,002,,002,3
@@ -1341,8 +1341,8 @@ EL,15_1,EL1.25,EL-1-015_1-25,% of MSIS IDs with an IMMIGRATION-STATUS = 8 (U.S. 
 EL,15_2,EL1.26,EL-1-015_2-26,% of MSIS IDs with CITIZENSHIP-IND = 1 but IMMIGRATION-STATUS does not equal 8 (U.S. Citizen),Non-Claims Percentage,N/A,Y,2,Default,EL1_26,EL,1,26,015,2,015_2,2
 EL,22,EL1.22,EL-1-022-22,% of MSIS IDs without a primary address (ELIGIBLE-ADDR-TYPE not equal 1),Non-Claims Percentage,N/A,Y,2,Default,EL1_22,EL,1,22,022,,022,2
 EL,23,EL1.23,EL-1-023-23,"% of MSIS IDs in which the primary home address county code, zip code, or state is not in-state",Non-Claims Percentage,N/A,Y,2,Default,EL1_23,EL,1,23,023,,023,2
-EL,2_2,EL3.31,EL-3-002_2-31,% of MSIS IDs with CHIP-CODE = 1 (Medicaid) that have ENROLLMENT-TYPE = 2 (Separate Title XXI CHIP),Non-Claims Percentage,N/A,Y,2,Default,EL3_31,EL,3,31,002,2,002_2,2
-EL,2_4,EL3.32,EL-3-002_4-32,% of MSIS IDs with CHIP-CODE = 3 (S-CHIP) that have ENROLLMENT-TYPE = 1 (Medicaid or M-CHIP),Non-Claims Percentage,N/A,Y,2,Default,EL3_32,EL,3,32,002,4,002_4,2
+EL,32,MIS1.32,MIS-1-032-32,% distinct MSIS IDs with only missing values in any active segment: RESTRICTED-BENEFITS-CODE (ELG00005),Non-Claims Percentage,N/A,Y,3,Default,MIS1_32,MIS,1,32,032,,032,3
+EL,92,MIS1.92,MIS-1-092-92,% distinct MSIS IDs with only missing values in any active segment: ENROLLMENT-TYPE (ELG00021),Non-Claims Percentage,N/A,Y,3,Default,MIS1_92,MIS,1,92,092,,092,3
 EL,30,EL6.30,EL-6-030-30,% of MSIS IDs with S-CHIP dental coverage (RESTRICTED-BENEFITS-CODE = C) that are not S-CHIP (CHIP-CODE not 3),Non-Claims Percentage,N/A,Y,2,Default,EL6_30,EL,6,30,030,,030,2
 EL,31,EL6.31,EL-6-031-31,% of MFP participants that do not have restricted benefits code designating MFP participation (RESTRICTED-BENEFITS-CODE not D),Non-Claims Percentage,N/A,Y,2,Default,EL6_31,EL,6,31,031,,031,2
 EL,33,EL6.33,EL-6-033-33,"% of MSIS IDs with an alien restricted benefits code status (RESTRICTED-BENEFITS-CODE = 2) but a non-qualified alien immigration status (IMMIGRATION-STATUS not 1, 2, or 3)",Non-Claims Percentage,N/A,Y,2,Default,EL6_33,EL,6,33,033,,033,2
@@ -2057,13 +2057,13 @@ OT,3_1,EXP13.6,EXP-13-003_1-6,% of claim lines on claims where Payment Level Ind
 OT,4_1,EXP13.7,EXP-13-004_1-7,% of claim lines on claims where Payment Level Indicator = 2 with Medicaid Paid Amount = $0 or missing,Claims Percentage,"S-CHIP FFS: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP13_7,EXP,13,7,004,1,004_1,2
 EL,28,EL3.37,EL-3-028-37,% of MSIS IDs  with PREGNANCY-INDICATOR= 1 that have SEX = “M”,Non-Claims Percentage,N/A,Y,2,Default,EL3_37,EL,3,37,028,,028,2
 EL,29,EL3.38,EL-3-029-38,"% of MSIS IDs with RESTRICTED-BENEFITS-CODE = ""4"" that have SEX = “M”",Non-Claims Percentage,N/A,Y,2,Default,EL3_38,EL,3,38,029,,029,2
-IP,9,ALL16.9,ALL-16-009-9,% of claim lines with TYPE-OF-SERVICE= “086” (IP) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,2,Default,ALL16_9,ALL,16,9,009,,009,2
-RX,10,ALL16.10,ALL-16-010-10,% of claim lines with TYPE-OF-SERVICE= “086” (RX) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,2,Default,ALL16_10,ALL,16,10,010,,010,2
-LT,11,ALL16.11,ALL-16-011-11,% of claim lines with TYPE-OF-SERVICE= “025” or “085” (LT) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,2,Default,ALL16_11,ALL,16,11,011,,011,2
-IP,12,ALL16.12,ALL-16-012-12,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (IP) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,2,Default,ALL16_12,ALL,16,12,012,,012,2
-LT,13,ALL16.13,ALL-16-013-13,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (LT) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,2,Default,ALL16_13,ALL,16,13,013,,013,2
-OT,14,ALL16.14,ALL-16-014-14,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (OT) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,2,Default,ALL16_14,ALL,16,14,014,,014,2
-RX,15,ALL16.15,ALL-16-015-15,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (RX) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,2,Default,ALL16_15,ALL,16,15,015,,015,2
+IP,9,ALL16.9,ALL-16-009-9,% of claim lines with TYPE-OF-SERVICE= “086” (IP) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_9,ALL,16,9,009,,009,3
+RX,10,ALL16.10,ALL-16-010-10,% of claim lines with TYPE-OF-SERVICE= “086” (RX) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_10,ALL,16,10,010,,010,3
+LT,11,ALL16.11,ALL-16-011-11,% of claim lines with TYPE-OF-SERVICE= “025” or “085” (LT) linked to an MSIS ID where SEX = “M” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_11,ALL,16,11,011,,011,3
+IP,12,ALL16.12,ALL-16-012-12,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (IP) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,3,Default,ALL16_12,ALL,16,12,012,,012,3
+LT,13,ALL16.13,ALL-16-013-13,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (LT) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,3,Default,ALL16_13,ALL,16,13,013,,013,3
+OT,14,ALL16.14,ALL-16-014-14,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (OT) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,3,Default,ALL16_14,ALL,16,14,014,,014,3
+RX,15,ALL16.15,ALL-16-015-15,"% of claim lines with XIX-MBESCBES-CATEGORY-OF-SERVICE = “14”, “35”, “42” or “44” (RX) linked to an MSIS ID where SEX = “M” ",Claims Percentage,All Paid Claims,Y,3,Default,ALL16_15,ALL,16,15,015,,015,3
 IP,1,EXP29P.1,EXP-29P-001-1,"% of claim headers with Total Medicaid Paid Amount = $0 or missing, by Plan ID",Claims percentage,"Medicaid Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP29P_1,EXP,29P,1,001,,001,2
 LT,1,EXP33P.1,EXP-33P-001-1,"% of claim headers with Total Medicaid Paid Amount = $0 or missing, by Plan ID",Claims percentage,"Medicaid Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP33P_1,EXP,33P,1,001,,001,2
 OT,1,EXP37P.2,EXP-37P-001-1-2,"% of claim lines on claims where Payment Level Indicator = 2 with Medicaid Paid Amount = $0 or missing, by Plan ID",Claims percentage,"Medicaid Encounter: Original, Non-Crossover, Paid Claims",Y,2,Default,EXP37P_2,EXP,37P,2,001,,001,2
@@ -2097,3 +2097,25 @@ IP,1,ALL37.1,ALL-37-001-1,Source Location,Frequency,All Paid Claims,Y,0,Frequenc
 LT,1,ALL38.1,ALL-38-001-1,Source Location,Frequency,All Paid Claims,Y,0,Frequency,ALL38_1,ALL,38,1,001,,001,0
 OT,1,ALL39.1,ALL-39-001-1,Source Location,Frequency,All Paid Claims,Y,0,Frequency,ALL39_1,ALL,39,1,001,,001,0
 RX,1,ALL40.1,ALL-40-001-1,Source Location,Frequency,All Paid Claims,Y,0,Frequency,ALL40_1,ALL,40,1,001,,001,0
+OT,24_2,MIS6.42,MIS-6-024_42,% missing: ORDERING-PROV-NUM (COT00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS6_42,MIS,6,42,024,2,024_2,3
+OT,24_3,MIS6.43,MIS-6-024_43,% missing: ORDERING-PROV-NPI-NUM (COT00002),Claims Percentage,"Medicaid and S-CHIP FFS and Encounter: Original and Replacement, Paid Claims",Y,3,Default,MIS6_43,MIS,6,43,024,3,024_3,3
+IP,16,ALL16.16,ALL-16-016-16,% of claims with IHS-SERVICE-IND = “1” (IP) not linked to any MSIS ID where AMERICAN-INDIAN-ALASKAN-NATIVE-INDICATOR = “1” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_16,ALL,16,16,016,,016,3
+LT,17,ALL16.17,ALL-16-017-17,% of claims with IHS-SERVICE-IND = “1” (LT) not linked to any MSIS ID where AMERICAN-INDIAN-ALASKAN-NATIVE-INDICATOR = “1” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_17,ALL,16,17,017,,017,3
+OT,18,ALL16.18,ALL-16-018-18,% of claims with IHS-SERVICE-IND = “1” (OT) not linked to any MSIS ID where AMERICAN-INDIAN-ALASKAN-NATIVE-INDICATOR = “1” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_18,ALL,16,18,018,,018,3
+RX,19,ALL16.19,ALL-16-019-19,% of claims with IHS-SERVICE-IND = “1” (RX) not linked to any MSIS ID where AMERICAN-INDIAN-ALASKAN-NATIVE-INDICATOR = “1” ,Claims Percentage,All Paid Claims,Y,3,Default,ALL16_19,ALL,16,19,019,,019,3
+IP,20,ALL16.20,ALL-16-020-20,% of claims with IHS-SERVICE-IND = “1” (IP) not linked to any MSIS ID where RACE = “003” (American Indian or Alaskan Native),Claims Percentage,All Paid Claims,Y,3,Default,ALL16_20,ALL,16,20,020,,020,3
+LT,21,ALL16.21,ALL-16-021-21,% of claims with IHS-SERVICE-IND = “1” (LT) not linked to any MSIS ID where RACE = “003” (American Indian or Alaskan Native),Claims Percentage,All Paid Claims,Y,3,Default,ALL16_21,ALL,16,21,021,,021,3
+OT,22,ALL16.22,ALL-16-022-22,% of claims with IHS-SERVICE-IND = “1” (OT) not linked to any MSIS ID where RACE = “003” (American Indian or Alaskan Native),Claims Percentage,All Paid Claims,Y,3,Default,ALL16_22,ALL,16,22,022,,022,3
+RX,23,ALL16.23,ALL-16-023-23,% of claims with IHS-SERVICE-IND = “1” (RX) not linked to any MSIS ID where RACE = “003” (American Indian or Alaskan Native),Claims Percentage,All Paid Claims,Y,3,Default,ALL16_23,ALL,16,23,023,,023,3
+EL,38,EL6.38,EL-6-038-38,% of MSIS IDs with an IMMIGRATION-STATUS = 3 (Eligible only for payment for emergency services),Non-Claims Percentage,N/A,Y,3,Default,EL6_38,EL,6,38,038,,038,3
+EL,39,EL6.39,EL-6-039-39,% of MSIS IDs with a RESTRICTED-BENEFITS-CODE = 2 (Alien restricted benefits code status),Non-Claims Percentage,N/A,Y,3,Default,EL6_39,EL,6,39,039,,039,3
+EL,40,EL6.40,EL-6-040-40,% of MSIS IDs enrolled in the past year with at least one gap in enrollment over that time,Non-Claims Percentage,N/A,Y,3,Default,EL6_40,EL,6,40,040,,040,3
+EL,42,EL6.42,EL-6-042-42,"% of MSIS IDs Age < 19 with restricted benefits (RESTRICTED-BENEFITS-CODE = ""02"", ""03"", or ""06"")",Non-Claims Percentage,N/A,Y,3,Default,EL6_42,EL,6,42,042,,042,3
+EL,43,EL6.43,EL-6-043-43,"% of MSIS IDs Age 19 - 64 with restricted benefits (RESTRICTED-BENEFITS-CODE = ""02"", ""03"", or ""06"")",Non-Claims Percentage,N/A,Y,3,Default,EL6_43,EL,6,43,043,,043,3
+EL,44,EL6.44,EL-6-044-44,"% of MSIS IDs Age 65+ with restricted benefits (RESTRICTED-BENEFITS-CODE = ""02"", ""03"", or ""06"") ",Non-Claims Percentage,N/A,Y,3,Default,EL6_44,EL,6,44,044,,044,3
+EL,45,EL6.45,EL-6-045-45,% of MSIS IDs Age < 19 without a valid Restricted Benefits Code,Non-Claims Percentage,N/A,Y,3,Default,EL6_45,EL,6,45,045,,045,3
+EL,46,EL6.46,EL-6-046-46,% of MSIS IDs Age 19 - 64 without a valid Restricted Benefits Code,Non-Claims Percentage,N/A,Y,3,Default,EL6_46,EL,6,46,046,,046,3
+EL,47,EL6.47,EL-6-047-47,% of MSIS IDs Age 65+ without a valid Restricted Benefits Code ,Non-Claims Percentage,N/A,Y,3,Default,EL6_47,EL,6,47,047,,047,3
+EL,39,EL3.39,EL-3-030-39,% of MSIS IDs Age < 19 without a valid Eligibility Group,Non-Claims Percentage,N/A,Y,3,Default,EL3_39,EL,3,39,039,,039,3
+EL,40,EL3.40,EL-3-031-40,% of MSIS IDs Age 19 - 64 without a valid Eligibility Group,Non-Claims Percentage,N/A,Y,3,Default,EL3_40,EL,3,40,040,,040,3
+EL,41,EL3.41,EL-3-032-41,% of MSIS IDs Age 65+ without a valid Eligibility Group ,Non-Claims Percentage,N/A,Y,3,Default,EL3_41,EL,3,41,041,,041,3

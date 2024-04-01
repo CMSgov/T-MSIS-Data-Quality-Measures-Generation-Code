@@ -973,3 +973,5 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 1040,RX,Claims,MIS-86-020-20,MIS86.20,,AZ,,% missing: TYPE-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.stc_cd,TYPE-OF-SERVICE,CRX134,X(3),Character,Y
 1041,OT,Claims,MIS-88-001-1,MIS88.1,,BA,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
 1042,OT,Claims,MIS-90-001-1,MIS90.1,,BB,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
+1043,OT,Claims,MIS-6-024_42,MIS6.42,,AA,,% missing: ORDERING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_num,ORDERING-PROV-NUM,COT228,X(30),Numeric,Y
+1044,OT,Claims,MIS-6-024_43,MIS6.43,,AA,,% missing: ORDERING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_npi_num,ORDERING-PROV-NPI-NUM,COT229,X(10),Numeric,Y
