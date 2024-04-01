@@ -1,218 +1,80 @@
 # --------------------------------------------------------------------
 #
-#   Container for Built-in Runner Modules
+#
 #
 # --------------------------------------------------------------------
-
-from dqm.submodules import Runner_101 as r101
-from dqm.submodules import Runner_102 as r102
-from dqm.submodules import Runner_103 as r103
-from dqm.submodules import Runner_104 as r104
-from dqm.submodules import Runner_105 as r105
-from dqm.submodules import Runner_106 as r106
-from dqm.submodules import Runner_107 as r107
-from dqm.submodules import Runner_108 as r108
-from dqm.submodules import Runner_109 as r109
-from dqm.submodules import Runner_110 as r110
-
-from dqm.submodules import Runner_201 as r201
-from dqm.submodules import Runner_202 as r202
-from dqm.submodules import Runner_204 as r204
-from dqm.submodules import Runner_205 as r205
-from dqm.submodules import Runner_206 as r206
-
-from dqm.submodules import Runner_802 as r802
-from dqm.submodules import Runner_803 as r803
-
-from dqm.submodules import Runner_901 as r901
-from dqm.submodules import Runner_902 as r902
-from dqm.submodules import Runner_903 as r903
-from dqm.submodules import Runner_904 as r904
-from dqm.submodules import Runner_905 as r905
-from dqm.submodules import Runner_906 as r906
-from dqm.submodules import Runner_907 as r907
-from dqm.submodules import Runner_909 as r909
-from dqm.submodules import Runner_910 as r910
-from dqm.submodules import Runner_911 as r911
-from dqm.submodules import Runner_912 as r912
-from dqm.submodules import Runner_913 as r913
-from dqm.submodules import Runner_914 as r914
-from dqm.submodules import Runner_915 as r915
-from dqm.submodules import Runner_916 as r916
-from dqm.submodules import Runner_917 as r917
-from dqm.submodules import Runner_918 as r918
-from dqm.submodules import Runner_919 as r919
-from dqm.submodules import Runner_920 as r920
-
-from dqm.submodules import Runner_701 as r701
-from dqm.submodules import Runner_702 as r702
-from dqm.submodules import Runner_703 as r703
-from dqm.submodules import Runner_704 as r704
-from dqm.submodules import Runner_705 as r705
-from dqm.submodules import Runner_706 as r706
-from dqm.submodules import Runner_707 as r707
-from dqm.submodules import Runner_708 as r708
-from dqm.submodules import Runner_709 as r709
-from dqm.submodules import Runner_710 as r710
-from dqm.submodules import Runner_711 as r711
-from dqm.submodules import Runner_712 as r712
-from dqm.submodules import Runner_713 as r713
-from dqm.submodules import Runner_714 as r714
-from dqm.submodules import Runner_715 as r715
-from dqm.submodules import Runner_716 as r716
-
-from dqm.submodules import Runner_601 as r601
-from dqm.submodules import Runner_602 as r602
-from dqm.submodules import Runner_603 as r603
-
-from dqm.submodules import Runner_501 as r501
-from dqm.submodules import Runner_502 as r502
-from dqm.submodules import Runner_503 as r503
-from dqm.submodules import Runner_504 as r504
+from dqm.DQM_Metadata import DQM_Metadata
+from dqm.DQMeasures import DQMeasures
 
 
-class Module():
+class Runner_716:
 
     # --------------------------------------------------------------------
     #
-    #   References to build-in runner modules
     #
     # --------------------------------------------------------------------
-    def __init__(self):
+    @staticmethod
+    def run(spark, dqm: DQMeasures, measures: list = None):
+        dqm.logger.info('Module().run<series>.run() has been deprecated. Use dqm.run(spark) or dqm.run(spark, dqm.where(series="<series>")) instead.')
+        if measures is None:
+            return dqm.run(spark, dqm.reverse_measure_lookup[dqm.reverse_measure_lookup['series'] == '716']['measure_id'].tolist())
+        else:
+            return dqm.run(spark, measures)
 
-        self.run101 = r101.Runner_101
-        self.run102 = r102.Runner_102
-        self.run103 = r103.Runner_103
-        self.run104 = r104.Runner_104
-        self.run105 = r105.Runner_105
-        self.run106 = r106.Runner_106
-        self.run107 = r107.Runner_107
-        self.run108 = r108.Runner_108
-        self.run109 = r109.Runner_109
-        self.run110 = r110.Runner_110
+    # --------------------------------------------------------------------
+    #  % of claim lines with IHS_SVC_IND = "1" NOT linked to an MSIS ID 
+    #  where CRTFD_AMRCN_INDN_ALSKN_NTV_IND = "1" 
+    #  or 
+    #  where race_cd = "003"
+    # --------------------------------------------------------------------
+    def all_race_prg(spark, dqm: DQMeasures, measure_id, x):
+        
+        z = f"""
+            select
+            
+                '{dqm.state}' as submtg_state_cd
+                ,'{measure_id}' as measure_id
+                ,'716' as submodule
+                ,sum(flg_not_aian) as numer
+                ,count(submtg_state_cd) as denom
+                ,sum(flg_not_aian)/count(submtg_state_cd) as mvalue
+                from
+                    (select cl.submtg_state_cd
+                           ,cl.msis_ident_num
+                           ,cl.orgnl_clm_num
+                           ,cl.adjstmt_clm_num
+                           ,cl.adjdctn_dt
+                           ,cl.orgnl_line_num
+                           ,cl.adjstmt_line_num
+                           ,cl.line_adjstmt_ind
+                           ,min(case when {x['race_var']} = {x['race_val']} then 0 else 1 end) as flg_not_aian
+                    from       {dqm.taskprefix}_base_cll_{x['claim_type']} cl
+                    inner join {dqm.taskprefix}_ever_elig_race el 
+                      on cl.msis_ident_num = el.msis_ident_num
+                    where (cl.{x['date_var']} >= race_dclrtn_efctv_dt and (cl.{x['date_var']} <= race_dclrtn_end_dt or race_dclrtn_end_dt is NULL))
+                      and ever_eligible_race = 1
+                      and {x['race_var']} is not null
+                      and cl.ihs_svc_ind = "1"
+                    group by cl.submtg_state_cd
+                            ,cl.msis_ident_num
+                            ,cl.orgnl_clm_num
+                            ,cl.adjstmt_clm_num
+                            ,cl.adjdctn_dt
+                            ,cl.orgnl_line_num
+                            ,cl.adjstmt_line_num
+                            ,cl.line_adjstmt_ind) 
+                group by submtg_state_cd                                     
+            
+                                
+            """
 
-        self.run201 = r201.Runner_201
-        self.run202 = r202.Runner_202
-        self.run204 = r204.Runner_204
-        self.run205 = r205.Runner_205
-        self.run206 = r206.Runner_206
+        dqm.logger.debug(z)
 
-        self.run802 = r802.Runner_802
-        self.run803 = r803.Runner_803
+        return spark.sql(z)
 
-        self.run901 = r901.Runner_901
-        self.run902 = r902.Runner_902
-        self.run903 = r903.Runner_903
-        self.run904 = r904.Runner_904
-        self.run905 = r905.Runner_905
-        self.run906 = r906.Runner_906
-        self.run907 = r907.Runner_907
-        self.run909 = r909.Runner_909
-        self.run910 = r910.Runner_910
-        self.run911 = r911.Runner_911
-        self.run912 = r912.Runner_912
-        self.run913 = r913.Runner_913
-        self.run914 = r914.Runner_914
-        self.run915 = r915.Runner_915
-        self.run916 = r916.Runner_916
-        self.run917 = r917.Runner_917
-        self.run918 = r918.Runner_918
-        self.run919 = r919.Runner_919
-        self.run920 = r920.Runner_920
 
-        self.run701 = r701.Runner_701
-        self.run702 = r702.Runner_702
-        self.run703 = r703.Runner_703
-        self.run704 = r704.Runner_704
-        self.run705 = r705.Runner_705
-        self.run706 = r706.Runner_706
-        self.run707 = r707.Runner_707
-        self.run708 = r708.Runner_708
-        self.run709 = r709.Runner_709
-        self.run710 = r710.Runner_710
-        self.run711 = r711.Runner_711
-        self.run712 = r712.Runner_712
-        self.run713 = r713.Runner_713
-        self.run714 = r714.Runner_714
-        self.run715 = r715.Runner_715
-        self.run716 = r716.Runner_716
-
-        self.run601 = r601.Runner_601
-        self.run602 = r602.Runner_602
-        self.run603 = r603.Runner_603
-
-        self.run501 = r501.Runner_501
-        self.run502 = r502.Runner_502
-        self.run503 = r503.Runner_503
-        self.run504 = r504.Runner_504
-
-        self.runners = {
-
-            '101': self.run101,
-            '102': self.run102,
-            '103': self.run103,
-            '104': self.run104,
-            '105': self.run105,
-            '106': self.run106,
-            '107': self.run107,
-            '108': self.run108,
-            '109': self.run109,
-            '110': self.run110,
-
-            '201': self.run201,
-            '202': self.run202,
-            '204': self.run204,
-            '205': self.run205,
-            '206': self.run206,
-
-            '802': self.run802,
-            '803': self.run803,
-
-            '901': self.run901,
-            '902': self.run902,
-            '903': self.run903,
-            '904': self.run904,
-            '905': self.run905,
-            '906': self.run906,
-            '907': self.run907,
-            '909': self.run909,
-            '910': self.run910,
-            '911': self.run911,
-            '912': self.run912,
-            '913': self.run913,
-            '914': self.run914,
-            '915': self.run915,
-            '916': self.run916,
-            '917': self.run917,
-            '918': self.run918,
-            '919': self.run919,
-            '920': self.run920,
-
-            '701': self.run701,
-            '702': self.run702,
-            '703': self.run703,
-            '704': self.run704,
-            '705': self.run705,
-            '706': self.run706,
-            '707': self.run707,
-            '708': self.run708,
-            '709': self.run709,
-            '710': self.run710,
-            '711': self.run711,
-            '712': self.run712,
-            '713': self.run713,
-            '714': self.run714,
-            '715': self.run715,
-            '716': self.run716,
-
-            '601': self.run601,
-            '602': self.run602,
-            '603': self.run603,
-
-            '501': self.run501,
-            '502': self.run502,
-            '503': self.run503,
-            '504': self.run504
+    v_table = {
+            "all_race_prg": all_race_prg
         }
 
 

@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+# Disable default permissions for all of the available scopes in this workflow.
+permissions: {}
+
 jobs:
   Build-And-Deploy:
     runs-on: ubuntu-latest
@@ -13,9 +16,11 @@ jobs:
     # 5 minutes should be plenty of time
     timeout-minutes: 5
 
-    # Permissions needed to interact with credentials
+    # Set the permission scope of this particular job
     permissions:
+      # id-token: write permits an action to fetch an OpenID Connect (OIDC) token
       id-token: write
+      # contents: read permits an action to list the commits
       contents: read
 
     steps:

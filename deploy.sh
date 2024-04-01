@@ -14,11 +14,15 @@ else if ! [[ "${ENVIRON}" =~ ^(e2val)$ ]]; then
         fi
     fi
 fi
-# if deploying to PROD, check that the version name does not have the user's initials from testing
+# if deploying to PROD, check that the version name does not have the user's initials from testing and is on the master branch
 if [[ "${ENVIRON}" =~ ^(e2prod)$ ]]; then
     if ! [[ "${VERSION}" =~ ^[1-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}$ ]]; then 
         echo "ERROR: Prod deployment must not include initials/characters in version (or must be specified)" ;
         exit 1
+    fi
+    if [[ "$(git rev-parse --abbrev-ref HEAD)" != "master" ]]; then
+        echo "ERROR: Prod deployment must be on master branch";
+        exit 1;
     fi
 fi
 # if the environment specified is not VAL or PROD, do not deploy
