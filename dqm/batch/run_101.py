@@ -812,9 +812,46 @@ run_101 =[
     ),
         create_run_101_input(
         series='101',
+        cb='nonclaimspct',
+        measure='el3.42',
+        id='el342t',
+        numerator="case when rstrctd_bnfts_cd is null or \
+                             rstrctd_bnfts_cd not in  ('1','4','5','7','A','B','D' )\
+                        then 1 else 0 end",
+        denominator='msis_ident_num is not null and elgblty_grp_cd in ("11")',
+        table='_tmsis_elgblty_dtrmnt',
+        rounding=3
+    ),
+
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct2tbl',
+        measure='el3.43',
+        id='el343t',
+        numerator="case when gndr_cd not in ('M') and \
+                             age >= 40 and  age <= 44\
+                        then 1 else 0 end",
+        numerator_table='_tmsis_prmry_dmgrphc_elgblty',
+        denominator='a.msis_ident_num is not null and a.elgblty_grp_cd in ("05")',
+        denominator_table='_tmsis_elgblty_dtrmnt',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
         cb='el640t',
         measure='el6.40',
         id='el640t',
+        numerator=" ",
+        numerator_table=' ',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='el641t',
+        measure='el6.41',
+        id='el641t',
         numerator=" ",
         numerator_table=' ',
         denominator='',

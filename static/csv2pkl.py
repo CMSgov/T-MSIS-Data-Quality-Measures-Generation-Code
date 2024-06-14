@@ -3,14 +3,14 @@ import pandas as pd
 import os
 
 
-def csv2pkl(pkl_name: str, csv_name: str = None, dtype_dict = 'str', na_filter_val = True):
+def csv2pkl(pkl_name: str, csv_name: str = None, dtype_dict = 'str', na_filter_val = True, encode = 'utf-8'):
 
     if csv_name is None:
         csv_name = pkl_name
 
     if os.path.isfile(f'./csv/{csv_name}.csv'):
         print('Reading file ' + csv_name)
-        pdf = pd.read_csv(f'./csv/{csv_name}.csv', dtype = dtype_dict, na_filter = na_filter_val)
+        pdf = pd.read_csv(f'./csv/{csv_name}.csv', dtype = dtype_dict, na_filter = na_filter_val, encoding = encode)
         pdf.to_pickle(f'../dqm/cfg/{pkl_name}.pkl')
 
 
@@ -19,7 +19,7 @@ csv2pkl('apdxc')
 csv2pkl('countystate_lookup')
 csv2pkl('fmg')
 csv2pkl('prgncy')
-csv2pkl('provider_classification_lookup')
+csv2pkl('provider_classification_lookup', encode = 'cp1252')
 csv2pkl('atypical_provider_table')
 csv2pkl('prvtxnmy')
 csv2pkl('sauths')
