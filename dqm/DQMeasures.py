@@ -93,10 +93,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.11.0'
+        self.version = '3.12.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.11'
+        self.specvrsn = 'V3.12'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
