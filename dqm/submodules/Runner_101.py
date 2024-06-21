@@ -612,7 +612,9 @@ class Runner_101:
             create or replace temporary view gaps_first as
             select msis_ident_num, 1 as enrollment_gap from (
             select *, ROW_NUMBER() OVER(PARTITION BY msis_ident_num ORDER BY month ASC) AS gap_order from (
-            select coalesce(a.msis_ident_num,b.msis_ident_num) as msis_ident_num, coalesce(a.month,b.month) as month, coalesce(enrol_pregap,0) as enrol_pregap, coalesce(enrol_postgap,0) as enrol_postgap from post_gap a
+            select coalesce(a.msis_ident_num,b.msis_ident_num) as msis_ident_num, coalesce(a.month,b.month) as month, 
+                   coalesce(enrol_pregap,0) as enrol_pregap, coalesce(enrol_postgap,0) as enrol_postgap 
+            from post_gap a
             full join pre_gap b on a.msis_ident_num = b.msis_ident_num and a.month = b.month order by msis_ident_num, month) where enrol_pregap > 0 and enrol_postgap >0)
             where gap_order = 1
             """
@@ -635,8 +637,60 @@ class Runner_101:
         dqm.logger.debug(z)
 
         return spark.sql(z)        
-    
+    def el641t(spark, dqm: DQMeasures, measure_id, x) :
 
+        z = f"""
+        create or replace temporary view spells1 as
+            select * ,max(enrlmt_end_dt) over (partition by msis_ident_num
+                                    order by msis_ident_num, enrlmt_efctv_dt, enrlmt_end_dt
+                                    rows unbounded preceding) as max_end_date_thus_far
+            from (select distinct msis_ident_num, enrlmt_efctv_dt, enrlmt_end_dt
+                    from {dqm.taskprefix}_ever_elig
+                    where enrlmt_efctv_dt <= '{dqm.m_end}' and (enrlmt_end_dt > DATEADD(month, -12, '{dqm.m_end}') or enrlmt_end_dt is null) and enrlmt_type_cd in (1, 2))
+
+            order by msis_ident_num,enrlmt_efctv_dt,enrlmt_end_dt
+        """
+        spark.sql(z)
+
+        z = f"""
+            create or replace temporary view spells2 as
+            select a.*
+                    ,case when tot_rec =1 then 1
+                        when enrlmt_efctv_dt <= dateadd(day,1,prev_enrlmt_end_dt) then 0 else 1 end as enrlmt_span_st
+            from (
+                    select *
+                        ,lag(max_end_date_thus_far) over (partition by msis_ident_num
+                                                    order by msis_ident_num, enrlmt_efctv_dt, enrlmt_end_dt
+                                                    ) as prev_enrlmt_end_dt
+                        ,count(*) over (partition by msis_ident_num) as tot_rec
+                    from spells1
+                    order by msis_ident_num,enrlmt_efctv_dt,enrlmt_end_dt ) a
+
+            order by msis_ident_num,enrlmt_efctv_dt, enrlmt_end_dt
+            """
+        spark.sql(z)
+
+        z = f"""
+            select  
+            '{dqm.state}' as submtg_state_cd
+            ,'{measure_id}' as measure_id
+            ,'101' as submodule
+            ,sum(case when tot_enrlmt_span > 3 then 1 else 0 end) as numer
+            ,count(*) as denom
+            ,case when count(*) > 0 then round(sum(case when tot_enrlmt_span > 3 then 1 else 0 end) / count(*),3) else null end as mvalue
+            from (
+                select msis_ident_num, sum(enrlmt_span_st) as tot_enrlmt_span from spells2
+                group by msis_ident_num
+                order by msis_ident_num)
+            """
+
+        spark.sql(z)        
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)  
+
+                    
     # --------------------------------------------------------------------
     #
     #
@@ -657,7 +711,8 @@ class Runner_101:
         "el122t": el122t,
         "el335t": el335t,
         "el336t": el336t,
-        "el640t": el640t
+        "el640t": el640t,
+        "el641t": el641t
     }
 
 # CC0 1.0 Universal
