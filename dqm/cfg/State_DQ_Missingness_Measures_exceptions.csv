@@ -1,8 +1,0 @@
-File_Type,Data_Element,Exception_Values
-ELG,tmsis_ethncty_info.ethncty_cd,6
-ELG,tmsis_race_info.race_cd,017
-ELG,tmsis_prmry_dmgrphc_elgblty.gndr_cd,U
-IP,tmsis_clh_rec_ip.admsn_type_cd,9
-OT,tmsis_cll_rec_othr_toc.prcdr_cd_ind,88
-OT,tmsis_cll_rec_othr_toc.prcdr_cd_ind,99
-PRV,tmsis_prvdr_txnmy_clsfctn.prvdr_clsfctn_cd,88
