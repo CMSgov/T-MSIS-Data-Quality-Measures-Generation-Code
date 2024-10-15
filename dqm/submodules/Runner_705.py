@@ -377,7 +377,7 @@ class Runner_705:
         z = f"""
                 create or replace temporary view {dqm.taskprefix}_ot_hdr_clm_ab as
                 select
-                    /*+ BROADCAST({dqm.taskprefix}_prgncy_codes) */
+                    /*+ BROADCAST(b) */
 
                     /*unique keys and other identifiers*/
                     a.submtg_state_cd
@@ -407,7 +407,7 @@ class Runner_705:
         z = f"""
                 create or replace temporary view {dqm.taskprefix}_ot_line_to_hdr_rollup_ab as
                 select
-                    /*+ BROADCAST({dqm.taskprefix}_prgncy_codes) */
+                    /*+ BROADCAST(b) */
 
                     /*unique keys and other identifiers*/
                     a.submtg_state_cd
