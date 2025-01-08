@@ -17,6 +17,7 @@ df_missingVars['measure_id'] = df_missingVars['Measure ID'].str.upper()
 df_missingVars['claim_cat'] = df_missingVars['Claims_cat_type'].str.upper()
 df_missingVars['sub_cap_exclusion'] = df_missingVars['Sub-Capitated Encounters Exclusion']
 
+
 # --------------------------------------------------------------------
 #
 #
@@ -34,7 +35,7 @@ df_missingVars['size_length'] = df_missingVars['Size'].str.extract('\(([^)]+)\)'
 #
 # --------------------------------------------------------------------
 df_missingVars = df_missingVars.set_index("measure_id", drop = False)
-# print(df_missingVars)
+print(df_missingVars)
 df_missingVars.to_pickle('./run_801_missvar.pkl')
 
 # --------------------------------------------------------------------
@@ -44,7 +45,7 @@ df_missingVars.to_pickle('./run_801_missvar.pkl')
 df_Miss_Non_claims = df_missingVars[df_missingVars['File Type - Summary'] == 'Non-claims']
 df_Miss_Non_claims['series'] = '803'
 df_Miss_Non_claims['cb'] = 'non_claims_pct'
-# print(df_Miss_Non_claims)
+#print(df_Miss_Non_claims)
 df_Miss_Non_claims.to_pickle('./run_801_miss_non_claims.pkl')
 
 # --------------------------------------------------------------------
@@ -72,7 +73,7 @@ def data_element_update(Data_element_var):
 df_Miss_Claims['Data_element_var_updt'] = df_Miss_Claims.apply(lambda x: data_element_update(x['Data_element_var']), axis=1)
 df_Miss_Claims['series'] = '802'
 df_Miss_Claims['cb'] = 'claims_pct'
-# print(df_Miss_Claims)
+print(df_Miss_Claims)
 df_Miss_Claims.to_pickle('./run_801_miss_claims.pkl')
 
 
@@ -114,7 +115,7 @@ df_803_miss_non_claims_pct['claims_table2'] = df_Miss_Non_claims['Non_claims_Tab
 df_803_miss_non_claims_pct['file_type'] = df_Miss_Non_claims['File_Type2']
 
 df_803_miss_non_claims_pct = df_803_miss_non_claims_pct.set_index("measure_id", drop = False)
-print(df_803_miss_non_claims_pct)
+#print(df_803_miss_non_claims_pct)
 df_803_miss_non_claims_pct.to_pickle('./run_803.pkl')
 
 
