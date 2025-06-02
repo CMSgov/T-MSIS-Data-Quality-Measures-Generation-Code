@@ -3,14 +3,14 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 2,ELG,Non-claims,MIS-1-002-2,MIS1.2,ELG00002,,,% distinct MSIS IDs with only missing values in any active segment: DATE-OF-DEATH (ELG00002),tmsis_prmry_dmgrphc_elgblty.death_dt,DATE-OF-DEATH,ELG025,9(8),Numeric,Y
 4,ELG,Non-claims,MIS-1-004-4,MIS1.4,ELG00002,,,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-DEMOGRAPHIC-ELEMENT-EFF-DATE (ELG00002),tmsis_prmry_dmgrphc_elgblty.prmry_dmgrphc_ele_efctv_dt,PRIMARY-DEMOGRAPHIC-ELEMENT-EFF-DATE,ELG026,9(8),Numeric,Y
 5,ELG,Non-claims,MIS-1-005-5,MIS1.5,ELG00002,,,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-DEMOGRAPHIC-ELEMENT-END-DATE (ELG00002),tmsis_prmry_dmgrphc_elgblty.prmry_dmgrphc_ele_end_dt,PRIMARY-DEMOGRAPHIC-ELEMENT-END-DATE,ELG027,9(8),Numeric,Y
-6,ELG,Non-claims,MIS-1-006-6,MIS1.6,ELG00002,,,% distinct MSIS IDs with only missing values in any active segment: SEX (ELG00002),tmsis_prmry_dmgrphc_elgblty.gndr_cd,SEX,ELG023,X(1),Character,Y
+6,ELG,Non-claims,MIS-1-006-6,MIS1.6,ELG00002,,,% distinct MSIS IDs with only missing values in any active segment: SEX (ELG00002),tmsis_prmry_dmgrphc_elgblty.sex_cd,SEX,ELG023,X(1),Character,Y
 7,ELG,Non-claims,MIS-1-007-7,MIS1.7,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: CHIP-CODE (ELG00003),tmsis_var_dmgrphc_elgblty.chip_cd,CHIP-CODE,ELG054,X(1),Character,Y
 8,ELG,Non-claims,MIS-1-008-8,MIS1.8,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: CITIZENSHIP-IND (ELG00003),tmsis_var_dmgrphc_elgblty.ctznshp_ind,CITIZENSHIP-IND,ELG040,X(1),Character,Y
 9,ELG,Non-claims,MIS-1-009-9,MIS1.9,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: HOUSEHOLD-SIZE (ELG00003),tmsis_var_dmgrphc_elgblty.hsehld_size_cd,HOUSEHOLD-SIZE,ELG047,X(2),Character,Y
 10,ELG,Non-claims,MIS-1-010-10,MIS1.10,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: IMMIGRATION-STATUS (ELG00003),tmsis_var_dmgrphc_elgblty.imgrtn_stus_cd,IMMIGRATION-STATUS,ELG042,X(1),Character,Y
 11,ELG,Non-claims,MIS-1-011-11,MIS1.11,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: INCOME-CODE (ELG00003),tmsis_var_dmgrphc_elgblty.incm_cd,INCOME-CODE,ELG038,X(2),Character,Y
 12,ELG,Non-claims,MIS-1-012-12,MIS1.12,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: MARITAL-STATUS (ELG00003),tmsis_var_dmgrphc_elgblty.mrtl_stus_cd,MARITAL-STATUS,ELG034,X(2),Character,Y
-13,ELG,Non-claims,MIS-1-013-13,MIS1.13,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-LANGUAGE-CODE (ELG00003),tmsis_var_dmgrphc_elgblty.prmry_lang_cd,PRIMARY-LANGUAGE-CODE,ELG046,X(3),Character,Y
+13,ELG,Non-claims,MIS-1-013-13,MIS1.13,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-LANGUAGE-CODE (ELG00003),tmsis_var_dmgrphc_elgblty.prefrd_lang_cd,PREFERRED-LANGUAGE-CODE,ELG046,X(3),Character,Y
 14,ELG,Non-claims,MIS-1-014-14,MIS1.14,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: SSN (ELG00003),tmsis_var_dmgrphc_elgblty.ssn_num,SSN,ELG036,9(9),Numeric,Y
 15,ELG,Non-claims,MIS-1-015-15,MIS1.15,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: SSN-VERIFICATION-FLAG (ELG00003),tmsis_var_dmgrphc_elgblty.ssn_vrfctn_ind,SSN-VERIFICATION-FLAG,ELG037,X(1),Character,Y
 16,ELG,Non-claims,MIS-1-016-16,MIS1.16,ELG00003,,,% distinct MSIS IDs with only missing values in any active segment: VARIABLE-DEMOGRAPHIC-ELEMENT-EFF-DATE (ELG00003),tmsis_var_dmgrphc_elgblty.var_dmgrphc_ele_efctv_dt,VARIABLE-DEMOGRAPHIC-ELEMENT-EFF-DATE,ELG057,9(8),Numeric,Y
@@ -23,8 +23,8 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 24,ELG,Non-claims,MIS-1-024-24,MIS1.24,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: ELIGIBILITY-DETERMINANT-EFF-DATE (ELG00005),tmsis_elgblty_dtrmnt.elgblty_dtrmnt_efctv_dt,ELIGIBILITY-DETERMINANT-EFF-DATE,ELG099,9(8),Numeric,Y
 25,ELG,Non-claims,MIS-1-025-25,MIS1.25,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: ELIGIBILITY-DETERMINANT-END-DATE (ELG00005),tmsis_elgblty_dtrmnt.elgblty_dtrmnt_end_dt,ELIGIBILITY-DETERMINANT-END-DATE,ELG100,9(8),Numeric,Y
 26,ELG,Non-claims,MIS-1-026-26,MIS1.26,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: ELIGIBILITY-GROUP (ELG00005),tmsis_elgblty_dtrmnt.elgblty_grp_cd,ELIGIBILITY-GROUP,ELG087,X(2),Character,Y
-27,ELG,Non-claims,MIS-1-027-27,MIS1.27,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: MAINTENANCE-ASSISTANCE-STATUS (ELG00005),tmsis_elgblty_dtrmnt.mas_cd,MAINTENANCE-ASSISTANCE-STATUS,ELG096,X(1),Character,Y
-28,ELG,Non-claims,MIS-1-028-28,MIS1.28,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: MEDICAID-BASIS-OF-ELIGIBILITY (ELG00005),tmsis_elgblty_dtrmnt.elgblty_mdcd_basis_cd,MEDICAID-BASIS-OF-ELIGIBILITY,ELG084,X(2),Character,Y
+27,ELG,Non-claims,MIS-1-027-27,MIS1.27,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: MAINTENANCE-ASSISTANCE-STATUS (ELG00005),tmsis_elgblty_dtrmnt.mas_cd,MAINTENANCE-ASSISTANCE-STATUS,ELG096,X(1),Character,N
+28,ELG,Non-claims,MIS-1-028-28,MIS1.28,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: MEDICAID-BASIS-OF-ELIGIBILITY (ELG00005),tmsis_elgblty_dtrmnt.elgblty_mdcd_basis_cd,MEDICAID-BASIS-OF-ELIGIBILITY,ELG084,X(2),Character,N
 29,ELG,Non-claims,MIS-1-029-29,MIS1.29,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: MSIS-CASE-NUM (ELG00005),tmsis_elgblty_dtrmnt.msis_case_num,MSIS-CASE-NUM,ELG083,X(12),Character,Y
 31,ELG,Non-claims,MIS-1-031-31,MIS1.31,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: PRIMARY-ELIGIBILITY-GROUP-IND (ELG00005),tmsis_elgblty_dtrmnt.prmry_elgblty_grp_ind,PRIMARY-ELIGIBILITY-GROUP-IND,ELG086,X(1),Character,Y
 32,ELG,Non-claims,MIS-1-032-32,MIS1.32,ELG00005,,,% distinct MSIS IDs with only missing values in any active segment: RESTRICTED-BENEFITS-CODE (ELG00005),tmsis_elgblty_dtrmnt.rstrctd_bnfts_cd,RESTRICTED-BENEFITS-CODE,ELG097,X(1),Character,Y
@@ -56,7 +56,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 65,ELG,Non-claims,MIS-1-065-65,MIS1.65,ELG00013,,,% distinct MSIS IDs with only missing values in any active segment: LTSS-ELIGIBILITY-EFF-DATE (ELG00013),tmsis_ltss_prtcptn_data.ltss_elgblty_efctv_dt,LTSS-ELIGIBILITY-EFF-DATE,ELG184,9(8),Numeric,Y
 66,ELG,Non-claims,MIS-1-066-66,MIS1.66,ELG00013,,,% distinct MSIS IDs with only missing values in any active segment: LTSS-LEVEL-CARE (ELG00013),tmsis_ltss_prtcptn_data.ltss_lvl_care_cd,LTSS-LEVEL-CARE,ELG182,X(1),Character,Y
 67,ELG,Non-claims,MIS-1-067-67,MIS1.67,ELG00013,,,% distinct MSIS IDs with only missing values in any active segment: LTSS-PROV-NUM (ELG00013),tmsis_ltss_prtcptn_data.ltss_prvdr_num,LTSS-PROV-NUM,ELG183,X(30),Character,Y
-69,ELG,Non-claims,MIS-1-069-69,MIS1.69,ELG00014,,,% distinct MSIS IDs with only missing values in any active segment: ENROLLED-MANAGED-CARE-PLAN-TYPE (ELG00014),tmsis_mc_prtcptn_data.enrld_mc_plan_type_cd,ENROLLED-MANAGED-CARE-PLAN-TYPE,ELG193,X(2),Character,Y
+69,ELG,Non-claims,MIS-1-069-69,MIS1.69,ELG00014,,,% distinct MSIS IDs with only missing values in any active segment: ENROLLED-MANAGED-CARE-PLAN-TYPE (ELG00014),tmsis_mc_prtcptn_data.mc_plan_type_cd,ENROLLED-MANAGED-CARE-PLAN-TYPE,ELG193,X(2),Character,Y
 70,ELG,Non-claims,MIS-1-070-70,MIS1.70,ELG00014,,,% distinct MSIS IDs with only missing values in any active segment: MANAGED-CARE-PLAN-ENROLLMENT-EFF-DATE (ELG00014),tmsis_mc_prtcptn_data.mc_plan_enrlmt_efctv_dt,MANAGED-CARE-PLAN-ENROLLMENT-EFF-DATE,ELG196,9(8),Numeric,Y
 71,ELG,Non-claims,MIS-1-071-71,MIS1.71,ELG00014,,,% distinct MSIS IDs with only missing values in any active segment: MANAGED-CARE-PLAN-ID (ELG00014),tmsis_mc_prtcptn_data.mc_plan_id,MANAGED-CARE-PLAN-ID,ELG192,X(12),Character,Y
 73,ELG,Non-claims,MIS-1-073-73,MIS1.73,ELG00015,,,% distinct MSIS IDs with only missing values in any active segment: ETHNICITY-CODE (ELG00015),tmsis_ethncty_info.ethncty_cd,ETHNICITY-CODE,ELG204,X(1),Character,Y
@@ -84,19 +84,19 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 103,IP,Claims,MIS-2-010-10,MIS2.10,,AA,,% missing: BILLING-PROV-TYPE (CIP00002),tmsis_clh_rec_ip.blg_prvdr_type_cd,BILLING-PROV-TYPE,CIP182,X(2),Character,Y
 104,IP,Claims,MIS-2-011-11,MIS2.11,,AA,,% missing: CLAIM-LINE-COUNT (CIP00002),tmsis_clh_rec_ip.cll_cnt,CLAIM-LINE-COUNT,CIP137,9(4),Numeric,Y
 105,IP,Claims,MIS-2-012-12,MIS2.12,,AA,,% missing: CROSSOVER-INDICATOR (CIP00002),tmsis_clh_rec_ip.xovr_ind,CROSSOVER-INDICATOR,CIP023,X(1),Character,Y
-106,IP,Claims,MIS-2-013-13,MIS2.13,,AA,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,Y
-107,IP,Claims,MIS-2-014-14,MIS2.14,,AA,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,Y
-108,IP,Claims,MIS-2-015-15,MIS2.15,,AA,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,Y
-109,IP,Claims,MIS-2-016-16,MIS2.16,,AA,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,Y
-110,IP,Claims,MIS-2-017-17,MIS2.17,,AA,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,Y
-111,IP,Claims,MIS-2-018-18,MIS2.18,,AA,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,Y
-112,IP,Claims,MIS-2-019-19,MIS2.19,,AA,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,Y
-113,IP,Claims,MIS-2-020-20,MIS2.20,,AA,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,Y
-114,IP,Claims,MIS-2-021-21,MIS2.21,,AA,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,Y
-115,IP,Claims,MIS-2-022-22,MIS2.22,,AA,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,Y
-116,IP,Claims,MIS-2-023-23,MIS2.23,,AA,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,Y
-117,IP,Claims,MIS-2-024-24,MIS2.24,,AA,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,Y
-118,IP,Claims,MIS-2-025-25,MIS2.25,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,Y
+106,IP,Claims,MIS-2-013-13,MIS2.13,,AA,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,N
+107,IP,Claims,MIS-2-014-14,MIS2.14,,AA,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,N
+108,IP,Claims,MIS-2-015-15,MIS2.15,,AA,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,N
+109,IP,Claims,MIS-2-016-16,MIS2.16,,AA,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,N
+110,IP,Claims,MIS-2-017-17,MIS2.17,,AA,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,N
+111,IP,Claims,MIS-2-018-18,MIS2.18,,AA,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,N
+112,IP,Claims,MIS-2-019-19,MIS2.19,,AA,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,N
+113,IP,Claims,MIS-2-020-20,MIS2.20,,AA,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,N
+114,IP,Claims,MIS-2-021-21,MIS2.21,,AA,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,N
+115,IP,Claims,MIS-2-022-22,MIS2.22,,AA,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,N
+116,IP,Claims,MIS-2-023-23,MIS2.23,,AA,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,N
+117,IP,Claims,MIS-2-024-24,MIS2.24,,AA,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,N
+118,IP,Claims,MIS-2-025-25,MIS2.25,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,N
 119,IP,Claims,MIS-2-026-26,MIS2.26,,AA,,% missing: DISCHARGE-DATE (CIP00002),tmsis_clh_rec_ip.dschrg_dt,DISCHARGE-DATE,CIP096,9(8),Numeric,Y
 120,IP,Claims,MIS-2-027-27,MIS2.27,,AA,,% missing: FIXED-PAYMENT-IND (CIP00002),tmsis_clh_rec_ip.fixd_pymt_ind,FIXED-PAYMENT-IND,CIP125,X(1),Character,Y
 121,IP,Claims,MIS-2-028-28,MIS2.28,,AA,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CIP00002),tmsis_clh_rec_ip.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CIP139,X(1),Character,Y
@@ -151,11 +151,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 175,LT,Claims,MIS-4-009-9,MIS4.9,,AA,,% missing: BILLING-PROV-TYPE (CLT00002),tmsis_clh_rec_lt.blg_prvdr_type_cd,BILLING-PROV-TYPE,CLT133,X(2),Character,Y
 176,LT,Claims,MIS-4-010-10,MIS4.10,,AA,,% missing: CLAIM-LINE-COUNT (CLT00002),tmsis_clh_rec_lt.cll_cnt,CLAIM-LINE-COUNT,CLT087,9(4),Numeric,Y
 177,LT,Claims,MIS-4-011-11,MIS4.11,,AA,,% missing: CROSSOVER-INDICATOR (CLT00002),tmsis_clh_rec_lt.xovr_ind,CROSSOVER-INDICATOR,CLT023,X(1),Character,Y
-178,LT,Claims,MIS-4-012-12,MIS4.12,,AA,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,Y
-179,LT,Claims,MIS-4-013-13,MIS4.13,,AA,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,Y
-180,LT,Claims,MIS-4-014-14,MIS4.14,,AA,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,Y
-181,LT,Claims,MIS-4-015-15,MIS4.15,,AA,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,Y
-182,LT,Claims,MIS-4-016-16,MIS4.16,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,Y
+178,LT,Claims,MIS-4-012-12,MIS4.12,,AA,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,N
+179,LT,Claims,MIS-4-013-13,MIS4.13,,AA,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,N
+180,LT,Claims,MIS-4-014-14,MIS4.14,,AA,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,N
+181,LT,Claims,MIS-4-015-15,MIS4.15,,AA,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,N
+182,LT,Claims,MIS-4-016-16,MIS4.16,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,N
 183,LT,Claims,MIS-4-017-17,MIS4.17,,AA,,% missing: ENDING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE,CLT049,9(8),Numeric,Y
 184,LT,Claims,MIS-4-018-18,MIS4.18,,AA,,% missing: FIXED-PAYMENT-IND (CLT00002),tmsis_clh_rec_lt.fixd_pymt_ind,FIXED-PAYMENT-IND,CLT075,X(1),Character,Y
 185,LT,Claims,MIS-4-019-19,MIS4.19,,AA,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CLT00002),tmsis_clh_rec_lt.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CLT091,X(1),Character,Y
@@ -206,11 +206,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 237,OT,Claims,MIS-6-009-9,MIS6.9,,AA,,% missing: BILLING-PROV-TYPE (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_type_cd,BILLING-PROV-TYPE,COT115,X(2),Character,Y
 238,OT,Claims,MIS-6-010-10,MIS6.10,,AA,,% missing: CLAIM-LINE-COUNT (COT00002),tmsis_clh_rec_othr_toc.cll_cnt,CLAIM-LINE-COUNT,COT070,9(4),Numeric,Y
 239,OT,Claims,MIS-6-011-11,MIS6.11,,AA,,% missing: CROSSOVER-INDICATOR (COT00002),tmsis_clh_rec_othr_toc.xovr_ind,CROSSOVER-INDICATOR,COT023,X(1),Character,Y
-240,OT,Claims,MIS-6-012-12,MIS6.12,,AA,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,Y
-241,OT,Claims,MIS-6-013-13,MIS6.13,,AA,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,Y
-242,OT,Claims,MIS-6-014-14,MIS6.14,,AA,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,Y
-243,OT,Claims,MIS-6-015-15,MIS6.15,,AA,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,Y
-244,OT,Claims,MIS-6-016-16,MIS6.16,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,Y
+240,OT,Claims,MIS-6-012-12,MIS6.12,,AA,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,N
+241,OT,Claims,MIS-6-013-13,MIS6.13,,AA,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,N
+242,OT,Claims,MIS-6-014-14,MIS6.14,,AA,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,N
+243,OT,Claims,MIS-6-015-15,MIS6.15,,AA,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,N
+244,OT,Claims,MIS-6-016-16,MIS6.16,,AA,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,N
 245,OT,Claims,MIS-6-017-17,MIS6.17,,AA,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT034,9(8),Numeric,Y
 246,OT,Claims,MIS-6-018-18,MIS6.18,,AA,,% missing: FIXED-PAYMENT-IND (COT00002),tmsis_clh_rec_othr_toc.fixd_pymt_ind,FIXED-PAYMENT-IND,COT061,X(1),Character,Y
 247,OT,Claims,MIS-6-019-19,MIS6.19,,AA,,% missing: HEALTH-HOME-PROV-IND (COT00002),tmsis_clh_rec_othr_toc.hh_prvdr_ind,HEALTH-HOME-PROV-IND,COT109,X(1),Character,Y
@@ -228,7 +228,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 259,OT,Claims,MIS-6-031-31,MIS6.31,,AA,,% missing: TOT-OTHER-INSURANCE-AMT (COT00002),tmsis_clh_rec_othr_toc.tot_othr_insrnc_amt,TOT-OTHER-INSURANCE-AMT,COT056,S9(11)V99,Numeric,Y
 260,OT,Claims,MIS-6-032-32,MIS6.32,,AA,,% missing: TOT-TPL-AMT (COT00002),tmsis_clh_rec_othr_toc.tot_tpl_amt,TOT-TPL-AMT,COT054,S9(11)V99,Numeric,Y
 261,OT,Claims,MIS-6-033-33,MIS6.33,,AA,,% missing: TYPE-OF-BILL (COT00002),tmsis_clh_rec_othr_toc.bill_type_cd,TYPE-OF-BILL,COT038,X(4),Character,Y
-265,OT,Claims,MIS-7-003-3,MIS7.3,,AA,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
+265,OT,Claims,MIS-7-003-3,MIS7.3,,AA,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,N
 266,OT,Claims,MIS-7-004-4,MIS7.4,,AA,1,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
 267,OT,Claims,MIS-7-005-5,MIS7.5,,AA,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 268,OT,Claims,MIS-7-006-6,MIS7.6,,AA,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
@@ -381,29 +381,29 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 440,LT,Claims,MIS-15-001-1,MIS15.1,,W,,% missing: TYPE-OF-CLAIM (CLT00002),tmsis_clh_rec_lt.clm_type_cd,TYPE-OF-CLAIM,CLT052,X(1),Character,Y
 441,OT,Claims,MIS-17-001-1,MIS17.1,,W,,% missing: TYPE-OF-CLAIM (COT00002),tmsis_clh_rec_othr_toc.clm_type_cd,TYPE-OF-CLAIM,COT037,X(1),Character,Y
 442,RX,Claims,MIS-19-001-1,MIS19.1,,W,,% missing: TYPE-OF-CLAIM (CRX00002),tmsis_clh_rec_rx.clm_type_cd,TYPE-OF-CLAIM,CRX029,X(1),Character,Y
-443,IP,Claims,MIS-22-001-1,MIS22.1,,AH,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CIP00003),tmsis_cll_rec_ip.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CIP269,X(2),Character,Y
-444,LT,Claims,MIS-24-001-1,MIS24.1,,AH,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CLT00003),tmsis_cll_rec_lt.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CLT219,X(2),Character,Y
-445,OT,Claims,MIS-26-001-1,MIS26.1,,AH,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (COT00003),tmsis_cll_rec_othr_toc.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,COT210,X(2),Character,Y
-446,RX,Claims,MIS-28-001-1,MIS28.1,,AH,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CRX00003),tmsis_cll_rec_rx.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CRX149,X(2),Character,Y
-447,OT,Claims,MIS-29-001-1,MIS29.1,,AG,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT033,9(8),Numeric,Y
-448,OT,Claims,MIS-29-002-2,MIS29.2,,AG,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT034,9(8),Numeric,Y
-449,OT,Claims,MIS-30-001-1,MIS30.1,,AG,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
-450,OT,Claims,MIS-30-002-2,MIS30.2,,AG,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (COT00003),tmsis_cll_rec_othr_toc.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,COT210,X(2),Character,Y
-451,OT,Claims,MIS-30-003-3,MIS30.3,,AG,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
+443,IP,Claims,MIS-22-001-1,MIS22.1,,AH,,% missing: CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CIP00003),tmsis_cll_rec_ip.fed_reimbrsmt_ctgry_cd,CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CIP269,X(2),Character,Y
+444,LT,Claims,MIS-24-001-1,MIS24.1,,AH,,% missing: CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CLT00003),tmsis_cll_rec_lt.fed_reimbrsmt_ctgry_cd,CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CLT219,X(2),Character,Y
+445,OT,Claims,MIS-26-001-1,MIS26.1,,AH,,% missing: CATEGORY-FOR-FEDERAL-REIMBURSEMENT (COT00003),tmsis_cll_rec_othr_toc.fed_reimbrsmt_ctgry_cd,CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,COT210,X(2),Character,Y
+446,RX,Claims,MIS-28-001-1,MIS28.1,,AH,,% missing: CATEGORY-FOR-FEDERAL-REIMBURSEMENT (CRX00003),tmsis_cll_rec_rx.fed_reimbrsmt_ctgry_cd,CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,CRX149,X(2),Character,Y
+447,OT,Claims,MIS-29-001-1,MIS29.1,,AG,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT033,9(8),Numeric,N
+448,OT,Claims,MIS-29-002-2,MIS29.2,,AG,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT034,9(8),Numeric,N
+449,OT,Claims,MIS-30-001-1,MIS30.1,,AG,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,N
+450,OT,Claims,MIS-30-002-2,MIS30.2,,AG,,% missing: CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT (COT00003),tmsis_cll_rec_othr_toc.cms_64_fed_reimbrsmt_ctgry_cd,CMS-64-CATEGORY-FOR-FEDERAL-REIMBURSEMENT ,COT210,X(2),Character,N
+451,OT,Claims,MIS-30-003-3,MIS30.3,,AG,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,N
 452,LT,Claims,MIS-5-002-20,MIS5.20,,AA,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,CLT196,9(8),Numeric,Y
 453,OT,Claims,MIS-7-002-32,MIS7.32,,AA,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
 454,IP,Claims,MIS-2-032_1-58,MIS2.58,,AA,1,% missing: MEDICAID-PAID-DATE (CIP00002),tmsis_clh_rec_ip.mdcd_pd_dt,MEDICAID-PAID-DATE ,CIP099,9(8),Numeric,Y
 455,LT,Claims,MIS-4-025_1-45,MIS4.45,,AA,1,% missing: MEDICAID-PAID-DATE (CLT00002),tmsis_clh_rec_lt.mdcd_pd_dt,MEDICAID-PAID-DATE ,CLT051,9(8),Numeric,Y
 456,OT,Claims,MIS-6-021_1-37,MIS6.37,,AA,1,% missing: MEDICAID-PAID-DATE (COT00002),tmsis_clh_rec_othr_toc.mdcd_pd_dt,MEDICAID-PAID-DATE ,COT036,9(8),Numeric,Y
 457,RX,Claims,MIS-8-015_1-34,MIS8.34,,AA,1,% missing: MEDICAID-PAID-DATE (CRX00002),tmsis_clh_rec_rx.mdcd_pd_dt,MEDICAID-PAID-DATE ,CRX028,9(8),Numeric,Y
-466,IP,Claims,MIS-40-001-1,MIS40.1,,AM,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE ,CIP270,X(4),Character,Y
-467,LT,Claims,MIS-42-001-1,MIS42.1,,AM,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE ,CLT224,X(4),Character,Y
-468,OT,Claims,MIS-44-001-1,MIS44.1,,AM,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE ,COT211,X(4),Character,Y
-469,RX,Claims,MIS-46-001-1,MIS46.1,,AM,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE ,CRX150,X(4),Character,Y
-470,IP,Claims,MIS-48-001-1,MIS48.1,,AN,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE ,CIP271,X(3),Character,Y
-471,LT,Claims,MIS-50-001-1,MIS50.1,,AN,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE ,CLT225,X(3),Character,Y
-472,OT,Claims,MIS-52-001-1,MIS52.1,,AN,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE ,COT212,X(3),Character,Y
-473,RX,Claims,MIS-54-001-1,MIS54.1,,AN,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE ,CRX151,X(3),Character,Y
+466,IP,Claims,MIS-40-001-1,MIS40.1,,AM,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CIP315,X(4),Character,Y
+467,LT,Claims,MIS-42-001-1,MIS42.1,,AM,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CLT261,X(4),Character,Y
+468,OT,Claims,MIS-44-001-1,MIS44.1,,AM,,% missing: MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,COT256,X(4),Character,Y
+469,RX,Claims,MIS-46-001-1,MIS46.1,,AM,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CRX180,X(4),Character,Y
+470,IP,Claims,MIS-48-001-1,MIS48.1,,AN,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CIP315,X(3),Character,Y
+471,LT,Claims,MIS-50-001-1,MIS50.1,,AN,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CLT261,X(3),Character,Y
+472,OT,Claims,MIS-52-001-1,MIS52.1,,AN,,% missing: MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,COT256,X(3),Character,Y
+473,RX,Claims,MIS-54-001-1,MIS54.1,,AN,,% missing: MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.mbescbes_srvc_ctgry_cd,MBESCBES-CATEGORY-OF-SERVICE ,CRX180,X(3),Character,Y
 474,IP,Claims,MIS-2-009_1-59,MIS2.59,,AA,,% missing: BILLING-PROV-TAXONOMY (CIP00002),tmsis_clh_rec_ip.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CIP181,X(12),Character,Y
 475,LT,Claims,MIS-4-008_1-46,MIS4.46,,AA,,% missing: BILLING-PROV-TAXONOMY (CLT00002),tmsis_clh_rec_lt.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,CLT132,X(12),Character,Y
 476,OT,Claims,MIS-6-008_1-38,MIS6.38,,AA,,% missing: BILLING-PROV-TAXONOMY (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_txnmy_cd ,BILLING-PROV-TAXONOMY,COT114,X(12),Character,Y
@@ -423,32 +423,32 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 490,LT,Claims,MIS-4-034_2-49,MIS4.49,,AA,,% missing: REFERRING-PROV-NUM (CLT00002),tmsis_clh_rec_lt.rfrg_prvdr_num,REFERRING-PROV-NUM,CLT135,X(30),Character,Y
 491,OT,Claims,MIS-6-027_4-41,MIS6.41,,AA,,% missing: REFERRING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.rfrg_prvdr_num,REFERRING-PROV-NUM,COT117,X(30),Character,Y
 492,IP,Claims,MIS-3-009_1-19,MIS3.19,,AA,,% missing: OPERATING-PROV-NPI-NUM (CIP00003),tmsis_cll_rec_ip.oprtg_prvdr_npi_num,OPERATING-PROV-NPI-NUM,CIP265,X(10),Character,Y
-493,IP,Claims,MIS-64-001-1,MIS64.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CIP270,X(4),Character,Y
-494,IP,Claims,MIS-72-001-1,MIS72.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CIP271,X(3),Character,Y
-495,LT,Claims,MIS-66-001-1,MIS66.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CLT224,X(4),Character,Y
-496,LT,Claims,MIS-74-001-1,MIS74.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CLT225,X(3),Character,Y
-497,OT,Claims,MIS-68-001-1,MIS68.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,COT211,X(4),Character,Y
-498,OT,Claims,MIS-76-001-1,MIS76.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,COT212,X(3),Character,Y
-499,RX,Claims,MIS-70-001-1,MIS70.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CRX150,X(4),Character,Y
-500,RX,Claims,MIS-78-001-1,MIS78.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CRX151,X(3),Character,Y
-501,IP,Claims,MIS-55-001-1,MIS55.1,,AS,,% missing: ADMISSION-DATE (CIP00002),tmsis_clh_rec_ip.admsn_dt,ADMISSION-DATE ,CIP094,9(8),Numeric,Y
-502,IP,Claims,MIS-55-002-2,MIS55.2,,AS,,% missing: DISCHARGE-DATE (CIP00002),tmsis_clh_rec_ip.dschrg_dt,DISCHARGE-DATE ,CIP096,9(8),Numeric,Y
-503,IP,Claims,MIS-55-003-3,MIS55.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CIP00002),tmsis_clh_rec_ip.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CIP124,S9(11)V99,Numeric,Y
-504,IP,Claims,MIS-55-004-4,MIS55.4,,AS,,% missing: SERVICE-TRACKING-TYPE (CIP00002),tmsis_clh_rec_ip.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CIP123,X(2),Character,Y
-505,LT,Claims,MIS-57-001-1,MIS57.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,CLT048,9(8),Numeric,Y
-506,LT,Claims,MIS-57-002-2,MIS57.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,CLT049,9(8),Numeric,Y
-507,LT,Claims,MIS-57-003-3,MIS57.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CLT00002),tmsis_clh_rec_lt.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CLT074,S9(11)V99,Numeric,Y
-508,LT,Claims,MIS-57-004-4,MIS57.4,,AS,,% missing: SERVICE-TRACKING-TYPE (CLT00002),tmsis_clh_rec_lt.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CLT073,X(2),Character,Y
-509,LT,Claims,MIS-58-001-1,MIS58.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,CLT048,9(8),Numeric,Y
-510,LT,Claims,MIS-58-002-2,MIS58.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,CLT049,9(8),Numeric,Y
-511,OT,Claims,MIS-59-001-1,MIS59.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,COT033,9(8),Numeric,Y
-512,OT,Claims,MIS-59-002-2,MIS59.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,COT034,9(8),Numeric,Y
-513,OT,Claims,MIS-59-003-3,MIS59.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (COT00002),tmsis_clh_rec_othr_toc.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,COT060,S9(11)V99,Numeric,Y
-514,OT,Claims,MIS-59-004-4,MIS59.4,,AS,,% missing: SERVICE-TRACKING-TYPE (COT00002),tmsis_clh_rec_othr_toc.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,COT059,X(2),Character,Y
-515,OT,Claims,MIS-60-001-1,MIS60.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,COT033,9(8),Numeric,Y
-516,OT,Claims,MIS-60-002-2,MIS60.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,COT034,9(8),Numeric,Y
-517,RX,Claims,MIS-61-001-1,MIS61.1,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CRX00002),tmsis_clh_rec_rx.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CRX051,S9(11)V99,Numeric,Y
-518,RX,Claims,MIS-61-002-2,MIS61.2,,AS,,% missing: SERVICE-TRACKING-TYPE (CRX00002),tmsis_clh_rec_rx.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CRX050,X(2),Character,Y
+493,IP,Claims,MIS-64-001-1,MIS64.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CIP270,X(4),Character,N
+494,IP,Claims,MIS-72-001-1,MIS72.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CIP00003),tmsis_cll_rec_ip.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CIP271,X(3),Character,N
+495,LT,Claims,MIS-66-001-1,MIS66.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CLT224,X(4),Character,N
+496,LT,Claims,MIS-74-001-1,MIS74.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CLT225,X(3),Character,N
+497,OT,Claims,MIS-68-001-1,MIS68.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,COT211,X(4),Character,N
+498,OT,Claims,MIS-76-001-1,MIS76.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,COT212,X(3),Character,N
+499,RX,Claims,MIS-70-001-1,MIS70.1,,AV,,% missing: XIX-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xix_srvc_ctgry_cd,XIX-MBESCBES-CATEGORY-OF-SERVICE,CRX150,X(4),Character,N
+500,RX,Claims,MIS-78-001-1,MIS78.1,,AW,,% missing: XXI-MBESCBES-CATEGORY-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.xxi_srvc_ctgry_cd,XXI-MBESCBES-CATEGORY-OF-SERVICE,CRX151,X(3),Character,N
+501,IP,Claims,MIS-55-001-1,MIS55.1,,AS,,% missing: ADMISSION-DATE (CIP00002),tmsis_clh_rec_ip.admsn_dt,ADMISSION-DATE ,CIP094,9(8),Numeric,N
+502,IP,Claims,MIS-55-002-2,MIS55.2,,AS,,% missing: DISCHARGE-DATE (CIP00002),tmsis_clh_rec_ip.dschrg_dt,DISCHARGE-DATE ,CIP096,9(8),Numeric,N
+503,IP,Claims,MIS-55-003-3,MIS55.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CIP00002),tmsis_clh_rec_ip.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CIP124,S9(11)V99,Numeric,N
+504,IP,Claims,MIS-55-004-4,MIS55.4,,AS,,% missing: SERVICE-TRACKING-TYPE (CIP00002),tmsis_clh_rec_ip.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CIP123,X(2),Character,N
+505,LT,Claims,MIS-57-001-1,MIS57.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,CLT048,9(8),Numeric,N
+506,LT,Claims,MIS-57-002-2,MIS57.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,CLT049,9(8),Numeric,N
+507,LT,Claims,MIS-57-003-3,MIS57.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CLT00002),tmsis_clh_rec_lt.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CLT074,S9(11)V99,Numeric,N
+508,LT,Claims,MIS-57-004-4,MIS57.4,,AS,,% missing: SERVICE-TRACKING-TYPE (CLT00002),tmsis_clh_rec_lt.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CLT073,X(2),Character,N
+509,LT,Claims,MIS-58-001-1,MIS58.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,CLT048,9(8),Numeric,N
+510,LT,Claims,MIS-58-002-2,MIS58.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (CLT00003),tmsis_cll_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,CLT049,9(8),Numeric,N
+511,OT,Claims,MIS-59-001-1,MIS59.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,COT033,9(8),Numeric,N
+512,OT,Claims,MIS-59-002-2,MIS59.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,COT034,9(8),Numeric,N
+513,OT,Claims,MIS-59-003-3,MIS59.3,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (COT00002),tmsis_clh_rec_othr_toc.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,COT060,S9(11)V99,Numeric,N
+514,OT,Claims,MIS-59-004-4,MIS59.4,,AS,,% missing: SERVICE-TRACKING-TYPE (COT00002),tmsis_clh_rec_othr_toc.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,COT059,X(2),Character,N
+515,OT,Claims,MIS-60-001-1,MIS60.1,,AS,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE ,COT033,9(8),Numeric,N
+516,OT,Claims,MIS-60-002-2,MIS60.2,,AS,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE ,COT034,9(8),Numeric,N
+517,RX,Claims,MIS-61-001-1,MIS61.1,,AS,,% missing: SERVICE-TRACKING-PAYMENT-AMT (CRX00002),tmsis_clh_rec_rx.srvc_trkng_pymt_amt,SERVICE-TRACKING-PAYMENT-AMT,CRX051,S9(11)V99,Numeric,N
+518,RX,Claims,MIS-61-002-2,MIS61.2,,AS,,% missing: SERVICE-TRACKING-TYPE (CRX00002),tmsis_clh_rec_rx.srvc_trkng_type_cd,SERVICE-TRACKING-TYPE,CRX050,X(2),Character,N
 519,IP,Claims,MIS-21-001-1,MIS21.1,,AH,,% missing: ADMISSION-DATE (CIP00002),tmsis_clh_rec_ip.admsn_dt,ADMISSION-DATE,CIP094,9(8),Numeric,Y
 520,IP,Claims,MIS-21-002-2,MIS21.2,,AH,,% missing: ADMITTING-PROV-NPI-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_npi_num,ADMITTING-PROV-NPI-NUM,CIP184,X(10),Character,Y
 521,IP,Claims,MIS-21-003-3,MIS21.3,,AH,,% missing: ADMITTING-PROV-NUM (CIP00002),tmsis_clh_rec_ip.admtg_prvdr_num,ADMITTING-PROV-NUM,CIP185,X(30),Character,Y
@@ -462,19 +462,19 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 529,IP,Claims,MIS-21-011-11,MIS21.11,,AH,,% missing: BILLING-PROV-TYPE (CIP00002),tmsis_clh_rec_ip.blg_prvdr_type_cd,BILLING-PROV-TYPE,CIP182,X(2),Character,Y
 530,IP,Claims,MIS-21-012-12,MIS21.12,,AH,,% missing: CLAIM-LINE-COUNT (CIP00002),tmsis_clh_rec_ip.cll_cnt,CLAIM-LINE-COUNT,CIP137,9(4),Numeric,Y
 531,IP,Claims,MIS-21-013-13,MIS21.13,,AH,,% missing: CROSSOVER-INDICATOR (CIP00002),tmsis_clh_rec_ip.xovr_ind,CROSSOVER-INDICATOR,CIP023,X(1),Character,Y
-532,IP,Claims,MIS-21-014-14,MIS21.14,,AH,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,Y
-533,IP,Claims,MIS-21-015-15,MIS21.15,,AH,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,Y
-534,IP,Claims,MIS-21-016-16,MIS21.16,,AH,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,Y
-535,IP,Claims,MIS-21-017-17,MIS21.17,,AH,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,Y
-536,IP,Claims,MIS-21-018-18,MIS21.18,,AH,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,Y
-537,IP,Claims,MIS-21-019-19,MIS21.19,,AH,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,Y
-538,IP,Claims,MIS-21-020-20,MIS21.20,,AH,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,Y
-539,IP,Claims,MIS-21-021-21,MIS21.21,,AH,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,Y
-540,IP,Claims,MIS-21-022-22,MIS21.22,,AH,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,Y
-541,IP,Claims,MIS-21-023-23,MIS21.23,,AH,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,Y
-542,IP,Claims,MIS-21-024-24,MIS21.24,,AH,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,Y
-543,IP,Claims,MIS-21-025-25,MIS21.25,,AH,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,Y
-544,IP,Claims,MIS-21-026-26,MIS21.26,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,Y
+532,IP,Claims,MIS-21-014-14,MIS21.14,,AH,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,N
+533,IP,Claims,MIS-21-015-15,MIS21.15,,AH,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,N
+534,IP,Claims,MIS-21-016-16,MIS21.16,,AH,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,N
+535,IP,Claims,MIS-21-017-17,MIS21.17,,AH,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,N
+536,IP,Claims,MIS-21-018-18,MIS21.18,,AH,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,N
+537,IP,Claims,MIS-21-019-19,MIS21.19,,AH,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,N
+538,IP,Claims,MIS-21-020-20,MIS21.20,,AH,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,N
+539,IP,Claims,MIS-21-021-21,MIS21.21,,AH,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,N
+540,IP,Claims,MIS-21-022-22,MIS21.22,,AH,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,N
+541,IP,Claims,MIS-21-023-23,MIS21.23,,AH,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,N
+542,IP,Claims,MIS-21-024-24,MIS21.24,,AH,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,N
+543,IP,Claims,MIS-21-025-25,MIS21.25,,AH,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,N
+544,IP,Claims,MIS-21-026-26,MIS21.26,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,N
 545,IP,Claims,MIS-21-027-27,MIS21.27,,AH,,% missing: DISCHARGE-DATE (CIP00002),tmsis_clh_rec_ip.dschrg_dt,DISCHARGE-DATE,CIP096,9(8),Numeric,Y
 546,IP,Claims,MIS-21-028-28,MIS21.28,,AH,,% missing: FIXED-PAYMENT-IND (CIP00002),tmsis_clh_rec_ip.fixd_pymt_ind,FIXED-PAYMENT-IND,CIP125,X(1),Character,Y
 547,IP,Claims,MIS-21-029-29,MIS21.29,,AH,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CIP00002),tmsis_clh_rec_ip.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CIP139,X(1),Character,Y
@@ -538,11 +538,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 605,LT,Claims,MIS-23-010-10,MIS23.10,,AH,,% missing: BILLING-PROV-TYPE (CLT00002),tmsis_clh_rec_lt.blg_prvdr_type_cd,BILLING-PROV-TYPE,CLT133,X(2),Character,Y
 606,LT,Claims,MIS-23-011-11,MIS23.11,,AH,,% missing: CLAIM-LINE-COUNT (CLT00002),tmsis_clh_rec_lt.cll_cnt,CLAIM-LINE-COUNT,CLT087,9(4),Numeric,Y
 607,LT,Claims,MIS-23-012-12,MIS23.12,,AH,,% missing: CROSSOVER-INDICATOR (CLT00002),tmsis_clh_rec_lt.xovr_ind,CROSSOVER-INDICATOR,CLT023,X(1),Character,Y
-608,LT,Claims,MIS-23-013-13,MIS23.13,,AH,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,Y
-609,LT,Claims,MIS-23-014-14,MIS23.14,,AH,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,Y
-610,LT,Claims,MIS-23-015-15,MIS23.15,,AH,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,Y
-611,LT,Claims,MIS-23-016-16,MIS23.16,,AH,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,Y
-612,LT,Claims,MIS-23-017-17,MIS23.17,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,Y
+608,LT,Claims,MIS-23-013-13,MIS23.13,,AH,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,N
+609,LT,Claims,MIS-23-014-14,MIS23.14,,AH,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,N
+610,LT,Claims,MIS-23-015-15,MIS23.15,,AH,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,N
+611,LT,Claims,MIS-23-016-16,MIS23.16,,AH,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,N
+612,LT,Claims,MIS-23-017-17,MIS23.17,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,N
 613,LT,Claims,MIS-23-018-18,MIS23.18,,AH,,% missing: ENDING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE,CLT049,9(8),Numeric,Y
 614,LT,Claims,MIS-23-019-19,MIS23.19,,AH,,% missing: FIXED-PAYMENT-IND (CLT00002),tmsis_clh_rec_lt.fixd_pymt_ind,FIXED-PAYMENT-IND,CLT075,X(1),Character,Y
 615,LT,Claims,MIS-23-020-20,MIS23.20,,AH,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CLT00002),tmsis_clh_rec_lt.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CLT091,X(1),Character,Y
@@ -600,11 +600,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 667,OT,Claims,MIS-25-008-8,MIS25.8,,AH,,% missing: BILLING-PROV-TYPE (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_type_cd,BILLING-PROV-TYPE,COT115,X(2),Character,Y
 668,OT,Claims,MIS-25-009-9,MIS25.9,,AH,,% missing: CLAIM-LINE-COUNT (COT00002),tmsis_clh_rec_othr_toc.cll_cnt,CLAIM-LINE-COUNT,COT070,9(4),Numeric,Y
 669,OT,Claims,MIS-25-001-10,MIS25.10,,AH,,% missing: CROSSOVER-INDICATOR (COT00002),tmsis_clh_rec_othr_toc.xovr_ind,CROSSOVER-INDICATOR,COT023,X(1),Character,Y
-670,OT,Claims,MIS-25-011-11,MIS25.11,,AH,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,Y
-671,OT,Claims,MIS-25-012-12,MIS25.12,,AH,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,Y
-672,OT,Claims,MIS-25-013-13,MIS25.13,,AH,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,Y
-673,OT,Claims,MIS-25-014-14,MIS25.14,,AH,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,Y
-674,OT,Claims,MIS-25-015-15,MIS25.15,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,Y
+670,OT,Claims,MIS-25-011-11,MIS25.11,,AH,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,N
+671,OT,Claims,MIS-25-012-12,MIS25.12,,AH,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,N
+672,OT,Claims,MIS-25-013-13,MIS25.13,,AH,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,N
+673,OT,Claims,MIS-25-014-14,MIS25.14,,AH,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,N
+674,OT,Claims,MIS-25-015-15,MIS25.15,,AH,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,N
 675,OT,Claims,MIS-25-016-16,MIS25.16,,AH,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT034,9(8),Numeric,Y
 676,OT,Claims,MIS-25-017-17,MIS25.17,,AH,,% missing: FIXED-PAYMENT-IND (COT00002),tmsis_clh_rec_othr_toc.fixd_pymt_ind,FIXED-PAYMENT-IND,COT061,X(1),Character,Y
 677,OT,Claims,MIS-25-018-18,MIS25.18,,AH,,% missing: HEALTH-HOME-PROV-IND (COT00002),tmsis_clh_rec_othr_toc.hh_prvdr_ind,HEALTH-HOME-PROV-IND,COT109,X(1),Character,Y
@@ -630,7 +630,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 697,OT,Claims,MIS-25-038-38,MIS25.38,,AH,,% missing: TYPE-OF-BILL (COT00002),tmsis_clh_rec_othr_toc.bill_type_cd,TYPE-OF-BILL,COT038,X(4),Character,Y
 698,OT,Claims,MIS-26-002-2,MIS26.2,,AH,,% missing: ALLOWED-AMT (COT00003),tmsis_cll_rec_othr_toc.alowd_amt,ALLOWED-AMT,COT175,S9(11)V99,Numeric,Y
 699,OT,Claims,MIS-26-003-3,MIS26.3,,AH,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
-700,OT,Claims,MIS-26-004-4,MIS26.4,,AH,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
+700,OT,Claims,MIS-26-004-4,MIS26.4,,AH,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,N
 701,OT,Claims,MIS-26-005-5,MIS26.5,,AH,,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
 702,OT,Claims,MIS-26-006-6,MIS26.6,,AH,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 703,OT,Claims,MIS-26-007-7,MIS26.7,,AH,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
@@ -723,19 +723,19 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 790,IP,Claims,MIS-79-011-11,MIS79.11,,AZ,,% missing: BILLING-PROV-TYPE (CIP00002),tmsis_clh_rec_ip.blg_prvdr_type_cd,BILLING-PROV-TYPE,CIP182,X(2),Character,Y
 791,IP,Claims,MIS-79-012-12,MIS79.12,,AZ,,% missing: CLAIM-LINE-COUNT (CIP00002),tmsis_clh_rec_ip.cll_cnt,CLAIM-LINE-COUNT,CIP137,9(4),Numeric,Y
 792,IP,Claims,MIS-79-013-13,MIS79.13,,AZ,,% missing: CROSSOVER-INDICATOR (CIP00002),tmsis_clh_rec_ip.xovr_ind,CROSSOVER-INDICATOR,CIP023,X(1),Character,Y
-793,IP,Claims,MIS-79-014-14,MIS79.14,,AZ,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,Y
-794,IP,Claims,MIS-79-015-15,MIS79.15,,AZ,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,Y
-795,IP,Claims,MIS-79-016-16,MIS79.16,,AZ,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,Y
-796,IP,Claims,MIS-79-017-17,MIS79.17,,AZ,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,Y
-797,IP,Claims,MIS-79-018-18,MIS79.18,,AZ,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,Y
-798,IP,Claims,MIS-79-019-19,MIS79.19,,AZ,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,Y
-799,IP,Claims,MIS-79-020-20,MIS79.20,,AZ,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,Y
-800,IP,Claims,MIS-79-021-21,MIS79.21,,AZ,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,Y
-801,IP,Claims,MIS-79-022-22,MIS79.22,,AZ,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,Y
-802,IP,Claims,MIS-79-023-23,MIS79.23,,AZ,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,Y
-803,IP,Claims,MIS-79-024-24,MIS79.24,,AZ,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,Y
-804,IP,Claims,MIS-79-025-25,MIS79.25,,AZ,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,Y
-805,IP,Claims,MIS-79-026-26,MIS79.26,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,Y
+793,IP,Claims,MIS-79-014-14,MIS79.14,,AZ,,% missing: DIAGNOSIS-CODE-1 (CIP00002),tmsis_clh_rec_ip.dgns_1_cd,DIAGNOSIS-CODE-1,CIP032,X(7),Character,N
+794,IP,Claims,MIS-79-015-15,MIS79.15,,AZ,,% missing: DIAGNOSIS-CODE-10 (CIP00002),tmsis_clh_rec_ip.dgns_10_cd,DIAGNOSIS-CODE-10,CIP059,X(7),Character,N
+795,IP,Claims,MIS-79-016-16,MIS79.16,,AZ,,% missing: DIAGNOSIS-CODE-11 (CIP00002),tmsis_clh_rec_ip.dgns_11_cd,DIAGNOSIS-CODE-11,CIP062,X(7),Character,N
+796,IP,Claims,MIS-79-017-17,MIS79.17,,AZ,,% missing: DIAGNOSIS-CODE-12 (CIP00002),tmsis_clh_rec_ip.dgns_12_cd,DIAGNOSIS-CODE-12,CIP065,X(7),Character,N
+797,IP,Claims,MIS-79-018-18,MIS79.18,,AZ,,% missing: DIAGNOSIS-CODE-2 (CIP00002),tmsis_clh_rec_ip.dgns_2_cd,DIAGNOSIS-CODE-2,CIP035,X(7),Character,N
+798,IP,Claims,MIS-79-019-19,MIS79.19,,AZ,,% missing: DIAGNOSIS-CODE-3 (CIP00002),tmsis_clh_rec_ip.dgns_3_cd,DIAGNOSIS-CODE-3,CIP038,X(7),Character,N
+799,IP,Claims,MIS-79-020-20,MIS79.20,,AZ,,% missing: DIAGNOSIS-CODE-4 (CIP00002),tmsis_clh_rec_ip.dgns_4_cd,DIAGNOSIS-CODE-4,CIP041,X(7),Character,N
+800,IP,Claims,MIS-79-021-21,MIS79.21,,AZ,,% missing: DIAGNOSIS-CODE-5 (CIP00002),tmsis_clh_rec_ip.dgns_5_cd,DIAGNOSIS-CODE-5,CIP044,X(7),Character,N
+801,IP,Claims,MIS-79-022-22,MIS79.22,,AZ,,% missing: DIAGNOSIS-CODE-6 (CIP00002),tmsis_clh_rec_ip.dgns_6_cd,DIAGNOSIS-CODE-6,CIP047,X(7),Character,N
+802,IP,Claims,MIS-79-023-23,MIS79.23,,AZ,,% missing: DIAGNOSIS-CODE-7 (CIP00002),tmsis_clh_rec_ip.dgns_7_cd,DIAGNOSIS-CODE-7,CIP050,X(7),Character,N
+803,IP,Claims,MIS-79-024-24,MIS79.24,,AZ,,% missing: DIAGNOSIS-CODE-8 (CIP00002),tmsis_clh_rec_ip.dgns_8_cd,DIAGNOSIS-CODE-8,CIP053,X(7),Character,N
+804,IP,Claims,MIS-79-025-25,MIS79.25,,AZ,,% missing: DIAGNOSIS-CODE-9 (CIP00002),tmsis_clh_rec_ip.dgns_9_cd,DIAGNOSIS-CODE-9,CIP056,X(7),Character,N
+805,IP,Claims,MIS-79-026-26,MIS79.26,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (CIP00002),tmsis_clh_rec_ip.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CIP034,X(1),Character,N
 806,IP,Claims,MIS-79-027-27,MIS79.27,,AZ,,% missing: DISCHARGE-DATE (CIP00002),tmsis_clh_rec_ip.dschrg_dt,DISCHARGE-DATE,CIP096,9(8),Numeric,Y
 807,IP,Claims,MIS-79-028-28,MIS79.28,,AZ,,% missing: FIXED-PAYMENT-IND (CIP00002),tmsis_clh_rec_ip.fixd_pymt_ind,FIXED-PAYMENT-IND,CIP125,X(1),Character,Y
 808,IP,Claims,MIS-79-029-29,MIS79.29,,AZ,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CIP00002),tmsis_clh_rec_ip.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CIP139,X(1),Character,Y
@@ -799,11 +799,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 866,LT,Claims,MIS-81-010-10,MIS81.10,,AZ,,% missing: BILLING-PROV-TYPE (CLT00002),tmsis_clh_rec_lt.blg_prvdr_type_cd,BILLING-PROV-TYPE,CLT133,X(2),Character,Y
 867,LT,Claims,MIS-81-011-11,MIS81.11,,AZ,,% missing: CLAIM-LINE-COUNT (CLT00002),tmsis_clh_rec_lt.cll_cnt,CLAIM-LINE-COUNT,CLT087,9(4),Numeric,Y
 868,LT,Claims,MIS-81-012-12,MIS81.12,,AZ,,% missing: CROSSOVER-INDICATOR (CLT00002),tmsis_clh_rec_lt.xovr_ind,CROSSOVER-INDICATOR,CLT023,X(1),Character,Y
-869,LT,Claims,MIS-81-013-13,MIS81.13,,AZ,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,Y
-870,LT,Claims,MIS-81-014-14,MIS81.14,,AZ,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,Y
-871,LT,Claims,MIS-81-015-15,MIS81.15,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,Y
-872,LT,Claims,MIS-81-016-16,MIS81.16,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,Y
-873,LT,Claims,MIS-81-017-17,MIS81.17,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,Y
+869,LT,Claims,MIS-81-013-13,MIS81.13,,AZ,,% missing: DIAGNOSIS-CODE-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd,DIAGNOSIS-CODE-1,CLT029,X(7),Character,N
+870,LT,Claims,MIS-81-014-14,MIS81.14,,AZ,,% missing: DIAGNOSIS-CODE-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd,DIAGNOSIS-CODE-2,CLT032,X(7),Character,N
+871,LT,Claims,MIS-81-015-15,MIS81.15,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,CLT030,X(1),Character,N
+872,LT,Claims,MIS-81-016-16,MIS81.16,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-2 (CLT00002),tmsis_clh_rec_lt.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,CLT033,X(1),Character,N
+873,LT,Claims,MIS-81-017-17,MIS81.17,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (CLT00002),tmsis_clh_rec_lt.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,CLT031,X(1),Character,N
 874,LT,Claims,MIS-81-018-18,MIS81.18,,AZ,,% missing: ENDING-DATE-OF-SERVICE (CLT00002),tmsis_clh_rec_lt.srvc_endg_dt,ENDING-DATE-OF-SERVICE,CLT049,9(8),Numeric,Y
 875,LT,Claims,MIS-81-019-19,MIS81.19,,AZ,,% missing: FIXED-PAYMENT-IND (CLT00002),tmsis_clh_rec_lt.fixd_pymt_ind,FIXED-PAYMENT-IND,CLT075,X(1),Character,Y
 876,LT,Claims,MIS-81-020-20,MIS81.20,,AZ,,% missing: HEALTH-CARE-ACQUIRED-CONDITION-IND (CLT00002),tmsis_clh_rec_lt.hlth_care_acqrd_cond_cd,HEALTH-CARE-ACQUIRED-CONDITION-IND,CLT091,X(1),Character,Y
@@ -861,11 +861,11 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 928,OT,Claims,MIS-83-008-8,MIS83.8,,AZ,,% missing: BILLING-PROV-TYPE (COT00002),tmsis_clh_rec_othr_toc.blg_prvdr_type_cd,BILLING-PROV-TYPE,COT115,X(2),Character,Y
 929,OT,Claims,MIS-83-009-9,MIS83.9,,AZ,,% missing: CLAIM-LINE-COUNT (COT00002),tmsis_clh_rec_othr_toc.cll_cnt,CLAIM-LINE-COUNT,COT070,9(4),Numeric,Y
 930,OT,Claims,MIS-83-010-10,MIS83.10,,AZ,,% missing: CROSSOVER-INDICATOR (COT00002),tmsis_clh_rec_othr_toc.xovr_ind,CROSSOVER-INDICATOR,COT023,X(1),Character,Y
-931,OT,Claims,MIS-83-011-11,MIS83.11,,AZ,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,Y
-932,OT,Claims,MIS-83-012-12,MIS83.12,,AZ,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,Y
-933,OT,Claims,MIS-83-013-13,MIS83.13,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,Y
-934,OT,Claims,MIS-83-014-14,MIS83.14,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,Y
-935,OT,Claims,MIS-83-015-15,MIS83.15,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,Y
+931,OT,Claims,MIS-83-011-11,MIS83.11,,AZ,,% missing: DIAGNOSIS-CODE-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd,DIAGNOSIS-CODE-1,COT027,X(7),Character,N
+932,OT,Claims,MIS-83-012-12,MIS83.12,,AZ,,% missing: DIAGNOSIS-CODE-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd,DIAGNOSIS-CODE-2,COT030,X(7),Character,N
+933,OT,Claims,MIS-83-013-13,MIS83.13,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_1_cd_ind,DIAGNOSIS-CODE-FLAG-1,COT028,X(1),Character,N
+934,OT,Claims,MIS-83-014-14,MIS83.14,,AZ,,% missing: DIAGNOSIS-CODE-FLAG-2 (COT00002),tmsis_clh_rec_othr_toc.dgns_2_cd_ind,DIAGNOSIS-CODE-FLAG-2,COT031,X(1),Character,N
+935,OT,Claims,MIS-83-015-15,MIS83.15,,AZ,,% missing: DIAGNOSIS-POA-FLAG-1 (COT00002),tmsis_clh_rec_othr_toc.dgns_poa_1_cd_ind,DIAGNOSIS-POA-FLAG-1,COT029,X(1),Character,N
 936,OT,Claims,MIS-83-016-16,MIS83.16,,AZ,,% missing: ENDING-DATE-OF-SERVICE (COT00002),tmsis_clh_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT034,9(8),Numeric,Y
 937,OT,Claims,MIS-83-017-17,MIS83.17,,AZ,,% missing: FIXED-PAYMENT-IND (COT00002),tmsis_clh_rec_othr_toc.fixd_pymt_ind,FIXED-PAYMENT-IND,COT061,X(1),Character,Y
 938,OT,Claims,MIS-83-018-18,MIS83.18,,AZ,,% missing: HEALTH-HOME-PROV-IND (COT00002),tmsis_clh_rec_othr_toc.hh_prvdr_ind,HEALTH-HOME-PROV-IND,COT109,X(1),Character,Y
@@ -891,7 +891,7 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 958,OT,Claims,MIS-83-038-38,MIS83.38,,AZ,,% missing: TYPE-OF-BILL (COT00002),tmsis_clh_rec_othr_toc.bill_type_cd,TYPE-OF-BILL,COT038,X(4),Character,Y
 959,OT,Claims,MIS-84-001-1,MIS84.1,,AZ,1,% missing: ALLOWED-AMT (COT00003),tmsis_cll_rec_othr_toc.alowd_amt,ALLOWED-AMT,COT175,S9(11)V99,Numeric,Y
 960,OT,Claims,MIS-84-002-2,MIS84.2,,AZ,,% missing: BEGINNING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_bgnng_dt,BEGINNING-DATE-OF-SERVICE,COT166,9(8),Numeric,Y
-961,OT,Claims,MIS-84-003-3,MIS84.3,,AZ,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,Y
+961,OT,Claims,MIS-84-003-3,MIS84.3,,AZ,,% missing: BENEFIT-TYPE (COT00003),tmsis_cll_rec_othr_toc.bnft_type_cd,BENEFIT-TYPE,COT209,X(3),Character,N
 962,OT,Claims,MIS-84-004-4,MIS84.4,,AZ,1,% missing: BILLED-AMT (COT00003),tmsis_cll_rec_othr_toc.bill_amt,BILLED-AMT,COT174,S9(11)V99,Numeric,Y
 963,OT,Claims,MIS-84-005-5,MIS84.5,,AZ,,% missing: BENEFICIARY-COPAYMENT-PAID-AMOUNT (COT00003),tmsis_cll_rec_othr_toc.bene_copmt_pd_amt,BENEFICIARY-COPAYMENT-PAID-AMOUNT,COT176,S9(11)V99,Numeric,Y
 964,OT,Claims,MIS-84-006-6,MIS84.6,,AZ,,% missing: ENDING-DATE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.srvc_endg_dt,ENDING-DATE-OF-SERVICE,COT167,9(8),Numeric,Y
@@ -971,7 +971,27 @@ Sort Order,File Type,File Type - Summary,Measure ID,Measure ID Short,Non-claims 
 1038,RX,Claims,MIS-86-018-18,MIS86.18,,AZ,,% missing: REBATE-ELIGIBLE-INDICATOR (CRX00003),tmsis_cll_rec_rx.rebt_elgbl_ind,REBATE-ELIGIBLE-INDICATOR,CRX146,X(1),Character,Y
 1039,RX,Claims,MIS-86-019-19,MIS86.19,,AZ,,% missing: TPL-AMT (CRX00003),tmsis_cll_rec_rx.tpl_amt,TPL-AMT,CRX124,S9(11)V99,Numeric,Y
 1040,RX,Claims,MIS-86-020-20,MIS86.20,,AZ,,% missing: TYPE-OF-SERVICE (CRX00003),tmsis_cll_rec_rx.stc_cd,TYPE-OF-SERVICE,CRX134,X(3),Character,Y
-1041,OT,Claims,MIS-88-001-1,MIS88.1,,BA,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
-1042,OT,Claims,MIS-90-001-1,MIS90.1,,BB,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,Y
-1043,OT,Claims,MIS-6-024_42,MIS6.42,,AA,,% missing: ORDERING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_num,ORDERING-PROV-NUM,COT228,X(30),Numeric,Y
-1044,OT,Claims,MIS-6-024_43,MIS6.43,,AA,,% missing: ORDERING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_npi_num,ORDERING-PROV-NPI-NUM,COT229,X(10),Numeric,Y
+1041,OT,Claims,MIS-88-001-1,MIS88.1,,BA,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,N
+1042,OT,Claims,MIS-90-001-1,MIS90.1,,BB,,% missing: TYPE-OF-SERVICE (COT00003),tmsis_cll_rec_othr_toc.stc_cd,TYPE-OF-SERVICE,COT186,X(3),Character,N
+1043,OT,Claims,MIS-6-024_42,MIS6.42,,AA,,% missing: ORDERING-PROV-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_num,ORDERING-PROV-NUM,COT228,X(30),Numeric,N
+1044,OT,Claims,MIS-6-024_43,MIS6.43,,AA,,% missing: ORDERING-PROV-NPI-NUM (COT00002),tmsis_clh_rec_othr_toc.ordrg_prvdr_npi_num,ORDERING-PROV-NPI-NUM,COT229,X(10),Numeric,N
+1045,IP,Claims,MIS-91-001-1,MIS91.1,,AH,,% missing: DIAGNOSIS-CODE (CIP00004),tmsis_clm_dx_ip.dgns_cd,DIAGNOSIS-CODE,CIP332,X(7),Character,Y
+1046,IP,Claims,MIS-91-001-2,MIS91.2,,AH,,% missing: DIAGNOSIS-CODE-FLAG (CIP00004),tmsis_clm_dx_ip.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CIP331,X(1),Character,Y
+1047,IP,Claims,MIS-91-001-3,MIS91.3,,AH,,% missing: DIAGNOSIS-POA-FLAG (CIP00004),tmsis_clm_dx_ip.dgns_poa_cd_ind,DIAGNOSIS-POA-FLAG,CIP333,X(1),Character,Y
+1048,LT,Claims,MIS-92-001-1,MIS92.1,,AH,,% missing: DIAGNOSIS-CODE (CLT00004),tmsis_clm_dx_lt.dgns_cd,DIAGNOSIS-CODE,CLT278,X(7),Character,Y
+1049,LT,Claims,MIS-92-001-2,MIS92.2,,AH,,% missing: DIAGNOSIS-CODE-FLAG (CLT00004),tmsis_clm_dx_lt.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CLT277,X(1),Character,Y
+1050,LT,Claims,MIS-92-001-3,MIS92.3,,AH,,% missing: DIAGNOSIS-POA-FLAG (CLT00004),tmsis_clm_dx_lt.dgns_poa_cd_ind,DIAGNOSIS-POA-FLAG,CLT279,X(1),Character,Y
+1051,OT,Claims,MIS-93-001-1,MIS93.1,,AH,,% missing: DIAGNOSIS-CODE (COT00004),tmsis_clm_dx_othr_toc.dgns_cd,DIAGNOSIS-CODE,COT284,X(7),Character,Y
+1052,OT,Claims,MIS-93-001-2,MIS93.2,,AH,,% missing: DIAGNOSIS-CODE-FLAG (COT00004),tmsis_clm_dx_othr_toc.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,COT283,X(1),Character,Y
+1053,RX,Claims,MIS-94-001-1,MIS94.1,,AH,,% missing: DIAGNOSIS-CODE (CRX00004),tmsis_clm_dx_rx.dgns_cd,DIAGNOSIS-CODE,CRX206,X(7),Character,Y
+1054,RX,Claims,MIS-94-001-2,MIS94.2,,AH,,% missing: DIAGNOSIS-CODE-FLAG (CRX00004),tmsis_clm_dx_rx.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CRX205,X(1),Character,Y
+1055,IP,Claims,MIS-95-001-1,MIS95.1,,AZ,,% missing: DIAGNOSIS-CODE (CIP00004),tmsis_clm_dx_ip.dgns_cd,DIAGNOSIS-CODE,CIP332,X(7),Character,Y
+1056,IP,Claims,MIS-95-001-2,MIS95.2,,AZ,,% missing: DIAGNOSIS-CODE-FLAG (CIP00004),tmsis_clm_dx_ip.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CIP331,X(1),Character,Y
+1057,IP,Claims,MIS-95-001-3,MIS95.3,,AZ,,% missing: DIAGNOSIS-POA-FLAG (CIP00004),tmsis_clm_dx_ip.dgns_poa_cd_ind,DIAGNOSIS-POA-FLAG,CIP333,X(1),Character,Y
+1058,LT,Claims,MIS-96-001-1,MIS96.1,,AZ,,% missing: DIAGNOSIS-CODE (CLT00004),tmsis_clm_dx_lt.dgns_cd,DIAGNOSIS-CODE,CLT278,X(7),Character,Y
+1059,LT,Claims,MIS-96-001-2,MIS96.2,,AZ,,% missing: DIAGNOSIS-CODE-FLAG (CLT00004),tmsis_clm_dx_lt.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CLT277,X(1),Character,Y
+1060,LT,Claims,MIS-96-001-3,MIS96.3,,AZ,,% missing: DIAGNOSIS-POA-FLAG (CLT00004),tmsis_clm_dx_lt.dgns_poa_cd_ind,DIAGNOSIS-POA-FLAG,CLT279,X(1),Character,Y
+1061,OT,Claims,MIS-97-001-1,MIS97.1,,AZ,,% missing: DIAGNOSIS-CODE (COT00004),tmsis_clm_dx_othr_toc.dgns_cd,DIAGNOSIS-CODE,COT284,X(7),Character,Y
+1062,OT,Claims,MIS-97-001-2,MIS97.2,,AZ,,% missing: DIAGNOSIS-CODE-FLAG (COT00004),tmsis_clm_dx_othr_toc.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,COT283,X(1),Character,Y
+1063,RX,Claims,MIS-98-001-1,MIS98.1,,AZ,,% missing: DIAGNOSIS-CODE (CRX00004),tmsis_clm_dx_rx.dgns_cd,DIAGNOSIS-CODE,CRX206,X(7),Character,Y
+1064,RX,Claims,MIS-98-001-2,MIS98.2,,AZ,,% missing: DIAGNOSIS-CODE-FLAG (CRX00004),tmsis_clm_dx_rx.dgns_cd_ind,DIAGNOSIS-CODE-FLAG,CRX205,X(1),Character,Y

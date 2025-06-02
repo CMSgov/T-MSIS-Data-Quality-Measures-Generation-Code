@@ -75,12 +75,70 @@ class Runner_904():
         dqm.logger.debug(z)
 
         return spark.sql(z)
+    
+    def dx_avg_occur(spark, dqm: DQMeasures, measure_id, x) :
+
+        str_diag = ""
+
+        str_diag = str_diag + "CASE WHEN" + " " + DQClosure.not_missing_1('dgns_cd', x['count_len']) + " " + \
+                                   "THEN 1 ELSE 0 END"
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'904' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,NULL AS valid_value
+
+                FROM (select sum(denom) as denom
+                            ,sum(numer) as numer
+
+                      from ( SELECT  submtg_state_cd
+                                    ,tmsis_rptg_prd
+                                    ,orgnl_clm_num
+                                    ,adjstmt_clm_num
+                                    ,adjdctn_dt
+                                    ,adjstmt_ind
+                                    ,max(CASE
+                                        WHEN ({DQClosure.parse(x['denom'])})
+                                            THEN 1
+                                        ELSE 0
+                                        END) AS denom
+                                    ,sum(CASE
+                                        WHEN ({DQClosure.parse(x['denom'])}) and
+                                             (dgns_type_cd is not null and 
+                                              trim(upper(dgns_type_cd)) not in ('A') ) 
+                                            THEN
+                                                ({str_diag})
+                                            ELSE 0 END) AS numer
+                            FROM {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                            where ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
+
+                            group by submtg_state_cd
+                                    ,tmsis_rptg_prd
+                                    ,orgnl_clm_num
+                                    ,adjstmt_clm_num
+                                    ,adjdctn_dt
+                                    ,adjstmt_ind
+                            ) a ) b
+
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
 
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    v_table = {'avg_occur': avg_occur}
+    v_table = {'avg_occur': avg_occur,
+               'dx_avg_occur':dx_avg_occur}
 
 # CC0 1.0 Universal
 

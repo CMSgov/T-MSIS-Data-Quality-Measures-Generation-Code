@@ -72,20 +72,20 @@ run_901 = [
     ['901', 'claims_pct', 'mcr1_8', 'P', '1=1', "%not_missing_1(drg_cd, 4)", 'CLH', 'ip'],
     ['901', 'claims_pct', 'mcr3_8', 'R', '1=1', "%not_missing_1(drg_cd, 4)", 'CLH', 'ip'],
 
-    ['901', 'claims_pct', 'ffs1_21', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'ffs3_9', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'mcr1_9', 'P', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'mcr3_9', 'R', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'ffs1_21', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'ffs3_9', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'mcr1_9', 'P', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'mcr3_9', 'R', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
 
-    ['901', 'claims_pct', 'ffs5_27', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
-    ['901', 'claims_pct', 'ffs7_17', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
-    ['901', 'claims_pct', 'mcr5_18', 'P', "1=1", "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
-    ['901', 'claims_pct', 'mcr7_17', 'R', "1=1", "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    #['901', 'claims_pct', 'ffs5_27', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    #['901', 'claims_pct', 'ffs7_17', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    #['901', 'claims_pct', 'mcr5_18', 'P', "1=1", "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    #['901', 'claims_pct', 'mcr7_17', 'R', "1=1", "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
 
-    ['901', 'claims_pct', 'ffs1_22', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'ffs3_10', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7)and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'mcr1_10', 'P', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
-    ['901', 'claims_pct', 'mcr3_10', 'R', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'ffs1_22', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'ffs3_10', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7)and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'mcr1_10', 'P', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
+    #['901', 'claims_pct', 'mcr3_10', 'R', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
 
     ['901', 'claims_pct', 'ffs1_23', 'A', '1=1', "%not_missing_1(PRCDR_1_CD, 8)", 'CLH', 'ip'],
     ['901', 'claims_pct', 'ffs3_11', 'F', '1=1', "%not_missing_1(PRCDR_1_CD, 8)", 'CLH', 'ip'],
@@ -152,10 +152,10 @@ run_901 = [
     ['901', 'claims_pct', 'mcr10_19', 'P', '1=1', "srvc_plc_cd='11'", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr14_19', 'R', '1=1', "srvc_plc_cd='11'", 'CLL', 'ot'],
 
-    ['901', 'claims_pct', 'ffs9_100', 'A', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'ffs11_21', 'F', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr10_21', 'P', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr14_21', 'R', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'ffs9_100', 'A', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'ffs11_21', 'F', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'mcr10_21', 'P', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'mcr14_21', 'R', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
 
     ['901', 'claims_pct', 'ffs9_102', 'A', '1=1', "%not_missing_1(prcdr_cd, 8)", 'CLL', 'ot'],
     ['901', 'claims_pct', 'ffs11_23', 'F', '1=1', "%not_missing_1(prcdr_cd, 8)", 'CLL', 'ot'],
@@ -238,7 +238,8 @@ run_901 = [
 
     ['901', 'claims_pct', 'ffs9_19', 'A', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
     ['901', 'claims_pct', 'ffs10_5', 'B', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'ffs13_1', 'H', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
+    #V4.0 Deactivate ffs13_1
+    #['901', 'claims_pct', 'ffs13_1', 'H', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr12_1', 'Q', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr16_1', 'S', "%not_missing_1(REV_CD, 4)", "%not_missing_1(HCPCS_RATE, 14)", 'CLL', 'ot'],
 
@@ -832,16 +833,12 @@ run_901 = [
 
     ['901', 'claims_pct', 'ffs26_5', 'C', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
     ['901', 'claims_pct', 'ffs26_13', 'I', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
-    ['901', 'claims_pct', 'mcr32_5', 'Y', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
     ['901', 'claims_pct', 'mcr32_6', 'O', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
-    ['901', 'claims_pct', 'mcr32_15', 'Z', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
     ['901', 'claims_pct', 'mcr32_16', 'U', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'ot'],
 
     ['901', 'claims_pct', 'ffs26_6', 'C', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
     ['901', 'claims_pct', 'ffs26_14', 'I', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr32_7', 'Y', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr32_8', 'O', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr32_17', 'Z', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr32_18', 'U', '1=1', "LINE_ADJSTMT_IND not in ('0', '1', '4', '5', '6') or LINE_ADJSTMT_IND is NULL", 'CLL', 'ot'],
 
     ['901', 'claims_pct', 'ffs26_7', 'C', '1=1', "ADJSTMT_IND not in ('0', '1', '4', '5', '6') or ADJSTMT_IND is NULL", 'CLH', 'rx'],
@@ -961,9 +958,6 @@ run_901 = [
     ['901', 'claims_pct', 'ffs53_2', 'AO', "1=1", "mdcr_pd_amt rlike '[1-9]' or tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'clh', 'lt'],
     ['901', 'claims_pct', 'mcr63_2', 'AP', "src_lctn_cd not in ('22','23')", "mdcr_pd_amt rlike '[1-9]' or tot_mdcr_coinsrnc_amt rlike '[1-9]' or tot_mdcr_ddctbl_amt rlike '[1-9]'", 'clh', 'lt'],
 
-    ['901', 'claims_pct', 'mcr9_4', 'D', '1=1', "%not_missing_1(plan_id_num, 12)", 'CLL', 'ot'],
-    ['901', 'claims_pct', 'mcr13_4', 'J', '1=1', "%not_missing_1(plan_id_num, 12)", 'CLL', 'ot'],
-
     ['901', 'claims_pct', 'mcr10_4',  'P', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='01' and (%not_missing_1(PRCDR_CD, 8)) and ((PRCDR_CD rlike '[0-9]{5}') or (PRCDR_CD rlike '[0-9]{4}([A-Za-z])'))", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr10_11', 'P', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='06' and (%not_missing_1(PRCDR_CD, 8)) and ((PRCDR_CD rlike '[A-V][A-Z][0-9]{3}'))", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr10_12', 'P', "STC_CD IN('012', '025', '026')", "PRCDR_CD_IND='06' and (%not_missing_1(PRCDR_CD, 8)) and ((PRCDR_CD rlike '[A-V][0-9]{4}'))",  'CLL', 'ot'],
@@ -976,12 +970,56 @@ run_901 = [
 
     #plan id measures
     ['901', 'claims_pct_planid', 'mcr56p_1', 'O', "PTNT_STUS_CD <> '30' or PTNT_STUS_CD is NULL", "DSCHRG_DT is NULL", 'CLH', 'ip'],
+
+    #ftx measures
+    ['901','ftx_pct_tbls','mcr32_5','E','1=1', "ADJSTMT_IND not in ('0','1','4','5','6') or ADJSTMT_IND is null",'',''],
+    ['901','ftx_pct_tbls','mcr32_15','K','1=1', "ADJSTMT_IND not in ('0','1','4','5','6') or ADJSTMT_IND is null",'',''],
+    ['901', 'ftx_pct_tbls', 'mcr9_4', 'D', "pyee_id_type = '02'", "%not_missing_1(pyee_id, 12)", '', ''],
+    ['901', 'ftx_pct_tbls', 'mcr13_4', 'J', "pyee_id_type = '02'", "%not_missing_1(pyee_id, 12)", '', ''],
+
+    #v4 claims
+    #['901', 'claims_pct', 'ffs1_21', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    ['901', 'dx_claims_pct_any', 'ffs1_21', 'A', '1=1', "", 'DX', 'ip'],
+    
+    #['901', 'claims_pct', 'ffs1_22', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7) and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],    
+    ['901', 'dx_claims_pct_1', 'ffs1_22', 'A', '1=1', "", 'DX', 'ip'],
+      
+    #['901', 'claims_pct', 'ffs3_9', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'ip'],
+    ['901', 'dx_claims_pct_any', 'ffs3_9', 'F', '1=1', "", 'DX', 'ip'], 
+
+    #['901', 'claims_pct', 'ffs3_10', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7) and not %not_missing_1(DGNS_2_CD, 7) and not %not_missing_1(DGNS_3_CD, 7) and not %not_missing_1(DGNS_4_CD, 7) and not %not_missing_1(DGNS_5_CD, 7) and not %not_missing_1(DGNS_6_CD, 7) and not %not_missing_1(DGNS_7_CD, 7) and not %not_missing_1(DGNS_8_CD, 7)and not %not_missing_1(DGNS_9_CD, 7) and not %not_missing_1(DGNS_10_CD, 7) and not %not_missing_1(DGNS_11_CD, 7) and not %not_missing_1(DGNS_12_CD, 7)", 'CLH', 'ip'],
+    ['901', 'dx_claims_pct_1', 'ffs3_10', 'F', '1=1', "", 'DX', 'ip'],
+
+    #['901', 'claims_pct', 'ffs5_27', 'A', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    ['901', 'dx_claims_pct_any', 'ffs5_27', 'A', '1=1', "", 'DX', 'lt'],
+
+    #['901', 'claims_pct', 'ffs7_17', 'F', '1=1', "%not_missing_1(DGNS_1_CD, 7)", 'CLH', 'lt'],
+    ['901', 'dx_claims_pct_any', 'ffs7_17', 'F', '1=1', "", 'DX', 'lt'],
+
+    ['901', 'dx_claims_pct_any', 'mcr1_9', 'P', '1=1', "", 'DX', 'ip'],
+    ['901', 'dx_claims_pct_any', 'mcr3_9', 'R', '1=1', "", 'DX', 'ip'],
+
+    ['901', 'dx_claims_pct_1', 'mcr1_10', 'P', '1=1', "", 'DX', 'ip'],
+    ['901', 'dx_claims_pct_1', 'mcr3_10', 'R', '1=1', "", 'DX', 'ip'],
+
+    ['901', 'dx_claims_pct_any', 'mcr5_18', 'P', "1=1", "", 'DX', 'lt'],
+    ['901', 'dx_claims_pct_any', 'mcr7_17', 'R', "1=1", "", 'DX', 'lt'],
+
+    #['901', 'claims_pct', 'ffs9_100', 'A', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'ffs11_21', 'F', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'mcr10_21', 'P', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    #['901', 'claims_pct', 'mcr14_21', 'R', "STC_CD IN('012', '002', '061', '028', '041')", "%not_missing_1(DGNS_1_CD, 7)", 'CLL', 'ot'],
+    ['901', 'dx_claims_pct_any_cll', 'ffs9_100', 'A', "STC_CD IN('012', '002', '061', '028', '041')", "", 'DX', 'ot'],
+    ['901', 'dx_claims_pct_any_cll', 'ffs11_21', 'F', "STC_CD in ('012', '002', '061', '028', '041')", "", 'DX', 'ot'],
+    ['901', 'dx_claims_pct_any_cll', 'mcr10_21', 'P', "STC_CD IN('012', '002', '061', '028', '041')", "", 'DX', 'ot'],
+    ['901', 'dx_claims_pct_any_cll', 'mcr14_21', 'R', "STC_CD IN('012', '002', '061', '028', '041')", "", 'DX', 'ot'],
 ]
 
 df = DataFrame(run_901, columns=['series', 'cb', 'measure_id', 'claim_cat', 'denom', 'numer', 'level', 'claim_type'])
+#['901', 'dx_claims_pct_any', 'ffs1_21', 'A', '1=1', "", 'DX', 'ip'],
 df['measure_id'] = df['measure_id'].str.upper()
 df['claim_cat'] = df['claim_cat'].str.upper()
-# df = df.set_index("measure_id", drop = False)
+# df = df.set_index("measure_id", drop = False)32
 print(df.head(10))
 df.to_pickle('./run_901.pkl')
 

@@ -2,10 +2,10 @@ from pandas import DataFrame
 
 run_904_all_avg_occur = [
     # ffs1.28, ffs3.16, mcr1.16, mcr3.16
-    ['904', 'avg_occur', "ffs1_28", "A", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
-    ['904', 'avg_occur', "ffs3_16", "F", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
-    ['904', 'avg_occur', "mcr1_16", "P", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
-    ['904', 'avg_occur', "mcr3_16", "R", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
+    # ['904', 'avg_occur', "ffs1_28", "A", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
+    # ['904', 'avg_occur', "ffs3_16", "F", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
+    # ['904', 'avg_occur', "mcr1_16", "P", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
+    # ['904', 'avg_occur', "mcr3_16", "R", '1=1', "dgns_", "_cd", "12", "7", "CLH", "IP"],
 
     # ffs1.29, ffs3.17, mcr1.17, mcr3.17
     ['904', 'avg_occur', "ffs1_29", "A", '1=1', "prcdr_", "_cd", "6", "8", "CLH", "IP"],
@@ -13,11 +13,24 @@ run_904_all_avg_occur = [
     ['904', 'avg_occur', "mcr1_17", "P", '1=1', "prcdr_", "_cd", "6", "8", "CLH", "IP"],
     ['904', 'avg_occur', "mcr3_17", "R", '1=1', "prcdr_", "_cd", "6", "8", "CLH", "IP"],
 
-    # ffs5.28, ffs7.18, mcr5.19, mcr7.18
-    ['904', 'avg_occur', "ffs5_28", "A", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
-    ['904', 'avg_occur', "ffs7_18", "F", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
-    ['904', 'avg_occur', "mcr5_19", "P", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
-    ['904', 'avg_occur', "mcr7_18", "R", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"]
+    # # ffs5.28, ffs7.18, mcr5.19, mcr7.18
+    # ['904', 'avg_occur', "ffs5_28", "A", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
+    # ['904', 'avg_occur', "ffs7_18", "F", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
+    # ['904', 'avg_occur', "mcr5_19", "P", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"],
+    # ['904', 'avg_occur', "mcr7_18", "R", '1=1', "dgns_", "_cd", "5", "7", "CLH", "LT"]
+
+    # ffs1.28, ffs3.16, mcr1.16, mcr3.16
+    ['904', 'dx_avg_occur', "ffs1_28", "A", '1=1', "", "", "", "7", "DX", "IP"],
+    ['904', 'dx_avg_occur', "ffs3_16", "F", '1=1', "", "", "", "7", "DX", "IP"],
+    ['904', 'dx_avg_occur', "mcr1_16", "P", '1=1', "", "", "", "7", "DX", "IP"],
+    ['904', 'dx_avg_occur', "mcr3_16", "R", '1=1', "", "", "", "7", "DX", "IP"],
+
+     # ffs5.28, ffs7.18, mcr5.19, mcr7.18
+    ['904', 'dx_avg_occur', "ffs5_28", "A", '1=1', "", "", "", "7", "DX", "LT"],
+    ['904', 'dx_avg_occur', "ffs7_18", "F", '1=1', "", "", "", "7", "DX", "LT"],
+    ['904', 'dx_avg_occur', "mcr5_19", "P", '1=1', "", "", "", "7", "DX", "LT"],
+    ['904', 'dx_avg_occur', "mcr7_18", "R", '1=1', "", "", "", "7", "DX", "LT"]
+
 ]
 
 df = DataFrame(run_904_all_avg_occur, columns=['series', 'cb', 'measure_id', 'claim_cat', 'denom', 'count_var_pre', 'count_var_post', 'count_num', 'count_len', 'level', 'claim_type'])

@@ -140,12 +140,103 @@ class Runner_204:
         return spark.sql(z)
 
     # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    # Only use ftx_claim_cat as this function only runs with tmsis_indvdl_cptatn_pmpm table
+    def ftx_summ(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'204' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,case when coalesce(denom, 0) <> 0 then numer else 0 end as mvalue
+                FROM (
+                    SELECT sum(CASE
+                                WHEN ({DQClosure.parse(x['constraint'])})
+                                    AND ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat[x['claim_cat']]})
+                                    THEN 1
+                                ELSE 0
+                                END) AS denom
+                        ,sum(CASE
+                                WHEN ({DQClosure.parse(x['constraint'])})
+                                    AND ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat[x['claim_cat']]})
+                                    THEN {x['sumvar']}
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_{x['claim_type']}
+                    ) a
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+    
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    def ftx_summ_2(spark, dqm: DQMeasures, measure_id, x) :
+        
+        # Dedup across FTX tables
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                      ,'{measure_id}' AS measure_id
+                      ,'204' AS submodule
+                      ,coalesce(numer, 0) AS numer
+                      ,coalesce(denom, 0) AS denom
+                      ,case when coalesce(denom, 0) <> 0 then numer else 0 end as mvalue
+                FROM (
+                      SELECT sum(denom) as denom
+                            ,sum(numer) as numer
+                      FROM (
+                            SELECT  {de_dup_vars}
+                                    ,max(denom) as denom
+                                    ,sum(numer) as numer
+                            FROM (  
+                                  SELECT {de_dup_vars}
+                                        ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat[x['claim_cat']]}) THEN 1
+                                              ELSE 0 END AS denom
+                                        ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat[x['claim_cat']]}) THEN {x['sumvar']}
+                                              ELSE 0 END AS numer
+                                  FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                            
+                                  UNION ALL
+                            
+                                  SELECT {de_dup_vars}
+                                        ,CASE WHEN ofst_trans_type = '2' AND
+                                                   ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat[x['claim_cat']]}) THEN 1
+                                              ELSE 0 END AS denom
+                                        ,CASE WHEN ofst_trans_type = '2' AND
+                                                   ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat[x['claim_cat']]}) THEN {x['sumvar']}
+                                              ELSE 0 END AS numer
+                                  FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst 
+                            ) a    
+                            GROUP BY {de_dup_vars}
+                      ) b
+                ) c
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)    
+    
+    # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = {
             "summ": summ,
-            "summ_cll_to_clh": summ_cll_to_clh
+            "summ_cll_to_clh": summ_cll_to_clh,
+            "ftx_summ": ftx_summ,
+            "ftx_summ_2": ftx_summ_2
         }
 
 # CC0 1.0 Universal

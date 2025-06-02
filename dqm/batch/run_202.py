@@ -79,10 +79,10 @@ run_202_exp_avg_macros = [
     ['202', 'avg', 'EXP12_80', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '089'", '', 'B'],
     ['202', 'avg', 'EXP27_2', 'ot', 'clh', '', 'tot_mdcd_pd_amt', 'tot_mdcd_pd_amt>0 and tot_mdcd_pd_amt < 200000', '', 'B'],
     ['202', 'avg', 'EXP22_1', 'ot', 'cll', '', 'mdcd_pd_amt', '1=1', '', 'D'],
-    ['202', 'avg', 'EXP22_3', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '119'", '', 'D'],
-    ['202', 'avg', 'EXP20_2', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '121'", '', 'D'],
-    ['202', 'avg', 'EXP22_5', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '120'", '', 'D'],
-    ['202', 'avg', 'EXP22_7', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '122'", '', 'D'],
+   # ['202', 'avg', 'EXP22_3', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '119'", '', 'D'],
+   # ['202', 'avg', 'EXP20_2', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '121'", '', 'D'],
+   # ['202', 'avg', 'EXP22_5', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '120'", '', 'D'],
+   # ['202', 'avg', 'EXP22_7', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '122'", '', 'D'],
     ['202', 'avg', 'EXP3_4', 'ip', 'clh', '', 'tot_mdcd_pd_amt', 'tot_mdcd_pd_amt < 2000000', '', 'F'],
     ['202', 'avg', 'EXP18_4', 'rx', 'clh', '', 'tot_mdcd_pd_amt', 'tot_mdcd_pd_amt < 300000', '', 'F'],
     ['202', 'avg_cll_to_clh', 'EXP10_10', 'lt', '', 'tot_mdcd_pd_amt', '', '', "stc_cd = '044'", 'H'],
@@ -94,10 +94,24 @@ run_202_exp_avg_macros = [
     ['202', 'avg_cll_to_clh', 'EXP10_16', 'lt', '', 'tot_mdcd_pd_amt', '', '', "stc_cd = '059'", 'H'],
     ['202', 'avg_cll_to_clh', 'EXP10_17', 'lt', '', 'tot_mdcd_pd_amt', '', '', "stc_cd = '009'", 'H'],
     ['202', 'avg', 'EXP24_1', 'ot', 'cll', '', 'mdcd_pd_amt', '1=1', "stc_cd = '009'", 'J'],
-    ['202', 'avg', 'EXP24_3', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '119'", '', 'J'],
-    ['202', 'avg', 'EXP21_2', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '121'", '', 'J'],
-    ['202', 'avg', 'EXP24_5', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '120'", '', 'J'],
-    ['202', 'avg', 'EXP24_7', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '122'", '', 'J']
+    #['202', 'avg', 'EXP24_3', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '119'", '', 'J'],
+    #['202', 'avg', 'EXP21_2', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '121'", '', 'J'],
+    # ['202', 'avg', 'EXP24_5', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '120'", '', 'J'],
+    # ['202', 'avg', 'EXP24_7', 'ot', 'cll', '', 'mdcd_pd_amt', "stc_cd = '122'", '', 'J'],
+
+    #FTX
+    ['202', 'ftx_avg', 'EXP22_3', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type = '01' ", '', 'D'],
+    ['202', 'ftx_avg', 'EXP22_5', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in  ('02', '03') ", '', 'D'],
+    ['202', 'ftx_avg', 'EXP22_7', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in  ('05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '18', '19') ", '', 'D'],
+    ['202', 'ftx_avg2', 'EXP20_2', '', '', '', 'pymt_or_rcpmt_amt', '', '', 'D'],
+ 
+    ['202', 'ftx_avg', 'EXP24_3', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type = '01' ", '', 'J'],
+    ['202', 'ftx_avg', 'EXP24_5', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in  ('02', '03') ", '', 'J'],
+    ['202', 'ftx_avg', 'EXP24_7', 'tmsis_indvdl_cptatn_pmpm', '', '', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in  ('05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '18', '19') ", '', 'J'],
+    ['202', 'ftx_avg2', 'EXP21_2', '', '', '', 'pymt_or_rcpmt_amt', '', '', 'J'],
+ 
+  
+  
 ]
 
 df = DataFrame(run_202_exp_avg_macros, columns=['series', 'cb', 'measure_id', 'claim_type', 'level', 'clm_avgvar', 'avgvar', 'constraint', 'line_constraint', 'claim_cat'])

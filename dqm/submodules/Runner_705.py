@@ -78,32 +78,58 @@ class Runner_705:
     #
     # --------------------------------------------------------------------
     def all13_5(spark, dqm: DQMeasures, measure_id, x) :
-
+        
+        #Flag prgncy dx in ip dx file
         z = f"""
-                create or replace temporary view {dqm.taskprefix}_ip_hdr_clm_ab as
+                create or replace temporary view {dqm.taskprefix}_ip_dx_hdr_clm_ab as
+                select submtg_state_cd
+                       ,tmsis_rptg_prd
+                       ,orgnl_clm_num
+                       ,adjstmt_clm_num
+                       ,adjdctn_dt
+                       ,adjstmt_ind
+                       ,max(prgncy_dx) as prgncy_dx
+
+                from (select
+                            a.submtg_state_cd
+                            ,tmsis_rptg_prd
+                            ,orgnl_clm_num
+                            ,adjstmt_clm_num
+                            ,adjdctn_dt
+                            ,adjstmt_ind
+                            ,case
+                                when array_contains(code_cm,dgns_cd) then 1
+                                else 0 end as prgncy_dx
+                        
+                        from {DQMeasures.getBaseTable(dqm, 'dx', 'ip')} a
+                        left join {dqm.taskprefix}_prgncy_codes b
+                        on a.submtg_state_cd = b.submtg_state_cd
+                        where {DQM_Metadata.create_base_clh_view().claim_cat['AB']}
+                    ) c
+                group by submtg_state_cd
+                       ,tmsis_rptg_prd
+                       ,orgnl_clm_num
+                       ,adjstmt_clm_num
+                       ,adjdctn_dt
+                       ,adjstmt_ind
+             """
+        
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+         #Flag prgncy prcdr in ip claim header file
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ip_prcdr_hdr_clm_ab as
                 select
                      a.submtg_state_cd
-                    ,msis_ident_num  /**keep msis id to link to el files*/
-                    ,tmsis_rptg_prd
-                    ,orgnl_clm_num
-                    ,adjstmt_clm_num
-                    ,adjdctn_dt
-                    ,adjstmt_ind
-                    ,admsn_dt
-                    ,case
-                        when array_contains(code_cm,dgns_1_cd) then 1
-                        when array_contains(code_cm,dgns_2_cd) then 1
-                        when array_contains(code_cm,dgns_3_cd) then 1
-                        when array_contains(code_cm,dgns_4_cd) then 1
-                        when array_contains(code_cm,dgns_5_cd) then 1
-                        when array_contains(code_cm,dgns_6_cd) then 1
-                        when array_contains(code_cm,dgns_7_cd) then 1
-                        when array_contains(code_cm,dgns_8_cd) then 1
-                        when array_contains(code_cm,dgns_9_cd) then 1
-                        when array_contains(code_cm,dgns_10_cd) then 1
-                        when array_contains(code_cm,dgns_11_cd) then 1
-                        when array_contains(code_cm,dgns_12_cd) then 1
-                        else 0 end as prgncy_dx
+                    ,a.msis_ident_num  /**keep msis id to link to el files*/
+                    ,a.tmsis_rptg_prd
+                    ,a.orgnl_clm_num
+                    ,a.adjstmt_clm_num
+                    ,a.adjdctn_dt
+                    ,a.adjstmt_ind
+                    ,a.admsn_dt
+                    
                     ,case
                         when array_contains(code_pcs,prcdr_1_cd) then 1
                         when array_contains(code_pcs,prcdr_2_cd) then 1
@@ -116,6 +142,35 @@ class Runner_705:
                 left join {dqm.taskprefix}_prgncy_codes b
                 on a.submtg_state_cd = b.submtg_state_cd
                 where {DQM_Metadata.create_base_clh_view().claim_cat['AB']}
+             """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        #Merge dx and claim header together
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ip_hdr_clm_ab as
+                select
+                     a.submtg_state_cd
+                    ,a.msis_ident_num  /**keep msis id to link to el files*/
+                    ,a.tmsis_rptg_prd
+                    ,a.orgnl_clm_num
+                    ,a.adjstmt_clm_num
+                    ,a.adjdctn_dt
+                    ,a.adjstmt_ind
+                    ,a.admsn_dt
+                    
+                    ,coalesce(a.prgncy_pcs,0) as prgncy_pcs
+                    ,coalesce(b.prgncy_dx,0) as prgncy_dx
+
+                from {dqm.taskprefix}_ip_prcdr_hdr_clm_ab a
+                left join {dqm.taskprefix}_ip_dx_hdr_clm_ab b
+                on     a.submtg_state_cd = b.submtg_state_cd AND
+                       a.tmsis_rptg_prd = b.tmsis_rptg_prd AND
+                       a.orgnl_clm_num = b.orgnl_clm_num AND
+                       a.adjstmt_clm_num = b.adjstmt_clm_num AND
+                       a.adjdctn_dt = b.adjdctn_dt AND
+                       a.adjstmt_ind = b.adjstmt_ind
              """
 
         dqm.logger.debug(z)
@@ -391,9 +446,9 @@ class Runner_705:
                     ,pgm_type_cd
                     ,wvr_id
                     ,case when (pgm_type_cd not in ('02') or pgm_type_cd is null) then 1 else 0 end as all13_1_orig
-                    ,case when array_contains(code_cm,dgns_1_cd)
-                            or array_contains(code_cm,dgns_2_cd)
-                        then 1 else 0 end as prgncy_dx
+                    /*,case when array_contains(code_cm,dgns_1_cd)
+                             or array_contains(code_cm,dgns_2_cd)
+                         then 1 else 0 end as prgncy_dx */
 
                 from {DQMeasures.getBaseTable(dqm, 'clh', 'ot')} a
                 left join {dqm.taskprefix}_prgncy_codes b
@@ -439,27 +494,20 @@ class Runner_705:
                      submtg_state_cd
                     ,sum(all13_1_numer_1) as all13_1_numer
                     ,sum(all13_1_denom_1) as all13_1_denom
-                    ,sum(all13_6_numer_1) as all13_6_numer
-                    ,sum(all13_6_denom_1) as all13_6_denom
-
                     ,case when (sum(all13_1_denom_1) > 0) then round((sum(all13_1_numer_1) / sum(all13_1_denom_1)),2) else null end as all13_1_mvalue
-                    ,case when (sum(all13_6_denom_1) > 0) then round((sum(all13_6_numer_1) / sum(all13_6_denom_1)),2) else null end as all13_6_mvalue
-
+               
                 FROM ( /* agg to st, mid */
                     SELECT
                          submtg_state_cd
                         ,msis_ident_num
                         ,max(all13_1_denom_orig) as all13_1_denom_1
-                        ,max(all13_6_denom_orig) as all13_6_denom_1
                         ,max(case when all13_1_denom_orig=1 then all13_1_numer_orig else 0 end) as all13_1_numer_1
-                        ,max(case when all13_6_denom_orig=1 then all13_6_numer_orig else 0 end) as all13_6_numer_1
                     FROM ( /* select from q1, q2, q3 */
                         SELECT
                              q1.submtg_state_cd
                             ,q1.msis_ident_num
                             ,case when q3.rstrctd_bnfts_cd in ('6') then 1 else 0 end as all13_1_denom_orig
-                            ,case when q3.rstrctd_bnfts_cd in ('2') then 1 else 0 end as all13_6_denom_orig
-                            ,case when all13_6_numer_excl =1 then 0 else 1 end as all13_6_numer_orig
+                       
                             , all13_1_numer_orig
                         FROM ( /* ot_hdr_clm_bene_ab */
 
@@ -473,7 +521,7 @@ class Runner_705:
                                 ,a.adjstmt_ind
                                 ,a.srvc_bgnng_dt
                                 ,max(a.all13_1_orig) as all13_1_numer_orig
-                                ,max(case when b.rev_cd_excl=1 or a.prgncy_dx=1 or b.prgncy_pcs=1 then 1 else 0 end ) as all13_6_numer_excl
+                  
                             FROM
                                 {dqm.taskprefix}_ot_hdr_clm_ab a
                             LEFT JOIN

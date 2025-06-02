@@ -47,8 +47,10 @@ class Runner_107:
         #
         #def do_clms(spark, dqm: DQMeasures, measure_id, x) :
         # --------------------------------------------------------------------
-
+        
         def clm(ft, level):
+
+            dqm.logger.info("107_EL Getting plan ids from claims")
             z = f"""
                     create or replace temporary view {dqm.taskprefix}_{ft} as
                     select distinct
@@ -56,7 +58,7 @@ class Runner_107:
                     from
                         {DQMeasures.getBaseTable(dqm, level, ft)}
                     where
-                        clm_type_cd in ('2','B','3','C')
+                        clm_type_cd in ('3','C')
                         and adjstmt_ind = '0'
                     order by
                         plan_id
@@ -68,6 +70,52 @@ class Runner_107:
         clm('lt', 'clh')
         clm('rx', 'clh')
         clm('ot', 'cll')
+
+
+        # --------------------------------------------------------------------
+        #
+        # FTX file
+        # --------------------------------------------------------------------
+        
+        dqm.logger.info("107_EL Getting plan ids from FTX")
+         # Bring in FTX plan ids;
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ftx_plans as
+                
+                    select distinct
+                        pyee_id as plan_id
+                    from
+                        {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+
+                    WHERE pyee_id_type = '02' and
+                        pyee_id is not null
+
+                union 
+
+                    select distinct
+                        pyee_id as plan_id
+                    from
+                        {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+
+                    WHERE pyee_id_type = '02' and
+                        pyee_id is not null
+
+                union 
+                
+                    select distinct
+                        pyee_id as plan_id
+                    from
+                        {dqm.taskprefix}_tmsis_cst_shrng_ofst
+
+                    WHERE ofst_trans_type  in ('1','2') and
+                          pyee_id_type = '02' and
+                         pyee_id is not null
+
+
+            """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
 
 
         # --------------------------------------------------------------------
@@ -90,6 +138,8 @@ class Runner_107:
                     select distinct plan_id from {dqm.taskprefix}_rx rx
                     union
                     select distinct plan_id from {dqm.taskprefix}_mc_plans mc
+                    union
+                    select distinct plan_id from {dqm.taskprefix}_ftx_plans
                 ) a
                 order by plan_id
             """
@@ -206,18 +256,18 @@ class Runner_107:
                 from (
                     select
                         mc_plan_id as plan_id,
-                        enrld_mc_plan_type_cd as plan_type_el,
+                        mc_plan_type_cd as plan_type_el,
                         count(*) as plan_type_el_cnt
-                    from (
+                    from ( 
                         SELECT
                             case when {DQClosure.parse('(%misslogicprv_id(mc_plan_id,12)=1)')} then NULL else mc_plan_id end as mc_plan_id,
-                            enrld_mc_plan_type_cd
+                            mc_plan_type_cd
                         FROM
                             {dqm.taskprefix}_tmsis_mc_prtcptn_data
                         ) a
                     group by
                         mc_plan_id,
-                        enrld_mc_plan_type_cd
+                        mc_plan_type_cd
                 ) b
             """
         dqm.logger.debug(z)
@@ -307,79 +357,270 @@ class Runner_107:
         #def capitation(spark, dqm: DQMeasures, measure_id, x) :
         # --------------------------------------------------------------------
 
-        def cap_tables(dqm, table, stc_cd):
-            z = f"""
-                    create or replace temporary view {dqm.taskprefix}_cap_{table} as
-                    select
-                        case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
-                            then null else plan_id_num end as plan_id
-                        ,count(1) as cap_{table}
-                    from
-                        {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
-                    where
-                        stc_cd = '{stc_cd}' and
-                        mdcd_pd_amt > 0 and
-                        clm_type_cd in ('2','B') and
-                        adjstmt_ind = '0'
-                    group by
-                        plan_id
-                """
-            dqm.logger.debug(z)
-            spark.sql(z)
+        # def cap_tables(dqm, table, stc_cd):
+        #     z = f"""
+        #             create or replace temporary view {dqm.taskprefix}_cap_{table} as
+        #             select
+        #                 case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
+        #                     then null else plan_id_num end as plan_id
+        #                 ,count(1) as cap_{table}
+        #             from
+        #                 {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
+        #             where
+        #                 stc_cd = '{stc_cd}' and
+        #                 mdcd_pd_amt > 0 and
+        #                 clm_type_cd in ('2','B') and
+        #                 adjstmt_ind = '0'
+        #             group by
+        #                 plan_id
+        #         """
+        #     dqm.logger.debug(z)
+        #     spark.sql(z)
 
             # create table cap_&table. as
             # select * from connection to tmsis_passthrough
             # (select * from {dqm.taskprefix}_cap_&table.);
 
-        cap_tables(dqm, 'hmo', 119)  # (5) Count # of capitation HMO/HIO/PACE payments for plan ID;
-        cap_tables(dqm, 'php', 122)  # (6) Count # of capitation PHP payments for plan ID;
-        cap_tables(dqm, 'pccm', 120) # (7) Count # of capitation PCCM payments for plan ID;
-        cap_tables(dqm, 'phi', 121)  # (8) Count # of capitation PHI payments for plan ID;
+        #cap_tables(dqm, 'hmo', 119)  # (5) Count # of capitation HMO/HIO/PACE payments for plan ID;
+        #cap_tables(dqm, 'php', 122)  # (6) Count # of capitation PHP payments for plan ID;
+        #cap_tables(dqm, 'pccm', 120) # (7) Count # of capitation PCCM payments for plan ID;
+        #cap_tables(dqm, 'phi', 121)  # (8) Count # of capitation PHI payments for plan ID;
+
+        def ftx_cap_tables(dqm, cap_cat, ftx_tbl1, cap_cond1, ftx_tbl2, cap_cond2):
+
+            ftx_de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+            
+            p=f"""
+               
+                select {ftx_de_dup_vars}
+                        ,case when ({DQClosure.parse('%misslogicprv_id(pyee_id,12) = 1')})
+                       
+                            then null else pyee_id end as plan_id
+           
+                from  {dqm.taskprefix}_{ftx_tbl1}
+
+                WHERE {cap_cond1} 
+                            pymt_or_rcpmt_amt  > 0 and
+                            adjstmt_ind = '0'
+
+                group by {ftx_de_dup_vars}
+                                ,plan_id
+                """
+            if f"{ftx_tbl2}" == "":
+                p += f""""""
+            else:
+                p +=f"""
+                    union 
+
+                    select {ftx_de_dup_vars}
+                            ,case when ({DQClosure.parse('%misslogicprv_id(pyee_id,12) = 1')})
+                            then null else pyee_id end as plan_id
+            
+                    from  {dqm.taskprefix}_{ftx_tbl2}
+
+                    WHERE {cap_cond2} 
+                          pymt_or_rcpmt_amt  > 0 and
+                          adjstmt_ind = '0'
+
+                    group by {ftx_de_dup_vars}
+                                    ,plan_id
+                    """
+                            
+            print(p)
+
+            z=f"""create or replace temporary view {dqm.taskprefix}_cap_{cap_cat} as
+                  select plan_id
+                        ,count(1) as cap_{cap_cat}
+            
+                  from (select {ftx_de_dup_vars}
+                               ,plan_id
+                        from ({p}) a
+                        group by {ftx_de_dup_vars}
+                                 ,plan_id
+                        ) b
+                  group by plan_id
+                  """
+            
+            dqm.logger.debug(z)
+            
+            spark.sql(z)
+
+        ftx_cap_tables(dqm, 'hmo', 'tmsis_indvdl_cptatn_pmpm', "pyee_id_type = '02' and pyee_mcr_plan_type in ('01', '04','17') and",\
+                        '', '')
+
+        ftx_cap_tables(dqm, 'php','tmsis_indvdl_cptatn_pmpm', "pyee_id_type = '02' and pyee_mcr_plan_type in ('05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '18', '19') and", \
+                        '', '')
+
+        ftx_cap_tables(dqm, 'pccm','tmsis_indvdl_cptatn_pmpm', "pyee_id_type = '02' and pyee_mcr_plan_type in ('02', '03')  and",\
+                       '', '')
+       
+        ftx_cap_tables(dqm, 'phi','tmsis_indvdl_hi_prm_pymt', "pyee_id_type = '02' and ",\
+                       'tmsis_cst_shrng_ofst', "pyee_id_type ='02' and ofst_trans_type ='2' and" )
+       
+                    
+        ftx_cap_tables(dqm,'oth', 'tmsis_indvdl_cptatn_pmpm', \
+                            "(pyee_id_type = '02' and  \
+                              (pyee_mcr_plan_type is null or \
+                               pyee_mcr_plan_type not in ('01','02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19')) )  and" ,\
+                            
+                            'tmsis_cst_shrng_ofst',  \
+                            "(pyee_id_type = '02' and  ofst_trans_type in ('1') and \
+                             (pyee_mcr_plan_type is null or \
+                              pyee_mcr_plan_type not in ('01','02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19')) )  and" \
+                           )
+        
+        
 
 
+        # def ftx_cap_tot_tables(dqm, cap_cat):
+
+        #     if {cap_cat} == 'hmo' or {cap_cat} == 'php' or {cap_cat} == 'pccm':
+
+        #         z=f"""  create or replace temporary view {dqm.taskprefix}_cap_{cap_cat} as
+
+        #             select plan_id
+        #                 ,coalesce(cap_{cap_cat}_pyee,0) as cap_{cap_cat}
+            
+        #             from {dqm.taskprefix}_cap_{cap_cat}_pyee a
+
+        #             """
+        #     else:
+
+        #         z=f"""  create or replace temporary view {dqm.taskprefix}_cap_{cap_cat} as
+
+        #         select coalesce(a.plan_id, b.plan_id) as plan_id
+        #               ,coalesce(b.cap_{cap_cat}_pyee_1,0) + coalesce(d.cap_{cap_cat}_pyee_2,0) as cap_{cap_cat}
+           
+                
+        #         from {dqm.taskprefix}_cap_{cap_cat}_pyee1 a
+
+        #         full join  {dqm.taskprefix}_cap_{cap_cat}_pyee2 b
+
+        #         on a.plan_id=b.plan_id
+        #         """
+        #     dqm.logger.debug(z)
+        #     spark.sql(z)
+
+        # ftx_cap_tot_tables(dqm, 'hmo')
+        # ftx_cap_tot_tables(dqm, 'php')
+        # ftx_cap_tot_tables(dqm, 'pccm')
+        # ftx_cap_tot_tables(dqm, 'phi')
+        # ftx_cap_tot_tables(dqm, 'oth')
+
+        
         # (9) Count # of capitation OTHER payments for plan ID;
-        z = f"""
-                create or replace temporary view {dqm.taskprefix}_cap_oth as
-                select
-                    case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
-                            then null else plan_id_num end as plan_id
-                    ,count(1) as cap_oth
-                from
-                    {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
-                where
-                    stc_cd not in ('119','120','121','122') and
-                    mdcd_pd_amt > 0 and
-                    clm_type_cd in ('2','B') and
-                    adjstmt_ind = '0'
-                group by
-                    plan_id
-            """
-        dqm.logger.debug(z)
-        spark.sql(z)
+        #z = f"""
+        #        create or replace temporary view {dqm.taskprefix}_cap_oth as
+        #        select
+        #            case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
+        #                    then null else plan_id_num end as plan_id
+        #            ,count(1) as cap_oth
+        #        from
+        #            {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
+        #        where
+        #            stc_cd not in ('119','120','121','122') and
+        #            mdcd_pd_amt > 0 and
+        #            clm_type_cd in ('2','B') and
+        #            adjstmt_ind = '0'
+        #        group by
+        #            plan_id
+        #    """
+        #dqm.logger.debug(z)
+        #spark.sql(z)
 
         # create table cap_oth as
         # select * from connection to tmsis_passthrough
         # (select * from {dqm.taskprefix}_cap_oth);
 
+        # z = f"""
+        #         create or replace temporary view {dqm.taskprefix}_cap_type as
+        #         select
+        #             case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
+        #             then null else plan_id_num end as plan_id,
+        #             max(case when clm_type_cd = '2' then 1 else 0 end) as clm_type_cd_2,
+        #             max(case when clm_type_cd = 'B' then 1 else 0 end) as clm_type_cd_B
+        #         from
+        #             {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
+        #         where
+        #             mdcd_pd_amt > 0 and
+        #             clm_type_cd in ('2','B') and
+        #             adjstmt_ind = '0'
+        #         group by
+        #             plan_id
+        #     """
+        # dqm.logger.debug(z)
+        # spark.sql(z)
+        
+        dqm.logger.info("107_EL Getting mdcd and schip flags")
         z = f"""
                 create or replace temporary view {dqm.taskprefix}_cap_type as
-                select
-                    case when {DQClosure.parse('(%misslogicprv_id(plan_id_num,12) = 1)')}
-                    then null else plan_id_num end as plan_id,
-                    max(case when clm_type_cd = '2' then 1 else 0 end) as clm_type_cd_2,
-                    max(case when clm_type_cd = 'B' then 1 else 0 end) as clm_type_cd_B
-                from
-                    {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
-                where
-                    mdcd_pd_amt > 0 and
-                    clm_type_cd in ('2','B') and
-                    adjstmt_ind = '0'
+
+                select plan_id
+                       ,max(mdcd_flag) as mdcd_flag
+                       ,max(schip_flag) as schip_flag
+                from (
+                    select
+                        case when ({DQClosure.parse('%misslogicprv_id(pyee_id,12) = 1')})
+                        then null else pyee_id end as plan_id,
+                        max(case when mbescbes_form_grp  in ('1','2') then 1 else 0 end) as mdcd_flag,
+                        max(case when mbescbes_form_grp in ('3') then 1 else 0 end) as schip_flag
+                    from
+                        {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                    where
+                        pymt_or_rcpmt_amt  > 0 and
+                        adjstmt_ind = '0'
+                    group by
+                        plan_id
+
+                    union all
+
+                    select
+                        case when ({DQClosure.parse('%misslogicprv_id(pyee_id,12) = 1')})
+                        then null else pyee_id end as plan_id,
+                        max(case when mbescbes_form_grp  in ('1','2') then 1 else 0 end) as mdcd_flag,
+                        max(case when mbescbes_form_grp in ('3') then 1 else 0 end) as schip_flag
+                    from
+                        {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                    where
+                        pymt_or_rcpmt_amt  > 0 and
+                        adjstmt_ind = '0'
+                    group by
+                        plan_id
+
+                    union all
+
+                    select
+                        case when ({DQClosure.parse('%misslogicprv_id(pyee_id,12) = 1')})
+                        then null else pyee_id end as plan_id,
+                        max(case when mbescbes_form_grp  in ('1','2') then 1 else 0 end) as mdcd_flag,
+                        max(case when mbescbes_form_grp in ('3') then 1 else 0 end) as schip_flag
+                    from
+                        {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                    where
+                        pymt_or_rcpmt_amt  > 0 and
+                        adjstmt_ind = '0'
+                    group by
+                        plan_id
+
+
+
+                    ) a
+
+
                 group by
-                    plan_id
+                        plan_id
+
+
             """
         dqm.logger.debug(z)
         spark.sql(z)
 
+     
         # create table cap_type as
         # select * from connection to tmsis_passthrough
         # (select * from {dqm.taskprefix}_cap_type);
@@ -401,9 +642,9 @@ class Runner_107:
                 ,coalesce(f.cap_oth,0) as cap_oth
                 ,(coalesce(b.cap_hmo,0) + coalesce(c.cap_php,0) + coalesce(d.cap_pccm,0)
                     + coalesce(e.cap_phi,0) + coalesce(f.cap_oth,0)) as cap_tot
-                ,case 	when g.clm_type_cd_2 = 1 and g.clm_type_cd_B = 1 then 'Medicaid & S-CHIP'
-                        when g.clm_type_cd_2 = 1 and g.clm_type_cd_B = 0 then 'Medicaid'
-                        when g.clm_type_cd_2 = 0 and g.clm_type_cd_B = 1 then 'S-CHIP'
+                ,case 	when g.mdcd_flag = 1 and g.schip_flag = 1 then 'Medicaid & S-CHIP'
+                        when g.mdcd_flag = 1 and g.schip_flag = 0 then 'Medicaid'
+                        when g.mdcd_flag = 0 and g.schip_flag = 1 then 'S-CHIP'
                         else 'No cap' end as capitation_type
             from {dqm.taskprefix}_enrollment a
             left join {dqm.taskprefix}_cap_hmo  b on coalesce(a.plan_id,'0') = coalesce(b.plan_id,'0')

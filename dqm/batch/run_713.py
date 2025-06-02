@@ -4,7 +4,7 @@ run_713 =[
 
 
     ['713', 'process_w_clm_counts', 'all27_1', '', '4'],
-    ['713', 'process_w_clm_counts', 'all27_2', '', '5'],
+    #['713', 'process_w_clm_counts', 'all27_2', '', '5'],
 
     ['713', 'process_utl_all_pymnt', 'all26_1', 'IP', ''],
     ['713', 'process_utl_all_pymnt', 'all26_2', 'LT', ''],

@@ -42,7 +42,7 @@ class Runner_802:
         else:
             sum = DQClosure.parse(f'%miss_misslogic({x["numer"]})')
 
-        if x['sub_cap_exclusion'] == "1" or x['sub_cap_exclusion'] == 1 or  x['sub_cap_exclusion'] == 1.0:
+        if x['sub_cap_exclusion'] == "1" or x['sub_cap_exclusion'] == 1 or x['sub_cap_exclusion'] == 1.0:
             subcap_filter = "and src_lctn_cd not in ('22','23')"
         else:
             subcap_filter = ""
@@ -73,9 +73,11 @@ class Runner_802:
                         ({DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]})
                         {subcap_filter}
                         {header_filter})
-                """
+         
+              """
+        
         dqm.logger.debug(z)
-        #print(z)
+
         return spark.sql(z)
 
     # --------------------------------------------------------------------

@@ -29,18 +29,18 @@ run_911_all_ever_elig = [
     # mcr31.3, mcr31.4, ffs25.3, mcr31.8, mcr31.9, ffs25.7;
     ['911', 'span_on_date', 'ffs25_3', 'C', 'CLH', 'OT', 'srvc_bgnng_dt'],
     ['911', 'span_on_date', 'ffs25_7', 'I', 'CLH', 'OT', 'srvc_bgnng_dt'],
-    ['911', 'span_on_date', 'mcr31_3', 'Y', 'CLH', 'OT', 'srvc_bgnng_dt'],
+    #['911', 'span_on_date', 'mcr31_3', 'Y', 'CLH', 'OT', 'srvc_bgnng_dt'],
     ['911', 'span_on_date', 'mcr31_4', 'O', 'CLH', 'OT', 'srvc_bgnng_dt'],
-    ['911', 'span_on_date', 'mcr31_8', 'Z', 'CLH', 'OT', 'srvc_bgnng_dt'],
+    #['911', 'span_on_date', 'mcr31_8', 'Z', 'CLH', 'OT', 'srvc_bgnng_dt'],
     ['911', 'span_on_date', 'mcr31_9', 'U', 'CLH', 'OT', 'srvc_bgnng_dt'],
 
     # mcr30.3, mcr30.4, ffs24.3, mcr30.8, mcr30.9, ffs24.7;
     ['911', 'any_span', 'ffs24_3', 'C', 'CLH', 'OT'],
     ['911', 'any_span', 'ffs24_7', 'I', 'CLH', 'OT'],
-    ['911', 'any_span', 'mcr30_3', 'Y', 'CLH', 'OT'],
+    #['911', 'any_span', 'mcr30_3', 'Y', 'CLH', 'OT'],
     ['911', 'any_span', 'mcr30_4', 'O', 'CLH', 'OT'],
     ['911', 'any_span', 'mcr30_9', 'U', 'CLH', 'OT'],
-    ['911', 'any_span', 'mcr30_8', 'Z', 'CLH', 'OT'],
+    #['911', 'any_span', 'mcr30_8', 'Z', 'CLH', 'OT'],
 
     # mcr30.5, ffs24.4, mcr30.10, ffs24.8;
     ['911', 'any_span', 'ffs24_4', 'C', 'CLH', 'RX'],
@@ -53,6 +53,20 @@ run_911_all_ever_elig = [
     ['911', 'span_on_date', 'ffs25_8', 'I', 'CLH', 'RX', 'rx_fill_dt'],
     ['911', 'span_on_date', 'mcr31_5', 'O', 'CLH', 'RX', 'rx_fill_dt'],
     ['911', 'span_on_date', 'mcr31_10', 'U', 'CLH', 'RX', 'rx_fill_dt'],
+
+    #FTX measures:
+
+    ['911', 'ftx_any_span', 'mcr30_3', 'E'],
+    ['911', 'ftx_any_span', 'mcr30_8', 'K'],
+
+    ['911', 'ftx_span_on_date', 'mcr31_11', 'E', '', 'tmsis_indvdl_cptatn_pmpm', 'cptatn_prd_strt_dt'],
+    ['911', 'ftx_span_on_date', 'mcr31_12', 'E', '', 'tmsis_indvdl_hi_prm_pymt', 'prm_prd_strt_dt'],
+    ['911', 'ftx_span_on_date', 'mcr31_13', 'E', '', 'tmsis_cst_shrng_ofst', 'cvrg_prd_strt_dt'],
+
+    ['911', 'ftx_span_on_date', 'mcr31_14', 'K', '', 'tmsis_indvdl_cptatn_pmpm', 'cptatn_prd_strt_dt'],
+    ['911', 'ftx_span_on_date', 'mcr31_15', 'K', '', 'tmsis_indvdl_hi_prm_pymt', 'prm_prd_strt_dt'],
+    ['911', 'ftx_span_on_date', 'mcr31_16', 'K', '', 'tmsis_cst_shrng_ofst', 'cvrg_prd_strt_dt'],
+
 ]
 
 df = DataFrame(run_911_all_ever_elig, columns=['series', 'cb', 'measure_id', 'claim_cat', 'level', 'claim_type', 'date_var'])

@@ -5,12 +5,18 @@ run_715 = [
     ['715', 'all_gndr_prg', 'all16_9', 'admsn_dt', 'ip', "stc_cd in ('086')"],
     ['715', 'all_gndr_prg', 'all16_10', 'rx_fill_dt', 'rx', "stc_cd in ('086')"],
     ['715', 'all_gndr_prg', 'all16_11', 'srvc_bgnng_dt', 'ot', "stc_cd in ('025','086')"],
-    ['715', 'all_gndr_prg', 'all16_12', 'admsn_dt', 'ip', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
-    ['715', 'all_gndr_prg', 'all16_13', 'srvc_bgnng_dt', 'lt', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
-    ['715', 'all_gndr_prg', 'all16_14', 'srvc_bgnng_dt', 'ot', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
-    ['715', 'all_gndr_prg', 'all16_15', 'rx_fill_dt', 'rx', "xix_srvc_ctgry_cd in ('14','35','42','44')"],       
+    #['715', 'all_gndr_prg', 'all16_12', 'admsn_dt', 'ip', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    #['715', 'all_gndr_prg', 'all16_13', 'srvc_bgnng_dt', 'lt', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    #['715', 'all_gndr_prg', 'all16_14', 'srvc_bgnng_dt', 'ot', "xix_srvc_ctgry_cd in ('14','35','42','44')"],
+    #['715', 'all_gndr_prg', 'all16_15', 'rx_fill_dt', 'rx', "xix_srvc_ctgry_cd in ('14','35','42','44')"],  
+    ['715', 'all_gndr_prg', 'all16_12', 'admsn_dt', 'ip', "mbescbes_form_grp ='1' and mbescbes_srvc_ctgry_cd in ('14','35','42','44')"],   
+    ['715', 'all_gndr_prg', 'all16_13', 'srvc_bgnng_dt', 'lt', "mbescbes_form_grp ='1' and mbescbes_srvc_ctgry_cd in ('14','35','42','44')"],
+    ['715', 'all_gndr_prg', 'all16_14', 'srvc_bgnng_dt', 'ot', "mbescbes_form_grp ='1' and mbescbes_srvc_ctgry_cd in ('14','35','42','44')"],
+    ['715', 'all_gndr_prg', 'all16_15', 'rx_fill_dt', 'rx', "mbescbes_form_grp ='1' and mbescbes_srvc_ctgry_cd in ('14','35','42','44')"],  
+  
 
 ]
+
 
 df = DataFrame(run_715, columns=['series', 'cb', 'measure_id', 'date_var', 'claim_type', 'pregnancy_ind'])
 df['measure_id'] = df['measure_id'].str.upper()

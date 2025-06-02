@@ -7,7 +7,7 @@ run_102 = [
     ['104', 'build_freq_measure_tables', 'el1201', 'el12.1', 'tmsis_elgblty_dtrmnt', 'elgblty_grp_cd', "(1=1)"],
     ['104', 'build_freq_measure_tables', 'el181', 'el18.1', 'tmsis_race_info', 'race_cd', "(1=1)"],
     ['104', 'build_freq_measure_tables', 'el624', 'el6.24', 'tmsis_elgblty_dtrmnt', 'rstrctd_bnfts_cd', "(1=1)"],
-    ['104', 'build_freq_measure_tables', 'el2001', 'el20.1', 'tmsis_elgblty_dtrmnt', 'elgblty_chg_rsn_cd', "(1=1)"]
+    ['104', 'build_freq_measure_tables', 'el2001', 'el20.1', 'tmsis_elgblty_dtrmnt', 'elgblty_trmntn_rsn', "(1=1)"]
 ]
 
 df = DataFrame(run_102, columns=['series', 'cb', 'measure_id', 'id', 'input_dsn', 'var', 'condition'])

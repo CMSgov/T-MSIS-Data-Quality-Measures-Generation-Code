@@ -144,13 +144,150 @@ class Runner_911():
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def ftx_any_span(spark, dqm: DQMeasures, measure_id, x) :
+       
 
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_ftx_ids AS
+
+                SELECT b.ever_eligible
+                FROM (
+                    SELECT DISTINCT msis_ident_num
+                    FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                    WHERE {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                    union 
+
+                    SELECT DISTINCT msis_ident_num
+                    FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                    WHERE {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                    union 
+
+                    SELECT DISTINCT msis_ident_num
+                    FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                    WHERE {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]}
+                    ) a
+
+                
+                LEFT JOIN (
+                        SELECT DISTINCT msis_ident_num
+                            ,ever_eligible
+                        FROM {dqm.taskprefix}_ever_elig
+                        WHERE ever_eligible = 1
+                        ) b 
+                        
+                ON a.msis_ident_num = b.msis_ident_num
+             """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'911' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,NULL AS valid_value
+                FROM (
+                    SELECT sum(1) AS denom
+                        ,sum(CASE
+                                WHEN ever_eligible = 1
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_ftx_ids
+                    )
+             """
+       
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+   # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def ftx_span_on_date(spark, dqm: DQMeasures, measure_id, x) :
+
+        if (x['claim_type'].lower() == 'tmsis_cst_shrng_ofst'):
+            claim_cat_restr = f"""{DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]}"""
+        else:
+            claim_cat_restr = f"""{DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}"""
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_ftx_ids AS
+
+                SELECT a.msis_ident_num
+                    ,max(CASE
+                            WHEN a.{x['date_var']} IS NOT NULL
+                                THEN 1
+                            ELSE 0
+                            END) AS denom_flag
+                    ,max(CASE
+                            WHEN b.ever_eligible = 1
+                                AND a.{x['date_var']} IS NOT NULL
+                                AND a.{x['date_var']} >= b.enrlmt_efctv_dt
+                                AND (
+                                    a.{x['date_var']} <= b.enrlmt_end_dt
+                                    OR b.enrlmt_end_dt IS NULL
+                                    )
+                                THEN 1
+                            ELSE 0
+                            END) AS numer_flag
+                            
+                FROM {dqm.taskprefix}_{x['claim_type']} a
+                LEFT JOIN {dqm.taskprefix}_ever_elig b 
+                ON a.msis_ident_num = b.msis_ident_num
+                where {claim_cat_restr}
+                
+                GROUP BY a.msis_ident_num
+            """
+        
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'911' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,NULL AS valid_value
+                FROM (
+                    SELECT sum(denom_flag) AS denom
+                        ,sum(numer_flag) AS numer
+                    FROM {dqm.taskprefix}_ftx_ids)
+            """
+        
+               
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = {'any_span': any_span,
-               'span_on_date': span_on_date}
+               'span_on_date': span_on_date,
+               'ftx_any_span':ftx_any_span,
+               'ftx_span_on_date':ftx_span_on_date}
 
 # CC0 1.0 Universal
 

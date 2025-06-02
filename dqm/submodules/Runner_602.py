@@ -89,12 +89,98 @@ class Runner_602:
         dqm.logger.debug(z)
 
         return spark.sql(z)
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def tpl_ftx_6_7_clm(spark, dqm: DQMeasures, measure_id, x) :
+
+        # De-duped counts across two files
+
+        p = f"""
+                select
+                        submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                        ,prm_prd_end_dt as ftx_datevar
+                        ,case when  {x['contraint']}
+                              then 1 else 0 end as tpl_
+                      
+
+                from
+                        {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                where
+                        ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                    
+                union 
+
+                select
+                        submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                        ,cvrg_prd_end_dt as ftx_datevar
+                        ,case when  {x['contraint']}
+                              then 1 else 0 end as tpl_
+
+                from
+                        {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                where
+                        ofst_trans_type = '2' and
+                        ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+             
+
+            """
+
+        r = f"""
+                select
+                    submtg_state_cd
+                    ,orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,pymt_or_rcpmt_dt
+                    ,adjstmt_ind
+                    ,max(tpl_) as tpl_
+                from (
+                    {p}
+                ) a
+                group by
+                    submtg_state_cd
+                    ,orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,pymt_or_rcpmt_dt
+                    ,adjstmt_ind
+
+        """
+
+        z = f"""
+                SELECT
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'602' as submodule
+                    ,null as numer
+                    ,null as denom
+                    ,sum(tpl_) as mvalue
+                from (
+                    {r}
+                ) b
+                group by
+                    submtg_state_cd
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
 
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    v_table = {"tpl_ot_6_7_clm": tpl_ot_6_7_clm}
+    v_table = {"tpl_ot_6_7_clm": tpl_ot_6_7_clm,
+               "tpl_ftx_6_7_clm": tpl_ftx_6_7_clm}
 
 # CC0 1.0 Universal
 

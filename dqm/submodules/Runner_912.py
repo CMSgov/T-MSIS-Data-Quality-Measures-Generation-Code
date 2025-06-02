@@ -28,31 +28,27 @@ class Runner_912():
     def extract_claims(spark, dqm: DQMeasures, x) :
 
         z = f"""
-                create or replace temporary view {dqm.taskprefix}_clms_{x['claim_cat']} AS
+                create or replace temporary view {dqm.taskprefix}_ftx_clms_{x['claim_cat']} AS
+                select msis_ident_num, pyee_id, max(pccm_flag) as pccm_flag, max(php_flag) as php_flag, max(mco_flag) as mco_flag 
+                from (
+                    SELECT msis_ident_num
+                        ,pyee_id
+                        ,case when pyee_mcr_plan_type in ('02','03') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as pccm_flag
+                        ,case when pyee_mcr_plan_type in ('05','06','07','08','09','10','11','12','13','14','15','16','18','19') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as php_flag
+                        ,case when pyee_mcr_plan_type in ('01') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as mco_flag
+                    FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                    where {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                group by msis_ident_num, pyee_id
 
-                SELECT msis_ident_num
-                    ,plan_id_num
-                    ,blg_prvdr_num
-                    ,blg_prvdr_npi_num
-                    ,case when stc_cd in ('119') then 1 else 0 end as mco_flag
-                    ,case when stc_cd in ('120') then 1 else 0 end as pccm_flag
-                    ,case when stc_cd in ('122') then 1 else 0 end as php_flag
-
-                FROM {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
-                WHERE plan_id_num IS NOT NULL
-                    AND {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
-                    AND childless_header_flag = 0
-                    AND stc_cd in ('119','120','122')
              """
         dqm.logger.debug(z)
         spark.sql(z)
 
-
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    def PCCM_9_18_13_18(spark, dqm: DQMeasures, measure_id, x) :
+    def PCCM(spark, dqm: DQMeasures, measure_id, x) :
 
         # DQPrepETL.run_912_other_measures_PCCM(dqm)
 
@@ -68,11 +64,11 @@ class Runner_912():
                         WHEN (
                                 (
                                     a.msis_ident_num = b.msis_ident_num
-                                    AND a.plan_id_num = b.mc_plan_id
+                                    AND a.pyee_id = b.mc_plan_id
                                     AND b.evr_pccm_mc_plan_type = 0
                                     )
                                 OR (
-                                    a.plan_id_num IS NOT NULL
+                                    a.pyee_id IS NOT NULL
                                     AND
                                     b.msis_ident_num IS NULL
                                     AND b.mc_plan_id IS NULL
@@ -81,10 +77,10 @@ class Runner_912():
                             THEN 1
                         ELSE 0
                         END AS has_numer_line
-                FROM (select * from {dqm.taskprefix}_clms_{x['claim_cat']} where pccm_flag=1) AS a
+                FROM (select * from {dqm.taskprefix}_ftx_clms_{x['claim_cat']} where pccm_flag=1) AS a
                 LEFT JOIN {dqm.taskprefix}_mc_data_912 AS b ON (
                         a.msis_ident_num = b.msis_ident_num
-                        AND a.plan_id_num = b.mc_plan_id
+                        AND a.pyee_id = b.mc_plan_id
                         )
              """
         dqm.logger.debug(z)
@@ -125,7 +121,79 @@ class Runner_912():
     #
     #
     # --------------------------------------------------------------------
-    def PCCM_9_19_13_19(spark, dqm: DQMeasures, measure_id, x) :
+    def PHP(spark, dqm: DQMeasures, measure_id, x) :
+
+        # DQPrepETL.run_912_other_measures_PHP(dqm)
+
+        Runner_912.extract_claims(spark, dqm, x)
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_denom AS
+
+                SELECT a.*
+                    ,1 AS has_denom_line
+                    ,CASE
+                        WHEN (
+                                (
+                                    a.msis_ident_num = b.msis_ident_num
+                                    AND a.pyee_id = b.mc_plan_id
+                                    AND b.evr_php_mc_plan_type = 0
+                                    )
+                                OR (
+                                    a.pyee_id IS NOT NULL
+                                    AND
+                                    b.msis_ident_num IS NULL
+                                    AND b.mc_plan_id IS NULL
+                                    )
+                                )
+                            THEN 1
+                        ELSE 0
+                        END AS has_numer_line
+                FROM (select * from {dqm.taskprefix}_ftx_clms_{x['claim_cat']} where php_flag=1) AS a
+                LEFT JOIN {dqm.taskprefix}_mc_data_912 AS b ON (
+                        a.msis_ident_num = b.msis_ident_num
+                        AND a.pyee_id = b.mc_plan_id
+                        )
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'912' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,NULL AS valid_value
+                FROM (
+                    SELECT sum(CASE
+                                WHEN has_denom_line = 1
+                                    THEN 1
+                                ELSE 0
+                                END) AS denom
+                        ,sum(CASE
+                                WHEN has_numer_line = 1
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_denom
+                    ) a
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    def MCO(spark, dqm: DQMeasures, measure_id, x) :
 
         # DQPrepETL.run_912_other_measures_PCCM(dqm)
 
@@ -135,26 +203,35 @@ class Runner_912():
                 CREATE
                     OR replace TEMPORARY VIEW {dqm.taskprefix}_denom AS
 
-                SELECT *
+                SELECT a.*
                     ,1 AS has_denom_line
                     ,CASE
                         WHEN (
-                                (plan_id_num IS NOT NULL)
-                                AND (
-                                    plan_id_num = blg_prvdr_num
-                                    OR plan_id_num = blg_prvdr_npi_num
+                                (
+                                    a.msis_ident_num = b.msis_ident_num
+                                    AND a.pyee_id = b.mc_plan_id
+                                    AND b.evr_mco_mc_plan_type = 0
+                                    )
+                                OR (
+                                    a.pyee_id IS NOT NULL
+                                    AND
+                                    b.msis_ident_num IS NULL
+                                    AND b.mc_plan_id IS NULL
                                     )
                                 )
                             THEN 1
                         ELSE 0
                         END AS has_numer_line
-                FROM {dqm.taskprefix}_clms_{x['claim_cat']}
-                where pccm_flag=1
+                FROM (select * from {dqm.taskprefix}_ftx_clms_{x['claim_cat']} where mco_flag=1) AS a
+                LEFT JOIN {dqm.taskprefix}_mc_data_912 AS b ON (
+                        a.msis_ident_num = b.msis_ident_num
+                        AND a.pyee_id = b.mc_plan_id
+                        )
              """
         dqm.logger.debug(z)
         spark.sql(z)
 
-        z =f"""
+        z = f"""
                 SELECT '{dqm.state}' AS submtg_state_cd
                     ,'{measure_id}' AS measure_id
                     ,'912' AS submodule
@@ -179,78 +256,6 @@ class Runner_912():
                                 END) AS numer
                     FROM {dqm.taskprefix}_denom
                     ) a
-            """
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-    # --------------------------------------------------------------------
-    #
-    #
-    # --------------------------------------------------------------------
-    def PHP_9_20_13_20(spark, dqm: DQMeasures, measure_id, x) :
-
-        # DQPrepETL.run_912_other_measures_PCCM(dqm)
-
-        Runner_912.extract_claims(spark, dqm, x)
-
-        z = f"""
-                CREATE
-                    OR replace TEMPORARY VIEW {dqm.taskprefix}_php_denom AS
-
-                SELECT a.*
-                    ,1 AS has_denom_line
-                    ,CASE
-                        WHEN (
-                                (
-                                    a.msis_ident_num = b.msis_ident_num
-                                    AND a.plan_id_num = b.mc_plan_id
-                                    AND b.evr_php_mc_plan_type = 0
-                                    )
-                                OR (
-                                    a.plan_id_num IS NOT NULL
-                                    AND
-                                    b.msis_ident_num IS NULL
-                                    AND b.mc_plan_id IS NULL
-                                    )
-                                )
-                            THEN 1
-                        ELSE 0
-                        END AS has_numer_line
-                FROM (select * from {dqm.taskprefix}_clms_{x['claim_cat']} where php_flag=1) AS a
-                LEFT JOIN {dqm.taskprefix}_mc_data_912 AS b ON (
-                        a.msis_ident_num = b.msis_ident_num
-                        AND a.plan_id_num = b.mc_plan_id
-                        )
-             """
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        z = f"""
-                SELECT '{dqm.state}' AS submtg_state_cd
-                    ,'{measure_id}' AS measure_id
-                    ,'912' AS submodule
-                    ,coalesce(numer, 0) AS numer
-                    ,coalesce(denom, 0) AS denom
-                    ,CASE
-                        WHEN coalesce(denom, 0) <> 0
-                            THEN numer / denom
-                        ELSE NULL
-                        END AS mvalue
-                    ,NULL AS valid_value
-                FROM (
-                    SELECT sum(CASE
-                                WHEN has_denom_line = 1
-                                    THEN 1
-                                ELSE 0
-                                END) AS denom
-                        ,sum(CASE
-                                WHEN has_numer_line = 1
-                                    THEN 1
-                                ELSE 0
-                                END) AS numer
-                    FROM {dqm.taskprefix}_php_denom
-                    ) a
              """
         dqm.logger.debug(z)
 
@@ -260,83 +265,9 @@ class Runner_912():
     #
     #
     # --------------------------------------------------------------------
-    def MCO_9_21_13_21(spark, dqm: DQMeasures, measure_id, x) :
-
-        # DQPrepETL.run_912_other_measures_PCCM(dqm)
-
-        Runner_912.extract_claims(spark, dqm, x)
-
-        z = f"""
-                CREATE
-                    OR replace TEMPORARY VIEW {dqm.taskprefix}_mco_denom AS
-
-                SELECT a.*
-                    ,1 AS has_denom_line
-                    ,CASE
-                        WHEN (
-                                (
-                                    a.msis_ident_num = b.msis_ident_num
-                                    AND a.plan_id_num = b.mc_plan_id
-                                    AND b.evr_mco_mc_plan_type = 0
-                                    )
-                                OR (
-                                    a.plan_id_num IS NOT NULL
-                                    AND
-                                    b.msis_ident_num IS NULL
-                                    AND b.mc_plan_id IS NULL
-                                    )
-                                )
-                            THEN 1
-                        ELSE 0
-                        END AS has_numer_line
-                FROM (select * from {dqm.taskprefix}_clms_{x['claim_cat']} where mco_flag=1) AS a
-                LEFT JOIN {dqm.taskprefix}_mc_data_912 AS b ON (
-                        a.msis_ident_num = b.msis_ident_num
-                        AND a.plan_id_num = b.mc_plan_id
-                        )
-             """
-        dqm.logger.debug(z)
-        spark.sql(z)
-
-        z = f"""
-                SELECT '{dqm.state}' AS submtg_state_cd
-                    ,'{measure_id}' AS measure_id
-                    ,'912' AS submodule
-                    ,coalesce(numer, 0) AS numer
-                    ,coalesce(denom, 0) AS denom
-                    ,CASE
-                        WHEN coalesce(denom, 0) <> 0
-                            THEN numer / denom
-                        ELSE NULL
-                        END AS mvalue
-                    ,NULL AS valid_value
-                FROM (
-                    SELECT sum(CASE
-                                WHEN has_denom_line = 1
-                                    THEN 1
-                                ELSE 0
-                                END) AS denom
-                        ,sum(CASE
-                                WHEN has_numer_line = 1
-                                    THEN 1
-                                ELSE 0
-                                END) AS numer
-                    FROM {dqm.taskprefix}_mco_denom
-                    ) a
-             """
-        dqm.logger.debug(z)
-
-        return spark.sql(z)
-
-
-    # --------------------------------------------------------------------
-    #
-    #
-    # --------------------------------------------------------------------
-    v_table = { 'PCCM_9_18_13_18' : PCCM_9_18_13_18,
-                'PCCM_9_19_13_19' : PCCM_9_19_13_19,
-                'PHP_9_20_13_20'  : PHP_9_20_13_20,
-                'MCO_9_21_13_21'  : MCO_9_21_13_21 }
+    v_table = { 'PCCM' : PCCM,
+                'PHP'  : PHP,
+                'MCO'  : MCO }
 
 # CC0 1.0 Universal
 

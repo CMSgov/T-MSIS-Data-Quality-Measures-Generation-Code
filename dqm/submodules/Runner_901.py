@@ -69,11 +69,207 @@ class Runner_901():
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+
+    def dx_claims_pct_any_cll(spark, dqm: DQMeasures, measure_id, x) :
+
+        str_diag = ""
+
+        str_diag = str_diag + "CASE WHEN" + " " + DQClosure.not_missing_1('dgns_cd', '7') + " " + \
+                                   "THEN 1 ELSE 0 END"
+
+        # materialized views
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_cll as
+                select
+                        tmsis_rptg_prd
+                    ,orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+                    ,orgnl_line_num
+                    ,adjstmt_line_num
+                from
+                    {DQMeasures.getBaseTable(dqm, 'cll', x['claim_type'])}
+                where
+                    where ({DQClosure.parse(x['denom'])})
+                        and  {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+                    AND childless_header_flag = 0
+                """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                    select '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'901' as submodule
+                    ,coalesce(numer, 0) as numer
+                    ,coalesce(denom, 0) as denom
+                    ,case when coalesce(denom, 0) <> 0
+                                then numer / denom
+                                else NULL
+                                end as mvalue
+                    ,null as valid_value
+
+                from(select count(*) as denom
+                            ,sum(numer) as numer
+
+                    from  {dqm.taskprefix}_cll a 
+                        left join (select submtg_state_cd
+                                    ,tmsis_rptg_prd
+                                    ,orgnl_clm_num
+                                    ,adjstmt_clm_num
+                                    ,adjdctn_dt
+                                    ,adjstmt_ind
+                                    ,max({str_diag}) AS numer
+                                    from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                                        where {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+
+                                    group by submtg_state_cd
+                                            ,tmsis_rptg_prd
+                                            ,orgnl_clm_num
+                                            ,adjstmt_clm_num
+                                            ,adjdctn_dt
+                                            ,adjstmt_ind
+                                            ) b
+                        on a.orgnl_clm_num = b.orgnl_clm_num
+                        and a.adjstmt_clm_num = b.adjstmt_clm_num
+                        and a.adjdctn_dt = b.adjdctn_dt
+                        and a.adjstmt_ind = b.adjstmt_ind
+                                            )
+
+            """
+        dqm.logger.debug(z)
+        return spark.sql(z)
+
 
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
+
+    def dx_claims_pct_any(spark, dqm: DQMeasures, measure_id, x) :
+
+        str_diag = ""
+
+        str_diag = str_diag + "CASE WHEN" + " " + DQClosure.not_missing_1('dgns_cd', '7') + " " + \
+                                   "THEN 1 ELSE 0 END"
+
+        # materialized views
+
+        z = f"""
+                    select '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'901' as submodule
+                    ,coalesce(numer, 0) as numer
+                    ,coalesce(denom, 0) as denom
+                    ,case when coalesce(denom, 0) <> 0
+                                then numer / denom
+                                else NULL
+                                end as mvalue
+                    ,null as valid_value
+
+                FROM (select sum(denom) as denom
+                            ,sum(numer) as numer
+
+                from (
+        
+                        select submtg_state_cd
+                                ,tmsis_rptg_prd
+                                ,orgnl_clm_num
+                                ,adjstmt_clm_num
+                                ,adjdctn_dt
+                                ,adjstmt_ind
+                                ,max(case when ({DQClosure.parse(x['denom'])})
+                                                then 1
+                                                else 0 end) as denom
+                                ,max(case when ({DQClosure.parse(x['denom'])})
+                                                then ({str_diag})
+                                                else 0 end) AS numer
+                                from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                                    where {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+
+                                group by submtg_state_cd
+                                        ,tmsis_rptg_prd
+                                        ,orgnl_clm_num
+                                        ,adjstmt_clm_num
+                                        ,adjdctn_dt
+                                        ,adjstmt_ind
+                                        ))
+
+            """
+        dqm.logger.debug(z)
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+
+    def dx_claims_pct_1(spark, dqm: DQMeasures, measure_id, x) :
+
+        str_diag = ""
+
+        str_diag = str_diag + "CASE WHEN" + " " + DQClosure.not_missing_1('dgns_cd', '7') + " " + \
+                                   "THEN 1 ELSE 0 END"
+
+        # materialized views
+
+        z = f"""
+                    select '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'901' as submodule
+                    ,coalesce(numer, 0) as numer
+                    ,coalesce(denom, 0) as denom
+                    ,case when coalesce(denom, 0) <> 0
+                                then numer / denom
+                                else NULL
+                                end as mvalue
+                    ,null as valid_value
+
+                FROM (select sum(denom) as denom
+                            ,sum(case when numer_sum = 1 then 1 else 0 end) as numer
+                    
+                    from (
+        
+                        select submtg_state_cd
+                                ,tmsis_rptg_prd
+                                ,orgnl_clm_num
+                                ,adjstmt_clm_num
+                                ,adjdctn_dt
+                                ,adjstmt_ind
+                                ,max(case when ({DQClosure.parse(x['denom'])})
+                                                then 1
+                                                else 0 end) as denom
+                                ,sum(case when ({DQClosure.parse(x['denom'])})
+                                                then ({str_diag})
+                                                else 0 end) as numer_sum
+                                from {DQMeasures.getBaseTable(dqm, x['level'], x['claim_type'])}
+                                    where {DQM_Metadata.create_base_clh_view().claim_cat[x['claim_cat']]}
+
+                                group by submtg_state_cd
+                                        ,tmsis_rptg_prd
+                                        ,orgnl_clm_num
+                                        ,adjstmt_clm_num
+                                        ,adjdctn_dt
+                                        ,adjstmt_ind
+                                        ))
+
+            """
+        dqm.logger.debug(z)
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+
     def claims_pct_cll_to_clh(spark, dqm: DQMeasures, measure_id, x) :
         from time import perf_counter
 
@@ -196,13 +392,66 @@ class Runner_901():
         
         dqm.logger.debug(z)
         return spark.sql(z)
+
+    def ftx_pct_tbls(spark, dqm: DQMeasures, measure_id,  x) :
+
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind"""
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'901' AS submodule
+                    ,coalesce(numer,0) as numer
+                    ,coalesce(denom,0) as denom
+                    ,case when coalesce(denom,0) <> 0 then numer/denom else NULL end as mvalue
+                FROM (  
+                        SELECT sum(numer_line) AS numer
+                                ,sum(1) as denom
+                                from (select {de_dup_vars}, max(numer_line) as numer_line
+                                    FROM (select {de_dup_vars}, CASE WHEN ({DQClosure.parse(x['numer'])}) THEN 1 ELSE 0 END AS numer_line 
+                                            from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                                            where ({DQClosure.parse(x['denom'])}) 
+                                                    and {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                                            union
+
+                                            select {de_dup_vars}, CASE WHEN ({DQClosure.parse(x['numer'])}) THEN 1 ELSE 0 END AS numer_line  
+                                            from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                                            where ({DQClosure.parse(x['denom'])}) 
+                                                    and {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                                            union
+
+                                            select {de_dup_vars},  CASE WHEN ({DQClosure.parse(x['numer'])}) THEN 1 ELSE 0 END AS numer_line 
+                                            from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                                            where ({DQClosure.parse(x['denom'])}) 
+                                                    and {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+                                            )        
+                                group by {de_dup_vars} 
+                                )
+                        
+                    )
+            """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = { 'claims_pct': claims_pct,
                 'claims_pct_cll_to_clh': claims_pct_cll_to_clh,
-                'claims_pct_planid': claims_pct_planid }
+                'claims_pct_planid': claims_pct_planid, 
+                'dx_claims_pct_any': dx_claims_pct_any,
+                'dx_claims_pct_1': dx_claims_pct_1,
+                'dx_claims_pct_any_cll': dx_claims_pct_any_cll,
+                'ftx_pct_tbls': ftx_pct_tbls}
 
 # CC0 1.0 Universal
 

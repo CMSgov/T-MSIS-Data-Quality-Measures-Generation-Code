@@ -115,13 +115,294 @@ class Runner_201:
              """
         dqm.logger.debug(z)
         return spark.sql(z)
-    
+    # --------------------------------------------------------------------
+    #
+    # FTX
+    # --------------------------------------------------------------------
+    def ftx_claims_pct(spark, dqm: DQMeasures, measure_id, x) :
+       
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+        ftx_query = f"""
+                select
+                       {de_dup_vars}
+                        ,CASE
+                                WHEN ({x['denom']})
+                                      THEN 1
+                                ELSE 0
+                                END AS denom_flag 
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']})
+                                            THEN 1
+                                ELSE 0
+                                END AS numer_flag                      
+
+                from
+                        {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                where
+                        ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                union all
+                
+                select
+                        {de_dup_vars}
+                        ,CASE
+                                WHEN ({x['denom']})
+                                      THEN 1
+                                ELSE 0
+                                END AS denom_flag 
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']})
+                                            THEN 1
+                                ELSE 0
+                                END AS numer_flag               
+
+                from
+                        {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                where
+                        ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                    
+                union all
+
+                select
+                         {de_dup_vars}
+                        ,CASE
+                                WHEN ({x['denom']})
+                                      THEN 1
+                                ELSE 0
+                                END AS denom_flag
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']})
+                                            THEN 1
+                                ELSE 0
+                                END AS numer_flag 
+
+                from
+                        {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                where
+                        ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+             
+
+            """
+        
+        p = f"""
+                select
+                        {de_dup_vars}
+                        ,max(denom_flag ) AS denom
+                        ,max(numer_flag ) AS numer                    
+
+                from ({ftx_query}) a1
+
+                group by  {de_dup_vars}
+                """
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'201' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                FROM (
+                    SELECT sum(denom) AS denom
+                          ,sum(numer) AS numer
+                    FROM ({p}) a2
+                  
+                    ) a
+             """
+        
+        
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    #
+    # FTX
+    # --------------------------------------------------------------------
+    def ftx_claims_pct_planid(spark, dqm: DQMeasures, measure_id, x) :
+        
+        plan_query = f"""
+                create or replace temporary view {dqm.taskprefix}_ftx_plan_ids AS
+
+                SELECT mc_plan_id AS plan_id
+                FROM {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                WHERE mc_plan_id IS NOT NULL
+                GROUP BY mc_plan_id
+
+                UNION
+                
+                SELECT state_plan_id_num AS plan_id
+                FROM {dqm.taskprefix}_tmsis_mc_mn_data
+                where state_plan_id_num IS NOT NULL
+                GROUP BY state_plan_id_num
+
+                UNION
+
+                SELECT pyee_id AS plan_id
+                FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                where pyee_id IS NOT NULL and pyee_id_type = '02'
+                GROUP BY pyee_id
+
+                UNION
+
+                SELECT pyee_id AS plan_id
+                FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                where pyee_id IS NOT NULL and pyee_id_type = '02'
+                GROUP BY pyee_id
+
+                UNION 
+
+                SELECT pyee_id AS plan_id
+                FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                where ofst_trans_type IN ('1' ,'2') AND
+                      pyee_id IS NOT NULL and pyee_id_type = '02'
+                GROUP BY pyee_id
+             """
+        
+        print(plan_query)
+        spark.sql(plan_query)
+
+        # De dup across FTX tables
+
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+        ftx_query = f"""
+                select {de_dup_vars}
+                       ,pyee_id
+                        ,CASE
+                                WHEN ({x['denom']})
+                                    AND   ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS denom_flag
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']}) 
+                                    AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS numer_flag                   
+
+                from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                where pyee_id_type = '02'
+
+                union all
+                
+                select {de_dup_vars}
+                       ,pyee_id
+                       ,CASE
+                                WHEN ({x['denom']})
+                                    AND   ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS denom_flag
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']}) 
+                                    AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS numer_flag     
+                from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                where pyee_id_type = '02'
+
+                union all
+
+                select  {de_dup_vars}
+                        ,pyee_id
+                        ,CASE
+                                WHEN ({x['denom']})
+                                    AND   ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS denom_flag
+                        ,CASE
+                                WHEN ({x['numer']})
+                                    AND ({x['denom']}) 
+                                    AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+
+                                    THEN 1
+                                ELSE 0
+                                END AS numer_flag    
+
+                from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                where ofst_trans_type IN ('1' ,'2') AND
+                      pyee_id_type = '02'
+                
+            """
+        
+        p = f"""
+                select
+                        {de_dup_vars}
+                        ,pyee_id
+                        ,max(denom_flag ) AS denom
+                        ,max(numer_flag ) AS numer                    
+
+                from ({ftx_query}) a1
+
+                group by  {de_dup_vars},pyee_id
+                """
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'201' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,plan_id
+                FROM (
+                    SELECT coalesce(a.plan_id, 'No Plan ID') as plan_id
+                        ,coalesce(denom,0) as denom
+                        ,coalesce(numer,0) as numer
+
+                    FROM {dqm.taskprefix}_ftx_plan_ids as a
+                        full join (
+                                select pyee_id
+                                       ,sum(denom) as denom
+                                       ,sum(numer) as numer
+                                from  ({p}) a2
+                                group by pyee_id
+                                
+                                    ) as b
+                        on a.plan_id = b.pyee_id
+                    ) c
+             """
+        
+        dqm.logger.debug(z)
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = {"claims_pct": claims_pct,
-               "claims_pct_planid": claims_pct_planid}
+               "claims_pct_planid": claims_pct_planid,
+               "ftx_claims_pct" : ftx_claims_pct,
+               "ftx_claims_pct_planid": ftx_claims_pct_planid,}
 
 # CC0 1.0 Universal
 

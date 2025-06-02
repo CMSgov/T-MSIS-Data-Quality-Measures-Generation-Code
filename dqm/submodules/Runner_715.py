@@ -65,13 +65,13 @@ class Runner_715:
                            ,cl.orgnl_line_num
                            ,cl.adjstmt_line_num
                            ,cl.line_adjstmt_ind
-                           ,max(case when gndr_cd = 'M' then 1 else 0 end) as male
+                           ,max(case when sex_cd = 'M' then 1 else 0 end) as male
                     from       {dqm.taskprefix}_base_cll_{x['claim_type']} cl
                     inner join {dqm.taskprefix}_ever_elig_prmry el 
                       on cl.msis_ident_num = el.msis_ident_num
                     where (cl.{x['date_var']} >= prmry_dmgrphc_ele_efctv_dt and (cl.{x['date_var']} <= prmry_dmgrphc_ele_end_dt or prmry_dmgrphc_ele_end_dt is NULL))
                       and ever_eligible_prm = 1
-		              and gndr_cd is not null
+		              and sex_cd is not null
                       and {x['pregnancy_ind']}
                     group by cl.submtg_state_cd
                             ,cl.msis_ident_num

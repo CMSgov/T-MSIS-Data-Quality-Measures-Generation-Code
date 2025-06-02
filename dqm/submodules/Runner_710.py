@@ -31,7 +31,8 @@ class Runner_710:
             header_filter = ""
 
         df=spark.sql(f"select * from dqm_conv.{x['var']}")
-        list_val=df.rdd.map(lambda x: x.valid_value).collect()
+        #list_val=df.rdd.map(lambda x: x.valid_value).collect()
+        list_val = [row['valid_value'] for row in df.select('valid_value').collect()]
         vvalue ="(" + ','.join(repr(str(i)) for i in list_val) + ")"
         
         z = f"""

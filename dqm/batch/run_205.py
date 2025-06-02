@@ -6,15 +6,19 @@ run_205_all_other_exp = [
     ['205', 'exp28_2' ,               'exp28_2' , '', '' ],
     ['205', 'exp14_4' ,               'exp14_4' , '', '' ],
     ['205', 'exp14_1' ,               'exp14_1' , '', '' ],
-    ['205', 'exp25_1' ,               'exp25_1' , '', '' ],
-    ['205', 'exp25_2' ,               'exp25_2' , '', '' ],
-    ['205', 'exp23_1' ,               'exp23_1' , '', '' ],
-    ['205', 'exp23_2' ,               'exp23_2' , '', '' ],
+    #['205', 'exp25_1' ,               'exp25_1' , '', '' ],
+    #['205', 'exp25_2' ,               'exp25_2' , '', '' ],
+    #['205', 'exp23_1' ,               'exp23_1' , '', '' ],
+    #['205', 'exp23_2' ,               'exp23_2' , '', '' ],
     ['205', 'exp12_1' ,               'exp12_1' , '', '' ],
-    ['205', 'claims_with_time_span' , 'exp45_4' , 'at', 'ip' ],
-    ['205', 'claims_with_time_span' , 'exp45_5' , 'at', 'lt' ],
-    ['205', 'claims_with_time_span' , 'exp45_6' , 'at', 'ot' ]
-
+    #['205', 'claims_with_time_span' , 'exp45_4' , 'at', 'ip' ],
+    #['205', 'claims_with_time_span' , 'exp45_5' , 'at', 'lt' ],
+    #['205', 'claims_with_time_span' , 'exp45_6' , 'at', 'ot' ],
+    ['205', 'ftx_exp25_1' ,           'exp25_1' , '', '' ],
+    ['205', 'ftx_exp25_2' ,           'exp25_2' , '', '' ],
+    ['205', 'ftx_exp23_1' ,           'exp23_1' , '', '' ],
+    ['205', 'ftx_exp23_2' ,           'exp23_2' , '', '' ],
+    ['205', 'ftx_claims_with_time_span' , 'exp45_4' , 'at', '' ]
 ]
 
 df = DataFrame(run_205_all_other_exp, columns=['series', 'cb', 'measure_id', 'claim_cat', 'claim_type'])

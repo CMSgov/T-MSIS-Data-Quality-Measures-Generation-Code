@@ -388,6 +388,274 @@ class Runner_205:
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    def ftx_exp25_1(spark, dqm: DQMeasures, measure_id, x) :
+        
+        # Dedup across FTX tables
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """        
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                        ,'EXP25_1' AS measure_id
+                        ,'205' AS submodule
+                        ,coalesce(numer, 0) AS numer
+                        ,coalesce(denom, 0) AS denom
+                        ,CASE
+                            WHEN coalesce(denom, 0) <> 0
+                                THEN numer / denom
+                            ELSE NULL
+                            END AS mvalue
+                FROM (
+                       SELECT sum(denom) as denom
+                             ,sum(numer) as numer
+                       FROM (
+                              SELECT {de_dup_vars}
+                                     ,max(denom) as denom
+                                     ,sum(numer) as numer
+                              FROM (
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                    
+                                     UNION ALL
+                    
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                                
+                                     UNION ALL
+                                
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst    
+                              ) a     
+                              GROUP BY {de_dup_vars}                              
+                        ) b
+                ) c
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    # No need to dedup across FTX tables as only payment amound is summed up
+    def ftx_exp25_2(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                        ,'EXP25_2' AS measure_id
+                        ,'205' AS submodule
+                        ,NULL AS numer
+                        ,NULL AS denom
+                        ,sum(pymt_or_rcpmt_amt) AS mvalue
+                FROM (
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                      
+                      UNION ALL
+                      
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                      
+                      UNION ALL                    
+                      
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                ) a
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    def ftx_exp23_1(spark, dqm: DQMeasures, measure_id, x) :
+
+        # Dedup across FTX tables
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """        
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                        ,'EXP23_1' AS measure_id
+                        ,'205' AS submodule
+                        ,coalesce(numer, 0) AS numer
+                        ,coalesce(denom, 0) AS denom
+                        ,CASE
+                            WHEN coalesce(denom, 0) <> 0
+                                THEN numer / denom
+                            ELSE NULL
+                            END AS mvalue
+                FROM (
+                       SELECT sum(denom) as denom
+                             ,sum(numer) as numer
+                       FROM (
+                              SELECT {de_dup_vars}
+                                     ,max(denom) as denom
+                                     ,sum(numer) as numer
+                              FROM (
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                    
+                                     UNION ALL
+                    
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                                
+                                     UNION ALL
+                                
+                                     SELECT {de_dup_vars}
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN 1
+                                                 ELSE 0 END AS denom
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) AND
+                                                      (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
+                                                 ELSE 0 END AS numer
+                                     FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst    
+                              ) a     
+                              GROUP BY {de_dup_vars}                              
+                        ) b
+                ) c
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    # No need to dedup across FTX tables as only payment amound is summed up
+    def ftx_exp23_2(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                        ,'EXP23_2' AS measure_id
+                        ,'205' AS submodule
+                        ,NULL AS numer
+                        ,NULL AS denom
+                        ,sum(pymt_or_rcpmt_amt) AS mvalue
+                FROM (
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                      
+                      UNION ALL
+                      
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                      
+                      UNION ALL                      
+                      
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                                  ELSE 0 END AS pymt_or_rcpmt_amt
+                      FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                ) a
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    # FTX
+    #
+    # --------------------------------------------------------------------
+    def ftx_claims_with_time_span(
+        spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'205' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN round(numer / denom,2)
+                        ELSE NULL
+                        END AS mvalue
+                FROM (
+                    SELECT sum(denom_inner) AS denom
+                        ,sum(CASE
+                                WHEN numer_inner = 1
+                                    AND denom_inner = 1
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                    FROM (
+                        SELECT msis_ident_num
+                            ,submtg_state_cd
+                            ,max(case when ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat[x['claim_cat']]}) then 1 else 0 end) AS denom_inner
+                        FROM {dqm.taskprefix}_tmsis_misc_pymt
+                        GROUP BY msis_ident_num
+                            ,submtg_state_cd
+                        ) d
+                    LEFT JOIN (
+                        SELECT msis_ident_num
+                            ,submtg_state_cd
+                            ,max(ever_eligible) AS numer_inner
+                        FROM {dqm.taskprefix}_ever_elig
+                        GROUP BY msis_ident_num
+                            ,submtg_state_cd
+                        ) n ON d.msis_ident_num = n.msis_ident_num
+                        AND d.submtg_state_cd = n.submtg_state_cd
+                    ) m
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
 
     # --------------------------------------------------------------------
     #
@@ -404,6 +672,11 @@ class Runner_205:
         "exp23_2": exp23_2,
         "exp12_1": exp12_1,
         "claims_with_time_span": claims_with_time_span,
+        "ftx_exp25_1": ftx_exp25_1,
+        "ftx_exp25_2": ftx_exp25_2,
+        "ftx_exp23_1": ftx_exp23_1,
+        "ftx_exp23_2": ftx_exp23_2,
+        "ftx_claims_with_time_span": ftx_claims_with_time_span
     }
 
 # CC0 1.0 Universal
