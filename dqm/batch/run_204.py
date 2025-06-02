@@ -24,10 +24,10 @@ run_204_exp_sum_macro = [
     ['204', 'summ', 'sumexp_5', 'c', 'mdcd_pd_amt', '1=1', 'cll', 'ot'],
     ['204', 'summ', 'sumexp_7', 'c', 'tot_mdcd_pd_amt', '1=1', 'clh', 'rx'],
 
-    ['204', 'summ', 'exp22_2', 'd', 'mdcd_pd_amt', "stc_cd = '119'", 'cll', 'ot'],
-    ['204', 'summ', 'exp20_1', 'd', 'mdcd_pd_amt', "stc_cd = '121'", 'cll', 'ot'],
-    ['204', 'summ', 'exp22_4', 'd', 'mdcd_pd_amt', "stc_cd = '120'", 'cll', 'ot'],
-    ['204', 'summ', 'exp22_6', 'd', 'mdcd_pd_amt', "stc_cd = '122'", 'cll', 'ot'],
+    #['204', 'summ', 'exp22_2', 'd', 'mdcd_pd_amt', "stc_cd = '119'", 'cll', 'ot'],
+    #['204', 'summ', 'exp20_1', 'd', 'mdcd_pd_amt', "stc_cd = '121'", 'cll', 'ot'],
+    #['204', 'summ', 'exp22_4', 'd', 'mdcd_pd_amt', "stc_cd = '120'", 'cll', 'ot'],
+    #['204', 'summ', 'exp22_6', 'd', 'mdcd_pd_amt', "stc_cd = '122'", 'cll', 'ot'],
 
     # v1.2: updated exp22_8
     ['204', 'summ', 'exp22_8', 'd', 'mdcd_pd_amt', '1=1', 'cll', 'ot'],
@@ -44,13 +44,25 @@ run_204_exp_sum_macro = [
     ['204', 'summ', 'sumexp_6', 'i', 'mdcd_pd_amt', '1=1', 'cll', 'ot'],
     ['204', 'summ', 'sumexp_8', 'i', 'tot_mdcd_pd_amt', '1=1', 'clh', 'rx'],
 
-    ['204', 'summ', 'exp24_2', 'j', 'mdcd_pd_amt', "stc_cd = '119'", 'cll', 'ot'],
-    ['204', 'summ', 'exp21_1', 'j', 'mdcd_pd_amt', "stc_cd = '121'", 'cll', 'ot'],
-    ['204', 'summ', 'exp24_4', 'j', 'mdcd_pd_amt', "stc_cd = '120'", 'cll', 'ot'],
-    ['204', 'summ', 'exp24_6', 'j', 'mdcd_pd_amt', "stc_cd = '122'", 'cll', 'ot'],
+    #['204', 'summ', 'exp24_2', 'j', 'mdcd_pd_amt', "stc_cd = '119'", 'cll', 'ot'],
+    #['204', 'summ', 'exp21_1', 'j', 'mdcd_pd_amt', "stc_cd = '121'", 'cll', 'ot'],
+    #['204', 'summ', 'exp24_4', 'j', 'mdcd_pd_amt', "stc_cd = '120'", 'cll', 'ot'],
+    #['204', 'summ', 'exp24_6', 'j', 'mdcd_pd_amt', "stc_cd = '122'", 'cll', 'ot'],
 
     # v1.2: updated exp24_8
-    ['204', 'summ', 'exp24_8', 'j', 'mdcd_pd_amt', '1=1', 'cll', 'ot']
+    ['204', 'summ', 'exp24_8', 'j', 'mdcd_pd_amt', '1=1', 'cll', 'ot'],
+    
+    # FTX update
+    ['204', 'ftx_summ_2', 'exp20_1', 'D', 'pymt_or_rcpmt_amt', '', '', ''],
+    ['204', 'ftx_summ', 'exp22_2', 'D', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('01')", '', 'tmsis_indvdl_cptatn_pmpm'],
+    ['204', 'ftx_summ', 'exp22_4', 'D', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('02','03')", '', 'tmsis_indvdl_cptatn_pmpm'],
+    ['204', 'ftx_summ', 'exp22_6', 'D', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('05','06','07','08','09','10','11','12','13','14','15','16','18','19')", '', 'tmsis_indvdl_cptatn_pmpm'],
+    
+    ['204', 'ftx_summ_2', 'exp21_1', 'J', 'pymt_or_rcpmt_amt', '', '', ''],
+    ['204', 'ftx_summ', 'exp24_2', 'J', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('01')", '', 'tmsis_indvdl_cptatn_pmpm'],
+    ['204', 'ftx_summ', 'exp24_4', 'J', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('02','03')", '', 'tmsis_indvdl_cptatn_pmpm'],
+    ['204', 'ftx_summ', 'exp24_6', 'J', 'pymt_or_rcpmt_amt', "pyee_mcr_plan_type in ('05','06','07','08','09','10','11','12','13','14','15','16','18','19')", '', 'tmsis_indvdl_cptatn_pmpm']
+    
 ]
 
 df = DataFrame(run_204_exp_sum_macro, columns=['series', 'cb', 'measure_id', 'claim_cat', 'sumvar', 'constraint', 'level', 'claim_type'])

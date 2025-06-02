@@ -75,7 +75,7 @@ class Runner_106:
                 from (
                     select
                         mc_plan_id as plan_id,
-                        enrld_mc_plan_type_cd as plan_type_el,
+                        mc_plan_type_cd as plan_type_el,
                         count(distinct msis_ident_num) as mvalue
                     from
                         {dqm.taskprefix}_tmsis_mc_prtcptn_data
@@ -83,7 +83,7 @@ class Runner_106:
                         mc_plan_enrlmt_efctv_dt is not null
                     group by
                         mc_plan_id,
-                        enrld_mc_plan_type_cd
+                        mc_plan_type_cd
                     ) a
             """
 

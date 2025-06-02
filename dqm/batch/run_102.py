@@ -30,7 +30,7 @@ run_102 =[
     ['102', 'build_count_measure_tables', 'el619', 'el6.19', 'tmsis_elgblty_dtrmnt', "(dual_elgbl_cd = '09')"],
     ['102', 'build_count_measure_tables', 'el620', 'el6.20', 'tmsis_elgblty_dtrmnt', "(dual_elgbl_cd = '10')"],
     ['102', 'build_count_measure_tables', 'el621', 'el6.21', 'tmsis_sect_1115a_demo_info', "(sect_1115a_demo_ind = '1')"],
-    ['102', 'build_count_measure_tables', 'el1002', 'el10.2', 'tmsis_mc_prtcptn_data', "(enrld_mc_plan_type_cd in ('01','02','03','04','05','06','07','08','09','10', '11','12','13','14','15','16','17','18','60','70','80'))"],
+    ['102', 'build_count_measure_tables', 'el1002', 'el10.2', 'tmsis_mc_prtcptn_data', "(mc_plan_type_cd in ('01','02','03','04','05','06','07','08','09','10', '11','12','13','14','15','16','17','18','60','70','80'))"],
     ['102', 'build_count_measure_tables', 'el313', 'el3.13', 'tmsis_elgblty_dtrmnt', "(elgblty_grp_cd in ('01','02','03','04','05','06','07','08','09','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26'))"],
     ['102', 'build_count_measure_tables', 'el623', 'el6.23', 'tmsis_elgblty_dtrmnt', "(rstrctd_bnfts_cd in ('1','4','5','7','A','B','D')) or (rstrctd_bnfts_cd is null)"],
 

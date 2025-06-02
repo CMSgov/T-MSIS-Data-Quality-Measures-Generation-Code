@@ -122,6 +122,145 @@ class Runner_909():
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    #  FTX measures
+    #
+    # --------------------------------------------------------------------
+    def ftx_mcr28_1(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ftx_ids AS
+
+                SELECT DISTINCT state_plan_id_num
+                FROM {dqm.taskprefix}_tmsis_mc_mn_data
+                WHERE (state_plan_id_num IS NOT NULL)
+                    AND NOT (
+                        mc_plan_type_cd IN (
+                            '02'
+                            ,'03'
+                            )
+                        )
+            """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ftx_enrollees AS
+
+                SELECT mc_plan_id
+                    ,count(1) AS enrollment
+                FROM (
+                    SELECT DISTINCT mc_plan_id
+                        ,msis_ident_num
+                    FROM {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                    WHERE mc_plan_id IS NOT NULL
+                        AND msis_ident_num IS NOT NULL
+                    ) a
+                GROUP BY mc_plan_id
+            """
+        dqm.logger.debug(z)
+        spark.sql(z)
+        
+        # Dedup across FTX tables
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+                    
+        prep_query = f"""
+                        SELECT distinct 
+                               {de_dup_vars}
+                               ,pyee_id
+                        FROM (  SELECT {de_dup_vars}
+                                       ,pyee_id
+                                FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                                WHERE pyee_id IS NOT NULL and
+                                        pyee_id_type = '02' and
+                                        pymt_or_rcpmt_amt > 0 and                      
+                                        adjstmt_ind = '0'
+
+                                UNION ALL
+                                
+                                SELECT {de_dup_vars}
+                                       ,pyee_id
+                                FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                                WHERE pyee_id IS NOT NULL and
+                                        pyee_id_type = '02' and
+                                        pymt_or_rcpmt_amt > 0 and                 
+                                        adjstmt_ind = '0'
+
+                                UNION ALL
+                                
+                                SELECT {de_dup_vars}
+                                       ,pyee_id
+                                FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                                WHERE pyee_id IS NOT NULL and
+                                        pyee_id_type = '02' and
+                                        pymt_or_rcpmt_amt > 0 and                 
+                                        adjstmt_ind = '0' and
+                                        ofst_trans_type <> '3'
+                        )
+        """
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_ftx_cap AS
+
+                SELECT pyee_id
+                    ,count(1) AS capitation
+                FROM ({prep_query})
+                GROUP BY pyee_id
+            """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                CREATE
+                    OR replace TEMPORARY VIEW {dqm.taskprefix}_ftx_full AS
+
+                SELECT a.state_plan_id_num
+                    ,coalesce(b.enrollment, 0) AS enrollment
+                    ,coalesce(c.capitation, 0) AS capitation
+                    ,CASE
+                        WHEN coalesce(b.enrollment, 0) <> 0
+                            THEN coalesce(c.capitation, 0) / coalesce(b.enrollment, 0)
+                        ELSE NULL
+                        END AS capitation_ratio
+                FROM {dqm.taskprefix}_ftx_ids a
+                LEFT JOIN {dqm.taskprefix}_ftx_enrollees b ON a.state_plan_id_num = b.mc_plan_id
+                LEFT JOIN {dqm.taskprefix}_ftx_cap c ON a.state_plan_id_num = c.pyee_id
+            """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'MCR28_1' AS measure_id
+                    ,'909' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                    ,NULL AS valid_value
+                FROM (
+                    SELECT count(1) AS denom
+                        ,sum(CASE
+                                WHEN capitation_ratio < 0.9
+                                    OR capitation_ratio > 1.1
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_ftx_full
+                    ) a
+            """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
 
     # --------------------------------------------------------------------
     #
@@ -157,7 +296,7 @@ class Runner_909():
                 from
                     {dqm.taskprefix}_tmsis_mc_prtcptn_data
                 where
-                    enrld_mc_plan_type_cd in {x['plan_type']}
+                    mc_plan_type_cd in {x['plan_type']}
                     and msis_ident_num is not null
                     and mc_plan_id is not null
             """
@@ -199,14 +338,87 @@ class Runner_909():
 
         return spark.sql(z)
 
+    # --------------------------------------------------------------------
+    # FTX
+    # MCR65.x measures capture % of MANAGED-CARE-PLAN-TYPE enrollees with 
+    # no capitation payments for that plan type
+    # --------------------------------------------------------------------
+    def ftx_mcr65(spark, dqm: DQMeasures, measure_id, x) :
 
+        z = f"""
+                create or replace temporary view mcr65_ftx_denom as
+                select distinct 
+                    msis_ident_num
+                   ,mc_plan_id
+                from
+                    {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                where
+                    mc_plan_type_cd in {x['plan_type']}
+                    and msis_ident_num is not null
+                    and mc_plan_id is not null
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        # No need to dedup across FTX tables as no counts or payment amount is calculated
+        z = f"""
+                create or replace temporary view mcr65_ftx_numer as
+                select
+                    p.msis_ident_num
+                   ,max(case when h.msis_ident_num is null then 1 else 0 end) as numer_flag
+                from
+                    mcr65_ftx_denom as p
+                left join
+                    (select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                      where pyee_id_type = '02' 
+
+                      union all
+                      
+                      select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                      where pyee_id_type = '02'
+
+                      union all
+                      
+                      select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                      where pyee_id_type = '02' and 
+                            ofst_trans_type <> '3'
+                    ) as h
+                    on p.mc_plan_id = h.pyee_id
+                    and p.msis_ident_num = h.msis_ident_num
+                group by p.msis_ident_num
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                select
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'909' as submodule
+                    ,coalesce(sum(numer_flag), 0) as numer
+                    ,count(*) as denom
+                    ,case when count(*) > 0 then (coalesce(sum(numer_flag), 0) / count(*)) else null end as mvalue
+                from
+                    mcr65_ftx_numer
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
     v_table = { 'mcr28_1': mcr28_1,
+                'ftx_mcr28_1': ftx_mcr28_1,
                 'summcr27': summcr27,
-                'mcr65': mcr65 }
+                'mcr65': mcr65,
+                'ftx_mcr65': ftx_mcr65 }
 
 # CC0 1.0 Universal
 

@@ -140,9 +140,127 @@ class Runner_202:
 
     # --------------------------------------------------------------------
     #
+    # FTX
+    # --------------------------------------------------------------------
+    def ftx_avg(
+        spark,
+        dqm: DQMeasures,
+        measure_id,
+        x
+        ) :
+      
+        #Only using ftx_claim_cat dictionary since we are only tabulating tmsis_indvdl_cptatn_pmpm
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{x['measure_id']}' AS measure_id
+                    ,'202' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                FROM (
+                    SELECT '{x['measure_id']}' AS measure_id
+                        ,sum(CASE
+                                WHEN ({DQClosure.parse(x['constraint'])})
+                                      AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                             THEN 1
+                                ELSE 0
+                                END) AS denom
+                        ,sum(CASE
+                                WHEN ({DQClosure.parse(x['constraint'])})
+                                    AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                                    THEN {x['avgvar']}
+                                ELSE 0
+                                END) AS numer
+                    FROM {dqm.taskprefix}_{x['claim_type']}
+                    ) a
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+    
+    # --------------------------------------------------------------------
+    #
     #
     # --------------------------------------------------------------------
-    v_table = {"avg": avg, "avg_cll_to_clh": avg_cll_to_clh}
+   
+    def ftx_avg2(
+        spark,
+        dqm: DQMeasures,
+        measure_id,
+        x
+        ) :
+      
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{x['measure_id']}' AS measure_id
+                    ,'202' AS submodule
+                    ,coalesce(numer, 0) AS numer
+                    ,coalesce(denom, 0) AS denom
+                    ,CASE
+                        WHEN coalesce(denom, 0) <> 0
+                            THEN numer / denom
+                        ELSE NULL
+                        END AS mvalue
+                        
+                FROM ( select sum(denom) AS denom
+                             ,sum(numer) AS numer
+
+                        FROM (
+                            SELECT {de_dup_vars}
+                                ,max(denom) AS denom
+                                ,sum(pymt_numer) AS numer
+
+                            FROM (select  {de_dup_vars}
+                                        ,CASE
+                                        WHEN ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                                        THEN 1 ELSE 0 END AS denom
+                                        ,CASE
+                                        WHEN ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                                        THEN {x['avgvar']} ELSE 0 END AS pymt_numer
+
+                                from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+
+                                union all
+
+                                select {de_dup_vars}
+                                        ,CASE
+                                        WHEN  ofst_trans_type in ('2')  
+                                            AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+                                        THEN 1 ELSE 0 END AS denom
+                                        ,CASE
+                                        WHEN  ofst_trans_type in ('2')  
+                                            AND  ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+                                        THEN {x['avgvar']} ELSE 0 END AS pymt_numer
+                                from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+
+                                ) a1
+                            group by {de_dup_vars}
+                                
+                            ) a2
+                    ) a3
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+          
+    # --------------------------------------------------------------------
+    #
+    #
+    # --------------------------------------------------------------------
+    v_table = {"avg": avg, 
+               "avg_cll_to_clh": avg_cll_to_clh,
+               "ftx_avg": ftx_avg, 
+               "ftx_avg2": ftx_avg2, }
 
 # CC0 1.0 Universal
 

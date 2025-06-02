@@ -14,12 +14,12 @@ run_910_all_freq = [
     ['910', 'frq', 'mcr34_1', 'LT', 'CLH', 'O', 'adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr44_1', 'LT', 'CLH', 'U', 'adjstmt_ind', '1=1'],
 
-    # ffs29.1, ffs37.1, mcr35.1, mcr36.1, mcr45.1, mcr46.1;
+    # ffs29.1, ffs37.1, mcr35.1 (updated with FTX), mcr36.1, mcr45.1 (updated with FTX), mcr46.1;
     ['910', 'frq', 'ffs29_1', 'OT', 'CLH', 'C', 'adjstmt_ind', '1=1'],
     ['910', 'frq', 'ffs37_1', 'OT', 'CLH', 'I', 'adjstmt_ind', '1=1'],
-    ['910', 'frq', 'mcr35_1', 'OT', 'CLH', 'Y', 'adjstmt_ind', '1=1'],
+    ['910', 'ftx_frq_tbls','mcr35_1', '', '', 'E', 'adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr36_1', 'OT', 'CLH', 'O', 'adjstmt_ind', '1=1'],
-    ['910', 'frq', 'mcr45_1', 'OT', 'CLH', 'Z', 'adjstmt_ind', '1=1'],
+    ['910', 'ftx_frq_tbls', 'mcr45_1', '', '', 'K', 'adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr46_1', 'OT', 'CLH', 'U', 'adjstmt_ind', '1=1'],
 
     # ffs30.1, ffs38.1, mcr37.1, mcr48.1;
@@ -40,12 +40,10 @@ run_910_all_freq = [
     ['910', 'frq', 'mcr39_1', 'LT', 'CLL', 'O', 'line_adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr49_1', 'LT', 'CLL', 'U', 'line_adjstmt_ind', '1=1'],
 
-    # ffs33.1, ffs41.1, mcr40.1, mcr41.1, mcr50.1, mcr51.1;
+    # ffs33.1, ffs41.1, mcr41.1, mcr51.1;
     ['910', 'frq', 'ffs33_1', 'OT', 'CLL', 'C', 'line_adjstmt_ind', '1=1'],
     ['910', 'frq', 'ffs41_1', 'OT', 'CLL', 'I', 'line_adjstmt_ind', '1=1'],
-    ['910', 'frq', 'mcr40_1', 'OT', 'CLL', 'Y', 'line_adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr41_1', 'OT', 'CLL', 'O', 'line_adjstmt_ind', '1=1'],
-    ['910', 'frq', 'mcr50_1', 'OT', 'CLL', 'Z', 'line_adjstmt_ind', '1=1'],
     ['910', 'frq', 'mcr51_1', 'OT', 'CLL', 'U', 'line_adjstmt_ind', '1=1'],
 
     # ffs34.1, ffs42.1, mcr42.1, mcr52.1;

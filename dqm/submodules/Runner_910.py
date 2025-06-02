@@ -159,11 +159,154 @@ class Runner_910():
         return spark.sql(z)
 
 
+    def ftx_frq_tbls(spark, dqm: DQMeasures, measure_id, x) :
+
+        seedSchema = StructType([
+            StructField('measure_id', StringType(), False),
+            StructField('valid_value', StringType(), False)
+        ])
+
+        seedRows = [
+            Row(measure_id = measure_id, valid_value = '0'),
+            Row(measure_id = measure_id, valid_value = '1'),
+            Row(measure_id = measure_id, valid_value = '2'),
+            Row(measure_id = measure_id, valid_value = '3'),
+            Row(measure_id = measure_id, valid_value = '4'),
+            Row(measure_id = measure_id, valid_value = '5'),
+            Row(measure_id = measure_id, valid_value = '6'),
+            Row(measure_id = measure_id, valid_value = '9'),
+            Row(measure_id = measure_id, valid_value = 'N'),
+            Row(measure_id = measure_id, valid_value = 'T')
+        ]
+
+        seedDF = spark.createDataFrame(seedRows, seedSchema)
+
+        seedDF.createOrReplaceTempView("view_valid_value_seeds")
+
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind"""
+
+        z = f"""create or replace temporary view {dqm.taskprefix}_ftx_tables as
+                    select {de_dup_vars} from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm 
+                        where {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                    union
+
+                    select {de_dup_vars} from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                        where {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]}
+
+                    union
+
+                    select {de_dup_vars} from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                        where {DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]}
+            """
+
+        dqm.logger.debug(z)
+
+        spark.sql(z)
+
+        z = f"""
+                SELECT NULL AS numer
+                    ,NULL AS denom
+                    ,mvalue
+                    ,valid_value
+                FROM (
+                    SELECT {x['var']} AS valid_value
+                        ,count(1) AS mvalue
+                    FROM {dqm.taskprefix}_ftx_tables
+                    WHERE (
+                            {x['constraint']}
+                            AND {x['var']} IN (
+                                 '0'
+                                ,'1'
+                                ,'2'
+                                ,'3'
+                                ,'4'
+                                ,'5'
+                                ,'6'
+                                ,'9'
+                                )
+                            )
+                    GROUP BY valid_value
+                    ) a
+            """
+        dqm.logger.debug(z)
+        dfA = spark.sql(z)
+
+        z = f"""
+                SELECT NULL AS numer
+                    ,NULL AS denom
+                    ,mvalue
+                    ,'N' AS valid_value
+                FROM (
+                    SELECT count(1) AS mvalue
+                    FROM {dqm.taskprefix}_ftx_tables
+                    WHERE (
+                            {x['constraint']}
+                            AND (
+                                {x['var']} NOT IN (
+                                     '0'
+                                    ,'1'
+                                    ,'2'
+                                    ,'3'
+                                    ,'4'
+                                    ,'5'
+                                    ,'6'
+                                    ,'9'
+                                    )
+                                OR {x['var']} IS NULL
+                                )
+                            )
+                    ) a
+            """
+        dqm.logger.debug(z)
+        dfB = dfA.unionByName(spark.sql(z))
+
+        z = f"""
+                SELECT NULL AS numer
+                    ,NULL AS denom
+                    ,mvalue
+                    ,'T' AS valid_value
+                FROM (
+                    SELECT count(1) AS mvalue
+                    FROM {dqm.taskprefix}_ftx_tables
+                    WHERE ({x['constraint']}
+
+                    )) a
+            """
+        dqm.logger.debug(z)
+        dfC = dfB.unionByName(spark.sql(z))
+
+        dfC.createOrReplaceTempView("view_appended_ftx_claims_freq")
+
+        z = f"""
+                SELECT
+                    '{dqm.state}' AS submtg_state_cd
+                  , '{measure_id}' AS measure_id
+                  , '910' AS submodule
+                  , m.numer
+                  , m.denom
+                  , coalesce(m.mvalue, 0) as mvalue
+                  , s.valid_value
+                FROM
+                    view_valid_value_seeds as s
+                    LEFT JOIN view_appended_ftx_claims_freq as m
+                        ON s.measure_id = '{measure_id}'
+                       AND s.valid_value = m.valid_value
+             """
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    v_table = { 'frq': frq }
+    v_table = { 'frq': frq, 
+                'ftx_frq_tbls': ftx_frq_tbls}
 
 # CC0 1.0 Universal
 

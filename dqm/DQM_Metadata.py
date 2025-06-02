@@ -95,9 +95,13 @@ class DQM_Metadata:
     # -------------------------------------------------------------------------------------------------
     class mcplan_tables():
 
-        tblList = ('tmsis_mc_mn_data', 'tmsis_mc_oprtg_authrty', 'tmsis_natl_hc_ent_id_info')
+        #tblList = ('tmsis_mc_mn_data', 'tmsis_mc_oprtg_authrty', 'tmsis_natl_hc_ent_id_info')
 
-        dtPrefix = ('mc_mn_rec', 'mc_op_authrty', 'natl_hlth_care_ent_id')
+        #dtPrefix = ('mc_mn_rec', 'mc_op_authrty', 'natl_hlth_care_ent_id')
+
+        tblList = ('tmsis_mc_mn_data', 'tmsis_mc_oprtg_authrty')
+
+        dtPrefix = ('mc_mn_rec', 'mc_op_authrty')
 
         class base_mc_view_columns():
             select = {
@@ -111,10 +115,134 @@ class DQM_Metadata:
                 'tmsis_chpid_shpid_rltnshp_data': ''
             }
 
+    # -------------------------------------------------------------------------------------------------
+    #   FTX Tables
+    # -------------------------------------------------------------------------------------------------
+    class ftx_tables():
+
+        tblList = ('tmsis_indvdl_cptatn_pmpm','tmsis_indvdl_hi_prm_pymt','tmsis_grp_insrnc_prm_pymt','tmsis_cst_shrng_ofst','tmsis_val_bsd_pymt','tmsis_sdp_seprt_pymt_term','tmsis_cst_stlmt_pymt','tmsis_fqhc_wrp_pymt','tmsis_misc_pymt')
+
+        class ftx_view_columns():
+
+            select = {
+                'tmsis_indvdl_cptatn_pmpm':
+                    """ ,pyr_mcr_plan_type
+                        ,pyee_mcr_plan_type
+                        ,pyee_tax_id_type
+                        ,msis_ident_num
+                        ,cptatn_prd_strt_dt
+                        ,cptatn_prd_end_dt
+                        ,sdp_ind
+                        ,subcptatn_ind """,
+
+                'tmsis_indvdl_hi_prm_pymt':
+                    """ ,msis_ident_num
+                        ,prm_prd_strt_dt
+                        ,prm_prd_end_dt
+                        ,insrnc_plan_id """,
+                            
+                'tmsis_grp_insrnc_prm_pymt':
+                    """ ,coalesce(msis_ident_num, 'X') as msis_ident_num
+                        ,coalesce(ssn,'X') as ssn
+                        ,msis_ident_num as orig_msis_ident_num
+                        ,ssn as orig_ssn
+                        ,prm_prd_strt_dt
+                        ,prm_prd_end_dt
+                        ,insrnc_plan_id
+                        ,plcy_ownr_cd""",
+
+                'tmsis_cst_shrng_ofst':
+                    """ ,pyee_mcr_plan_type
+                        ,msis_ident_num
+                        ,cvrg_prd_strt_dt
+                        ,cvrg_prd_end_dt
+                        ,insrnc_plan_id
+                        ,ofst_trans_type""",
+
+                'tmsis_val_bsd_pymt':	
+                    """ ,pyee_mcr_plan_type
+                        ,msis_ident_num
+                        ,prfmnc_prd_strt_dt
+                        ,prfmnc_prd_end_dt
+                        ,sdp_ind
+                        ,vb_pymt_model_type""",
+
+                'tmsis_sdp_seprt_pymt_term':
+                    """ ,pyee_mcr_plan_type
+                        ,pymt_prd_strt_dt
+                        ,pymt_prd_end_dt
+                        ,pymt_prd_type""",   
+
+                'tmsis_cst_stlmt_pymt':	
+                    """,pyee_mcr_plan_type
+                       ,cst_stlmt_prd_strt_dt		
+                       ,cst_stlmt_prd_end_dt""",
+
+                'tmsis_fqhc_wrp_pymt':	
+                    """,pyee_mcr_plan_type
+                       ,wrp_prd_strt_dt		
+                       ,wrp_prd_end_dt""",	
+
+                'tmsis_misc_pymt':
+                    """ ,pyee_mcr_plan_type
+                        ,msis_ident_num
+                        ,pymt_prd_strt_dt
+                        ,pymt_prd_end_dt
+                        ,pymt_prd_type
+                        ,trans_type_cd
+                        ,sdp_ind"""
+                }
+            
+            #FTX claim categories. Used for all tables except cost sharing offset table
+            #For cost sharing offset table use ftx_cst_shrng_claim_cat
+            # ex. ftx_tables.ftx_views_column.ftx_claim_cat['D']          
+
+            ftx_claim_cat = {
+
+                 'D': "(adjstmt_ind = '0' and mbescbes_form_grp in ('1','2'))"
+                ,'E': "(mbescbes_form_grp in ('1','2'))"
+                ,'J': "(adjstmt_ind = '0' and mbescbes_form_grp in ('3'))"
+                ,'K': "(mbescbes_form_grp in ('3'))"
+                ,'X': "(adjstmt_ind = '0' and mbescbes_form_grp is not null)"
+                ,'Z': "(mbescbes_form_grp in ('3'))"
+                ,'AT': "(trans_type_cd in ('76','77'))"
+                #,'AG': "(adjstmt_ind in ('0','4') and mbescbes_form_grp is not null)"
+                #,'BA': "(adjstmt_ind in ('0','4') and mbescbes_form_grp in ('1','2'))"
+                #,'BB': "(adjstmt_ind in ('0','4') and mbescbes_form_grp in ('3'))"
+                #,'BF': "(subcptatn_ind in ('2') and adjstmt_ind in ('0') and mbescbes_form_grp in ('1','2'))"
+                #,'BG': "(subcptatn_ind in ('2') and adjstmt_ind in ('0') and mbescbes_form_grp in ('3'))"
+                
+                }
+            
+            #Create claim cat dictionary for cost sharing offset table
+            # ex. ftx_tables.ftx_views_column.ftx_cst_shrng_claim_cat['D']          
+
+            ftx_cst_shrng_claim_cat={}
+
+            for key in ftx_claim_cat.keys():
+                if key in ('D', 'E', 'J', 'K', 'X', 'Z', 'AG', 'BA','BB'):
+                    ftx_cst_shrng_claim_cat[key] = "(" + ftx_claim_cat[key] + " and (ofst_trans_type != '3') )"
+                else:
+                    ftx_cst_shrng_claim_cat[key] = ftx_claim_cat[key] 
+            
+            # Nested dictionary for claim category
+            # For cost sharing offset table use ftx_cst_shrng_claim_cat
+            # Else use ftx_claim_cat
+            # ex. ftx_tables.ftx_views_column.ftx_claim_cat_fnl['ftx_cst_shrng']['D'] or 
+            #     ftx_tables.ftx_views_column.ftx_claim_cat_fnl['ftx_othr']['D']          
+
+            ftx_claim_cat_fnl ={
+                               'ftx_cst_shrng': 
+                                    ftx_cst_shrng_claim_cat,
+                                'ftx_othr':
+                                      ftx_claim_cat
+                               }
+                               
+
     class create_base_elig_info_view():
         select = {
             'tmsis_prmry_dmgrphc_elgblty':
-                """,gndr_cd
+                """,sex_cd
                     ,death_dt
                     ,birth_dt""",
             'tmsis_var_dmgrphc_elgblty':
@@ -122,7 +250,7 @@ class DQM_Metadata:
                     ,ssn_vrfctn_ind
                     ,ctznshp_ind
                     ,ctznshp_vrfctn_ind
-                    ,prmry_lang_cd
+                    ,prefrd_lang_cd
                     ,imgrtn_vrfctn_ind
                     ,imgrtn_stus_cd
                     ,hsehld_size_cd
@@ -139,13 +267,11 @@ class DQM_Metadata:
                     ,elgbl_adr_type_cd""",
             'tmsis_elgblty_dtrmnt':
                 """,msis_case_num
-                    ,elgblty_chg_rsn_cd
+                    ,elgblty_trmntn_rsn
                     ,elgblty_grp_cd
-                    ,elgblty_mdcd_basis_cd
                     ,prmry_elgblty_grp_ind
                     ,dual_elgbl_cd
                     ,rstrctd_bnfts_cd
-                    ,mas_cd
                     ,ssdi_ind as ssdi_ind
                     ,ssi_ind as ssi_ind
                     ,ssi_state_splmt_stus_cd
@@ -174,7 +300,7 @@ class DQM_Metadata:
                 """,ltss_lvl_care_cd
                     ,ltss_prvdr_num""",
             'tmsis_mc_prtcptn_data':
-                """,enrld_mc_plan_type_cd
+                """,mc_plan_type_cd
                     ,mc_plan_id""",
             'tmsis_ethncty_info':
                 """,ethncty_cd""",
@@ -191,7 +317,7 @@ class DQM_Metadata:
             'tmsis_enrlmt_time_sgmt_data':
                 """,enrlmt_type_cd"""
         }
-
+    
     class create_base_prov_info_view():
         select = {
             'tmsis_prvdr_attr_mn':
@@ -245,12 +371,12 @@ class DQM_Metadata:
 
                 select = {
                     'ip':
-                        """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                        """
+                            ,b.fed_reimbrsmt_ctgry_cd
                             ,b.srvc_endg_dt
                             ,b.stc_cd
                             ,b.rev_cd
-                            ,b.prscrbng_prvdr_npi_num
-                            ,b.bnft_type_cd
+                            ,b.prscrbng_prvdr_npi_num                          
                             ,b.srvcng_prvdr_num
                             ,b.prvdr_fac_type_cd
                             ,b.rev_chrg_amt
@@ -261,9 +387,8 @@ class DQM_Metadata:
                             ,oprtg_prvdr_npi_num""",
                     'lt':
                         """,b.stc_cd
-                            ,b.bnft_type_cd
                             ,b.srvcng_prvdr_num
-                            ,b.cms_64_fed_reimbrsmt_ctgry_cd
+                            ,b.fed_reimbrsmt_ctgry_cd
                             ,b.srvc_bgnng_dt
                             ,b.srvc_endg_dt
                             ,b.prvdr_fac_type_cd
@@ -274,7 +399,7 @@ class DQM_Metadata:
                             ,b.srvcng_prvdr_type_cd
                             ,b.alowd_amt""",
                     'ot':
-                        """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                        """,b.fed_reimbrsmt_ctgry_cd
                             ,b.svc_qty_actl
                             ,b.srvc_bgnng_dt
                             ,b.srvc_endg_dt
@@ -282,7 +407,6 @@ class DQM_Metadata:
                             ,b.prcdr_cd_ind
                             ,b.stc_cd
                             ,b.rev_cd
-                            ,b.hcpcs_rate
                             ,b.srvcng_prvdr_num
                             ,b.srvcng_prvdr_spclty_cd
                             ,b.prscrbng_prvdr_npi_num
@@ -290,7 +414,6 @@ class DQM_Metadata:
                             ,b.bill_amt
                             ,b.hcpcs_srvc_cd
                             ,b.hcpcs_txnmy_cd
-                            ,b.bnft_type_cd
                             ,b.bene_copmt_pd_amt
                             ,b.mdcr_pd_amt
                             ,b.othr_insrnc_amt
@@ -301,7 +424,7 @@ class DQM_Metadata:
                             ,b.tooth_num
                             ,b.alowd_amt""",
                     'rx':
-                        """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                        """,b.fed_reimbrsmt_ctgry_cd 
                             ,b.suply_days_cnt
                             ,b.rx_qty_actl
                             ,b.ndc_cd
@@ -333,7 +456,6 @@ class DQM_Metadata:
                             ,a.lve_days_cnt""",
                     'ot':
                         """,a.srvc_plc_cd
-                            ,a.dgns_1_cd
                             ,a.plan_id_num
                             ,a.blg_prvdr_npi_num
                             ,a.prvdr_lctn_id
@@ -351,12 +473,11 @@ class DQM_Metadata:
 
         select = {
             'ip':
-                """,cms_64_fed_reimbrsmt_ctgry_cd
+                """,fed_reimbrsmt_ctgry_cd
                     ,srvc_endg_dt
                     ,stc_cd
                     ,rev_cd
                     ,prscrbng_prvdr_npi_num
-                    ,bnft_type_cd
                     ,srvcng_prvdr_num
                     ,prvdr_fac_type_cd
                     ,rev_chrg_amt
@@ -367,9 +488,8 @@ class DQM_Metadata:
                     ,oprtg_prvdr_npi_num""",
             'lt':
                 """,stc_cd
-                    ,bnft_type_cd
                     ,srvcng_prvdr_num
-                    ,cms_64_fed_reimbrsmt_ctgry_cd
+                    ,fed_reimbrsmt_ctgry_cd
                     ,srvc_bgnng_dt
                     ,srvc_endg_dt
                     ,prvdr_fac_type_cd
@@ -380,7 +500,7 @@ class DQM_Metadata:
                     ,srvcng_prvdr_type_cd
                     ,alowd_amt""",
             'ot':
-                """,cms_64_fed_reimbrsmt_ctgry_cd
+                """,fed_reimbrsmt_ctgry_cd
                     ,svc_qty_actl
                     ,srvc_bgnng_dt
                     ,srvc_endg_dt
@@ -388,7 +508,6 @@ class DQM_Metadata:
                     ,prcdr_cd_ind
                     ,stc_cd
                     ,rev_cd
-                    ,hcpcs_rate
                     ,srvcng_prvdr_num
                     ,srvcng_prvdr_spclty_cd
                     ,prscrbng_prvdr_npi_num
@@ -396,7 +515,6 @@ class DQM_Metadata:
                     ,bill_amt
                     ,hcpcs_srvc_cd
                     ,hcpcs_txnmy_cd
-                    ,bnft_type_cd
                     ,bene_copmt_pd_amt
                     ,mdcr_pd_amt
                     ,othr_insrnc_amt
@@ -407,7 +525,7 @@ class DQM_Metadata:
                     ,tooth_num
                     ,alowd_amt""",
             'rx':
-                """,cms_64_fed_reimbrsmt_ctgry_cd
+                """,fed_reimbrsmt_ctgry_cd
                     ,suply_days_cnt
                     ,rx_qty_actl
                     ,ndc_cd
@@ -430,7 +548,6 @@ class DQM_Metadata:
                 """,admsn_dt
                     ,admsn_type_cd
                     ,blg_prvdr_type_cd
-                    ,dgns_poa_1_cd_ind
                     ,dschrg_dt
                     ,fixd_pymt_ind
                     ,hlth_care_acqrd_cond_cd
@@ -452,18 +569,6 @@ class DQM_Metadata:
                     ,ptnt_stus_cd
                     ,drg_cd
                     ,drg_cd_ind
-                    ,dgns_1_cd
-                    ,dgns_2_cd
-                    ,dgns_3_cd
-                    ,dgns_4_cd
-                    ,dgns_5_cd
-                    ,dgns_6_cd
-                    ,dgns_7_cd
-                    ,dgns_8_cd
-                    ,dgns_9_cd
-                    ,dgns_10_cd
-                    ,dgns_11_cd
-                    ,dgns_12_cd
                     ,prcdr_1_cd
                     ,prcdr_2_cd
                     ,prcdr_3_cd
@@ -488,18 +593,10 @@ class DQM_Metadata:
                     ,ptnt_stus_cd
                     ,srvc_endg_dt
                     ,ltc_rcp_lblty_amt
-                    ,dgns_1_cd
-                    ,dgns_2_cd
-                    ,dgns_3_cd
-                    ,dgns_4_cd
-                    ,dgns_5_cd
                     ,prvdr_lctn_id
                     ,blg_prvdr_npi_num
                     ,srvc_bgnng_dt
                     ,blg_prvdr_type_cd
-                    ,dgns_1_cd_ind
-                    ,dgns_2_cd_ind
-                    ,dgns_poa_1_cd_ind
                     ,fixd_pymt_ind
                     ,hlth_care_acqrd_cond_cd
                     ,mdcr_pd_amt
@@ -517,16 +614,12 @@ class DQM_Metadata:
                     ,rfrg_prvdr_npi_num
                     ,rfrg_prvdr_num""",
             'ot':
-                """,dgns_1_cd
-                    ,dgns_2_cd
+                """
                     ,srvc_plc_cd
                     ,prvdr_lctn_id
                     ,blg_prvdr_npi_num
                     ,srvc_bgnng_dt
                     ,blg_prvdr_type_cd
-                    ,dgns_1_cd_ind
-                    ,dgns_2_cd_ind
-                    ,dgns_poa_1_cd_ind
                     ,srvc_endg_dt
                     ,fixd_pymt_ind
                     ,hh_prvdr_ind
@@ -540,8 +633,7 @@ class DQM_Metadata:
                     ,pymt_lvl_ind
                     ,rfrg_prvdr_npi_num
                     ,rfrg_prvdr_num
-                    ,ordrg_prvdr_num
-                    ,ordrg_prvdr_npi_num""",
+                   """,
             'rx':
                 """,prscrbd_dt
                     ,rx_fill_dt
@@ -572,14 +664,14 @@ class DQM_Metadata:
              'A': "(clm_type_cd = '1' and adjstmt_ind = '0' and (xovr_ind = '0' or xovr_ind is null))"
             ,'B': "(clm_type_cd = '1' and adjstmt_ind = '0' and xovr_ind = '1')"
             ,'C': "(clm_type_cd = '1')"
-            ,'D': "(clm_type_cd = '2' and adjstmt_ind = '0')"
-            ,'E': "(clm_type_cd = '2')"
+            #,'D': "(clm_type_cd = '2' and adjstmt_ind = '0')"
+            #,'E': "(clm_type_cd = '2')"
             ,'F': "(clm_type_cd = 'A' and adjstmt_ind = '0' and (xovr_ind = '0' or xovr_ind is null))"
             ,'G': "(clm_type_cd = 'A' and adjstmt_ind = '0' and xovr_ind = '1')"
             ,'H': "(clm_type_cd = 'A' and adjstmt_ind = '0')"
             ,'I': "(clm_type_cd = 'A')"
-            ,'J': "(clm_type_cd = 'B' and adjstmt_ind = '0')"
-            ,'K': "(clm_type_cd = 'B')"
+            #,'J': "(clm_type_cd = 'B' and adjstmt_ind = '0')"
+            #,'K': "(clm_type_cd = 'B')"
             ,'L': "(clm_type_cd in ('1','3') and adjstmt_ind = '0' and (xovr_ind = '0' or xovr_ind is null))"
             ,'M': "(clm_type_cd = '1' and adjstmt_ind = '0')"
             ,'N': "(clm_type_cd in ('1','3','A','C') and adjstmt_ind = '0' and (xovr_ind = '0' or xovr_ind is null))"
@@ -592,16 +684,16 @@ class DQM_Metadata:
             ,'U': "(clm_type_cd = 'C')"
             ,'V': "(clm_type_cd = 'C' and adjstmt_ind = '0' and xovr_ind = '1')"
             ,'W': "(1=1)"
-            ,'X': "(clm_type_cd in ('2','B') and adjstmt_ind = '0')"
-            ,'Y': "(clm_type_cd = '2')"
-            ,'Z': "(clm_type_cd = 'B')"
+            #,'X': "(clm_type_cd in ('2','B') and adjstmt_ind = '0')"
+            #,'Y': "(clm_type_cd = '2')"
+            #,'Z': "(clm_type_cd = 'B')"
             ,'AA': "(clm_type_cd in ('1','3', 'A','C') and adjstmt_ind in ('0','4') )"
             ,'AB': "(clm_type_cd in ('1','3') and adjstmt_ind in ('0') )"
             ,'AC': "(clm_type_cd in ('A','C') and adjstmt_ind in ('0') )"
             ,'AD': "(clm_type_cd in ('1') and xovr_ind = '1' )"
             ,'AE': "(clm_type_cd in ('1','A') and adjstmt_ind in ('0') )"
             ,'AF': "(clm_type_cd in ('3','C') and adjstmt_ind in ('0') )"
-            ,'AG': "(clm_type_cd in ('2','B') and adjstmt_ind in ('0','4') )"
+            #,'AG': "(clm_type_cd in ('2','B') and adjstmt_ind in ('0','4') )"
             ,'AH': "(clm_type_cd in ('1','A') and adjstmt_ind in ('0','4') )"
             ,'AI': "(clm_type_cd in ('1','3') and xovr_ind = '1' )"
             ,'AJ': "(clm_type_cd in ('1','3','A','C') )"
@@ -614,20 +706,20 @@ class DQM_Metadata:
             ,'AQ': "(clm_type_cd in ('1','A') and xovr_ind = '1' )"
             ,'AR': "(clm_type_cd in ('3','C') and xovr_ind = '1' )"
             ,'AS': "(clm_type_cd in ('4','D') and (adjstmt_ind not in ('1', 'X')) )"
-            ,'AT': "(clm_type_cd in ('5','E') )"
+            #,'AT': "(clm_type_cd in ('5','E') )"
             ,'AU': "(clm_type_cd in ('4','D') )"
             ,'AV': "(clm_type_cd in ('4') and (adjstmt_ind not in ('1', 'X')) )"
             ,'AW': "(clm_type_cd in ('D') and (adjstmt_ind not in ('1', 'X')) )"
             ,'AX': "(clm_type_cd in ('1','3') and (adjstmt_ind in ('0','4')) )" # Medicaid FFS and Encounter: Original and Replacement, Paid Claims
             ,'AY': "(clm_type_cd in ('A','C') and (adjstmt_ind in ('0','4')) )" #   S-CHIP FFS and Encounter: Original and Replacement, Paid Claims
             ,'AZ': "(clm_type_cd in ('3','C') and (adjstmt_ind in ('0','4')) )" # Medicaid and S-CHIP Encounters: Original and Replacement, Paid Claims
-            ,'BA': "(clm_type_cd in ('2') and (adjstmt_ind in ('0','4')) )"     # Medicaid Capitation Payment: Original and Replacement, Paid Claims
-            ,'BB': "(clm_type_cd in ('B') and (adjstmt_ind in ('0','4')) )"     #   S-CHIP Capitation Payment: Original and Replacement, Paid Claims
+            #,'BA': "(clm_type_cd in ('2') and (adjstmt_ind in ('0','4')) )"     # Medicaid Capitation Payment: Original and Replacement, Paid Claims
+            #,'BB': "(clm_type_cd in ('B') and (adjstmt_ind in ('0','4')) )"     #   S-CHIP Capitation Payment: Original and Replacement, Paid Claims
             ,'BC': "(clm_type_cd in ('1','A') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
             ,'BD': "(clm_type_cd in ('3','C') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
             # BE claim category not used in code as of v3.9, so not coded
-            ,'BF': "(clm_type_cd in ('6') and adjstmt_ind in ('0') )"
-            ,'BG': "(clm_type_cd in ('F') and adjstmt_ind in ('0') )"
+            #,'BF': "(clm_type_cd in ('6') and adjstmt_ind in ('0') )"
+            #,'BG': "(clm_type_cd in ('F') and adjstmt_ind in ('0') )"
         }
 
     class create_claims_tables():
@@ -635,12 +727,11 @@ class DQM_Metadata:
         class b():
             select = {
                 'ip':
-                    """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                    """,b.fed_reimbrsmt_ctgry_cd
                         ,b.srvc_endg_dt
                         ,b.stc_cd
                         ,b.rev_cd
                         ,b.prscrbng_prvdr_npi_num
-                        ,b.bnft_type_cd
                         ,b.srvcng_prvdr_num
                         ,b.prvdr_fac_type_cd
                         ,b.rev_chrg_amt
@@ -651,9 +742,8 @@ class DQM_Metadata:
                         ,oprtg_prvdr_npi_num""",
                 'lt':
                     """,b.stc_cd
-                        ,b.bnft_type_cd
                         ,b.srvcng_prvdr_num
-                        ,b.cms_64_fed_reimbrsmt_ctgry_cd
+                        ,b.fed_reimbrsmt_ctgry_cd
                         ,b.srvc_bgnng_dt
                         ,b.srvc_endg_dt
                         ,b.prvdr_fac_type_cd
@@ -664,7 +754,7 @@ class DQM_Metadata:
                         ,b.srvcng_prvdr_type_cd
                         ,b.alowd_amt""",
                 'ot':
-                    """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                    """,b.fed_reimbrsmt_ctgry_cd
                         ,b.svc_qty_actl
                         ,b.srvc_bgnng_dt
                         ,b.srvc_endg_dt
@@ -672,7 +762,6 @@ class DQM_Metadata:
                         ,b.prcdr_cd_ind
                         ,b.stc_cd
                         ,b.rev_cd
-                        ,b.hcpcs_rate
                         ,b.srvcng_prvdr_num
                         ,b.srvcng_prvdr_spclty_cd
                         ,b.prscrbng_prvdr_npi_num
@@ -680,7 +769,6 @@ class DQM_Metadata:
                         ,b.bill_amt
                         ,b.hcpcs_srvc_cd
                         ,b.hcpcs_txnmy_cd
-                        ,b.bnft_type_cd
                         ,b.bene_copmt_pd_amt
                         ,b.mdcr_pd_amt
                         ,b.othr_insrnc_amt
@@ -691,7 +779,7 @@ class DQM_Metadata:
                         ,b.tooth_num
                         ,b.alowd_amt""",
                 'rx':
-                    """,b.cms_64_fed_reimbrsmt_ctgry_cd
+                    """,b.fed_reimbrsmt_ctgry_cd
                         ,b.suply_days_cnt
                         ,b.rx_qty_actl
                         ,b.ndc_cd
@@ -722,7 +810,6 @@ class DQM_Metadata:
                             ,a.lve_days_cnt""",
                     'ot':
                         """,a.srvc_plc_cd
-                            ,a.dgns_1_cd
                             ,a.blg_prvdr_npi_num
                             ,a.prvdr_lctn_id
                             ,a.othr_insrnc_ind
@@ -1073,7 +1160,7 @@ class DQM_Metadata:
                   'MCR14_9', 'MCR32_1', 'MCR32_2', 'MCR32_4', 'MCR32_5',
                   'MCR32_6', 'MCR32_7', 'MCR32_8', 'MCR32_9', 'MCR32_10', 'MCR32_11', 'MCR32_12',
                   'MCR32_13', 'MCR32_14', 'MCR32_16', 'MCR32_18', 'MCR32_20',
-                  'MCR9_19', 'MCR13_18', 'MCR13_19', 'MCR62_4',
+                  'MCR13_18', 'MCR62_4',
                   'MCR9_20', 'MCR13_20', 'MCR9_21', 'MCR13_21',
                   'FFS26_1', 'FFS26_2', 'FFS26_3', 'FFS26_4', 'FFS26_5', 'FFS26_6', 'FFS26_7',
                   'FFS26_8', 'FFS26_9', 'FFS26_10', 'FFS26_11', 'FFS26_12', 'FFS26_13', 'FFS26_14', 'FFS26_15',

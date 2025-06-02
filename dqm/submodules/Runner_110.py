@@ -260,7 +260,7 @@ class Runner_110:
         # 4
         # SET Numerator = Denominator Definition
         #       AND
-        #   (tmsis_elgblty_dtrmnt.elgblty_chg_rsn_cd <>
+        #   (tmsis_elgblty_dtrmnt.elgblty_chg_rsn <>
         #       ("01", "02", "03", "04", "05", "06","07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20")
         #       OR
         #   tmsis_elgblty_dtrmnt.elgblty_chg_rsn is NULL)
@@ -313,7 +313,7 @@ class Runner_110:
                     a.msis_ident_num,
                     a.submtg_state_cd
 
-                    ,last_value(a.elgblty_chg_rsn_cd) over
+                    ,last_value(a.elgblty_trmntn_rsn) over
                         (partition by
                             a.msis_ident_num,
                             a.submtg_state_cd

@@ -35,7 +35,7 @@ class Runner_105:
                 from
                    {dqm.taskprefix}_tmsis_mc_prtcptn_data
                 where
-                    enrld_mc_plan_type_cd not in ('00','99') or enrld_mc_plan_type_cd is null
+                    mc_plan_type_cd not in ('00','99') or mc_plan_type_cd is null
             """
 
         dqm.logger.debug(z)
@@ -50,11 +50,11 @@ class Runner_105:
                 from (
                     select
                         msis_ident_num,
-                        count(distinct enrld_mc_plan_type_cd) as subset
+                        count(distinct mc_plan_type_cd) as subset
                     from
                         {dqm.taskprefix}_tmsis_mc_prtcptn_data
                     where
-                        (enrld_mc_plan_type_cd not in ('00','99') or enrld_mc_plan_type_cd is null)
+                        (mc_plan_type_cd not in ('00','99') or mc_plan_type_cd is null)
                         and msis_ident_num is not null
                     group by
                         msis_ident_num
@@ -98,7 +98,7 @@ class Runner_105:
                 from
                     {dqm.taskprefix}_tmsis_mc_prtcptn_data
                 where
-                    {DQClosure.parse("(%nmisslogic(mc_plan_id,12) = 1) and enrld_mc_plan_type_cd <> '00'")}
+                    {DQClosure.parse("(%nmisslogic(mc_plan_id,12) = 1) and mc_plan_type_cd <> '00'")}
                 group by
                     msis_ident_num
             """

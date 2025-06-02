@@ -127,6 +127,13 @@ class DQPrepETL:
         DQPrepETL.create_base_clh_view(dqm, 'ot', 'othr_toc')
         DQPrepETL.create_base_clh_view(dqm, 'rx', 'rx')
 
+        dqm.logger.info('Creating Claim Dignosis Views...')
+
+        DQPrepETL.create_clm_dx_view(dqm, 'ip', 'ip')
+        DQPrepETL.create_clm_dx_view(dqm, 'lt', 'lt')
+        DQPrepETL.create_clm_dx_view(dqm, 'ot', 'othr_toc')
+        DQPrepETL.create_clm_dx_view(dqm, 'rx', 'rx')
+
         dqm.logger.info('Creating Base Eligibility Info Views...')
 
         DQPrepETL.create_base_elig_info_view(dqm, 'tmsis_sect_1115a_demo_info')
@@ -176,8 +183,21 @@ class DQPrepETL:
         DQPrepETL.create_base_mc_view(dqm, 'tmsis_mc_oprtg_authrty')
         DQPrepETL.create_base_mc_view(dqm, 'tmsis_mc_plan_pop_enrld')
         DQPrepETL.create_base_mc_view(dqm, 'tmsis_mc_acrdtn_org')
-        DQPrepETL.create_base_mc_view(dqm, 'tmsis_natl_hc_ent_id_info')
-        DQPrepETL.create_base_mc_view(dqm, 'tmsis_chpid_shpid_rltnshp_data')
+        # Tables removed in v4
+        #DQPrepETL.create_base_mc_view(dqm, 'tmsis_natl_hc_ent_id_info')
+        #DQPrepETL.create_base_mc_view(dqm, 'tmsis_chpid_shpid_rltnshp_data')
+
+        dqm.logger.info('Creating FTX Views...')
+
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_indvdl_cptatn_pmpm')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_indvdl_hi_prm_pymt')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_grp_insrnc_prm_pymt')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_cst_shrng_ofst')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_val_bsd_pymt')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_sdp_seprt_pymt_term')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_cst_stlmt_pymt')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_fqhc_wrp_pymt')
+        DQPrepETL.create_ftx_view(dqm, 'tmsis_misc_pymt')
 
     # -------------------------------------------------------------------------
     #
@@ -214,7 +234,7 @@ class DQPrepETL:
         DQPrepETL.create_msng_tbl(dqm, 'mc_oprtg_authrty', 0)
         DQPrepETL.create_msng_tbl(dqm, 'mc_plan_pop_enrld', 0)
         DQPrepETL.create_msng_tbl(dqm, 'mc_acrdtn_org', 0)
-        DQPrepETL.create_msng_tbl(dqm, 'chpid_shpid_rltnshp_data', 0)
+        #DQPrepETL.create_msng_tbl(dqm, 'chpid_shpid_rltnshp_data', 0)
         DQPrepETL.create_msng_tbl(dqm, 'prvdr_attr_mn', 0)
         DQPrepETL.create_msng_tbl(dqm, 'prvdr_lctn_cntct', 0)
         DQPrepETL.create_msng_tbl(dqm, 'prvdr_lcnsg', 0)
@@ -259,6 +279,10 @@ class DQPrepETL:
         DQPrepETL.create_claims_tables(dqm, 'lt')
         DQPrepETL.create_claims_tables(dqm, 'ot')
         DQPrepETL.create_claims_tables(dqm, 'rx')
+        
+        dqm.logger.info('Creating FTX Tables...')
+
+        DQPrepETL.create_ftx_tables(dqm)
 
     # -------------------------------------------------------------------------
     #
@@ -287,7 +311,8 @@ class DQPrepETL:
         DQPrepETL.utl_wvr(dqm)
         DQPrepETL.utl_el_sql(dqm)
         DQPrepETL.get_prov_ever_enrld_sql(dqm)
-        DQPrepETL.ot_hdr_clm_ab(dqm)
+        # This is not being used. Instead created in Runner_705
+        # DQPrepETL.ot_hdr_clm_ab(dqm)
         DQPrepETL.ot_prep_clm2_ab(dqm)
         DQPrepETL.utl_1915_wvr(dqm)
         DQPrepETL.get_prov_id_sql(dqm)
@@ -348,6 +373,13 @@ class DQPrepETL:
 
         spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_ot using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_base_clh_ot')
         spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_rx using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_base_clh_rx')
+
+        #dx files
+        spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_DX_ip using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_clm_dx_base_ip')
+        spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_DX_lt using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_clm_dx_base_lt')
+
+        spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_DX_ot using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_clm_dx_base_ot')
+        spark.sql('create table if not exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_CLH_DX_rx using DELTA partitioned by (ADJSTMT_IND) as select * from ' + dqm.taskprefix + '_clm_dx_base_rx')
 
     # -------------------------------------------------------------------------
     #
@@ -420,7 +452,7 @@ class DQPrepETL:
                 ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20', \
 		        '21','22','23','24','25','26','27','28','29','30','31'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_chg_rsn_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_trmntn_rsn")
 
         spark.createDataFrame(dqm.zipstate_lookup).write.mode("ignore").saveAsTable("dqm_conv.zipstate_crosswalk")
         spark.createDataFrame(dqm.countystate_lookup).write.mode("ignore").saveAsTable("dqm_conv.countystate_lookup")
@@ -444,15 +476,21 @@ class DQPrepETL:
     def drop_views(dqm: DQMeasures):
 
         spark = SparkSession.getActiveSession()
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_clh_ip')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_clh_lt')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_clh_ot')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_clh_rx')
+       
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_ip')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_lt')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_ot')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_rx')
 
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_cll_ip')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_cll_lt')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_cll_ot')
-        spark.sql('drop table ' + dqm.turboDB + '.' + dqm.taskprep + '_prepop_cll_rx')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_cll_ip')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_cll_lt')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_cll_ot')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_cll_rx')
+
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_dx_ip')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_dx_lt')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_dx_ot')
+        spark.sql('drop table if exists ' + dqm.turboDB + '.' + dqm.taskprep + '_' + dqm.z_run_id + '_prepop_clh_dx_rx')
 
     # -------------------------------------------------------------------------
     #
@@ -497,9 +535,7 @@ class DQPrepETL:
                     ,tot_bene_copmt_pd_amt
                     ,tot_bene_ddctbl_pd_amt
                     ,cll_cnt
-                    ,wvr_id
-                    ,srvc_trkng_pymt_amt
-                    ,srvc_trkng_type_cd
+                    ,wvr_id                    
                     ,src_lctn_cd
 
                     {DQM_Metadata.create_base_clh_view.select[ftype]}
@@ -510,13 +546,60 @@ class DQPrepETL:
                             when clm_stus_cd in ('26','026','87','087','542','585','654') then 1
                             else 0 end as denied_header
                 from
-                    tmsis.tmsis_clh_rec_{fname}
+                    {dqm.tmsis_input_schema}.tmsis_clh_rec_{fname}
                 where
                     tmsis_actv_ind = 1
                     and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'prep_clh_' + ftype + '_view', z)
+
+    # -------------------------------------------------------------------------
+    #
+    #   %macro create_clm_dx_view()
+    #
+    # -------------------------------------------------------------------------
+    def create_clm_dx_view(dqm: DQMeasures, ftype: str, fname: str):
+
+        spark = SparkSession.getActiveSession()
+       
+        if fname == "ip" or fname == "lt":
+            dx_othr_vars = ',dgns_poa_cd_ind'
+        else:
+            dx_othr_vars = ""
+
+        z = f"""
+                create or replace temporary view prep_clm_dx_{ftype}_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,tmsis_rptg_prd
+                    ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
+                    ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
+                    ,coalesce(adjdctn_dt,'01JAN1960') as adjdctn_dt
+                    ,coalesce(adjstmt_ind,'X') as adjstmt_ind
+
+                    
+                    ,orgnl_clm_num as orgnl_clm_num_orig
+                    ,adjstmt_clm_num as adjstmt_clm_num_orig
+                    ,adjdctn_dt as adjdctn_dt_orig
+                    ,adjstmt_ind as adjstmt_ind_orig
+
+                    ,dgns_type_cd
+                    ,dgns_sqnc_num
+                    ,dgns_cd_ind
+                    ,dgns_cd
+                    {dx_othr_vars}
+
+                  
+                from
+                    {dqm.tmsis_input_schema}.tmsis_clm_dx_{fname}
+                where
+                    tmsis_actv_ind = 1
+                    and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, 'prep_clm_dx_' + ftype + '_view', z)
 
     # -------------------------------------------------------------------------
     #
@@ -633,12 +716,13 @@ class DQPrepETL:
                     ,b.line_adjstmt_ind_orig
                     ,b.line_adjdctn_dt_orig
 
-                    ,b.xix_srvc_ctgry_cd
-                    ,b.xxi_srvc_ctgry_cd
+                    
                     ,b.cll_stus_cd
                     ,b.mdcd_ffs_equiv_amt
                     ,b.mdcd_pd_amt
                     ,b.ihs_svc_ind
+                    ,b.mbescbes_form_grp
+                    ,b.mbescbes_srvc_ctgry_cd
 
                     {DQM_Metadata.create_claims_tables.b.select[clm_file]}
 
@@ -653,8 +737,6 @@ class DQPrepETL:
                     ,a.tot_bill_amt
                     ,a.blg_prvdr_num
                     ,a.wvr_id
-                    ,a.srvc_trkng_pymt_amt
-                    ,a.srvc_trkng_type_cd
                     ,a.src_lctn_cd
                     ,a.plan_id_num
 
@@ -675,6 +757,73 @@ class DQPrepETL:
 
         spark.sql(z)
         DQPrepETL.log(dqm, dqm.taskprefix + '_base_cll_' + clm_file, z)
+
+
+
+        # -------------------------------------------------------------------------
+        # Merge clh base to DX code file and create {dqm.taskprefix}_clm_dx_base_{clm_file}
+        # -------------------------------------------------------------------------
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_clm_dx_with_dup_{clm_file}  as
+                select
+                    *
+                    ,'{dqm.state}' as submtg_state_cd
+                    ,count(1) over (partition by orgnl_clm_num, adjstmt_clm_num, adjdctn_dt,adjstmt_ind,
+                                                 dgns_type_cd, dgns_sqnc_num) as count_clm_dx_key
+                from
+                   prep_clm_dx_{clm_file}_view
+                where
+                      {dqm.run_id_filter()}
+                    and tmsis_rptg_prd = '{dqm.m_start}'
+                {dqm.limit}
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, dqm.taskprefix + '_clm_dx_with_dup_' + clm_file , z)
+
+        if clm_file == "ip" or clm_file == "lt":
+            dx_othr_vars = ',b.dgns_poa_cd_ind'
+        else:
+            dx_othr_vars = ""
+            
+
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_clm_dx_base_{clm_file} as
+                select
+                     coalesce(b.submtg_state_cd, a.submtg_state_cd) as submtg_state_cd
+                    ,coalesce(b.submtg_state_orig, a.submtg_state_orig) as submtg_state_orig
+                    ,coalesce(b.tmsis_run_id, a.tmsis_run_id) as tmsis_run_id
+                    ,coalesce(b.tmsis_rptg_prd, a.tmsis_rptg_prd) as tmsis_rptg_prd
+                    
+                    ,coalesce(b.orgnl_clm_num, a.orgnl_clm_num) as orgnl_clm_num
+                    ,coalesce(b.adjstmt_clm_num, a.adjstmt_clm_num) as adjstmt_clm_num
+                    ,coalesce(b.adjdctn_dt, a.adjdctn_dt) as adjdctn_dt
+                    ,coalesce(b.adjstmt_ind, a.adjstmt_ind) as adjstmt_ind
+                   
+                    ,b.dgns_type_cd
+                    ,b.dgns_sqnc_num
+                    ,b.dgns_cd_ind
+                    ,b.dgns_cd
+                    {dx_othr_vars}
+                   
+                    ,a.msis_ident_num
+                    ,a.clm_type_cd
+                    ,a.xovr_ind
+
+                from
+                    {dqm.taskprefix}_base_clh_{clm_file} a
+                left join (select * from {dqm.taskprefix}_clm_dx_with_dup_{clm_file} 
+                           where count_clm_dx_key=1) b 
+                on
+                            a.orgnl_clm_num = b.orgnl_clm_num
+                        and a.adjstmt_clm_num = b.adjstmt_clm_num
+                        and a.adjdctn_dt = b.adjdctn_dt
+                        and a.adjstmt_ind = b.adjstmt_ind
+              
+
+            """
+
+        spark.sql(z)
+        DQPrepETL.log(dqm, dqm.taskprefix + '_clm_dx_base_' + clm_file, z)
 
     # -------------------------------------------------------------------------
     #
@@ -704,12 +853,13 @@ class DQPrepETL:
                     ,adjstmt_line_num as adjstmt_line_num_orig
                     ,line_adjstmt_ind as line_adjstmt_ind_orig
                     ,adjdctn_dt as line_adjdctn_dt_orig
-                    ,xix_srvc_ctgry_cd
-                    ,xxi_srvc_ctgry_cd
                     ,cll_stus_cd
                     ,mdcd_ffs_equiv_amt
                     ,mdcd_pd_amt
                     ,ihs_svc_ind
+                    ,mbescbes_form_grp
+                    ,mbescbes_srvc_ctgry_cd
+
 
                     {DQM_Metadata.create_base_cll_view.select[ftype]}
 
@@ -717,12 +867,74 @@ class DQPrepETL:
                         ('26','026','87','087','542','585','654') then 1 else 0 end as denied_line
 
                 from
-                    tmsis.tmsis_cll_rec_{fname}
+                    {dqm.tmsis_input_schema}.tmsis_cll_rec_{fname}
                 where
                     tmsis_actv_ind = 1
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'prep_cll_' + ftype + '_view', z)
+
+    # -------------------------------------------------------------------------
+    #
+    #   %macro create_ftx_view(ftype)
+    #
+    # -------------------------------------------------------------------------
+    @staticmethod
+    def create_ftx_view(dqm: DQMeasures, ftype: str):
+
+        spark = SparkSession.getActiveSession()
+
+        if ftype == "tmsis_grp_insrnc_prm_pymt":
+            pymt_dt = 'pymt_dt'
+        else:
+            pymt_dt = 'pymt_or_rcpmt_dt'
+        
+        if ftype == "tmsis_indvdl_hi_prm_pymt" or ftype == "tmsis_grp_insrnc_prm_pymt":
+            pymt_amt = 'pymt_amt'
+        else:
+            pymt_amt = 'pymt_or_rcpmt_amt'
+
+        z = f"""
+                create or replace temporary view {ftype}_view as
+                select
+                    tmsis_run_id
+                    ,submtg_state_cd as submtg_state_orig
+                    ,tmsis_rptg_prd
+                    ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
+                    ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
+                    ,coalesce({pymt_dt},'01JAN1960') as pymt_or_rcpmt_dt
+                    ,coalesce(adjstmt_ind,'X') as adjstmt_ind
+
+                    ,orgnl_clm_num as orgnl_clm_num_orig
+                    ,adjstmt_clm_num as adjstmt_clm_num_orig
+                    ,{pymt_dt} as  pymt_or_rcpmt_dt_orig
+                    ,adjstmt_ind as adjstmt_ind_orig
+ 
+                    ,{pymt_amt} as pymt_or_rcpmt_amt
+                    ,payerid
+                    ,payerid_type
+                    ,pyee_id
+                    ,pyee_id_type
+                    ,fed_reimbrsmt_ctgry_cd
+                    ,mbescbes_srvc_ctgry_cd
+                    ,mbescbes_form
+                    ,mbescbes_form_grp
+                    ,wvr_id
+                    ,wvr_type_cd
+                    ,fundng_cd
+                    ,fundng_src_non_fed_shr_cd
+                    ,src_lctn_cd
+                    ,expndtr_authrty_type
+
+                    {DQM_Metadata.ftx_tables.ftx_view_columns.select[ftype]}
+                from
+                    {dqm.tmsis_input_schema}.{ftype}
+                where
+                    tmsis_actv_ind = 1
+                    and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
+            """
+        spark.sql(z)
+        DQPrepETL.log(dqm, ftype + '_view', z)
 
     # -------------------------------------------------------------------------
     #
@@ -745,10 +957,10 @@ class DQPrepETL:
                     ,enrlmt_efctv_dt
                     ,enrlmt_end_dt
                     ,1 as is_eligible
-                from tmsis.tmsis_enrlmt_time_sgmt_data
+                from {dqm.tmsis_input_schema}.tmsis_enrlmt_time_sgmt_data
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}
-                    and (is_archived = 'false' or is_archived is null)
+                    and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_elig_view', z)
@@ -764,7 +976,7 @@ class DQPrepETL:
                     ,enrlmt_efctv_dt
                     ,enrlmt_end_dt
                     ,1 as is_eligible_all
-                from tmsis.tmsis_enrlmt_time_sgmt_data
+                from {dqm.tmsis_input_schema}.tmsis_enrlmt_time_sgmt_data
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}            """
         spark.sql(z)
@@ -780,12 +992,11 @@ class DQPrepETL:
                     ,elgblty_dtrmnt_efctv_dt
                     ,elgblty_dtrmnt_end_dt
                     ,elgblty_grp_cd
-                    ,elgblty_mdcd_basis_cd
                     ,prmry_elgblty_grp_ind
                     ,dual_elgbl_cd
                     ,rstrctd_bnfts_cd
                     ,1 as ever_eligible_det
-                from tmsis.tmsis_elgblty_dtrmnt
+                from {dqm.tmsis_input_schema}.tmsis_elgblty_dtrmnt
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}
                     and prmry_elgblty_grp_ind = '1'
@@ -803,9 +1014,9 @@ class DQPrepETL:
                     ,msis_ident_num
                     ,prmry_dmgrphc_ele_efctv_dt
                     ,prmry_dmgrphc_ele_end_dt
-                    ,gndr_cd
+                    ,sex_cd
                     ,1 as ever_eligible_prm
-                from tmsis.tmsis_prmry_dmgrphc_elgblty
+                from {dqm.tmsis_input_schema}.tmsis_prmry_dmgrphc_elgblty
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}
             """
@@ -825,7 +1036,7 @@ class DQPrepETL:
                     ,race_othr_txt
                     ,crtfd_amrcn_indn_alskn_ntv_ind
                     ,1 as ever_eligible_race
-                from tmsis.tmsis_race_info
+                from {dqm.tmsis_input_schema}.tmsis_race_info
                 where tmsis_actv_ind = 1
                     and {DQPrepETL.msis_id_not_missing}
             """
@@ -851,12 +1062,12 @@ class DQPrepETL:
                     ,prvdr_mdcd_efctv_dt
                     ,prvdr_mdcd_end_dt
                     ,1 as is_enrolled_provider
-                from tmsis.tmsis_prvdr_mdcd_enrlmt
+                from {dqm.tmsis_input_schema}.tmsis_prvdr_mdcd_enrlmt
                 where tmsis_actv_ind = 1
                     and submtg_state_prvdr_id is not null
                     and submtg_state_prvdr_id not rlike '[89]{{30}}'
                     and submtg_state_prvdr_id rlike '[A-Za-z1-9]'
-                    and (is_archived = 'false' or is_archived is null)
+                    and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_prov_view', z)
@@ -870,7 +1081,7 @@ class DQPrepETL:
                     ,prvdr_mdcd_efctv_dt
                     ,prvdr_mdcd_end_dt
                     ,1 as is_enrolled_provider_all
-                from tmsis.tmsis_prvdr_mdcd_enrlmt
+                from {dqm.tmsis_input_schema}.tmsis_prvdr_mdcd_enrlmt
                 where tmsis_actv_ind = 1
                     and submtg_state_prvdr_id is not null
                     and submtg_state_prvdr_id not rlike '[89]{{30}}'
@@ -1138,14 +1349,59 @@ class DQPrepETL:
                     ,{sasend_dt}
                     {DQM_Metadata.create_base_elig_info_view.select[ftype]}
                 from
-                    tmsis.{ftype}
+                    {dqm.tmsis_input_schema}.{ftype}
                 where
                     tmsis_actv_ind = 1
-                    and (is_archived = 'false' or is_archived is null)
+                    and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)
 
+    # -------------------------------------------------------------------------
+    #
+    #   %macro create_ftx_tables()
+    #
+    # -------------------------------------------------------------------------
+    @staticmethod
+    def create_ftx_tables(dqm: DQMeasures):
+
+        spark = SparkSession.getActiveSession()
+
+      # -----------------------------------------------------------------
+      
+        for next_tbl in DQM_Metadata.ftx_tables.tblList:
+
+            if next_tbl == "tmsis_grp_insrnc_prm_pymt":
+
+                partn_str="(partition by orgnl_clm_num, adjstmt_clm_num, pymt_or_rcpmt_dt, adjstmt_ind, msis_ident_num, ssn)"
+
+            else:
+
+                partn_str="(partition by orgnl_clm_num, adjstmt_clm_num, pymt_or_rcpmt_dt, adjstmt_ind)"
+           
+            # %droptempviews({next_tbl})
+            z = f"""
+                    create or replace temporary view {dqm.taskprefix}_{next_tbl} as
+                    select 
+                          b.*
+
+                    from (select
+                     
+                                a.*
+                                ,'{dqm.state}' as submtg_state_cd
+                                ,count(1) over {partn_str} as dup_cnt
+
+                            from {next_tbl}_view a
+                            where  {dqm.run_id_filter()}
+                                and tmsis_rptg_prd = '{dqm.m_start}'
+                                {dqm.limit} 
+                          ) b
+                    where dup_cnt =1
+
+
+                """
+            spark.sql(z)
+            DQPrepETL.log(dqm, dqm.taskprefix + '_' + next_tbl, z)
 
     # ------------------------------------------------------
     #
@@ -1292,10 +1548,10 @@ class DQPrepETL:
                     ,{sasend_dt}
                     {DQM_Metadata.create_base_prov_info_view.select[ftype]}
                 from
-                    tmsis.{ftype}
+                    {dqm.tmsis_input_schema}.{ftype}
                 where
                     tmsis_actv_ind = 1
-                    and (is_archived = 'false' or is_archived is null)
+                    and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)
@@ -1391,7 +1647,7 @@ class DQPrepETL:
                     ,{sasend_dt}
                     {DQPrepETL.select_TplMedicaidPerson(ftype)}
                 from
-                    tmsis.{ftype}
+                    {dqm.tmsis_input_schema}.{ftype}
                 where
                     tmsis_actv_ind = 1
             """
@@ -1489,7 +1745,7 @@ class DQPrepETL:
                     ,{sasend_dt}
                     {DQM_Metadata.mcplan_tables.base_mc_view_columns.select[ftype]}
                 from
-                    tmsis.{ftype}
+                    {dqm.tmsis_input_schema}.{ftype}
                 where
                     tmsis_actv_ind = 1
             """
@@ -1581,18 +1837,18 @@ class DQPrepETL:
                 SELECT mc_plan_id
                     ,msis_ident_num
                     ,max(CASE
-                            WHEN (enrld_mc_plan_type_cd in ('02','03') )
+                            WHEN (mc_plan_type_cd in ('02','03') )
                                 THEN 1
                             ELSE 0
                             END) AS evr_pccm_mc_plan_type
                     ,max(CASE
-                            WHEN (enrld_mc_plan_type_cd in ('05','06','07','08','09','10','11',
+                            WHEN (mc_plan_type_cd in ('05','06','07','08','09','10','11',
                                                             '12','13','14','15','16','18','19') )
                                 THEN 1
                             ELSE 0
                             END) AS evr_php_mc_plan_type
                     ,max(CASE
-                            WHEN (enrld_mc_plan_type_cd in ('01','04','17') )
+                            WHEN (mc_plan_type_cd in ('01','04','17') )
                                 THEN 1
                             ELSE 0
                             END) AS evr_mco_mc_plan_type

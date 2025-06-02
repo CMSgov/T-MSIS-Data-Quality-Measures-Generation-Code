@@ -57,11 +57,99 @@ class Runner_902():
         return spark.sql(z)
 
 
+    
+    # --------------------------------------------------------------------
+    # FTX measues
+    #
+    # --------------------------------------------------------------------
+    def ftx_countt(spark, dqm: DQMeasures, measure_id,  x) :
+       
+        if x['claim_cat'] == "":
+           clm_cat_cond =f""""""
+        else:
+            clm_cat_cond = f"""AND ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})"""
+                                  
+            
+        #using ftx_claim_cat dictionary because we are only using tmsis_indvdl_cptatn_pmpm
+        #if using any other table, this would need update
+        z = f"""
+                SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'902' AS submodule
+                    ,NULL AS numer
+                    ,NULL AS denom
+                    ,coalesce(numer, 0) AS mvalue
+                    ,NULL AS valid_value
+                FROM (
+                    SELECT sum(CASE
+                                WHEN ({x['constraint']})
+                                             
+                                    {clm_cat_cond}
+                                    THEN 1
+                                ELSE 0
+                                END) AS numer
+                     from {dqm.taskprefix}_{x['claim_type']} 
+                    )
+            """
+        
+        dqm.logger.debug(z)
+        
+        return spark.sql(z)
+    
+    def ftx_multi_tbl_countt(spark, dqm: DQMeasures, measure_id,  x) :
+        # Note: Using ftx_cst_shrng_claim_cat  dictionary for tmsis_cst_shrng_ofst table
+        de_dup_vars=f"""submtg_state_cd
+                        ,orgnl_clm_num
+                        ,adjstmt_clm_num
+                        ,pymt_or_rcpmt_dt
+                        ,adjstmt_ind
+                    """
+        z = f"""
+            SELECT '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'902' AS submodule
+                    ,NULL AS numer
+                    ,NULL AS denom
+                    ,sum(rec_cnt) AS mvalue
+                    ,NULL AS valid_value
+            FROM (
+                    select  {de_dup_vars}
+                            ,max(rec_cnt) as rec_cnt
+                    from (
+                            select   {de_dup_vars}
+                                    ,CASE WHEN ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                                        THEN 1 ELSE 0 END AS rec_cnt
+                            from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+
+                            union  
+
+                            select   {de_dup_vars}
+                                    ,CASE WHEN ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_claim_cat[x['claim_cat']]})
+                                        THEN 1 ELSE 0 END AS rec_cnt
+                            from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+
+                            union 
+
+                            select    {de_dup_vars}
+                                    ,CASE WHEN ({DQM_Metadata.ftx_tables.ftx_view_columns.ftx_cst_shrng_claim_cat[x['claim_cat']]})
+                                            THEN 1 ELSE 0 END AS rec_cnt
+                            from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                        ) a
+                    group by  {de_dup_vars}
+                    ) b
+
+            """
+        
+        dqm.logger.debug(z)
+        
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
-    v_table = { 'countt': countt }
+    v_table = { 'countt': countt,
+                'ftx_countt':ftx_countt,
+                'ftx_multi_tbl_countt':ftx_multi_tbl_countt }
 
 # CC0 1.0 Universal
 

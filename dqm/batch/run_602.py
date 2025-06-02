@@ -2,15 +2,25 @@ from pandas import DataFrame
 
 run_602 =[
 
-    ['602', 'tpl_ot_6_7_clm', 'tpl6_1', 'd', 'srvc_endg_dt between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl6_2', 'd', 'srvc_endg_dt > last_day(tmsis_rptg_prd)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl6_3', 'd', 'srvc_endg_dt < date_sub(tmsis_rptg_prd,30)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl6_4', 'd', 'srvc_endg_dt < tmsis_rptg_prd and srvc_endg_dt >= date_sub(tmsis_rptg_prd,30)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl6_1', 'd', 'srvc_endg_dt between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl6_2', 'd', 'srvc_endg_dt > last_day(tmsis_rptg_prd)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl6_3', 'd', 'srvc_endg_dt < date_sub(tmsis_rptg_prd,30)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl6_4', 'd', 'srvc_endg_dt < tmsis_rptg_prd and srvc_endg_dt >= date_sub(tmsis_rptg_prd,30)'],
 
-    ['602', 'tpl_ot_6_7_clm', 'tpl7_1', 'j', 'srvc_endg_dt between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl7_2', 'j', 'srvc_endg_dt > last_day(tmsis_rptg_prd)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl7_3', 'j', 'srvc_endg_dt < date_sub(tmsis_rptg_prd,30)'],
-    ['602', 'tpl_ot_6_7_clm', 'tpl7_4', 'j', 'srvc_endg_dt < tmsis_rptg_prd and srvc_endg_dt >= date_sub(tmsis_rptg_prd,30)']
+    #['602', 'tpl_ot_6_7_clm', 'tpl7_1', 'j', 'srvc_endg_dt between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl7_2', 'j', 'srvc_endg_dt > last_day(tmsis_rptg_prd)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl7_3', 'j', 'srvc_endg_dt < date_sub(tmsis_rptg_prd,30)'],
+    #['602', 'tpl_ot_6_7_clm', 'tpl7_4', 'j', 'srvc_endg_dt < tmsis_rptg_prd and srvc_endg_dt >= date_sub(tmsis_rptg_prd,30)']
+
+    ['602', 'tpl_ftx_6_7_clm', 'tpl6_1', 'D', 'ftx_datevar between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl6_2', 'D', 'ftx_datevar > last_day(tmsis_rptg_prd)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl6_3', 'D', 'ftx_datevar < date_sub(tmsis_rptg_prd,30)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl6_4', 'D', 'ftx_datevar < tmsis_rptg_prd and ftx_datevar >= date_sub(tmsis_rptg_prd,30)'],
+
+    ['602', 'tpl_ftx_6_7_clm', 'tpl7_1', 'J', 'ftx_datevar between tmsis_rptg_prd and last_day(tmsis_rptg_prd)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl7_2', 'J', 'ftx_datevar > last_day(tmsis_rptg_prd)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl7_3', 'J', 'ftx_datevar < date_sub(tmsis_rptg_prd,30)'],
+    ['602', 'tpl_ftx_6_7_clm', 'tpl7_4', 'J', 'ftx_datevar < tmsis_rptg_prd and ftx_datevar >= date_sub(tmsis_rptg_prd,30)']
 
 ]
 

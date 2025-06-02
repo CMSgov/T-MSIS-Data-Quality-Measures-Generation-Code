@@ -39,7 +39,7 @@ class DQMeasures:
                         max(tmsis_run_id) as run_id,
                         submtg_state_cd
                     from
-                        tmsis.tmsis_fhdr_rec_ip
+                        {self.tmsis_input_schema}.tmsis_fhdr_rec_ip
                     where
                         submtg_state_cd = '{self.state}'
 
@@ -59,7 +59,7 @@ class DQMeasures:
                         tmsis_run_id as run_id,
                         submtg_state_cd
                     from
-                        tmsis.tmsis_fhdr_rec_ip
+                        {self.tmsis_input_schema}.tmsis_fhdr_rec_ip
                     where
                         submtg_state_cd = '{self.state}'
                         and tmsis_run_id = {int(run_id)}
@@ -82,6 +82,41 @@ class DQMeasures:
 
     # --------------------------------------------------------------------
     #
+    #   Check if data is there for all 9 file types 
+    #
+    # --------------------------------------------------------------------
+    def chk_fl_exists(self):
+
+        spark = SparkSession.getActiveSession()
+        
+        file_type=['elgblty','ip','lt','othr_toc','rx','ftx','prvdr','mc','tpl_data']
+        
+        for fl in file_type:
+            z = f"""
+                        create or replace temporary view runid_{fl} as
+                        select
+                            max(tmsis_run_id) as run_id,
+                            submtg_state_cd
+                        from
+                            {self.tmsis_input_schema}.tmsis_fhdr_rec_{fl}
+                        where
+                            submtg_state_cd = '{self.state}'
+                           and tmsis_run_id = {str(self.run_id)}
+
+                        group by
+                            submtg_state_cd
+                        order by
+                            submtg_state_cd;
+                    """
+           
+            spark.sql(z)
+            df = spark.sql(f"select run_id from runid_{fl}").toPandas()
+            if (len(df) > 0) == 0:
+                raise Exception(f"File missing for {fl}, state={self.state}, tmsis_run_id = {self.run_id}")
+            else:
+                print(f"File exists for {fl}, state={self.state}, tmsis_run_id = {self.run_id}")
+    # --------------------------------------------------------------------
+    #
     #   Instantiate a DQ Measures object
     #
     # --------------------------------------------------------------------
@@ -93,10 +128,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '3.13.1'
+        self.version = '4.00.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V3.13.1'
+        self.specvrsn = 'V4.00'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
@@ -168,6 +203,10 @@ class DQMeasures:
         else:
             self.typerun = ''
 
+        # T-MSIS input schema name
+        #self.tmsis_input_schema = 'state_prod_catalog.tmsis'
+        self.tmsis_input_schema = 'tmsis'
+
         # Run ID
         self.create_runid_view(run_id)
         if self.run_id == 0:
@@ -176,6 +215,10 @@ class DQMeasures:
         self.z_run_id = '{:05d}'.format(self.run_id)
 
         self.specific_run_id = self.z_run_id
+
+        # Check if file exists
+        self.chk_fl_exists()
+
         self.logfile = None
 
         self.sql = {}
@@ -255,13 +298,34 @@ class DQMeasures:
         stack = all_tags.get('stack')
 
         self.s3proto = 's3a://'
-        self.s3bucket = 'macbis-dw-dqm-prod'
+
+        if stack.casefold() == 'val':
+            self.s3bucket = 'macbis-dw-dqm-val'
+        elif stack.casefold() == 'stateprod':
+            self.s3bucket = 'macbis-dw-dqm-prod'
+        elif stack.casefold() == 'prod':
+            self.s3bucket = 'macbis-dw-dqm-prod'
+        else:
+            self.logger.error('Cluster tags do not have a key-value for `stack`')
+     
 
         # path to root folder: STATE + Reporting MONTH + Run ID
-        if ((self.separate_entity == '1') or (self.separate_entity == '2')):
-            self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+        # if ((self.separate_entity == '1') or (self.separate_entity == '2')):
+        #     self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+        # else:
+        #     self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
+
+
+        if stack.casefold() == 'stateprod':
+            if ((self.separate_entity == '1') or (self.separate_entity == '2')):
+                self.s3folder = 'state-prod/sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+            else:
+                self.s3folder = 'state-prod/sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
         else:
-            self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
+            if ((self.separate_entity == '1') or (self.separate_entity == '2')):
+                self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+            else:
+                self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
 
         # path to write Excel report files
         self.s3xlsx = self.s3proto + self.s3bucket + '/' + self.s3folder
@@ -374,6 +438,15 @@ class DQMeasures:
 
     # --------------------------------------------------------------------
     #
+    #   delete claims Data 
+    #
+    # --------------------------------------------------------------------
+    def drop_clms(self):
+        from dqm import DQPrepETL as etl
+
+        etl.DQPrepETL.drop_views(self)
+    # --------------------------------------------------------------------
+    #
     #   Display runtime options
     #
     # --------------------------------------------------------------------
@@ -403,6 +476,11 @@ class DQMeasures:
         print('-----------------------------------------------------')
         print('txtout:\t' + self.s3path)
         print('logout:\t' + self.s3path)
+
+        print('-----------------------------------------------------')
+        print(' T-MSIS input schema name')
+        print('-----------------------------------------------------')
+        print('tmsis_input_schema:\t' + str(self.tmsis_input_schema))
 
         print('-----------------------------------------------------')
         print(' AREMAC database names')
@@ -1046,7 +1124,7 @@ class DQMeasures:
     # --------------------------------------------------------------------
     #
     #   Base table accessor method direct or cached
-    #
+    #   dx files can be accessed as: {DQMeasures.getBaseTable(dqm, 'dx', clm_type)}
     # --------------------------------------------------------------------
     def getBaseTable(self, level, claim_type):
 
@@ -1057,6 +1135,8 @@ class DQMeasures:
             types = ['IP', 'LT', 'OT', 'RX']
             if (claim_type.upper() in types) and (level.upper() in ('CLH', 'CLL')):
                 return self.turboDB + '.' + self.taskprep + '_' + self.z_run_id + '_prepop_' + level + '_' + claim_type
+            elif (claim_type.upper() in types) and (level.upper() in ('DX')):
+                return self.turboDB + '.' + self.taskprep + '_' + self.z_run_id + '_prepop_CLH_' + level + '_' + claim_type
 
         return self.taskprefix + '_base_' + level + '_' + claim_type
 
@@ -1082,14 +1162,14 @@ class DQMeasures:
                 max(d.tms_run_timestamp) as tms_run_timestamp,
                 max(d.tms_create_date) as tms_create_date
             from
-                tmsis.file_header_record_eligibility as d
+                {self.tmsis_input_schema}.file_header_record_eligibility as d
             inner join
                 (select
                     tms_reporting_period,
                     submitting_state,
                     max(tms_run_id) as tms_run_id
                 from
-                    tmsis.file_header_record_eligibility
+                    {self.tmsis_input_schema}.file_header_record_eligibility
                 group by
                     tms_reporting_period,
                     submitting_state
@@ -1116,14 +1196,14 @@ class DQMeasures:
                 max(d.tms_run_timestamp) as tms_run_timestamp,
                 max(d.tms_create_date) as tms_create_date
             from
-                tmsis.file_header_record_ip as d
+                {self.tmsis_input_schema}.file_header_record_ip as d
             inner join
                 (select
                     tms_reporting_period,
                     submitting_state,
                     max(tms_run_id) as tms_run_id
                 from
-                    tmsis.file_header_record_ip
+                    {self.tmsis_input_schema}.file_header_record_ip
                 group by
                     tms_reporting_period,
                     submitting_state
@@ -1150,14 +1230,14 @@ class DQMeasures:
                 max(d.tms_run_timestamp) as tms_run_timestamp,
                 max(d.tms_create_date) as tms_create_date
             from
-                tmsis.file_header_record_lt as d
+                {self.tmsis_input_schema}.file_header_record_lt as d
             inner join
                 (select
                     tms_reporting_period,
                     submitting_state,
                     max(tms_run_id) as tms_run_id
                 from
-                    tmsis.file_header_record_lt
+                    {self.tmsis_input_schema}.file_header_record_lt
                 group by
                     tms_reporting_period,
                     submitting_state
@@ -1184,14 +1264,14 @@ class DQMeasures:
                 max(d.tms_run_timestamp) as tms_run_timestamp,
                 max(d.tms_create_date) as tms_create_date
             from
-                tmsis.file_header_record_ot as d
+                {self.tmsis_input_schema}.file_header_record_ot as d
             inner join
                 (select
                     tms_reporting_period,
                     submitting_state,
                     max(tms_run_id) as tms_run_id
                 from
-                    tmsis.file_header_record_ot
+                    {self.tmsis_input_schema}.file_header_record_ot
                 group by
                     tms_reporting_period,
                     submitting_state
@@ -1218,14 +1298,14 @@ class DQMeasures:
                 max(d.tms_run_timestamp) as tms_run_timestamp,
                 max(d.tms_create_date) as tms_create_date
             from
-                tmsis.file_header_record_rx as d
+                {self.tmsis_input_schema}.file_header_record_rx as d
             inner join
                 (select
                     tms_reporting_period,
                     submitting_state,
                     max(tms_run_id) as tms_run_id
                 from
-                    tmsis.file_header_record_rx
+                    {self.tmsis_input_schema}.file_header_record_rx
                 group by
                     tms_reporting_period,
                     submitting_state
@@ -1239,7 +1319,43 @@ class DQMeasures:
                 d.submitting_state,
                 d.tms_run_id,
                 d.tms_reporting_period,
-                d.tot_rec_cnt"""
+                d.tot_rec_cnt
+                
+            union all
+
+            select
+                'FTX' as file_type,
+                d.submitting_state,
+                d.tms_run_id,
+                d.tms_reporting_period,
+                d.tot_rec_cnt,
+                max(d.tms_run_timestamp) as tms_run_timestamp,
+                max(d.tms_create_date) as tms_create_date
+            from
+                {self.tmsis_input_schema}.file_header_record_ftx as d
+            inner join
+                (select
+                    tms_reporting_period,
+                    submitting_state,
+                    max(tms_run_id) as tms_run_id
+                from
+                    {self.tmsis_input_schema}.file_header_record_ftx
+                group by
+                    tms_reporting_period,
+                    submitting_state
+                having
+                    tms_reporting_period = '{self.m_start}'
+                    and tms_run_id = {self.run_id}
+                    and submitting_state = '{self.state}') as s
+                on s.tms_run_id = d.tms_run_id
+                and s.tms_reporting_period = d.tms_reporting_period
+            group by
+                d.submitting_state,
+                d.tms_run_id,
+                d.tms_reporting_period,
+                d.tot_rec_cnt    
+                
+                """
 
         spark = SparkSession.getActiveSession()
         df = spark.sql(z).toPandas()

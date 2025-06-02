@@ -1,18 +1,18 @@
 from pandas import DataFrame
 
+# All measures (except deactivated) have been modified to use FTX files.
+# MCR9.19 & MCR13.19 deactivated.
+
 run_912_other_measures_PCCM =[
 
-    ['912', 'PCCM_9_18_13_18', 'mcr9_18', 'D'],
-    ['912', 'PCCM_9_18_13_18', 'mcr13_18', 'J'],
+    ['912', 'PCCM', 'mcr9_18', 'D'],
+    ['912', 'PCCM', 'mcr13_18', 'J'],
 
-    ['912', 'PCCM_9_19_13_19', 'mcr9_19', 'D'],
-    ['912', 'PCCM_9_19_13_19', 'mcr13_19', 'J'],
+    ['912', 'PHP', 'mcr9_20', 'D'],
+    ['912', 'PHP', 'mcr13_20', 'J'],
 
-    ['912', 'PHP_9_20_13_20', 'mcr9_20', 'D'],
-    ['912', 'PHP_9_20_13_20', 'mcr13_20', 'J'],
-
-    ['912', 'MCO_9_21_13_21', 'mcr9_21', 'D'],
-    ['912', 'MCO_9_21_13_21', 'mcr13_21', 'J']
+    ['912', 'MCO', 'mcr9_21', 'D'],
+    ['912', 'MCO', 'mcr13_21', 'J']
 ]
 
 df = DataFrame(run_912_other_measures_PCCM, columns=['series', 'cb', 'measure_id', 'claim_cat'])

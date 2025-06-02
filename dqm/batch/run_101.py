@@ -56,7 +56,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct', 'el1.6', 'el106t',
-        "case when gndr_cd='F' then 1 else 0 end",
+        "case when sex_cd='F' then 1 else 0 end",
         '',
         "msis_ident_num is not null",
         '',
@@ -144,7 +144,7 @@ run_101 =[
         4],
 
     ['101', 'nonclaimspct2tbl', 'el3.2', 'el302t',
-        "case when enrld_mc_plan_type_cd='01' then 1 else 0 end",
+        "case when mc_plan_type_cd='01' then 1 else 0 end",
         '_tmsis_mc_prtcptn_data',
         'age >= 65',
         '_tmsis_prmry_dmgrphc_elgblty',
@@ -200,7 +200,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct2tbl', 'el3.10', 'el310t',
-        "case when gndr_cd = 'F' then 1 else 0 end",
+        "case when sex_cd = 'F' then 1 else 0 end",
         '_tmsis_prmry_dmgrphc_elgblty',
         "elgblty_grp_cd = '34'",
         '_tmsis_elgblty_dtrmnt',
@@ -224,7 +224,7 @@ run_101 =[
             '41','42','43','44','45','46','47','48','49','50', \
             '51','52','53','54','55','56','59','60', \
             '61','62','63','64','65','66','67','68','69','70', \
-            '71','72','73','74','75','76') then 1 else 0 end",
+            '71','72','73','74','75','76','77') then 1 else 0 end",
         '',
         "msis_ident_num is not null",
         '',
@@ -248,7 +248,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct2tbl', 'el10.6', 'el1006t',
-        "case when enrld_mc_plan_type_cd='01' then 1 else 0 end",
+        "case when mc_plan_type_cd='01' then 1 else 0 end",
         '_tmsis_mc_prtcptn_data',
         "chip_cd in ('2','3')",
         '_tmsis_var_dmgrphc_elgblty',
@@ -264,7 +264,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct2tbl', 'el10.5', 'el1005t',
-        "case when enrld_mc_plan_type_cd='01' then 1 else 0 end",
+        "case when mc_plan_type_cd='01' then 1 else 0 end",
         '_tmsis_mc_prtcptn_data',
         "rstrctd_bnfts_cd in ('2','3','6')",
         '_tmsis_elgblty_dtrmnt',
@@ -280,7 +280,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct', 'el10.8', 'el1008t',
-        '%misslogic(enrld_mc_plan_type_cd,2)',
+        '%misslogic(mc_plan_type_cd,2)',
         '',
         '(%nmisslogic(mc_plan_id, 12) = 1)',
         '',
@@ -290,7 +290,7 @@ run_101 =[
     ['101', 'nonclaimspct', 'el10.7', 'el1007t',
         '%misslogic(mc_plan_id, 12)',
         '',
-        "enrld_mc_plan_type_cd in \
+        "mc_plan_type_cd in \
             ('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', \
              '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', \
              '', \
@@ -668,8 +668,8 @@ run_101 =[
         cb='nonclaimspct',
         measure='el1.45',
         id='el145t',
-        numerator='case when upper(prmry_lang_cd)="ENG" then 1 else 0 end',
-        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        numerator='case when upper(prefrd_lang_cd)="ENG" then 1 else 0 end',
+        denominator='msis_ident_num is not null and prefrd_lang_cd is not null',
         table='_tmsis_var_dmgrphc_elgblty'
     ), 
     create_run_101_input(
@@ -677,8 +677,8 @@ run_101 =[
         cb='nonclaimspct',
         measure='el1.46',
         id='el146t',
-        numerator='case when upper(prmry_lang_cd)="SPA" then 1 else 0 end',
-        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        numerator='case when upper(prefrd_lang_cd)="SPA" then 1 else 0 end',
+        denominator='msis_ident_num is not null and prefrd_lang_cd is not null',
         table='_tmsis_var_dmgrphc_elgblty'
     ), 
     create_run_101_input(
@@ -686,8 +686,8 @@ run_101 =[
         cb='nonclaimspct',
         measure='el1.47',
         id='el147',
-        numerator='case when upper(prmry_lang_cd) not in ("ENG", "SPA") then 1 else 0 end',
-        denominator='msis_ident_num is not null and prmry_lang_cd is not null',
+        numerator='case when upper(prefrd_lang_cd) not in ("ENG", "SPA") then 1 else 0 end',
+        denominator='msis_ident_num is not null and prefrd_lang_cd is not null',
         table='_tmsis_var_dmgrphc_elgblty'
     ), 
     create_run_101_input(
@@ -705,7 +705,7 @@ run_101 =[
         cb='nonclaimspct2tbl',
         measure='el3.37',
         id='el337t',
-        numerator='case when gndr_cd = "M" then 1 else 0 end',
+        numerator='case when sex_cd = "M" then 1 else 0 end',
         numerator_table='_tmsis_prmry_dmgrphc_elgblty',
         denominator='a.msis_ident_num is not null and prgnt_ind = 1',
         denominator_table='_tmsis_var_dmgrphc_elgblty'
@@ -715,7 +715,7 @@ run_101 =[
         cb='nonclaimspct2tbl',
         measure='el3.38',
         id='el338t',
-        numerator='case when gndr_cd = "M" then 1 else 0 end',
+        numerator='case when sex_cd = "M" then 1 else 0 end',
         numerator_table='_tmsis_prmry_dmgrphc_elgblty',
         denominator='a.msis_ident_num is not null and rstrctd_bnfts_cd in ("4")',
         denominator_table='_tmsis_elgblty_dtrmnt'
@@ -766,7 +766,7 @@ run_101 =[
             '41','42','43','44','45','46','47','48','49','50', \
             '51','52','53','54','55','56','59','60', \
             '61','62','63','64','65','66','67','68','69','70', \
-            '71','72','73','74','75','76') then 1 else 0 end",
+            '71','72','73','74','75','76','77') then 1 else 0 end",
         numerator_table='_tmsis_elgblty_dtrmnt',
         denominator='a.msis_ident_num is not null and age < 19',
         denominator_table='_tmsis_prmry_dmgrphc_elgblty',
@@ -785,7 +785,7 @@ run_101 =[
             '41','42','43','44','45','46','47','48','49','50', \
             '51','52','53','54','55','56','59','60', \
             '61','62','63','64','65','66','67','68','69','70', \
-            '71','72','73','74','75','76') then 1 else 0 end",
+            '71','72','73','74','75','76','77') then 1 else 0 end",
         numerator_table='_tmsis_elgblty_dtrmnt',
         denominator='a.msis_ident_num is not null and age >= 19 and age <= 64',
         denominator_table='_tmsis_prmry_dmgrphc_elgblty',
@@ -804,7 +804,7 @@ run_101 =[
             '41','42','43','44','45','46','47','48','49','50', \
             '51','52','53','54','55','56','59','60', \
             '61','62','63','64','65','66','67','68','69','70', \
-            '71','72','73','74','75','76') then 1 else 0 end",
+            '71','72','73','74','75','76','77') then 1 else 0 end",
         numerator_table='_tmsis_elgblty_dtrmnt',
         denominator='a.msis_ident_num is not null and age >= 65',
         denominator_table='_tmsis_prmry_dmgrphc_elgblty',
@@ -828,7 +828,7 @@ run_101 =[
         cb='nonclaimspct2tbl',
         measure='el3.43',
         id='el343t',
-        numerator="case when gndr_cd not in ('M') and \
+        numerator="case when sex_cd not in ('M') and \
                              age >= 40 and  age <= 44\
                         then 1 else 0 end",
         numerator_table='_tmsis_prmry_dmgrphc_elgblty',
