@@ -90,7 +90,11 @@ class DQMeasures:
         spark = SparkSession.getActiveSession()
         
         file_type=['elgblty','ip','lt','othr_toc','rx','ftx','prvdr','mc','tpl_data']
-        
+
+        # exclude FTX check for GU
+        if self.state == '66':
+            file_type.remove('ftx')
+
         for fl in file_type:
             z = f"""
                         create or replace temporary view runid_{fl} as
@@ -128,10 +132,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '4.00.0'
+        self.version = '4.00.1'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V4.00'
+        self.specvrsn = 'V4.00.1'
         self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 

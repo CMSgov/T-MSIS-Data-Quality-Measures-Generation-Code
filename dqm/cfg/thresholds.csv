@@ -277,7 +277,7 @@ EL,45,EL6.45,EL-6-045-45,% of MSIS IDs Age < 19 without a valid Restricted Benef
 EL,46,EL6.46,EL-6-046-46,% of MSIS IDs Age 19 - 64 without a valid Restricted Benefits Code,Non-Claims Percentage,N/A,Y,3,Default,EL6_46,EL,6,46,046,,046,3
 EL,47,EL6.47,EL-6-047-47,% of MSIS IDs Age 65+ without a valid Restricted Benefits Code ,Non-Claims Percentage,N/A,Y,3,Default,EL6_47,EL,6,47,047,,047,3
 EL,1,EL7.1,EL-7-001-1,Enrollment by waiver ID,Frequency,N/A,Y,0,EL7.1,EL7_1,EL,7,1,001,,001,0
-EL,2,EL8.2,EL-8-002-2,"Enrollment, capitation payments, capitation ratios, encounters (by claim file type) and encounter ratios (by claim file type) by plan ID with plan ID linking to MC file",Data Profile,N/A,Y,2,EL8.2,EL8_2,EL,8,2,002,,002,2
+Multiple files,2,EL8.2,EL-8-002-2,"Enrollment, capitation payments, capitation ratios, encounters (by claim file type) and encounter ratios (by claim file type) by plan ID with plan ID linking to MC file",Data Profile,N/A,Y,2,EL8.2,EL8_2,EL,8,2,002,,002,2
 EL,1,EL9.1,EL-9-001-1,Enrollment by plan ID,Data Profile,N/A,Y,2,EL8.2,EL9_1,EL,9,1,001,,001,2
 EL,1,SUMEL.1,EL-S-001-1,Total # of MSIS IDs,Count,N/A,Y,0,Default,SUMEL_1,SUMEL,1,,001,,001,0
 EL,2,SUMEL.2,EL-S-002-2,Total # of duals,Count,N/A,Y,0,Default,SUMEL_2,SUMEL,2,,002,,002,0
@@ -884,23 +884,23 @@ LT,21,MCR5.8,MCR-5-021-8,% of claim headers with TYPE-OF-SERVICE = 59 (skilled n
 OT,1,MCR51.1,MCR-51-001-1,Line Adjustment Indicator values,Frequency,"S-CHIP Encounter: Original and Adjustment, Paid Claims",Y,0,Frequency,MCR51_1,MCR,51,1,001,,001,0
 RX,1,MCR52.1,MCR-52-001-1,Line Adjustment Indicator values,Frequency,"S-CHIP Encounter: Original and Adjustment, Paid Claims",Y,0,Frequency,MCR52_1,MCR,52,1,001,,001,0
 EL,1,MCR53.1,MCR-53-001-1,Total # of managed care enrollments,Count,N/A,Y,0,MC warning,MCR53_1,MCR,53,1,001,,001,0
-OT,2,MCR53.2,MCR-53-002-2,Total # of managed care capitations,Count,N/A,Y,0,MC warning,MCR53_2,MCR,53,2,002,,002,0
+FTX,2,MCR53.2,MCR-53-002-2,Total # of managed care capitations,Count,N/A,Y,0,MC warning,MCR53_2,MCR,53,2,002,,002,0
 OT,3,MCR53.3,MCR-53-003-3,Total # of managed care encounters,Count,N/A,Y,0,MC warning,MCR53_3,MCR,53,3,003,,003,0
 EL,1,MCR54.1,MCR-54-001-1,"# of plans with at least 100 enrollments, 0 capitations, 0 encounters",Count,N/A,Y,0,MC warning,MCR54_1,MCR,54,1,001,,001,0
-OT,2,MCR54.2,MCR-54-002-2,"# of plans with at least 100 enrollments or 100 capitations, 0 encounters",Count,N/A,Y,0,MC warning,MCR54_2,MCR,54,2,002,,002,0
-OT,3,MCR54.3,MCR-54-003-3,"# of plans with at least 100 enrollments or 100 encounters, 0 capitations",Count,N/A,Y,0,MC warning,MCR54_3,MCR,54,3,003,,003,0
-OT,4,MCR54.4,MCR-54-004-4,# of plans with at least 100 enrollments and some capitations that have capitation ratios outside of the expected range (0.7 - 1.3),Count,N/A,Y,0,MC warning,MCR54_4,MCR,54,4,004,,004,0
+FTX,2,MCR54.2,MCR-54-002-2,"# of plans with at least 100 enrollments or 100 capitations, 0 encounters",Count,N/A,Y,0,MC warning,MCR54_2,MCR,54,2,002,,002,0
+FTX,3,MCR54.3,MCR-54-003-3,"# of plans with at least 100 enrollments or 100 encounters, 0 capitations",Count,N/A,Y,0,MC warning,MCR54_3,MCR,54,3,003,,003,0
+FTX,4,MCR54.4,MCR-54-004-4,# of plans with at least 100 enrollments and some capitations that have capitation ratios outside of the expected range (0.7 - 1.3),Count,N/A,Y,0,MC warning,MCR54_4,MCR,54,4,004,,004,0
 EL,5,MCR54.5,MCR-54-005-5,"# of plans with at least 100 capitations or 100 encounters, 0 enrollments",Count,N/A,Y,0,MC warning,MCR54_5,MCR,54,5,005,,005,0
-Multiple files,6,MCR54.6,MCR-54-006-6,# of plans with at least 100 enrollments and some encounters that have IP ratios outside of the expected range (0.01 - 2),Count,N/A,Y,0,MC warning,MCR54_6,MCR,54,6,006,,006,0
-Multiple files,7,MCR54.7,MCR-54-007-7,# of plans with at least 100 enrollments and some encounters that have OT ratios outside of the expected range (0.1 - 20),Count,N/A,Y,0,MC warning,MCR54_7,MCR,54,7,007,,007,0
-Multiple files,8,MCR54.8,MCR-54-008-8,# of plans with at least 100 enrollments and some encounters that have RX ratios outside of the expected range (0.02 - 5),Count,N/A,Y,0,MC warning,MCR54_8,MCR,54,8,008,,008,0
+Multiple,6,MCR54.6,MCR-54-006-6,# of plans with at least 100 enrollments and some encounters that have IP ratios outside of the expected range (0.01 - 2),Count,N/A,Y,0,MC warning,MCR54_6,MCR,54,6,006,,006,0
+Multiple,7,MCR54.7,MCR-54-007-7,# of plans with at least 100 enrollments and some encounters that have OT ratios outside of the expected range (0.1 - 20),Count,N/A,Y,0,MC warning,MCR54_7,MCR,54,7,007,,007,0
+Multiple,8,MCR54.8,MCR-54-008-8,# of plans with at least 100 enrollments and some encounters that have RX ratios outside of the expected range (0.02 - 5),Count,N/A,Y,0,MC warning,MCR54_8,MCR,54,8,008,,008,0
 MCR,9,MCR54.9,MCR-54-009-9,"# of plans with at least 100 enrollments, capitations, or encounters, that do not have a managed care record",Count,N/A,Y,0,MC warning,MCR54_9,MCR,54,9,009,,009,0
 EL,10,MCR54.10,MCR-54-010-10,# of plans where MC plan type does not match EL plan type,Count,N/A,Y,0,MC warning,MCR54_10,MCR,54,10,010,,010,0
-Multiple files,11,MCR54.11,MCR-54-011-11,# of PCCM plan IDs,Count,N/A,Y,0,MC warning,MCR54_11,MCR,54,11,011,,011,0
-Multiple files,12,MCR54.12,MCR-54-012-12,"# of PCCM plans with at least 100 enrollments, capitations, or encounters, that do not have a managed care record",Count,N/A,Y,0,MC warning,MCR54_12,MCR,54,12,012,,012,0
-OT,1,MCR55.1,MCR-55-001-1,Traditional PCCM capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_1,MCR,55,1,001,,001,2
-OT,2,MCR55.2,MCR-55-002-2,Enhanced PCCM capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_2,MCR,55,2,002,,002,2
-OT,3,MCR55.3,MCR-55-003-3,PACE capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_3,MCR,55,3,003,,003,2
+Multiple,11,MCR54.11,MCR-54-011-11,# of PCCM plan IDs,Count,N/A,Y,0,MC warning,MCR54_11,MCR,54,11,011,,011,0
+Multiple,12,MCR54.12,MCR-54-012-12,"# of PCCM plans with at least 100 enrollments, capitations, or encounters, that do not have a managed care record",Count,N/A,Y,0,MC warning,MCR54_12,MCR,54,12,012,,012,0
+FTX,1,MCR55.1,MCR-55-001-1,Traditional PCCM capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_1,MCR,55,1,001,,001,2
+FTX,2,MCR55.2,MCR-55-002-2,Enhanced PCCM capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_2,MCR,55,2,002,,002,2
+FTX,3,MCR55.3,MCR-55-003-3,PACE capitation ratio,Ratio,N/A,Y,2,MC warning,MCR55_3,MCR,55,3,003,,003,2
 IP,1,MCR56.1,MCR-56-001-1,"% of claims for which Patient Status is NOT ""still a patient"" but are missing Discharge Date ",Claims Percentage,"Medicaid Encounter: Original and Adjustment, Paid Claims",Y,2,Default,MCR56_1,MCR,56,1,001,,001,2
 IP,1,MCR56P.1,MCR-56P-001-1,"% of claims for which Patient Status is NOT ""still a patient"" but are missing Discharge Date, by Plan ID",Claims Percentage,"Medicaid Encounter: Original and Adjustment, Paid Claims",Y,2,Default,MCR56P_1,MCR,56P,1,001,,001,2
 IP,1,MCR56R.1,MCR-56R-001-1,"% of Plan IDs over the threshold for MCR-56P-001-1 (% of claims for which Patient Status is NOT ""still a patient"" but are missing Discharge Date, by Plan ID)",Claims Percentage,"Medicaid Encounter: Original and Adjustment, Paid Claims",Y,2,Default,MCR56R_1,MCR,56R,1,001,,001,2
