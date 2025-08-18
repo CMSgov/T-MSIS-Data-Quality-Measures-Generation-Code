@@ -5,7 +5,7 @@ with open(".github/README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="dqm",
-    version="3.13.0",
+    version="4.00.1",
     author="Shinu Verghese",
     author_email="shinu.verghese@cms.hhs.gov",
     description="A package to calculate data quality measures on T-MSIS data using Databricks",
