@@ -132,11 +132,12 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '4.00.1'
+        self.version = '4.00.2'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V4.00.1'
-        self.turboDB = 'dqm_conv'
+        self.specvrsn = 'V4.00.2'
+        #This definition is now specific to PROD/STATEPROD/VAL and moved down. Please see line 225
+        #self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
 
         self.run_rules = {}
@@ -208,8 +209,39 @@ class DQMeasures:
             self.typerun = ''
 
         # T-MSIS input schema name
+        #This definition is now specific to PROD/STATEPROD/VAL and moved down. Please see line 225
         #self.tmsis_input_schema = 'state_prod_catalog.tmsis'
-        self.tmsis_input_schema = 'tmsis'
+        #self.tmsis_input_schema = 'tmsis'
+
+         # S3 output bucket
+        spark = SparkSession.getActiveSession()
+
+        all_tags = {}
+
+        for tag in json.loads(spark.conf.get("spark.databricks.clusterUsageTags.clusterAllTags")):
+            all_tags[tag['key']] = tag['value']
+
+        stack = all_tags.get('stack')
+
+        self.s3proto = 's3a://'
+
+        if stack.casefold() == 'val':
+            self.s3bucket = 'macbis-dw-dqm-val'
+            self.tmsis_input_schema = 'dc_prod_data_sources_catalog.tmsis'
+            self.turboDB = 'dc_val_working_catalog.dqm_conv'
+
+        elif stack.casefold() == 'stateprod':
+            self.s3bucket = 'macbis-dw-dqm-prod'
+            self.tmsis_input_schema = 'state_prod_catalog.tmsis'
+            self.turboDB = 'state_prod_catalog.dqm_conv'
+
+        elif stack.casefold() == 'prod':
+            self.s3bucket = 'macbis-dw-dqm-prod'
+            self.tmsis_input_schema = 'dc_prod_data_sources_catalog.tmsis'
+            self.turboDB = 'dc_prod_working_catalog.dqm_conv'
+
+        else:
+            self.logger.error('Cluster tags do not have a key-value for `stack`')
 
         # Run ID
         self.create_runid_view(run_id)
@@ -289,28 +321,7 @@ class DQMeasures:
         self.wrktable = 'macbis_t12_wrk_' + self.stabbrev .lower() + self.typerun.lower()
         self.taskprefix = self.stabbrev.lower() + self.typerun.lower() + self.rpt_fldr + '_' + self.pgmstart
 
-        self.taskprep = self.stabbrev.lower() + self.typerun.lower() + self.rpt_fldr
-
-        # S3 output bucket
-        spark = SparkSession.getActiveSession()
-
-        all_tags = {}
-
-        for tag in json.loads(spark.conf.get("spark.databricks.clusterUsageTags.clusterAllTags")):
-            all_tags[tag['key']] = tag['value']
-
-        stack = all_tags.get('stack')
-
-        self.s3proto = 's3a://'
-
-        if stack.casefold() == 'val':
-            self.s3bucket = 'macbis-dw-dqm-val'
-        elif stack.casefold() == 'stateprod':
-            self.s3bucket = 'macbis-dw-dqm-prod'
-        elif stack.casefold() == 'prod':
-            self.s3bucket = 'macbis-dw-dqm-prod'
-        else:
-            self.logger.error('Cluster tags do not have a key-value for `stack`')
+        self.taskprep = self.stabbrev.lower() + self.typerun.lower() + self.rpt_fldr     
      
 
         # path to root folder: STATE + Reporting MONTH + Run ID

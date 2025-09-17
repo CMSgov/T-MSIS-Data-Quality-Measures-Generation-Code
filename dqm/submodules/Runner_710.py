@@ -30,7 +30,7 @@ class Runner_710:
         else:
             header_filter = ""
 
-        df=spark.sql(f"select * from dqm_conv.{x['var']}")
+        df=spark.sql(f"select * from {dqm.turboDB}.{x['var']}")
         #list_val=df.rdd.map(lambda x: x.valid_value).collect()
         list_val = [row['valid_value'] for row in df.select('valid_value').collect()]
         vvalue ="(" + ','.join(repr(str(i)) for i in list_val) + ")"
@@ -45,7 +45,7 @@ class Runner_710:
                 coalesce(m.mvalue, v.mvalue) as mvalue,
                 v.valid_value
             from 
-                dqm_conv.{x['var']} as v
+                {dqm.turboDB}.{x['var']} as v
             left join (
 
                 select

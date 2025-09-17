@@ -28,7 +28,7 @@ class Runner_103:
     def build_index_measure_tables(spark, dqm: DQMeasures, measure_id, x) :
 
         if x['vvalue_table'] != '':
-            join_vvalue = f"left join dqm_conv.{x['vvalue_table']} as b on a.{x['var']} = b.valid_value"
+            join_vvalue = f"left join {dqm.turboDB}.{x['vvalue_table']} as b on a.{x['var']} = b.valid_value"
         else:
             join_vvalue = ""
 

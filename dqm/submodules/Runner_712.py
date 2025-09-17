@@ -41,7 +41,7 @@ class Runner_712:
                 coalesce(m.mvalue, v.mvalue) as mvalue,
                 v.valid_value
             from 
-                dqm_conv.freq_msr_tos as v
+                {dqm.turboDB}.freq_msr_tos as v
             left join (
 
                 select

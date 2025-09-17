@@ -31,7 +31,7 @@ class Runner_104:
         else:
             _ = ''
 
-        df = spark.sql(f"select * from dqm_conv.{x['var']}")
+        df = spark.sql(f"select * from {dqm.turboDB}.{x['var']}")
         #list_val = df.rdd.map(lambda x: x.valid_value).collect()
         
         list_val = [row['valid_value'] for row in df.select('valid_value').collect()]
@@ -64,7 +64,7 @@ class Runner_104:
                 ,coalesce(m.pct, v.mvalue) as mvalue
                 ,v.valid_value
             from
-                dqm_conv.{x['var']} as v
+                {dqm.turboDB}.{x['var']} as v
 
             left join (
 

@@ -87,7 +87,7 @@ class Runner_504:
                 from (
                     {numer_base}
                         left join
-                            dqm_conv.provider_classification_lookup as l
+                            {dqm.turboDB}.provider_classification_lookup as l
                                 on (t.prvdr_clsfctn_type_cd = l.prov_class_type
                                     and t.prvdr_clsfctn_cd = l.Code)
                     where
@@ -252,7 +252,7 @@ class Runner_504:
                     on p.submtg_state_prvdr_id = t.submtg_state_prvdr_id
 
                 inner join
-                     dqm_conv.atypical_provider_table as l
+                    {dqm.turboDB}.atypical_provider_table as l
                      on (t.prvdr_clsfctn_type_cd = l.prov_class_type
                          and t.prvdr_clsfctn_cd = l.prov_class_cd)
                      where

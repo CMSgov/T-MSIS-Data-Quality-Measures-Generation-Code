@@ -61,7 +61,7 @@ class Runner_711:
                 v.valid_value,
                 '{claim_type}' as claim_type
             from
-                dqm_conv.freq_msr_billtype as v
+                {dqm.turboDB}.freq_msr_billtype as v
             left join (
 
                 select
@@ -185,7 +185,7 @@ class Runner_711:
                 v.valid_value,
                 '{claim_type}' as claim_type
             from
-                dqm_conv.freq_msr_tax as v
+                {dqm.turboDB}.freq_msr_tax as v
             left join (
 
                 select
