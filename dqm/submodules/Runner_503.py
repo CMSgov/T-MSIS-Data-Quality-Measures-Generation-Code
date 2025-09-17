@@ -38,7 +38,7 @@ class Runner_503:
                     ,coalesce(m.mvalue, v.mvalue) as mvalue
                     ,v.valid_value
                 from
-                    dqm_conv.prvdr_clsfctn_type_cd as v
+                    {dqm.turboDB}.prvdr_clsfctn_type_cd as v
 
                 left join (
 

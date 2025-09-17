@@ -394,7 +394,7 @@ class DQPrepETL:
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] + dqm.stc_cd['z_tos'].tolist(), columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_tos")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.freq_msr_tos")
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] +
                   ['011', '012', '013', '014', '015', '016', '018', '021', '022',
@@ -404,7 +404,7 @@ class DQPrepETL:
                    '072', '073', '074', '075', '076', '077', '078', '079', '081',
                    '082', '083', '084', '085', '086', '087', '089'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_billtype")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.freq_msr_billtype")
 
         df = pd.DataFrame(['A_', 'M_', 'N_', 'T_'] +
                 ['1932', '1934', '261Q', '282N', '283Q', '313M', '3140', '3902', '4053',
@@ -412,28 +412,28 @@ class DQPrepETL:
                 '20XX', '21XX', '22XX', '23XX', '24XX', '25XX', '26XX', '27XX', '28XX', '29XX',
                 '30XX', '31XX', '32XX', '33XX', '34XX', '36XX', '37XX', '38XX'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.freq_msr_tax")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.freq_msr_tax")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
                 ['1','2','3','4','5','6','A','B','C','D','E','F','U','V','W','X','Y','Z'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.clm_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.clm_type_cd")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
                 ['01','02','03','04','05','06','07','08','09','10','20','22','23'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.src_lctn_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.src_lctn_cd")
         
         df = pd.DataFrame([['1','TAXONOMY CODE'],['2','PROVIDER SPECIALTY CODE'],['3','PROVIDER TYPE CODE'],
                         ['4','AUTHORIZED CATEGORY OF SERVICE CODE'],['A','ANY VALID VALUE'],['N','NO VALID VALUE'],
                         ['T','TOTAL']], columns=['valid_value','label'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.prvdr_clsfctn_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.prvdr_clsfctn_type_cd")
 
         df = pd.DataFrame(['A', 'N', 'T'] +
                 ['1','2','9'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.enrlmt_type_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.enrlmt_type_cd")
 
         apdxc_dict = {'elgblty_grp_cd': [2, ['A', 'N', 'T']], 'race_cd': [3, ['A_', 'N_', 'T_']], 'imgrtn_stus_cd': [0, ['A', 'N', 'T']]}
         for var in apdxc_dict.keys():
@@ -441,31 +441,31 @@ class DQPrepETL:
             var_df['z_code'] = var_df['Code'].apply(lambda x: x.zfill(apdxc_dict[var][0]))
             df = pd.DataFrame(apdxc_dict[var][1] + var_df['z_code'].tolist(), columns=['valid_value'])
             df['mvalue'] = 0
-            spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"dqm_conv.{var}")
+            spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.{var}")
 
         df = pd.DataFrame(['A_', 'N_', 'T_'] +
                 ['0','1','2','3','4','5','6','7','A','B','C','D','E','F','G'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.rstrctd_bnfts_cd")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.rstrctd_bnfts_cd")
 
         df = pd.DataFrame(['A_','N_','T_'] +
                 ['01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20', \
 		        '21','22','23','24','25','26','27','28','29','30','31'], columns=['valid_value'])
         df['mvalue'] = 0
-        spark.createDataFrame(df).write.mode("ignore").saveAsTable("dqm_conv.elgblty_trmntn_rsn")
+        spark.createDataFrame(df).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.elgblty_trmntn_rsn")
 
-        spark.createDataFrame(dqm.zipstate_lookup).write.mode("ignore").saveAsTable("dqm_conv.zipstate_crosswalk")
-        spark.createDataFrame(dqm.countystate_lookup).write.mode("ignore").saveAsTable("dqm_conv.countystate_lookup")
-        spark.createDataFrame(dqm.prgncy).write.mode("ignore").saveAsTable("dqm_conv.prgncy")
+        spark.createDataFrame(dqm.zipstate_lookup).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.zipstate_crosswalk")
+        spark.createDataFrame(dqm.countystate_lookup).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.countystate_lookup")
+        spark.createDataFrame(dqm.prgncy).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.prgncy")
 
         dqm.provider_classification_lookup = dqm.provider_classification_lookup.rename(columns={"Source List": "source_list", "PROV-CLASSIFICATION-TYPE": "prov_class_type"})
-        spark.createDataFrame(dqm.provider_classification_lookup).write.mode("ignore").saveAsTable("dqm_conv.provider_classification_lookup")  
+        spark.createDataFrame(dqm.provider_classification_lookup).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.provider_classification_lookup")  
 
         dqm.atypical_provider_table = dqm.atypical_provider_table.rename(columns={"Provider_classification_type": "prov_class_type", "Provider_classification_code": "prov_class_cd","NPI_Required": "NPI_req"})
-        spark.createDataFrame(dqm.atypical_provider_table).write.mode("ignore").saveAsTable("dqm_conv.atypical_provider_table")
+        spark.createDataFrame(dqm.atypical_provider_table).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.atypical_provider_table")
 
         dqm.prvtxnmy = dqm.prvtxnmy.rename(columns={"Individual or Groups (of Individuals)": "Group"})
-        spark.createDataFrame(dqm.prvtxnmy).write.mode("ignore").saveAsTable("dqm_conv.prvtxnmy")
+        spark.createDataFrame(dqm.prvtxnmy).write.mode("ignore").saveAsTable(f"{dqm.turboDB}.prvtxnmy")
 
     # -------------------------------------------------------------------------
     #
@@ -1911,23 +1911,23 @@ class DQPrepETL:
                 {dqm.taskprefix}_tmsis_elgbl_cntct a
 
             left join
-                dqm_conv.zipstate_crosswalk b
+                {dqm.turboDB}.zipstate_crosswalk b
                     on substring(a.elgbl_zip_cd, 1, 5) = b.ZipCode and a.submtg_state_cd = b.StateFIPS
 
             left join
-                dqm_conv.countystate_lookup c
+                {dqm.turboDB}.countystate_lookup c
                     on a.elgbl_cnty_cd = c.CountyFIPS and a.submtg_state_cd = c.StateFIPS
 
             left join
-                dqm_conv.zipstate_crosswalk d
+                {dqm.turboDB}.zipstate_crosswalk d
                     on substring(a.elgbl_zip_cd, 1, 5) = d.ZipCode and a.elgbl_state_cd = d.StateFIPS
 
             left join
-                dqm_conv.countystate_lookup e
+                {dqm.turboDB}.countystate_lookup e
                     on a.elgbl_cnty_cd = e.CountyFIPS and a.elgbl_state_cd = e.StateFIPS
 
             left join 
-                (select distinct StateFIPS from dqm_conv.zipstate_crosswalk) f
+                (select distinct StateFIPS from {dqm.turboDB}.zipstate_crosswalk) f
                     on a.elgbl_state_cd = f.StateFIPS
                  """
 
@@ -1955,7 +1955,7 @@ class DQPrepETL:
                     else ' '
                     end as prgcd
                 from
-                    dqm_conv.prgncy
+                    {dqm.turboDB}.prgncy
             """
 
         dqm.logger.debug(z)
