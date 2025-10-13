@@ -340,7 +340,7 @@ class Runner_909():
 
     # --------------------------------------------------------------------
     # FTX
-    # MCR65.x measures capture % of MANAGED-CARE-PLAN-TYPE enrollees with 
+    # MCR65.1-8 and 10-12 measures capture % of MANAGED-CARE-PLAN-TYPE enrollees with 
     # no capitation payments for that plan type
     # --------------------------------------------------------------------
     def ftx_mcr65(spark, dqm: DQMeasures, measure_id, x) :
@@ -410,6 +410,81 @@ class Runner_909():
         dqm.logger.debug(z)
 
         return spark.sql(z)
+    
+
+
+    # --------------------------------------------------------------------
+    # FTX
+    # MCR65.9 measures capture % of MANAGED-CARE-PLAN-TYPE enrollees with 
+    # no capitation payments for that plan type
+    # --------------------------------------------------------------------
+    def ftx_mcr65_9(spark, dqm: DQMeasures, measure_id, x) :
+
+        z = f"""
+                create or replace temporary view mcr65_ftx_denom as
+                select distinct 
+                    msis_ident_num
+                   ,mc_plan_id
+                from
+                    {dqm.taskprefix}_tmsis_mc_prtcptn_data
+                where
+                    mc_plan_type_cd in {x['plan_type']}
+                    and msis_ident_num is not null
+                    and mc_plan_id is not null
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        # No need to dedup across FTX tables as no counts or payment amount is calculated
+        z = f"""
+                create or replace temporary view mcr65_ftx_numer as
+                select
+                    p.msis_ident_num
+                   ,max(case when h.msis_ident_num is null then 1 else 0 end) as numer_flag
+                from
+                    mcr65_ftx_denom as p
+                left join
+                    (select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
+                      where pyee_id_type in ('02','05','06')
+
+                      union all
+                      
+                      select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
+                      where pyee_id_type in ('02','05','06')
+
+                      union all
+                      
+                      select pyee_id, msis_ident_num
+                      from {dqm.taskprefix}_tmsis_cst_shrng_ofst
+                      where pyee_id_type in ('02','05','06') and 
+                            ofst_trans_type <> '3'
+                    ) as h
+                    on p.mc_plan_id = h.pyee_id
+                    and p.msis_ident_num = h.msis_ident_num
+                group by p.msis_ident_num
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        z = f"""
+                select
+                     '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'909' as submodule
+                    ,coalesce(sum(numer_flag), 0) as numer
+                    ,count(*) as denom
+                    ,case when count(*) > 0 then (coalesce(sum(numer_flag), 0) / count(*)) else null end as mvalue
+                from
+                    mcr65_ftx_numer
+             """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
     # --------------------------------------------------------------------
     #
     #
@@ -418,7 +493,8 @@ class Runner_909():
                 'ftx_mcr28_1': ftx_mcr28_1,
                 'summcr27': summcr27,
                 'mcr65': mcr65,
-                'ftx_mcr65': ftx_mcr65 }
+                'ftx_mcr65': ftx_mcr65, 
+                'ftx_mcr65_9': ftx_mcr65_9 }
 
 # CC0 1.0 Universal
 

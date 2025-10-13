@@ -87,7 +87,7 @@ class Runner_107:
                     from
                         {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
 
-                    WHERE pyee_id_type = '02' and
+                    WHERE pyee_id_type in ('02','05','06') and
                         pyee_id is not null
 
                 union 
@@ -97,7 +97,7 @@ class Runner_107:
                     from
                         {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
 
-                    WHERE pyee_id_type = '02' and
+                    WHERE pyee_id_type in ('02','05','06') and
                         pyee_id is not null
 
                 union 
@@ -108,7 +108,7 @@ class Runner_107:
                         {dqm.taskprefix}_tmsis_cst_shrng_ofst
 
                     WHERE ofst_trans_type  in ('1','2') and
-                          pyee_id_type = '02' and
+                          pyee_id_type in ('02','05','06') and
                          pyee_id is not null
 
 
@@ -456,7 +456,7 @@ class Runner_107:
         ftx_cap_tables(dqm, 'php','tmsis_indvdl_cptatn_pmpm', "pyee_id_type = '02' and pyee_mcr_plan_type in ('05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '18', '19') and", \
                         '', '')
 
-        ftx_cap_tables(dqm, 'pccm','tmsis_indvdl_cptatn_pmpm', "pyee_id_type = '02' and pyee_mcr_plan_type in ('02', '03')  and",\
+        ftx_cap_tables(dqm, 'pccm','tmsis_indvdl_cptatn_pmpm', "pyee_id_type in ('02','05','06') and pyee_mcr_plan_type in ('02', '03')  and",\
                        '', '')
        
         ftx_cap_tables(dqm, 'phi','tmsis_indvdl_hi_prm_pymt', "pyee_id_type = '02' and ",\

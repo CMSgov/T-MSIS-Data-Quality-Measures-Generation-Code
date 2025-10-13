@@ -33,7 +33,7 @@ class Runner_912():
                 from (
                     SELECT msis_ident_num
                         ,pyee_id
-                        ,case when pyee_mcr_plan_type in ('02','03') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as pccm_flag
+                        ,case when pyee_mcr_plan_type in ('02','03') and pyee_id_type in ('02','05','06') and pyee_id is not NULL then 1 else 0 end as pccm_flag
                         ,case when pyee_mcr_plan_type in ('05','06','07','08','09','10','11','12','13','14','15','16','18','19') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as php_flag
                         ,case when pyee_mcr_plan_type in ('01') and pyee_id_type = '02' and pyee_id is not NULL then 1 else 0 end as mco_flag
                     FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
