@@ -132,10 +132,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '4.00.2'
+        self.version = '4.00.3'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V4.00.2'
+        self.specvrsn = 'V4.00.3'
         #This definition is now specific to PROD/STATEPROD/VAL and moved down. Please see line 225
         #self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
@@ -334,16 +334,23 @@ class DQMeasures:
         if stack.casefold() == 'stateprod':
             if ((self.separate_entity == '1') or (self.separate_entity == '2')):
                 self.s3folder = 'state-prod/sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+                self.s3trffolder = 'state-prod/sas-dqm/DQ_Output_Transfer'
             else:
                 self.s3folder = 'state-prod/sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
+                self.s3trffolder = 'state-prod/sas-dqm/DQ_Output_Transfer'
         else:
             if ((self.separate_entity == '1') or (self.separate_entity == '2')):
                 self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '-' + self.typerun + '/' + self.rpt_fldr + '/' + self.z_run_id
+                self.s3trffolder = 'sas-dqm/DQ_Output_Transfer' 
             else:
                 self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
+                self.s3trffolder = 'sas-dqm/DQ_Output_Transfer' 
 
         # path to write Excel report files
         self.s3xlsx = self.s3proto + self.s3bucket + '/' + self.s3folder
+        # path to write Excel report files in transfer folder
+        self.s3trfxlsx = self.s3proto + self.s3bucket + '/' + self.s3trffolder
+
 
         # path to write Spark Dataframes when running measures
         self.s3path = self.s3proto + self.s3bucket + '/' + self.s3folder + '/' + self.pgmstart
@@ -409,9 +416,13 @@ class DQMeasures:
 
         # path to root folder: STATE + Reporting MONTH + Run ID
         self.s3folder = 'sas-dqm/DQ_Output/' + self.rpt_state + '/' + self.rpt_fldr + '/' + self.z_run_id
+        # path to transfer folder(trf): STATE + Reporting MONTH + Run ID
+        self.s3trffolder = 'sas-dqm/DQ_Output_Transfer' 
 
         # path to write Excel report files
         self.s3xlsx = self.s3proto + self.s3bucket + '/' + self.s3folder
+        # path to write Excel report files in transfer folder
+        self.s3trfxlsx = self.s3proto + self.s3bucket + '/' + self.s3trffolder
 
         # path to write Spark Dataframes when running measures
         self.s3path = self.s3proto + self.s3bucket + '/' + self.s3folder + '/' + self.pgmstart
@@ -1112,6 +1123,12 @@ class DQMeasures:
                             .option('dataAddress', "'" + id + "'!A1") \
                             .mode('append') \
                             .save(self.s3xlsx + '/' + fn + '.xlsx')
+                        #write to trf location as well
+                        sdf.write.format('com.crealytics.spark.excel') \
+                            .option('header', 'true') \
+                            .option('dataAddress', "'" + id + "'!A1") \
+                            .mode('append') \
+                            .save(self.s3trfxlsx + '/' + fn + '.xlsx')
 
     # --------------------------------------------------------------------
     #
