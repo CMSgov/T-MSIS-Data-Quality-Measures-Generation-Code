@@ -40,8 +40,13 @@ class Runner_504:
         #    tmsis_prvdr_attr_mn.fac_grp_indvdl_cd = "01" or "02" for PRV6.1
         # or tmsis_prvdr_attr_mn.fac_grp_indvdl_cd = "03" for PRV6.2
 
-        fac_codes   = np.where(measure_id.upper() == "PRV6_1", "'01','02'", "'03'")
-        designation = np.where(measure_id.upper() == "PRV6_1", "'Non-Individual'", "'Individual'")
+        # Explicitly set fac_codes and designation based on measure_id value
+        if measure_id.upper() == "PRV6_1":
+            fac_codes = "'01','02'"
+            designation = "'Non-Individual', 'Undetermined', 'Both'"
+        elif measure_id.upper() == "PRV6_2":
+            fac_codes = "'03'"
+            designation = "'Individual', 'Undetermined', 'Both'"
 
         z = f"""
                 create or replace temporary view {measure_id}_denom as
@@ -80,7 +85,7 @@ class Runner_504:
                 select 
                     submtg_state_cd,
                     submtg_state_prvdr_id,
-                    max(case when Designation = {designation} then 1 else 0 end) as designation_flag,
+                    max(case when Designation in ({designation}) then 1 else 0 end) as designation_flag,
                     max(case when prov_class_type is not null and Code is not null then 1 else 0 end) as lookup_flag,
                     max(case when prvdr_clsfctn_type_cd is not null then 1 else 0 end) as type_cd_flag,
                     max(case when prvdr_clsfctn_cd is not null then 1 else 0 end) as cd_flag

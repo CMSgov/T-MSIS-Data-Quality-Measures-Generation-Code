@@ -72,6 +72,7 @@ elgblty_grp_cd,69,Individuals with Mental Health Conditions (expansion group)
 elgblty_grp_cd,70,Family Planning Participants (expansion group)
 elgblty_grp_cd,71,Other expansion group
 elgblty_grp_cd,76,Uninsured Individual eligible for COVID-19 testing
+elgblty_grp_cd,77,Other optional eligibility for reasonable classifications of children under 21
 enrld_mc_plan_type_cd,00,"Not applicable, individual is eligible for Medicaid or CHIP but not enrolled in a managed care plan "
 enrld_mc_plan_type_cd,01,Individual is enrolled in a Comprehensive MCO
 enrld_mc_plan_type_cd,02,Individual is enrolled in a Traditional PCCM Provider arrangement

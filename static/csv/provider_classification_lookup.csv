@@ -636,20 +636,20 @@ Taxonomy Code List,1,246XC2901X,Cardiovascular Invasive Specialist/Technologist,
 Taxonomy Code List,1,246XS1301X,Sonography Specialist/Technologist,Individual,
 Taxonomy Code List,1,246XC2903X,Vascular Specialist/Technologist,Individual,
 Taxonomy Code List,1,246Y00000X,Health Information Specialist/Technologist,Individual,
-Taxonomy Code List,1,246YC3301X,Hospital Based Coding Specialist,Individual,
-Taxonomy Code List,1,246YC3302X,Physician Office Based Coding Specialist,Individual,
-Taxonomy Code List,1,246YR1600X, Registered Record Administrator,Individual,
+Taxonomy Code List,1,246YC3301X,Deactivated - Hospital Based Coding Specialist,Individual,
+Taxonomy Code List,1,246YC3302X,Deactivated - Physician Office Based Coding Specialist,Individual,
+Taxonomy Code List,1,246YR1600X,Deactivated - Registered Record Administrator,Individual,
 Taxonomy Code List,1,246Z00000X,Other Specialist/Technologist,Individual,
-Taxonomy Code List,1,246ZA2600X,Medical Art  Specialist/Technologist,Individual,
+Taxonomy Code List,1,246ZA2600X,Deactivated - Medical Art  Specialist/Technologist,Individual,
 Taxonomy Code List,1,246ZB0500X,Biochemist,Individual,
-Taxonomy Code List,1,246ZB0301X,Biomedical Engineer,Individual,
-Taxonomy Code List,1,246ZB0302X,Biomedical Photographer,Individual,
-Taxonomy Code List,1,246ZB0600X,Biostatiscian,Individual,
+Taxonomy Code List,1,246ZB0301X,Deactivated - Biomedical Engineer,Individual,
+Taxonomy Code List,1,246ZB0302X,Deactivated - Biomedical Photographer,Individual,
+Taxonomy Code List,1,246ZB0600X,Deactivated - Biostatiscian,Individual,
 Taxonomy Code List,1,246ZE0500X,EEG Specialist/Technologist,Individual,
 Taxonomy Code List,1,246ZE0600X,Electroneurodiagnostic Specialist/Technologist,Individual,
 Taxonomy Code List,1,246ZG1000X,Medical Geneticist (PhD) Specialist/Technologist,Individual,
-Taxonomy Code List,1,246ZG0701X,Graphics Methods Specialist/Technologist,Individual,
-Taxonomy Code List,1,246ZI1000X,Medical Illustrator,Individual,
+Taxonomy Code List,1,246ZG0701X,Deactivated - Graphics Methods Specialist/Technologist,Individual,
+Taxonomy Code List,1,246ZI1000X,Deactivated - Medical Illustrator,Individual,
 Taxonomy Code List,1,246ZN0300X,Nephrology Specialist/Technologist,Individual,
 Taxonomy Code List,1,246ZX2200X,Orthopedic Assistant,Individual,
 Taxonomy Code List,1,246ZC0007X,Surgical Assistant,Individual,
@@ -668,13 +668,13 @@ Taxonomy Code List,1,246QM0706X,Medical Technologist,Individual,
 Taxonomy Code List,1,246QM0900X,Microbiology Specialist/Technologist,Individual,
 Taxonomy Code List,1,246W00000X,Cardiology Technician,Individual,
 Taxonomy Code List,1,247000000X,Health Information Technician,Individual,
-Taxonomy Code List,1,2470A2800X,Assistant Health Information Record Technician,Individual,
+Taxonomy Code List,1,2470A2800X,Deactivated - Assistant Health Information Record Technician,Individual,
 Taxonomy Code List,1,247200000X,Other Technician,Individual,
-Taxonomy Code List,1,2472B0301X,Biomedical Engineering Technician,Individual,
-Taxonomy Code List,1,2472D0500X,Darkroom Technician,Individual,
+Taxonomy Code List,1,2472B0301X,Deactivated - Biomedical Engineering Technician,Individual,
+Taxonomy Code List,1,2472D0500X,Deactivated - Darkroom Technician,Individual,
 Taxonomy Code List,1,2472E0500X,EEG Technician,Individual,
 Taxonomy Code List,1,2472R0900X,Renal Dialysis Technician,Individual,
-Taxonomy Code List,1,2472V0600X,Veterinary Technician,Individual,
+Taxonomy Code List,1,2472V0600X,Deactivated - Veterinary Technician,Individual,
 Taxonomy Code List,1,246R00000X,Pathology Technician,Individual,
 Taxonomy Code List,1,247ZC0005X,Clinical Laboratory Director (Non-physician),Individual,
 Taxonomy Code List,1,246RH0600X,Histology Technician,Individual,
@@ -987,6 +987,24 @@ Provider Specialty List,2,B2,Pedorthic personnel,Non-Individual,
 Provider Specialty List,2,B3,Medical supply company with pedorthic personnel,Non-Individual,
 Provider Specialty List,2,B4,Rehabilitation Agency,Non-Individual,
 Provider Specialty List,2,B5,Ocularist,Individual,
+Provider Specialty List,2,C0,Sleep Medicine,Individual,Added 11/18/2025
+Provider Specialty List,2,C1,Centralized Flu,Individual,Added 11/18/2025
+Provider Specialty List,2,C2,Indirect Payment Procedure,Non-Individual,Added 11/18/2025
+Provider Specialty List,2,C3,Interventional Cardiology,Individual,Added 11/18/2025
+Provider Specialty List,2,C4,Restricted Use,Undetermined,Added 11/18/2025
+Provider Specialty List,2,C5,Dentist,Individual,Added 11/18/2025
+Provider Specialty List,2,C6,Hospitalist,Individual,Added 11/18/2025
+Provider Specialty List,2,C7,Advanced Heart Failure and Transplant Cardiology,Individual,Added 11/18/2025
+Provider Specialty List,2,C8,Medical Toxicology,Individual,Added 11/18/2025
+Provider Specialty List,2,C9,Hematopoietic Cell Transplantation and Cellular Therapy,Individual,Added 11/18/2025
+Provider Specialty List,2,D1,Medicare Diabetes Preventive Program,Non-Individual,Added 11/18/2025
+Provider Specialty List,2,D2,Restricted Use,Undetermined,Added 11/18/2025
+Provider Specialty List,2,D3,Medical Genetics and Genomics,Individual,Added 11/18/2025
+Provider Specialty List,2,D4,Undersea and Hyperbaric Medicine,Individual,Added 11/18/2025
+Provider Specialty List,2,D5,Opioid Treatment Program,Non-Individual,Added 11/18/2025
+Provider Specialty List,2,D6,Home Infusion Therapy Services,Individual,Added 11/18/2025
+Provider Specialty List,2,D7,Micrographic Dermatologic Surgery,Individual,Added 11/18/2025
+Provider Specialty List,2,D8,Adult Congenital Heart Disease,Individual,Added 11/18/2025
 Provider Type Code List,3,01,Physician,Individual,
 Provider Type Code List,3,02,Speech Language Pathologist,Individual,
 Provider Type Code List,3,03,Oral Surgery (Dentist only),Individual,
