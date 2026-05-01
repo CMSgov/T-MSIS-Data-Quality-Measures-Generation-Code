@@ -84,6 +84,23 @@ run_201_exp_claims_pct_macros = [
     ['201', 'claims_pct', 'exp45_2', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],
     ['201', 'claims_pct', 'exp45_3', 'at', '1=1', 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot'],
 
+    # Sub cap measures
+    ['201', 'claims_pct', 'exp49_1', 'BF', "src_lctn_cd in ('22')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ip'],
+    ['201', 'claims_pct', 'exp49_2', 'BF', "src_lctn_cd in ('22')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],
+    ['201', 'claims_pct', 'exp49_3', 'BF', "src_lctn_cd in ('22')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ot'],
+    ['201', 'claims_pct', 'exp49_4', 'BF', "src_lctn_cd in ('22')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'rx'],
+    
+    ['201', 'claims_pct', 'exp50_1', 'BF', "src_lctn_cd in ('22')", 'tot_bill_amt=0 or tot_bill_amt is null', 'clh', 'ip'],
+    ['201', 'claims_pct', 'exp50_2', 'BF', "src_lctn_cd in ('22')", 'tot_bill_amt=0 or tot_bill_amt is null', 'clh', 'lt'],
+    ['201', 'claims_pct', 'exp50_3', 'BF', "src_lctn_cd in ('22')", 'tot_bill_amt=0 or tot_bill_amt is null', 'clh', 'ot'],
+    ['201', 'claims_pct', 'exp50_4', 'BF', "src_lctn_cd in ('22')", 'tot_bill_amt=0 or tot_bill_amt is null', 'clh', 'rx'],
+   
+    ['201', 'claims_pct', 'exp51_1', 'BF', "src_lctn_cd in ('22')", 'tot_alowd_amt=0 or tot_alowd_amt is null', 'clh', 'ip'],
+    ['201', 'claims_pct', 'exp51_2', 'BF', "src_lctn_cd in ('22')", 'tot_alowd_amt=0 or tot_alowd_amt is null', 'clh', 'lt'],
+    ['201', 'claims_pct', 'exp51_3', 'BF', "src_lctn_cd in ('22')", 'tot_alowd_amt=0 or tot_alowd_amt is null', 'clh', 'ot'],
+    ['201', 'claims_pct', 'exp51_4', 'BF', "src_lctn_cd in ('22')", 'tot_alowd_amt=0 or tot_alowd_amt is null', 'clh', 'rx'],
+   
+
     # plan id measures
     ['201', 'claims_pct_planid', 'exp29p_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'ip'],
     ['201', 'claims_pct_planid', 'exp33p_1', 'p', "src_lctn_cd not in ('22','23')", 'tot_mdcd_pd_amt=0 or tot_mdcd_pd_amt is null', 'clh', 'lt'],

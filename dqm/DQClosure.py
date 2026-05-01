@@ -16,12 +16,6 @@ class DQClosure():
             {var} is null
             )"""
 
-    def miss_misslogic_c017(var):
-        return f"""( {var} ='017' or
-            not {var} rlike '[a-zA-Z1-9]' or
-            {var} is null
-            )"""
-
     def miss_misslogic_cU(var):
         return f"""( {var} = 'U' or
             not {var} rlike '[a-zA-Z1-9]' or
@@ -78,6 +72,18 @@ class DQClosure():
                         when {var} rlike '[1-9]' then 1
                    else 0 end"""
 
+    def ssn_nmisslogic2(var):
+        return f"""case when {var} is null or
+                             {var} rlike '^[^0-9]*$' or
+                             length(trim({var})) <> 9 or
+                             substring(trim({var}),1,3) in ('000','666') or
+                             (substring(trim({var}),1,3) between '900' and '999') or
+                             {var} rlike '^[0-9]{{3}}00[0-9]{{4}}$' or 
+                             {var} rlike '^[0-9]{{6}}0000$' or
+                             {var} in ('012345678','123456789') or
+                             {' or '.join([f"{var} rlike '^{n}+$'" for n in range(0,8)])} then 1  
+                   else 0 end"""
+
     def misslogic(var, length=None):
         if length is not None:
             return f"""case when {var} like repeat(8,{length}) then 1
@@ -122,7 +128,6 @@ class DQClosure():
     passthrough = {
         '%miss_misslogic': miss_misslogic,
         '%miss_misslogic_c6': miss_misslogic_c6,
-        '%miss_misslogic_c017': miss_misslogic_c017,
         '%miss_misslogic_cU': miss_misslogic_cU,
         '%miss_misslogic_c9': miss_misslogic_c9,
         '%miss_misslogic_c88_99': miss_misslogic_c88_99,
@@ -132,6 +137,7 @@ class DQClosure():
         '%is_missing_2': is_missing_2,
         '%is_missing_3': is_missing_3,
         '%ssn_nmisslogic': ssn_nmisslogic,
+        '%ssn_nmisslogic2': ssn_nmisslogic2,
         '%misslogic': misslogic,
         '%nmisslogic': nmisslogic,
         '%misslogicprv_id': misslogicprv_id,

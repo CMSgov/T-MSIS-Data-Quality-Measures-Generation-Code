@@ -91,13 +91,15 @@ class Runner_905():
                 FROM (
                     SELECT sum(CASE
                                 WHEN (numer_line_count >= 1)
-                                    AND (claim_cat_{x['claim_cat']} = 1)
+                                    
+                                    AND (claim_cat_{x['claim_cat']} )
                                     THEN 1
                                 ELSE 0
                                 END) AS denom
                         ,sum(CASE
                                 WHEN (numer_line_count >= 1)
-                                    AND (claim_cat_{x['claim_cat']} = 1)
+                                    
+                                    AND (claim_cat_{x['claim_cat']} )
                                     THEN numer_line_count
                                 ELSE 0
                                 END) AS numer

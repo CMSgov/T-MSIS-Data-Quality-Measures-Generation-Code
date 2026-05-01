@@ -275,7 +275,8 @@ class DQM_Metadata:
                     ,ssdi_ind as ssdi_ind
                     ,ssi_ind as ssi_ind
                     ,ssi_state_splmt_stus_cd
-                    ,tanf_cash_cd""",
+                    ,tanf_cash_cd
+                    ,birth_cncptn_ind""",
             'tmsis_hh_sntrn_prtcptn_info':
                 """,hh_ent_name
                     ,hh_sntrn_name""",
@@ -718,7 +719,7 @@ class DQM_Metadata:
             ,'BC': "(clm_type_cd in ('1','A') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
             ,'BD': "(clm_type_cd in ('3','C') and (adjstmt_ind not in ('1')) and xovr_ind = '1' )"
             # BE claim category not used in code as of v3.9, so not coded
-            #,'BF': "(clm_type_cd in ('6') and adjstmt_ind in ('0') )"
+            ,'BF': "(clm_type_cd in ('3','C') and src_lctn_cd in ('22', '23') )"
             #,'BG': "(clm_type_cd in ('F') and adjstmt_ind in ('0') )"
         }
 

@@ -1,5 +1,6 @@
 dqmenv/*
 DQMenv/*
+OldDQMenv/*
 .venv/
 .flake8
 .vscode/

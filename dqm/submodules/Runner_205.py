@@ -92,7 +92,7 @@ class Runner_205:
                                         tot_mdcd_pd_amt > 0
                                         AND tot_mdcd_pd_amt < 200000
                                         )
-                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat['G']} = 1)
+                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat['G']} )
                                     THEN 1
                                 ELSE 0
                                 END) AS denom
@@ -101,7 +101,7 @@ class Runner_205:
                                         tot_mdcd_pd_amt > 0
                                         AND tot_mdcd_pd_amt < 200000
                                         )
-                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat['G']} = 1)
+                                    AND ({DQM_Metadata.create_base_clh_view().claim_cat['G']} )
                                     THEN tot_mdcd_pd_amt
                                 ELSE 0
                                 END) AS numer
@@ -127,7 +127,7 @@ class Runner_205:
                     ,NULL AS numer
                     ,NULL AS denom
                     ,sum(CASE
-                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['G']} = 1)
+                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['G']} )
                                 THEN mdcd_pd_amt
                             ELSE 0
                             END) AS mvalue
@@ -152,7 +152,7 @@ class Runner_205:
                     ,NULL AS numer
                     ,NULL AS denom
                     ,sum(CASE
-                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['G']} = 1)
+                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['G']} )
                                 AND (mdcd_pd_amt > 100000)
                                 THEN 1
                             ELSE 0
@@ -184,7 +184,7 @@ class Runner_205:
                         END AS mvalue
                 FROM (
                     SELECT sum(CASE
-                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} = 1)
+                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} )
                                     AND (
                                         line_adjstmt_ind IN (
                                             '1'
@@ -195,7 +195,7 @@ class Runner_205:
                                 ELSE 0
                                 END) AS denom
                         ,sum(CASE
-                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} = 1)
+                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} )
                                     AND (
                                         line_adjstmt_ind IN (
                                             '1'
@@ -227,7 +227,7 @@ class Runner_205:
                     ,NULL AS numer
                     ,NULL AS denom
                     ,sum(CASE
-                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} = 1)
+                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['K']} )
                                 THEN mdcd_pd_amt
                             ELSE 0
                             END) AS mvalue
@@ -258,7 +258,7 @@ class Runner_205:
                         END AS mvalue
                 FROM (
                     SELECT sum(CASE
-                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} = 1)
+                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} )
                                     AND (
                                         line_adjstmt_ind IN (
                                             '1'
@@ -269,7 +269,7 @@ class Runner_205:
                                 ELSE 0
                                 END) AS denom
                         ,sum(CASE
-                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} = 1)
+                                WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} )
                                     AND (
                                         line_adjstmt_ind IN (
                                             '1'
@@ -301,7 +301,7 @@ class Runner_205:
                     ,NULL AS numer
                     ,NULL AS denom
                     ,sum(CASE
-                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} = 1)
+                            WHEN ({DQM_Metadata.create_base_clh_view().claim_cat['E']} )
                                 THEN mdcd_pd_amt
                             ELSE 0
                             END) AS mvalue
@@ -327,7 +327,7 @@ class Runner_205:
                     ,NULL AS denom
                     ,sum(CASE
                             WHEN mdcd_pd_amt > 100000
-                                AND {DQM_Metadata.create_base_clh_view().claim_cat['B']} = 1
+                                AND {DQM_Metadata.create_base_clh_view().claim_cat['B']} 
                                 THEN 1
                             ELSE 0
                             END) AS mvalue
@@ -422,10 +422,10 @@ class Runner_205:
                                      ,sum(numer) as numer
                               FROM (
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
@@ -433,10 +433,10 @@ class Runner_205:
                                      UNION ALL
                     
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) AND
                                                        (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
@@ -444,10 +444,10 @@ class Runner_205:
                                      UNION ALL
                                 
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst    
@@ -476,19 +476,19 @@ class Runner_205:
                         ,NULL AS denom
                         ,sum(pymt_or_rcpmt_amt) AS mvalue
                 FROM (
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
                       
                       UNION ALL
                       
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['K']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
                       
                       UNION ALL                    
                       
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['K']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
                 ) a
@@ -532,10 +532,10 @@ class Runner_205:
                                      ,sum(numer) as numer
                               FROM (
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
@@ -543,10 +543,10 @@ class Runner_205:
                                      UNION ALL
                     
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) AND
                                                        (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
@@ -554,10 +554,10 @@ class Runner_205:
                                      UNION ALL
                                 
                                      SELECT {de_dup_vars}
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN 1
                                                  ELSE 0 END AS denom
-                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) AND
+                                           ,CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} ) AND
                                                       (adjstmt_ind in ('1','4')) THEN abs(pymt_or_rcpmt_amt)
                                                  ELSE 0 END AS numer
                                      FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst    
@@ -586,19 +586,19 @@ class Runner_205:
                         ,NULL AS denom
                         ,sum(pymt_or_rcpmt_amt) AS mvalue
                 FROM (
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_indvdl_cptatn_pmpm
                       
                       UNION ALL
                       
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_claim_cat['E']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_indvdl_hi_prm_pymt
                       
                       UNION ALL                      
                       
-                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} = 1) THEN pymt_or_rcpmt_amt
+                      SELECT CASE WHEN ({DQM_Metadata.ftx_tables().ftx_view_columns().ftx_cst_shrng_claim_cat['E']} ) THEN pymt_or_rcpmt_amt
                                   ELSE 0 END AS pymt_or_rcpmt_amt
                       FROM {dqm.taskprefix}_tmsis_cst_shrng_ofst
                 ) a

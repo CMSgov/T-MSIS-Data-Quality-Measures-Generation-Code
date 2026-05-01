@@ -910,7 +910,29 @@ run_101 =[
         denominator='a.msis_ident_num is not null and age >= 65',
         denominator_table='_tmsis_prmry_dmgrphc_elgblty',
         rounding=3
-    )              
+    ),
+        create_run_101_input(
+        series='101',
+        cb='el648t_el649t',
+        measure='el6.48',
+        id='el648t',
+        numerator=" ",
+        numerator_table=' ',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    ),
+        create_run_101_input(
+        series='101',
+        cb='el648t_el649t',
+        measure='el6.49',
+        id='el649t',
+        numerator=" ",
+        numerator_table=' ',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    )           
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

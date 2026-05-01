@@ -127,7 +127,8 @@ df_803_miss_non_claims_pct.to_pickle('./run_803.pkl')
 #
 # --------------------------------------------------------------------
 df = df_802_miss_claims_pct[['measure_id','series','cb']]
-df = df.append(df_803_miss_non_claims_pct[['measure_id','series','cb']])
+#df = df.append(df_803_miss_non_claims_pct[['measure_id','series','cb']])
+df = pd.concat([df, df_803_miss_non_claims_pct[['measure_id','series','cb']]])
 df_803_miss_non_claims_pct.to_pickle('./run_801.pkl')
 
 # CC0 1.0 Universal

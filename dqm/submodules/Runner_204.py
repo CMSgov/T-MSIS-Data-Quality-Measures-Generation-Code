@@ -122,13 +122,13 @@ class Runner_204:
                 FROM (
                     SELECT sum(CASE
                                 WHEN (meets_line_constraint = 1)
-                                    AND (claim_cat_{claim_cat} = 1)
+                                    AND (claim_cat_{claim_cat} )
                                     THEN 1
                                 ELSE 0
                                 END) AS denom
                         ,sum(CASE
                                 WHEN (meets_line_constraint = 1)
-                                    AND (claim_cat_{claim_cat}= 1)
+                                    AND (claim_cat_{claim_cat})
                                     THEN {clm_sumvar}
                                 ELSE 0
                                 END) AS numer
