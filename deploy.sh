@@ -37,9 +37,9 @@ else
     else
         # set upload location
         if [[ "${ENVIRON}" =~ ^(e2val)$ ]]; then 
-            UPLOAD=uat_val_catalog/dqm_conv/dqm_package_volume_val;
+            UPLOAD=dc_val_working_catalog/dqm_conv/dqm_package_volume_val;
         elif [[ "${ENVIRON}" =~ ^(e2prod)$ ]]; then 
-            UPLOAD=cms_prod_catalog/dqm_conv/dqm_package_volume_prod;
+            UPLOAD=dc_prod_working_catalog/dqm_conv/dqm_package_volume_prod;
         fi
         echo "Deploying (VERSION=${VERSION}) ..."
         cd dqm/batch
@@ -50,7 +50,7 @@ else
         python create_setup_local.py
         python setup_local.py bdist_wheel
         rm -rf setup_local.py
-        echo "databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/Volumes/${UPLOAD}/dqm-${VERSION}-py3-none-any.whl --overwrite"
-        databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/Volumes/${UPLOAD}/dqm-${VERSION}-py3-none-any.whl --overwrite
+        #echo "databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/Volumes/${UPLOAD}/dqm-${VERSION}-py3-none-any.whl --overwrite"
+        #databricks --profile ${ENVIRON} fs cp ./dist/dqm-${VERSION}-py3-none-any.whl dbfs:/Volumes/${UPLOAD}/dqm-${VERSION}-py3-none-any.whl --overwrite
     fi
 fi

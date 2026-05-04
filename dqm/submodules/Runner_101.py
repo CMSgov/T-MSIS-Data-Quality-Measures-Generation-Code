@@ -649,9 +649,65 @@ class Runner_101:
 
         dqm.logger.debug(z)
 
-        return spark.sql(z)  
+        return spark.sql(z) 
+    
+    # --------------------------------------------------------------------
+    #
+    #  
+    # --------------------------------------------------------------------
+    def el648t_el649t(spark, dqm: DQMeasures, measure_id, x) :
 
-                    
+        if measure_id.upper() == "EL6_48":
+            val = "'2'"
+        elif measure_id.upper() == "EL6_49":
+            val = "'3'"
+
+        z = f"""
+                create or replace temporary view spells1 as
+                select  a.msis_ident_num
+                       ,c.ssn_num
+
+                from {dqm.taskprefix}_tmsis_prmry_dmgrphc_elgblty a
+
+                     left join
+                     {dqm.taskprefix}_tmsis_elgblty_dtrmnt b
+                on a.msis_ident_num = b.msis_ident_num
+
+                     left join
+                     {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty c
+                on a.msis_ident_num = c.msis_ident_num
+
+                where a.msis_ident_num is not null and a.age > 1 and
+                      (b.elgblty_grp_cd <> '64' or b.elgblty_grp_cd is null) and 
+                      (b.birth_cncptn_ind <> '1' or b.birth_cncptn_ind is null) and
+                      c.imgrtn_stus_cd = {val}
+             """
+        spark.sql(z)
+
+        z = f"""
+                select
+                    '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'101' AS submodule
+                    ,sum(numer) as numer
+                    ,count(1) as denom
+                    ,round(sum(numer) / count(1), {x['round']}) as mvalue
+                from (
+                    select
+                         msis_ident_num
+                        ,max({DQClosure.parse('%ssn_nmisslogic2(ssn_num)')}) as numer
+                    from
+                        spells1
+                    group by
+                        msis_ident_num
+                ) 
+             """
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
     # --------------------------------------------------------------------
     #
     #
@@ -673,7 +729,8 @@ class Runner_101:
         "el335t": el335t,
         "el336t": el336t,
         "el640t": el640t,
-        "el641t": el641t
+        "el641t": el641t,
+        "el648t_el649t": el648t_el649t
     }
 
 # CC0 1.0 Universal

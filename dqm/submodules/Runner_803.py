@@ -31,9 +31,6 @@ class Runner_803:
         if x['numer'].lower() == 'ethncty_cd':
             min = DQClosure.parse(f'%miss_misslogic_c6({x["numer"]})')
 
-        elif x['numer'].lower() == 'race_cd':
-            min = DQClosure.parse(f'%miss_misslogic_c017({x["numer"]})')
-
         elif x['numer'].lower() == 'sex_cd':
             min = DQClosure.parse(f'%miss_misslogic_cU({x["numer"]})')
 

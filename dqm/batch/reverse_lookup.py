@@ -1,3 +1,4 @@
+import pandas as pd
 df = None
 stack = None
 
@@ -11,15 +12,25 @@ series = [
     '601', '602', '603'
     ]
 
-for i in series:
+# for i in series:
 
+#     exec(open('run_' + i + '.py').read())
+
+#     keys = df[['measure_id', 'series', 'cb']]
+#     if stack is None:
+#         stack = keys
+#     else:
+#         stack = stack.append(keys)
+
+dfs = []
+
+for i in series:
     exec(open('run_' + i + '.py').read())
 
     keys = df[['measure_id', 'series', 'cb']]
-    if stack is None:
-        stack = keys
-    else:
-        stack = stack.append(keys)
+    dfs.append(keys)
+
+stack = pd.concat(dfs, ignore_index=True)
 
 stack = stack.drop_duplicates()
 print(len(stack))

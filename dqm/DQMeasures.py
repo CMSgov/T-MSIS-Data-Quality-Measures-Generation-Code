@@ -132,10 +132,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '4.1.1'
+        self.version = '4.2.0'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V4.1.1'
+        self.specvrsn = 'V4.2.0'
         #This definition is now specific to PROD/STATEPROD/VAL and moved down. Please see line 225
         #self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
@@ -996,7 +996,8 @@ class DQMeasures:
         #   Plan 8.2 + Plan 9.1
         # ------------------------------------------------------------------------------------
         if (pd_el8_2 is not None) and (pd_el9_1 is not None):
-            plan = pd_el8_2.append(pd_el9_1)
+            #plan = pd_el8_2.append(pd_el9_1)
+            plan = pd.concat([pd_el8_2, pd_el9_1], ignore_index=True)
             plan = plan.sort_values(['Measure_ID','plan_id'], ascending=True)
             plan = plan.fillna('')
             plan = plan[DQM_Metadata.Reports.plan8_2.columns]
@@ -1068,8 +1069,8 @@ class DQMeasures:
         for obj in bucket.objects.filter(Prefix=prefix):
             if (str(obj.key).find('part-') > 1):
                 obj = s3.get_object(Bucket=obj.bucket_name, Key=obj.key)
-                df = df.append(pd.read_csv(io.BytesIO(obj['Body'].read()), dtype=DQM_Metadata.Results.types))
-
+                #df = df.append(pd.read_csv(io.BytesIO(obj['Body'].read()), dtype=DQM_Metadata.Results.types))
+                df = pd.concat([df, pd.read_csv(io.BytesIO(obj['Body'].read()), dtype=DQM_Metadata.Results.types)])
         df = df.drop_duplicates()
         df = df.sort_values(by=['submtg_state_cd', 'measure_id'])
 
@@ -1620,7 +1621,7 @@ class DQMeasures:
                             spark_df = spark_df.withColumn('plan_type_el', spark_df['plan_type_el'].cast(StringType()))
 
                             if 'MultiplePlanTypes_el' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('MultiplePlanTypes_el', lit(''))
+                                spark_df = spark_df.withColumn('MultiplePlanTypes_el', lit(None))
                             spark_df = spark_df.withColumn('MultiplePlanTypes_el', spark_df['MultiplePlanTypes_el'].cast(IntegerType()))
 
                             if 'plan_type_mc' not in spark_df.columns:
@@ -1628,7 +1629,7 @@ class DQMeasures:
                             spark_df = spark_df.withColumn('plan_type_mc', spark_df['plan_type_mc'].cast(StringType()))
 
                             if 'MultiplePlanTypes_mc' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('MultiplePlanTypes_mc', lit(''))
+                                spark_df = spark_df.withColumn('MultiplePlanTypes_mc', lit(None))
                             spark_df = spark_df.withColumn('MultiplePlanTypes_mc', spark_df['MultiplePlanTypes_mc'].cast(IntegerType()))
 
                             if 'linked' not in spark_df.columns:
@@ -1636,31 +1637,31 @@ class DQMeasures:
                             spark_df = spark_df.withColumn('linked', spark_df['linked'].cast(StringType()))
 
                             if 'enrollment' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enrollment', lit(''))
+                                spark_df = spark_df.withColumn('enrollment', lit(None))
                             spark_df = spark_df.withColumn('enrollment', spark_df['enrollment'].cast(LongType()))
 
                             if 'cap_hmo' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_hmo', lit(''))
+                                spark_df = spark_df.withColumn('cap_hmo', lit(None))
                             spark_df = spark_df.withColumn('cap_hmo', spark_df['cap_hmo'].cast(LongType()))
 
                             if 'cap_php' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_php', lit(''))
+                                spark_df = spark_df.withColumn('cap_php', lit(None))
                             spark_df = spark_df.withColumn('cap_php', spark_df['cap_php'].cast(LongType()))
 
                             if 'cap_pccm' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_pccm', lit(''))
+                                spark_df = spark_df.withColumn('cap_pccm', lit(None))
                             spark_df = spark_df.withColumn('cap_pccm', spark_df['cap_pccm'].cast(LongType()))
 
                             if 'cap_phi' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_phi', lit(''))
+                                spark_df = spark_df.withColumn('cap_phi', lit(None))
                             spark_df = spark_df.withColumn('cap_phi', spark_df['cap_phi'].cast(LongType()))
 
                             if 'cap_oth' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_oth', lit(''))
+                                spark_df = spark_df.withColumn('cap_oth', lit(None))
                             spark_df = spark_df.withColumn('cap_oth', spark_df['cap_oth'].cast(LongType()))
 
                             if 'cap_tot' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_tot', lit(''))
+                                spark_df = spark_df.withColumn('cap_tot', lit(None))
                             spark_df = spark_df.withColumn('cap_tot', spark_df['cap_tot'].cast(LongType()))
 
                             if 'capitation_type' not in spark_df.columns:
@@ -1672,43 +1673,43 @@ class DQMeasures:
                             spark_df = spark_df.withColumn('plan_type', spark_df['plan_type'].cast(StringType()))
 
                             if 'enc_ip' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enc_ip', lit(''))
+                                spark_df = spark_df.withColumn('enc_ip', lit(None))
                             spark_df = spark_df.withColumn('enc_ip', spark_df['enc_ip'].cast(LongType()))
 
                             if 'enc_lt' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enc_lt', lit(''))
+                                spark_df = spark_df.withColumn('enc_lt', lit(None))
                             spark_df = spark_df.withColumn('enc_lt', spark_df['enc_lt'].cast(LongType()))
 
                             if 'enc_ot' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enc_ot', lit(''))
+                                spark_df = spark_df.withColumn('enc_ot', lit(None))
                             spark_df = spark_df.withColumn('enc_ot', spark_df['enc_ot'].cast(LongType()))
 
                             if 'enc_rx' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enc_rx', lit(''))
+                                spark_df = spark_df.withColumn('enc_rx', lit(None))
                             spark_df = spark_df.withColumn('enc_rx', spark_df['enc_rx'].cast(LongType()))
 
                             if 'enc_tot' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('enc_tot', lit(''))
+                                spark_df = spark_df.withColumn('enc_tot', lit(None))
                             spark_df = spark_df.withColumn('enc_tot', spark_df['enc_tot'].cast(LongType()))
 
                             if 'ip_ratio' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('ip_ratio', lit(''))
+                                spark_df = spark_df.withColumn('ip_ratio', lit(None))
                             spark_df = spark_df.withColumn('ip_ratio', spark_df['ip_ratio'].cast(DoubleType()))
 
                             if 'lt_ratio' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('lt_ratio', lit(''))
+                                spark_df = spark_df.withColumn('lt_ratio', lit(None))
                             spark_df = spark_df.withColumn('lt_ratio', spark_df['lt_ratio'].cast(DoubleType()))
 
                             if 'ot_ratio' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('ot_ratio', lit(''))
+                                spark_df = spark_df.withColumn('ot_ratio', lit(None))
                             spark_df = spark_df.withColumn('ot_ratio', spark_df['ot_ratio'].cast(DoubleType()))
 
                             if 'rx_ratio' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('rx_ratio', lit(''))
+                                spark_df = spark_df.withColumn('rx_ratio', lit(None))
                             spark_df = spark_df.withColumn('rx_ratio', spark_df['rx_ratio'].cast(DoubleType()))
 
                             if 'cap_ratio' not in spark_df.columns:
-                                spark_df = spark_df.withColumn('cap_ratio', lit(''))
+                                spark_df = spark_df.withColumn('cap_ratio', lit(None))
                             spark_df = spark_df.withColumn('cap_ratio', spark_df['cap_ratio'].cast(DoubleType()))
 
                             if 'encounter_type' not in spark_df.columns:

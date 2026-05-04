@@ -510,7 +510,7 @@ class DQPrepETL:
                     ,tmsis_rptg_prd
                     ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
                     ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
-                    ,coalesce(adjdctn_dt,'01JAN1960') as adjdctn_dt
+                    ,coalesce(adjdctn_dt, DATE '1960-01-01') as adjdctn_dt 
                     ,coalesce(adjstmt_ind,'X') as adjstmt_ind
 
                     ,orgnl_clm_num as orgnl_clm_num_orig
@@ -548,7 +548,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.tmsis_clh_rec_{fname}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
                     and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
             """
         spark.sql(z)
@@ -576,7 +576,7 @@ class DQPrepETL:
                     ,tmsis_rptg_prd
                     ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
                     ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
-                    ,coalesce(adjdctn_dt,'01JAN1960') as adjdctn_dt
+                    ,coalesce(adjdctn_dt, DATE '1960-01-01') as adjdctn_dt
                     ,coalesce(adjstmt_ind,'X') as adjstmt_ind
 
                     
@@ -595,7 +595,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.tmsis_clm_dx_{fname}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
                     and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
             """
         spark.sql(z)
@@ -844,7 +844,7 @@ class DQPrepETL:
                     ,msis_ident_num
                     ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
                     ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
-                    ,coalesce(adjdctn_dt,'01JAN1960') as adjdctn_dt
+                    ,coalesce(adjdctn_dt, DATE '1960-01-01') as adjdctn_dt
                     ,coalesce(orgnl_line_num,'0') as orgnl_line_num
                     ,coalesce(adjstmt_line_num,'0') as adjstmt_line_num
                     ,coalesce(line_adjstmt_ind,'X') as line_adjstmt_ind
@@ -869,7 +869,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.tmsis_cll_rec_{fname}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
             """
         spark.sql(z)
         DQPrepETL.log(dqm, 'prep_cll_' + ftype + '_view', z)
@@ -902,7 +902,7 @@ class DQPrepETL:
                     ,tmsis_rptg_prd
                     ,coalesce(orgnl_clm_num,'0') as orgnl_clm_num
                     ,coalesce(adjstmt_clm_num,'0') as adjstmt_clm_num
-                    ,coalesce({pymt_dt},'01JAN1960') as pymt_or_rcpmt_dt
+                    ,coalesce({pymt_dt}, DATE '1960-01-01') as pymt_or_rcpmt_dt
                     ,coalesce(adjstmt_ind,'X') as adjstmt_ind
 
                     ,orgnl_clm_num as orgnl_clm_num_orig
@@ -930,7 +930,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.{ftype}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
                     and (orgnl_clm_num is not null or adjstmt_clm_num is not null)
             """
         spark.sql(z)
@@ -958,7 +958,7 @@ class DQPrepETL:
                     ,enrlmt_end_dt
                     ,1 as is_eligible
                 from {dqm.tmsis_input_schema}.tmsis_enrlmt_time_sgmt_data
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and {DQPrepETL.msis_id_not_missing}
                     and (is_arcvd = 'false' or is_arcvd is null)
             """
@@ -977,7 +977,7 @@ class DQPrepETL:
                     ,enrlmt_end_dt
                     ,1 as is_eligible_all
                 from {dqm.tmsis_input_schema}.tmsis_enrlmt_time_sgmt_data
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and {DQPrepETL.msis_id_not_missing}            """
         spark.sql(z)
         DQPrepETL.log(dqm, 'base_elig_all_view', z)
@@ -997,7 +997,7 @@ class DQPrepETL:
                     ,rstrctd_bnfts_cd
                     ,1 as ever_eligible_det
                 from {dqm.tmsis_input_schema}.tmsis_elgblty_dtrmnt
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and {DQPrepETL.msis_id_not_missing}
                     and prmry_elgblty_grp_ind = '1'
             """
@@ -1017,7 +1017,7 @@ class DQPrepETL:
                     ,sex_cd
                     ,1 as ever_eligible_prm
                 from {dqm.tmsis_input_schema}.tmsis_prmry_dmgrphc_elgblty
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and {DQPrepETL.msis_id_not_missing}
             """
         spark.sql(z)
@@ -1037,7 +1037,7 @@ class DQPrepETL:
                     ,crtfd_amrcn_indn_alskn_ntv_ind
                     ,1 as ever_eligible_race
                 from {dqm.tmsis_input_schema}.tmsis_race_info
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and {DQPrepETL.msis_id_not_missing}
             """
         spark.sql(z)
@@ -1063,7 +1063,7 @@ class DQPrepETL:
                     ,prvdr_mdcd_end_dt
                     ,1 as is_enrolled_provider
                 from {dqm.tmsis_input_schema}.tmsis_prvdr_mdcd_enrlmt
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and submtg_state_prvdr_id is not null
                     and submtg_state_prvdr_id not rlike '[89]{{30}}'
                     and submtg_state_prvdr_id rlike '[A-Za-z1-9]'
@@ -1082,7 +1082,7 @@ class DQPrepETL:
                     ,prvdr_mdcd_end_dt
                     ,1 as is_enrolled_provider_all
                 from {dqm.tmsis_input_schema}.tmsis_prvdr_mdcd_enrlmt
-                where tmsis_actv_ind = 1
+                where tmsis_actv_ind::int = 1
                     and submtg_state_prvdr_id is not null
                     and submtg_state_prvdr_id not rlike '[89]{{30}}'
                     and submtg_state_prvdr_id rlike '[A-Za-z1-9]'
@@ -1351,7 +1351,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.{ftype}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
                     and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
@@ -1550,7 +1550,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.{ftype}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
                     and (is_arcvd = 'false' or is_arcvd is null)
             """
         spark.sql(z)
@@ -1649,7 +1649,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.{ftype}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)
@@ -1747,7 +1747,7 @@ class DQPrepETL:
                 from
                     {dqm.tmsis_input_schema}.{ftype}
                 where
-                    tmsis_actv_ind = 1
+                    tmsis_actv_ind::int = 1
             """
         spark.sql(z)
         DQPrepETL.log(dqm, ftype + '_view', z)

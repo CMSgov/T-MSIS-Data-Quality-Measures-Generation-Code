@@ -173,7 +173,7 @@ class Runner_714:
                     ,'714' as submodule
                     ,0 as numer
                     ,0 as denom
-                    ,typeof(NULL) as mvalue
+                    ,CAST(NULL AS STRING) as mvalue
             """
             dqm.logger.debug(z)
             return spark.sql(z)
@@ -279,7 +279,7 @@ class Runner_714:
                     ,'714' as submodule
                     ,0 as numer
                     ,0 as denom
-                    ,typeof(NULL) as mvalue
+                    ,CAST(NULL AS STRING) as mvalue
             """
             dqm.logger.debug(z)
             return spark.sql(z)
@@ -385,7 +385,7 @@ class Runner_714:
                     ,'714' as submodule
                     ,0 as numer
                     ,0 as denom
-                    ,typeof(NULL) as mvalue
+                    ,CAST(NULL AS STRING) as mvalue
             """
             dqm.logger.debug(z)
             return spark.sql(z)
@@ -488,7 +488,7 @@ class Runner_714:
                     ,'714' as submodule
                     ,0 as numer
                     ,0 as denom
-                    ,typeof(NULL) as mvalue
+                    ,CAST(NULL AS STRING) as mvalue
             """
             dqm.logger.debug(z)
             return spark.sql(z)
