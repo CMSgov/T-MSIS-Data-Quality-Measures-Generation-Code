@@ -132,10 +132,10 @@ class DQMeasures:
         self.now = datetime.now()
         self.initialize_logger(self.now)
 
-        self.version = '4.3.0'
+        self.version = '4.2.1'
         self.progpath = '/dqm'
 
-        self.specvrsn = 'V4.3.0'
+        self.specvrsn = 'V4.2.1'
         #This definition is now specific to PROD/STATEPROD/VAL and moved down. Please see line 225
         #self.turboDB = 'dqm_conv'
         self.isTurbo = turbo
