@@ -968,6 +968,16 @@ run_901 = [
     ['901', 'claims_pct', 'mcr21_3', 'P', '1=1', "%not_missing_1(BLG_PRVDR_NUM, 30)", 'CLL', 'ot'],
     ['901', 'claims_pct', 'mcr24_3', 'R', '1=1', "%not_missing_1(BLG_PRVDR_NUM, 30)", 'CLL', 'ot'],
 
+    ['901', 'claims_pct', 'mcr66_1', 'AF', '1=1', "SRC_LCTN_CD = '22'", 'CLH', 'ip'],
+    ['901', 'claims_pct', 'mcr66_2', 'AF', '1=1', "SRC_LCTN_CD = '22'", 'CLH', 'lt'],
+    ['901', 'claims_pct', 'mcr66_3', 'AF', '1=1', "SRC_LCTN_CD = '22'", 'CLH', 'ot'],
+    ['901', 'claims_pct', 'mcr66_4', 'AF', '1=1', "SRC_LCTN_CD = '22'", 'CLH', 'rx'],
+
+    ['901', 'claims_pct', 'mcr67_1', 'AF', '1=1', "SRC_LCTN_CD = '23'", 'CLH', 'ip'],
+    ['901', 'claims_pct', 'mcr67_2', 'AF', '1=1', "SRC_LCTN_CD = '23'", 'CLH', 'lt'],
+    ['901', 'claims_pct', 'mcr67_3', 'AF', '1=1', "SRC_LCTN_CD = '23'", 'CLH', 'ot'],
+    ['901', 'claims_pct', 'mcr67_4', 'AF', '1=1', "SRC_LCTN_CD = '23'", 'CLH', 'rx'],    
+
     #plan id measures
     ['901', 'claims_pct_planid', 'mcr56p_1', 'O', "PTNT_STUS_CD <> '30' or PTNT_STUS_CD is NULL", "DSCHRG_DT is NULL", 'CLH', 'ip'],
 
