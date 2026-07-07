@@ -337,6 +337,7 @@ class Runner_714:
                        'D2335', 'D2390', 'D2391', 'D2392',
                        'D2393', 'D2394', 'D3230', 'D3240',
                        'D3310', 'D3320', 'D3330')
+                    and (bill_type_cd is null or rev_cd is null)   
                     and {DQM_Metadata.create_base_clh_view.claim_cat[x['claim_cat']]}
 
                 group by
@@ -358,6 +359,7 @@ class Runner_714:
                        'D2335', 'D2390', 'D2391', 'D2392',
                        'D2393', 'D2394', 'D3230', 'D3240',
                        'D3310', 'D3320', 'D3330')
+                    and (bill_type_cd is null or rev_cd is null)
                     and (
                         tooth_num is null or
                         tooth_num not rlike '[a-zA-Z1-9]'
