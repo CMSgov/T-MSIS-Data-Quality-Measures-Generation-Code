@@ -9,6 +9,9 @@ run_704 = [
     ['704', 'merge_clm_prov_sql', 'all4_3', 'ot'],
     ['704', 'merge_clm_prov_sql', 'all4_4', 'rx'],
 
+    ['704', 'merge_clm_prov_sql2', 'all41_1', ''],
+    ['704', 'merge_clm_prov_sql3', 'all42_1', ''],
+
     ['704', 'get_dups_clh', 'all5_1', 'ip'],
     ['704', 'get_dups_clh', 'all5_2', 'lt'],
     ['704', 'get_dups_clh', 'all5_3', 'ot'],

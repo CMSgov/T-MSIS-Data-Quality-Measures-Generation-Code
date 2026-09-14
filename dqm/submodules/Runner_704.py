@@ -5,7 +5,6 @@
 # --------------------------------------------------------------------
 from dqm.DQM_Metadata import DQM_Metadata
 from dqm.DQMeasures import DQMeasures
-
 class Runner_704:
 
     # --------------------------------------------------------------------
@@ -224,6 +223,135 @@ class Runner_704:
 
         dqm.logger.debug(z)
         return spark.sql(z)
+    
+    # --------------------------------------------------------------------
+    # ALL41.1
+    #
+    # --------------------------------------------------------------------
+    
+    #pull unique list of blg_prvdr_num from claims file (IP, LT, OT and RX)
+    def pull_claims_all411_all421(spark, dqm: DQMeasures):
+        
+        clm_types = ['ip','lt','ot','rx']
+
+        union_query = "\n union all \n".join([f"""
+                                           select  /*distinct */
+                                                   submtg_state_cd
+                                                  ,blg_prvdr_num as clm_prvdr
+                                           from {DQMeasures.getBaseTable(dqm, 'clh', clm_type)}
+                                           where {DQM_Metadata.create_base_clh_view.claim_cat['W']}
+                                             and src_lctn_cd = '23'
+                                             and blg_prvdr_num is not null
+                                           """
+                                           for clm_type in clm_types
+                                           ])
+        
+        z = f"""
+                create or replace temporary view {dqm.taskprefix}_clmprvdr_list as
+                select  distinct
+                        submtg_state_cd
+                       ,clm_prvdr
+                from ({union_query}) a
+            """
+
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+    def merge_clm_prov_sql2(spark, dqm: DQMeasures, measure_id, x):
+
+        Runner_704.pull_claims_all411_all421(spark, dqm)
+
+        #create summary table
+        z = f"""
+             /*pull records from provider file*/
+            
+            WITH pull_prvdr_ids AS(
+                select  distinct submtg_state_cd
+                       ,submtg_state_prvdr_id as prvdr_id
+                from {dqm.taskprefix}_tmsis_prvdr_afltd_pgm
+                where (afltd_pgm_type_cd <> '6' or afltd_pgm_type_cd is null)
+                  and submtg_state_prvdr_id is not null
+             ),
+
+             
+             /*merge provider data pull with claims pull*/
+             merge_table AS(
+                select
+                     a.submtg_state_cd
+                    ,a.clm_prvdr
+                    ,sum(case when b.prvdr_id is not null then 1 else 0 end) as flag_in_prov
+                from {dqm.taskprefix}_clmprvdr_list a
+                     left join 
+                     pull_prvdr_ids b
+                on  a.submtg_state_cd = b.submtg_state_cd and
+                    a.clm_prvdr = b.prvdr_id
+                group by a.submtg_state_cd, a.clm_prvdr
+             )
+
+             /*summary table*/
+             select
+                    '{dqm.state}' as submtg_state_cd,
+                    '{measure_id}' as measure_id,
+                    '704' as submodule,
+                    coalesce(sum(flag_in_prov), 0) as numer,
+                    count(submtg_state_cd) as denom,
+                    round((sum(flag_in_prov)/count(submtg_state_cd)),2) as mvalue
+              from merge_table
+            """
+
+        print(z)
+        dqm.logger.debug(z)
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    # ALL42.1
+    #
+    # --------------------------------------------------------------------
+    def merge_clm_prov_sql3(spark, dqm: DQMeasures, measure_id, x) :
+ 
+        Runner_704.pull_claims_all411_all421(spark, dqm)
+
+        #create summary table
+        z = f"""
+             /*pull unique list of submtg_state_prvdr_id from affiliated segment*/
+
+                WITH pull_prvdr_ids AS(
+                select  distinct
+                        submtg_state_cd
+                       ,submtg_state_prvdr_id as prvdr_id
+                from {dqm.taskprefix}_tmsis_prvdr_afltd_pgm
+                where afltd_pgm_type_cd = '6' 
+                  and submtg_state_prvdr_id is not null
+                
+             ),
+             
+
+
+             /*find provider id in affiliated segment but not in claims file*/               
+             merge_table AS (
+                select
+                     a.*
+                    ,case when b.clm_prvdr is null then 1 else 0 end as flag_not_in_clm
+                from pull_prvdr_ids a
+                     left join 
+                     {dqm.taskprefix}_clmprvdr_list b
+                on  a.submtg_state_cd = b.submtg_state_cd and
+                    a.prvdr_id = b.clm_prvdr
+             )
+
+             /*summary table*/
+             select
+                    '{dqm.state}' as submtg_state_cd,
+                    '{measure_id}' as measure_id,
+                    '704' as submodule,
+                    coalesce(sum(flag_not_in_clm), 0) as numer,
+                    count(submtg_state_cd) as denom,
+                    round((sum(flag_not_in_clm)/count(submtg_state_cd)),2) as mvalue
+                from merge_table
+            """
+
+        dqm.logger.debug(z)
+        return spark.sql(z)
 
 
     # --------------------------------------------------------------------
@@ -324,6 +452,8 @@ class Runner_704:
         "all3_1": all3_1,
         "all3_2": all3_2,
         'merge_clm_prov_sql': merge_clm_prov_sql,
+        'merge_clm_prov_sql2': merge_clm_prov_sql2,
+        'merge_clm_prov_sql3': merge_clm_prov_sql3,
         'get_dups_clh': get_dups_clh,
         'get_dups_cll': get_dups_cll
     }
