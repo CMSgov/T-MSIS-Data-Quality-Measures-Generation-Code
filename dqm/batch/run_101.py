@@ -932,7 +932,20 @@ run_101 =[
         denominator='',
         denominator_table='',
         rounding=3
-    )           
+    )  ,
+
+        create_run_101_input(
+        series='101',
+        cb='el650t',
+        measure='el6.50',
+        id='el650t',
+        numerator='',
+        numerator_table='',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    )         
+             
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

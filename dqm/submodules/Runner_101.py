@@ -708,6 +708,61 @@ class Runner_101:
 
         return spark.sql(z)
 
+    def el650t(spark, dqm: DQMeasures, measure_id, x):
+
+        z = f"""
+                select
+                    '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'101' as submodule
+                    ,sum(numer) as numer
+                    ,count(1) as denom
+                    ,round(sum(numer) / count(1), {x['round']}) as mvalue
+                from (
+                    select
+                        a.msis_ident_num
+                        ,max(
+                            case
+                                when c.state_plan_id_num is not null
+                                then 1
+                                else 0
+                            end
+                        ) as numer
+                    from (
+                        select distinct
+                            msis_ident_num
+                        from
+                            {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty
+                        where
+                            imgrtn_stus_cd = '3'
+                    ) a
+
+                    left join
+                        {dqm.taskprefix}_tmsis_mc_prtcptn_data b
+                            on a.msis_ident_num = b.msis_ident_num
+                        and b.mc_plan_id is not null
+
+                    left join
+                        {dqm.taskprefix}_tmsis_mc_mn_data c
+                            on b.mc_plan_id = c.state_plan_id_num
+                        and c.reimbrsmt_arngmt_cd in (
+                                '01', '1',
+                                '02', '2',
+                                '03', '3'
+                        )
+
+                    group by
+                        a.msis_ident_num
+                ) d
+            """
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+    
+
     # --------------------------------------------------------------------
     #
     #
@@ -730,7 +785,8 @@ class Runner_101:
         "el336t": el336t,
         "el640t": el640t,
         "el641t": el641t,
-        "el648t_el649t": el648t_el649t
+        "el648t_el649t": el648t_el649t,
+        "el650t": el650t
     }
 
 # CC0 1.0 Universal
