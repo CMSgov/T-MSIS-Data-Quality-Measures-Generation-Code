@@ -1,0 +1,57 @@
+state,state_cd,state_fips,children_only,pregnant_women_only,both,under_19
+Alabama,AL,01,NO,NO,NO,
+Alaska,AK,02,NO,NO,NO,
+Amer. Samoa,AS,60,NO,NO,YES,NO
+Arizona,AZ,04,NO,NO,NO,
+Arkansas,AR,05,NO,NO,YES,YES
+California,CA,06,NO,NO,YES,NO
+Colorado,CO,08,NO,NO,YES,YES
+Connecticut,CT,09,NO,NO,YES,NO
+Delaware,DE,10,NO,NO,YES,NO
+Dist. Of Col.,DC,11,NO,NO,YES,NO
+Florida,FL,12,YES,NO,NO,YES
+Georgia,GA,13,NO,NO,YES,YES
+Guam,GU,66,NO,NO,NO,
+Hawaii,HI,15,NO,NO,YES,YES
+Idaho,ID,16,NO,NO,NO,
+Illinois,IL,17,YES,NO,NO,YES
+Indiana,IN,18,NO,NO,NO,
+Iowa,IA,"19,96",YES,NO,NO,NO
+Kansas,KS,20,NO,NO,NO,
+Kentucky,KY,21,NO,NO,YES,YES
+Louisiana,LA,22,YES,NO,NO,YES
+Maine,ME,23,NO,NO,YES,NO
+Maryland,MD,24,NO,NO,YES,NO
+Massachusetts,MA,25,NO,NO,YES,NO
+Michigan,MI,26,NO,NO,YES,NO
+Minnesota,MN,27,NO,NO,YES,NO
+Mississippi,MS,28,NO,NO,NO,
+Missouri,MO,29,NO,NO,NO,
+Montana,MT,"30,94",YES,NO,NO,YES
+N. Mariana Islands,MP,69,NO,NO,YES,YES
+Nebraska,NE,31,NO,NO,YES,YES
+Nevada,NV,32,NO,NO,YES,YES
+New Hampshire,NH,33,NO,NO,YES,YES
+New Jersey,NJ,34,NO,NO,YES,NO
+New Mexico,NM,35,NO,NO,YES,NO
+New York,NY,36,NO,NO,YES,NO
+North Carolina,NC,37,NO,NO,YES,YES
+North Dakota,ND,38,NO,YES,NO,NO
+Ohio,OH,39,NO,NO,YES,NO
+Oklahoma,OK,40,NO,NO,NO,
+Oregon,OR,41,YES,NO,NO,YES
+Pennsylvania,PA,"42,97",NO,NO,YES,NO
+Puerto Rico,PR,72,NO,NO,NO,
+Rhode Island,RI,44,NO,NO,YES,YES
+South Carolina,SC,45,NO,NO,YES,NO
+South Dakota,SD,46,NO,NO,NO,
+Tennessee,TN,47,NO,NO,NO,
+Texas,TX,48,YES,NO,NO,YES
+Utah,UT,49,YES,NO,NO,YES
+Vermont,VT,50,NO,NO,YES,NO
+Virgin Islands,VI,78,NO,NO,YES,NO
+Virginia,VA,51,NO,NO,YES,YES
+Washington,WA,53,NO,NO,YES,NO
+West Virginia,WV,54,NO,NO,YES,YES
+Wisconsin,WI,55,NO,NO,YES,YES
+Wyoming,WY,"56,93",NO,YES,NO,NO

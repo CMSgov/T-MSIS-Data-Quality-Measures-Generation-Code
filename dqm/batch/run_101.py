@@ -98,7 +98,7 @@ run_101 =[
     ['101', 'nonclaimspct', 'el1.14', 'el114t',
         "case when (imgrtn_vrfctn_ind='1') then 1 else 0 end",
         '',
-        "imgrtn_stus_cd in ('1','2','3')",
+        "imgrtn_stus_cd in ('2','3','4')",
         '',
         '_tmsis_var_dmgrphc_elgblty',
         2],
@@ -436,7 +436,7 @@ run_101 =[
         2],
 
     ['101', 'nonclaimspct2tbl', 'el6.33', 'el633t',
-        "case when b.imgrtn_stus_cd not in ('1', '2', '3') or b.imgrtn_stus_cd is null then 1 else 0 end",
+        "case when b.imgrtn_stus_cd not in ('2', '3', '4') or b.imgrtn_stus_cd is null then 1 else 0 end",
         '_tmsis_var_dmgrphc_elgblty',
         "a.rstrctd_bnfts_cd = '2'",
         '_tmsis_elgblty_dtrmnt',
@@ -944,7 +944,43 @@ run_101 =[
         denominator='',
         denominator_table='',
         rounding=3
-    )         
+    )  ,
+
+        create_run_101_input(
+        series='101',
+        cb='el651t',
+        measure='el6.51',
+        id='el651t',
+        numerator='',
+        numerator_table='',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    )  , 
+
+        create_run_101_input(
+        series='101',
+        cb='el652t',
+        measure='el6.52',
+        id='el652t',
+        numerator='',
+        numerator_table='',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    )  ,   
+
+        create_run_101_input(
+        series='101',
+        cb='el653t',
+        measure='el6.53',
+        id='el653t',
+        numerator='',
+        numerator_table='',
+        denominator='',
+        denominator_table='',
+        rounding=3
+    )      
              
 ]
 

@@ -761,7 +761,271 @@ class Runner_101:
 
         return spark.sql(z)
 
+
+    # --------------------------------------------------------------------
+    # Process CHIPRA_lookup table
+    # --------------------------------------------------------------------
+    def process_chipra():
+
+        import pandas as pd
+        from importlib_resources import files
+        spark = SparkSession.getActiveSession()
+
+        #readin csv files as pandas dataframe
+        chipra_lookup_df = pd.read_csv(files("dqm.cfg").joinpath("chipra_lookup_fips.csv"))
+
+
+        #create a table for chipra lookup file
+        table_view_name = f"chipra_table"
+        spark.createDataFrame(chipra_lookup_df).createOrReplaceTempView(table_view_name)
     
+    # --------------------------------------------------------------------
+    # EL6.51
+    # % of MSIS IDs with IMMIGRATION-STATUS = 2 (CHIPRA 214) who are not 
+    # in the state’s CHIPRA 214 target population (e.g., children and/or 
+    # pregnant women)
+    # --------------------------------------------------------------------
+    def el651t(spark, dqm: DQMeasures, measure_id, x):
+
+        Runner_101.process_chipra()
+
+        #create numerator flags
+        z = f"""
+             create or replace temporary view numer_flags as
+             select  a.msis_ident_num
+                    ,a.imgrtn_stus_cd
+                    ,g.age
+                    ,b.elgblty_grp_cd
+                    
+                    /*Condition 1*/
+                    ,case when c.children_only = 'YES' and c.under_19 = 'NO'
+                          then case 
+                                   when (
+                                        (b.elgblty_grp_cd in ('61','62','63','64','65','66') and
+                                        (g.age <= 19 OR g.age is null))
+                                        OR
+                                        (b.elgblty_grp_cd in ('01','02','03','04','06','07','08','09','14',
+                                                              '27','28','29','30','31','32','33','34','35','36',
+                                                              '55','56','70','71') and
+                                        g.age <= 21)
+                                        OR
+                                        (b.elgblty_grp_cd = '54' and (g.age <= 21 or g.age is null))
+                                        )
+                                   then 0
+                                   else 1 end
+                          else 0 end
+                     as flag_cond1
+
+                    /*Condition 2*/
+                    ,case when c.pregnant_women_only = 'YES' and c.under_19 = 'NO'
+                          then case
+                                   when (
+                                        b.elgblty_grp_cd in ('05','53','67','68') and (g.age < 65 or g.age is null)
+                                        )
+                                   then 0 
+                                   else 1 end
+                          else 0 end
+                     as flag_cond2
+
+                    /*Condition 3*/
+                    ,case when c.children_only = 'YES' and c.under_19 = 'YES'
+                          then case 
+                                   when (
+                                        (b.elgblty_grp_cd in ('61','62','63','64','65','66') and
+                                        (g.age <= 19 or g.age is null))
+                                        OR
+                                        (b.elgblty_grp_cd in ('01','02','03','04','06','07','08','09','14',
+                                                              '27','28','29','30','31','32','33','34','35','36',
+                                                              '55','56','70','71') and
+                                        g.age < 19)
+                                        OR
+                                        (b.elgblty_grp_cd = '54' and (g.age < 19 OR g.age is null))
+                                        )
+                                   then 0
+                                   else 1 end
+                           else 0 end
+                     as flag_cond3
+
+                     /*Condition 4*/
+                    ,case when c.both = 'YES' and c.under_19 = 'NO'
+                          then case
+                                   when (
+                                        /* Condition 1 requirements */
+                                        (b.elgblty_grp_cd in ('61','62','63','64','65','66') and
+                                        (g.age <= 19 OR g.age is null))
+                                        OR
+                                        (b.elgblty_grp_cd in ('01','02','03','04','06','07','08','09','14',
+                                                              '27','28','29','30','31','32','33','34','35','36',
+                                                              '55','56','70','71') and
+                                        g.age <= 21)
+                                        OR
+                                        (b.elgblty_grp_cd = '54' and (g.age <= 21 or g.age is null))
+                                        OR
+                                        /* Condition 2 requirements */
+                                        (b.elgblty_grp_cd in ('05','53','67','68') and (g.age < 65 or g.age is null))
+                                        )
+                                   then 0
+                                   else 1 end
+                          else 0 end
+                     as flag_cond4
+
+                     /*Condition 5*/
+                    ,case when c.both = 'YES' and c.under_19 = 'YES'
+                          then case
+                                   when (
+                                        /* Condition 2 requirements */
+                                        (b.elgblty_grp_cd in ('05','53','67','68') and (g.age < 65 or g.age is null))
+                                        OR
+                                        /* Condition 3 requirements */
+                                        (b.elgblty_grp_cd in ('61','62','63','64','65','66') and
+                                        (g.age <= 19 or g.age is null))
+                                        OR
+                                        (b.elgblty_grp_cd in ('01','02','03','04','06','07','08','09','14',
+                                                              '27','28','29','30','31','32','33','34','35','36',
+                                                              '55','56','70','71') and
+                                        g.age < 19)
+                                        OR
+                                        (b.elgblty_grp_cd = '54' and (g.age < 19 OR g.age is null))
+                                        )
+                                   then 0
+                                   else 1 end
+                          else 0 end
+                     as flag_cond5
+
+             from {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty a
+
+                  left join
+                  {dqm.taskprefix}_tmsis_prmry_dmgrphc_elgblty g
+             on a.msis_ident_num = g.msis_ident_num
+
+                  left join
+                  {dqm.taskprefix}_tmsis_elgblty_dtrmnt b
+             on a.msis_ident_num = b.msis_ident_num
+
+                  left join
+                  chipra_table c
+             on a.submtg_state_cd = c.state_fips
+
+             where a.imgrtn_stus_cd = '2'
+            """
+        spark.sql(z)
+
+        #create final measure count
+        z = f"""
+             WITH final_flag AS (
+                select  *
+                       ,case when {' or '.join([f"flag_cond{n} = 1" for n in range(1,6)])} then 1 else 0 end
+                        as flag_cond
+                from numer_flags
+             ),
+
+             numer_denom_cnt AS (
+                select  count(distinct msis_ident_num) as denom
+                       ,count(distinct (case when flag_cond = 1 then msis_ident_num else null end)) as numer
+                from final_flag 
+             )
+             
+             select
+                    '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'101' as submodule
+                    ,numer
+                    ,denom
+                    ,round(try_divide(numer,denom), {x['round']}) as mvalue
+                from numer_denom_cnt        
+            """
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    # EL6.52
+    # % of MSIS IDs with IMMIGRATION-STATUS = 2 (CHIPRA 214) if the state 
+    # does not have a SPA or waiver for CHIPRA 214 coverage
+    # --------------------------------------------------------------------
+    def el652t(spark, dqm: DQMeasures, measure_id, x):
+
+        Runner_101.process_chipra()
+
+        z = f"""
+             WITH denom_flag AS (
+                select  a.msis_ident_num
+                       ,a.imgrtn_stus_cd
+                       ,case when b.children_only = 'NO' and b.pregnant_women_only = 'NO' and b.both = 'NO' then 1 else 0 end
+                        as flag
+                from {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty a
+                     left join
+                     chipra_table b
+                on a.submtg_state_cd = b.state_fips
+             ),
+
+             numer_denom_cnt AS (
+                select  count(distinct (case when flag = 1 and imgrtn_stus_cd = '2' then msis_ident_num else null end)) as numer
+                       ,count(distinct (case when flag = 1 then msis_ident_num else null end)) as denom
+                from denom_flag 
+             )
+             
+             select
+                    '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'101' as submodule
+                    ,numer
+                    ,denom
+                    ,round(try_divide(numer,denom), {x['round']}) as mvalue
+                from numer_denom_cnt        
+            """
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
+
+    # --------------------------------------------------------------------
+    # EL6.53
+    # % of MSIS IDs with IMMIGRATION-STATUS = 2 (CHIPRA 214) if the state 
+    # has a SPA or waiver for CHIPRA 214 coverage
+    # --------------------------------------------------------------------
+    def el653t(spark, dqm: DQMeasures, measure_id, x):
+
+        Runner_101.process_chipra()
+
+        z = f"""
+             WITH denom_flag AS (
+                select  a.msis_ident_num
+                       ,a.imgrtn_stus_cd
+                       ,case when b.children_only = 'YES' or b.pregnant_women_only = 'YES' or b.both = 'YES' then 1 else 0 end
+                        as flag
+                from {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty a
+                     left join
+                     chipra_table b
+                on a.submtg_state_cd = b.state_fips
+             ),
+
+             numer_denom_cnt AS (
+                select  count(distinct (case when flag = 1 and imgrtn_stus_cd = '2' then msis_ident_num else null end)) as numer
+                       ,count(distinct (case when flag = 1 then msis_ident_num else null end)) as denom
+                from denom_flag 
+             )
+             
+             select
+                    '{dqm.state}' as submtg_state_cd
+                    ,'{measure_id}' as measure_id
+                    ,'101' as submodule
+                    ,numer
+                    ,denom
+                    ,round(try_divide(numer,denom), {x['round']}) as mvalue
+                from numer_denom_cnt        
+            """
+        spark.sql(z)
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
 
     # --------------------------------------------------------------------
     #
@@ -786,7 +1050,10 @@ class Runner_101:
         "el640t": el640t,
         "el641t": el641t,
         "el648t_el649t": el648t_el649t,
-        "el650t": el650t
+        "el650t": el650t,
+        "el651t": el651t,
+        "el652t": el652t,
+        "el653t": el653t
     }
 
 # CC0 1.0 Universal

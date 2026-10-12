@@ -1,0 +1,57 @@
+state,children_only,pregnant_women_only,both,under_19
+Alabama,NO,NO,NO,
+Alaska,NO,NO,NO,
+Amer. Samoa,NO,NO,YES,NO
+Arizona,NO,NO,NO,
+Arkansas,NO,NO,YES,YES
+California,NO,NO,YES,NO
+Colorado,NO,NO,YES,YES
+Connecticut,NO,NO,YES,NO
+Delaware,NO,NO,YES,NO
+Dist. Of Col.,NO,NO,YES,NO
+Florida,YES,NO,NO,YES
+Georgia,NO,NO,YES,YES
+Guam,NO,NO,NO,
+Hawaii,NO,NO,YES,YES
+Idaho,NO,NO,NO,
+Illinois,YES,NO,NO,YES
+Indiana,NO,NO,NO,
+Iowa,YES,NO,NO,NO
+Kansas,NO,NO,NO,
+Kentucky,NO,NO,YES,YES
+Louisiana,YES,NO,NO,YES
+Maine,NO,NO,YES,NO
+Maryland,NO,NO,YES,NO
+Massachusetts,NO,NO,YES,NO
+Michigan,NO,NO,YES,NO
+Minnesota,NO,NO,YES,NO
+Mississippi,NO,NO,NO,
+Missouri,NO,NO,NO,
+Montana,YES,NO,NO,YES
+N. Mariana Islands,NO,NO,YES,YES
+Nebraska,NO,NO,YES,YES
+Nevada,NO,NO,YES,YES
+New Hampshire,NO,NO,YES,YES
+New Jersey,NO,NO,YES,NO
+New Mexico,NO,NO,YES,NO
+New York,NO,NO,YES,NO
+North Carolina,NO,NO,YES,YES
+North Dakota,NO,YES,NO,NO
+Ohio,NO,NO,YES,NO
+Oklahoma,NO,NO,NO,
+Oregon,YES,NO,NO,YES
+Pennsylvania,NO,NO,YES,NO
+Puerto Rico,NO,NO,NO,
+Rhode Island,NO,NO,YES,YES
+South Carolina,NO,NO,YES,NO
+South Dakota,NO,NO,NO,
+Tennessee,NO,NO,NO,
+Texas,YES,NO,NO,YES
+Utah,YES,NO,NO,YES
+Vermont,NO,NO,YES,NO
+Virgin Islands,NO,NO,YES,NO
+Virginia,NO,NO,YES,YES
+Washington,NO,NO,YES,NO
+West Virginia,NO,NO,YES,YES
+Wisconsin,NO,NO,YES,YES
+Wyoming,NO,YES,NO,NO
