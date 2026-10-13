@@ -20,7 +20,10 @@ run_705 =[
 
     ['705', 'utl_ot_line_wvr_lnk_pct_ab', 'all2_11', '', '' ],
 
-    ['705', 'utl_link_rx_el_ab_sql', 'all13_2', '', '' ]
+    ['705', 'utl_link_rx_el_ab_sql', 'all13_2', '', '' ],
+
+    ['705', 'all13_7', 'all13_7', 'ab', '' ],
+    ['705', 'all13_8', 'all13_8', 'ab', '' ]
 ]
 
 df = DataFrame(run_705, columns=['series', 'cb', 'measure_id', 'clmcat', 'tblnum'])

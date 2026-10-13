@@ -840,6 +840,174 @@ class Runner_705:
 
 
     # --------------------------------------------------------------------
+    # ALL13.7
+    # % of MSIS IDs with an IMMIGRATION-STATUS = 3 with non-emergency 
+    # room services
+    # --------------------------------------------------------------------
+    def all13_7(spark, dqm: DQMeasures, measure_id, x) :
+
+        #pull IP header and line
+        z = f"""
+             create or replace temporary view {dqm.taskprefix}_ip_clm_ab as
+             select  /*+ BROADCAST(b) */
+                     submtg_state_cd
+                    ,msis_ident_num
+                    ,tmsis_rptg_prd
+                    ,orgnl_clm_num
+                    ,adjstmt_clm_num
+                    ,adjdctn_dt
+                    ,adjstmt_ind
+                    ,admsn_dt
+                    ,max(case when rev_cd in ('450', '451', '452', '456', '459', '981', '720', '721', '722', '723', '724', '729',
+                                              '0450', '0451', '0452', '0456', '0459', '0981', '0720', '0721', '0722', '0723', '0724', '0729') 
+                                              then 1 else 0 end) 
+                     as rev_cd_excl
+             from {DQMeasures.getBaseTable(dqm, 'cll', 'ip')}
+             where {DQM_Metadata.create_base_clh_view().claim_cat['AB']} and childless_header_flag = 0
+             group by submtg_state_cd, msis_ident_num, tmsis_rptg_prd, orgnl_clm_num, adjstmt_clm_num, adjdctn_dt, adjstmt_ind, admsn_dt
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        #inner join with ELG tables
+        z = f"""
+             create or replace temporary view {dqm.taskprefix}_ip_clm_elg as
+             select  a.*
+             from {dqm.taskprefix}_ip_clm_ab a
+
+                  inner join
+                  (select  distinct 
+                           submtg_state_cd
+                          ,msis_ident_num
+                   from {dqm.taskprefix}_ever_elig
+                   where ever_eligible = 1) b
+             on a.submtg_state_cd = b.submtg_state_cd and
+                a.msis_ident_num = b.msis_ident_num
+
+                  inner join
+                  (select  distinct 
+                           submtg_state_cd
+                          ,imgrtn_stus_cd
+                          ,msis_ident_num
+                          ,var_dmgrphc_ele_efctv_dt
+                          ,var_dmgrphc_ele_end_dt
+                   from {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty) c
+             on a.submtg_state_cd = c.submtg_state_cd and
+                a.msis_ident_num = c.msis_ident_num and
+                a.admsn_dt >= c.var_dmgrphc_ele_efctv_dt and 
+                (a.admsn_dt <= c.var_dmgrphc_ele_end_dt or c.var_dmgrphc_ele_end_dt is null)
+
+             where a.admsn_dt is not null and
+                   c.imgrtn_stus_cd = '3'
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        #create final table
+        z = f"""
+             select  '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'705' as submodule
+                    ,numer
+                    ,denom
+                    ,case when denom > 0 then round((numer / denom),2) else null end as mvalue
+             from (select  count(distinct msis_ident_num) as denom
+                          ,count(distinct (case when rev_cd_excl = 0 then msis_ident_num else null end)) as numer
+                   from {dqm.taskprefix}_ip_clm_elg)
+            """
+
+        dqm.logger.debug(z)
+        return spark.sql(z)
+
+    # --------------------------------------------------------------------
+    # ALL13.8
+    # % of MSIS IDs with an IMMIGRATION-STATUS = 3 with non-emergency 
+    # room services
+    # --------------------------------------------------------------------
+    def all13_8(spark, dqm: DQMeasures, measure_id, x) :
+
+        #pull IP header and line
+        z = f"""
+             create or replace temporary view {dqm.taskprefix}_ot_clm_ab as
+             select  submtg_state_cd
+                    ,msis_ident_num
+                    ,srvc_bgnng_dt
+                    ,case when rev_cd_excl = 0 and (srvc_plc_cd <> '23' or srvc_plc_cd is null)
+                               then 1 else 0 end
+                     as flag
+             from (select  /*+ BROADCAST(b) */
+                           submtg_state_cd
+                          ,msis_ident_num
+                          ,tmsis_rptg_prd
+                          ,orgnl_clm_num
+                          ,adjstmt_clm_num
+                          ,adjdctn_dt
+                          ,adjstmt_ind
+                          ,srvc_bgnng_dt
+                          ,max(srvc_plc_cd) as srvc_plc_cd
+                          ,max(case when rev_cd in ('450', '451', '452', '456', '459', '981', '720', '721', '722', '723', '724', '729',
+                                                    '0450', '0451', '0452', '0456', '0459', '0981', '0720', '0721', '0722', '0723', '0724', '0729') 
+                                                    then 1 else 0 end) 
+                           as rev_cd_excl
+                   from {DQMeasures.getBaseTable(dqm, 'cll', 'ot')}
+                   where {DQM_Metadata.create_base_clh_view().claim_cat['AB']} and childless_header_flag = 0
+                   group by submtg_state_cd, msis_ident_num, tmsis_rptg_prd, orgnl_clm_num, adjstmt_clm_num, adjdctn_dt, adjstmt_ind, srvc_bgnng_dt)
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        #inner join with ELG tables
+        z = f"""
+             create or replace temporary view {dqm.taskprefix}_ot_clm_elg as
+             select  a.*
+             from {dqm.taskprefix}_ot_clm_ab a
+
+                  inner join
+                  (select  distinct 
+                           submtg_state_cd
+                          ,msis_ident_num
+                   from {dqm.taskprefix}_ever_elig
+                   where ever_eligible = 1) b
+             on a.submtg_state_cd = b.submtg_state_cd and
+                a.msis_ident_num = b.msis_ident_num
+
+                  inner join
+                  (select  distinct 
+                           submtg_state_cd
+                          ,msis_ident_num
+                          ,imgrtn_stus_cd
+                          ,var_dmgrphc_ele_efctv_dt
+                          ,var_dmgrphc_ele_end_dt
+                   from {dqm.taskprefix}_tmsis_var_dmgrphc_elgblty) c
+                   on a.submtg_state_cd = c.submtg_state_cd and
+                      a.msis_ident_num = c.msis_ident_num and
+                      a.srvc_bgnng_dt >= c.var_dmgrphc_ele_efctv_dt and 
+                      (a.srvc_bgnng_dt <= c.var_dmgrphc_ele_end_dt or c.var_dmgrphc_ele_end_dt is null)                      
+
+             where a.srvc_bgnng_dt is not null and
+                   c.imgrtn_stus_cd = '3'
+             """
+        dqm.logger.debug(z)
+        spark.sql(z)
+
+        #create final table
+        z = f"""
+             select  '{dqm.state}' AS submtg_state_cd
+                    ,'{measure_id}' AS measure_id
+                    ,'705' as submodule
+                    ,numer
+                    ,denom
+                    ,case when denom > 0 then round((numer / denom),2) else null end as mvalue
+             from (select  count(distinct msis_ident_num) as denom
+                          ,count(distinct (case when flag = 1 then msis_ident_num else null end)) as numer
+                   from {dqm.taskprefix}_ot_clm_elg)
+            """
+
+        dqm.logger.debug(z)
+        return spark.sql(z)
+    
+
+    # --------------------------------------------------------------------
     #
     #
     # --------------------------------------------------------------------
@@ -852,6 +1020,8 @@ class Runner_705:
         "utl_ot_hdr_wvr_lnk_pct_ab": utl_ot_hdr_wvr_lnk_pct_ab,
         "utl_ot_line_wvr_lnk_pct_ab": utl_ot_line_wvr_lnk_pct_ab,
         "utl_link_rx_el_ab_sql": utl_link_rx_el_ab_sql,
+        "all13_7":all13_7,
+        "all13_8":all13_8
     }
 
 # CC0 1.0 Universal
