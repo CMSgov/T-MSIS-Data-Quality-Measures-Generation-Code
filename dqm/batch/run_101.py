@@ -858,16 +858,17 @@ run_101 =[
         denominator_table='',
         rounding=3
     ),
-    create_run_101_input(
+        create_run_101_input(
         series='101',
-        cb='nonclaimspct',
+        cb='el638t',
         measure='el6.38',
-        id='el638',
-        numerator='case when imgrtn_stus_cd = "3" then 1 else 0 end',
-        denominator='msis_ident_num is not null',
-        table='_tmsis_var_dmgrphc_elgblty',
-        rounding=3
-    ),    
+        id='el638t',
+        numerator='',
+        numerator_table='',
+        denominator='',
+        denominator_table='',
+        rounding=4
+    ),  
     create_run_101_input(
         series='101',
         cb='nonclaimspct',
@@ -980,8 +981,18 @@ run_101 =[
         denominator='',
         denominator_table='',
         rounding=3
-    )      
-             
+    ),
+        create_run_101_input(
+        series='101',
+        cb='nonclaimspct',
+        measure='el6.54',
+        id='el654',
+        numerator='case when imgrtn_stus_cd = "4" then 1 else 0 end',
+        denominator='msis_ident_num is not null',
+        table='_tmsis_var_dmgrphc_elgblty',
+        rounding=5
+    ),     
+         
 ]
 
 df = DataFrame(run_101, columns=['series', 'cb', 'measure', 'id', 'numer', 'numertbl', 'denom', 'denomtbl', 'tbl', 'round'])

@@ -1026,6 +1026,69 @@ class Runner_101:
 
         return spark.sql(z)
 
+    def el638t(spark, dqm: DQMeasures, measure_id, x):
+
+        z = f"""
+            with merge as (
+                select distinct
+                    a.msis_ident_num,
+                    b.imgrtn_stus_cd
+                from (
+                    select distinct msis_ident_num
+                    from base_elig_view
+                    where
+                        {dqm.run_id_filter()} and
+                        enrlmt_efctv_dt <= '{dqm.m_end}' and
+                        (enrlmt_end_dt >= '{dqm.m_start}'
+                        or enrlmt_end_dt is null)
+                ) as a
+                left join (
+                    select
+                        msis_id,
+                        imgrtn_stus_cd
+                    from tmsis_var_dmgrphc_elgblty_view
+                    where
+                        (
+                            (
+                                var_dmgrphc_ele_efctv_dt <= '{dqm.m_end}' and
+                                (var_dmgrphc_ele_end_dt >= '{dqm.m_start}'
+                                or var_dmgrphc_ele_end_dt is null)
+                            )
+                            or (
+                                var_dmgrphc_ele_efctv_dt is null and
+                                var_dmgrphc_ele_end_dt is null
+                            )
+                        )
+                        and submtg_state_orig = {dqm.state}
+                        and tmsis_run_id = {dqm.run_id}
+                ) as b
+                    on a.msis_ident_num = b.msis_id
+            ),
+
+            calc as (
+                select
+                    count(distinct case
+                        when imgrtn_stus_cd = '3'
+                        then msis_ident_num
+                    end) as numer,
+                    count(distinct msis_ident_num) as denom
+                from merge
+            )
+
+            select
+                '{dqm.state}' as submtg_state_cd,
+                '{measure_id}' as measure_id,
+                '101' as submodule,
+                numer,
+                denom,
+                round(numer * 1.0 / nullif(denom, 0), {x['round']}) as mvalue
+            from calc
+        """
+
+        dqm.logger.debug(z)
+
+        return spark.sql(z)
+
 
     # --------------------------------------------------------------------
     #
@@ -1053,7 +1116,8 @@ class Runner_101:
         "el650t": el650t,
         "el651t": el651t,
         "el652t": el652t,
-        "el653t": el653t
+        "el653t": el653t,
+        "el638t": el638t
     }
 
 # CC0 1.0 Universal
